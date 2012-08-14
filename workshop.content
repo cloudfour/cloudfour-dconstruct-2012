@@ -1,0 +1,184 @@
+% dConstruct 2012
+% Lyza Gardner
+% September 6, 2012
+
+# Revisiting the Basics: Intro
+
+## Ideas
+
+* `<img>` tag conundrum
+* HTML5 is okay
+* Content
+* Get into the browser
+* Introduction to updated workflow
+* Various schools of thought re: Markup
+* Lead into RWD
+* Performance
+
+## Thesis
+
+Be not afeard, the isle is full of noises...
+
+Starting somewhere familiar and leaping off.
+
+We need to keep our chops sharp in the standards of HTML and web authoring, development and production to bridge the scary gap into mobile and beyond.
+
+If we stick to standards and get sharp with HTML5 and related web technologies, we can get pretty far, pretty quickly, and cover a lot of our bases.
+
+## A Few Basic Tactics
+
+* Standard markup
+* Less reliance on syndicated content
+* Less reliance on plugins
+* More focus on core content
+* Moving away from old design paradigms
+* Progressive enhancement
+* Web technologies
+* Getting into the browser
+
+
+## What won't work
+
+* Chasing down every form factor
+* Control
+* Starting from the top of the pile
+* Ignoring the issue
+* Ignoring JavaScript
+* Ignoring the import of serious CSS talent
+
+## The Great Hope: HTML5
+
+## Exercises
+
+Thinking toward the future: Dissecting today's web resources with an eye toward tomorrow. Review this web page. What do you see that seems like it might be counter-productive to our original skills and mobile? Using ySlow?
+
+Try to keep this from feeling dull-performance work. Push in some good mobile wins.
+
+* Flash
+* Big images
+* HTTP requests
+* gZIP compression (maybe too advanced)
+* Non-semantic markup
+* Markup errors
+* Non-fluid layout (or is this relevant?) I think it is. Thinking beyond
+* Height and width on images
+
+Contest for best performance boost w/o degradation of experience?
+
+Metrics:
+
+* ySlow performance
+* How it "looks on a few devices"?
+* How many items itemized
+
+# The One Web: Responsive and Shared
+
+## Ideas
+
+* RWD
+* Fluid formula
+* Fluid layouts
+* Flexible images/media
+* Media Queries
+* Media Query Management
+* CSS Organization
+* Performance
+* `<img>` Revisit
+* Advanced CSS
+* Flexbox
+* The New Design Workflow
+
+## The One Web
+
+## Web Approach Philosophy
+
+You're here, so you've at least partially voted for the web.
+
+## Exercises
+
+Converting something fixed-width to fluid. Implementing em-based media queries per personal discretion.
+
+# The Differentiated Web
+
+## Ideas
+
+* Feature vs. device detection
+* Progressive Enhancement
+* Re-visit CSS; more advanced techniques
+* Columns
+* More Flexbox
+* Animations, transitions
+* Typography
+* Polyfills
+* Rolling your own
+* The binary fallacy
+* Behavioral vs. presentational
+* Different experiences for different device classes
+* UA sniffing
+* DDRs
+
+## Exercises
+
+* Feature-testing and enhancing a layout
+
+# Behaviors and APIs
+
+## Ideas
+
+* Geolocation
+* Cross-platform consistencies
+* Different types of APIs
+* AppCache primer
+* LocalStorage primer
+* W3C
+* WhatWG
+* Standards in general
+* Rough support charts
+* JS vs. HTML APIs
+
+## Exercises
+
+Write geolocation script/page integration and test on device.
+
+# Tools and Frameworks
+
+## Ideas
+
+* Development frameworks
+* CSS frameworks
+* Foundation
+* Bootstrap
+* beware of "responsive"
+* libraries
+* tools
+* jQM
+* Phonegap
+* Modernizr redux
+* Throwing libraries at the problem
+* Sencha
+
+## Exercises
+
+Exercise idea: Style same page w/different frameworks
+
+# Testing and Workflows
+
+## Ideas
+
+* Untesting
+* remote debug
+* Shadow
+* weinre
+* shim
+* Dragonfly
+* jDrop
+* Bookmarklets
+* Emulators
+* Automated testing
+* Devices
+
+## Exercises
+
+TBD
+
+
