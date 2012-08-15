@@ -1,27 +1,33 @@
-# Exercise 1: Explore the Simplicity
+% Exercise 1: Explore the Diversity in the Simplicity
 
-Review a most simplified HTML5 page in various browsers and devices to get a feel for the baseline.
+Review a most simplified HTML5 page in various browsers and devices to get a feel for the baseline in a bunch of different places.
 
-1. Load and view TODO in browsers that you have with you. Desktop, any devices.
+1. Load and view the first version of the [scene from *The Tempest*](tempest.html) in browsers that you have with you. Desktop, any devices. You can also find this web page hosted externally at <http://lyzadanger.com/d/101>.
 2. Review screen shots of the same page rendered in various devices (below).
-3. Try out the Opera Mini simulator TODO
-
-#### Pro Tips
-
-* The Opera Mini Simulator is a great tool
-* Screen shots from Androids? 
+3. Try out the [Opera Mini simulator](http://www.opera.com/developer/tools/mini/) (load up the version at <http://lyzadanger.com/d/101>).
 
 ## Screen Shots
 
-1. Motorola Backflip
-2. Nokia N8
-3. BlackBerry 8320
-4. BlackBery 9670
-5. Nexus S
-6. Nexus S FireFox
-7. Toshiba Thrive Tablet
-8. Kindle Fire
-9. iPhone 4
-10. Opera on iPhone 4
+* [Motorola Backflip](images/backflip.png)
+* [Nokia N8](images/nokia-n8.png)
+* [BlackBerry 8320](images/8320.png)
+* [BlackBery 9670](images/9670.png)
+* [Nexus S Native browser](images/nexus-portrait.png)
+* [Nexus S Native browser in landscape](images/nexus-landscape.png)
+* [Nexus S FireFox](images/nexus-firefox.png)
+* [Kindle Fire](images/fire.png)
+* [iPhone 4](images/iphone.png)
+* [Opera Mini on iPhone 4](images/iphone-opera.png)
+
+#### Pro Tips
+
+1. The Opera Mini Simulator is a great tool
+1. Screen shots from (all versions of) Android? Do this:
+    1. Install the Android SDK
+    1. Make sure to install `platform-tools`
+    1. Connect the Android device in question to USB
+    1. In the Android SDK directory, find `ddms` under `tools` and launch it (You can also run `ddms` from a Terminal window in most Android SDK installs).
+    1. Find the connected device in the `Dalvik Debug Monitor` window and use Device -> Capture Screen... to do a screen grab. [Here's a screenshot](images/ddms.png).
+
 
 

@@ -29,7 +29,7 @@ sub build_exercises {
   if ($_ =~ /\.content/) {
     ($base, $dir, $ext) = fileparse($File::Find::name, '\..*'); # Split path into dir, file basename, extension
     my $output = $dir . '/' . $base . '.html';
-    system("$pandoc --from=markdown --to=html5 --section-divs $_ > $output");
+    system("$pandoc --from=markdown --to=html5 --standalone --section-divs $_ > $output");
   }
 }
 
