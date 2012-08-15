@@ -8,6 +8,25 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Lyza Gardner" />
   <title>dConstruct 2012</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
@@ -21,65 +40,248 @@ Lyza Gardner
   </p>
   <p class="date">September 6, 2012</p>
 </div>
-<div class="section titleslide slide level1" id="revisiting-the-basics-intro"><h1 id="revisiting-the-basics-intro">Revisiting the Basics: Intro</h1></div><div class="section slide level2" id="ideas">
-<h1 id="ideas">Ideas</h1>
-<ul>
-<li><code>&lt;img&gt;</code> tag conundrum</li>
-<li>HTML5 is okay</li>
-<li>Content</li>
-<li>Get into the browser</li>
-<li>Introduction to updated workflow</li>
-<li>Various schools of thought re: Markup</li>
-<li>Lead into RWD</li>
-<li>Performance</li>
-</ul>
-</div><div class="section slide level2" id="exercises">
-<h1 id="exercises">Exercises</h1>
-<p>Thinking toward the future: Dissecting today's web resources with an eye toward tomorrow. Review this web page. What do you see that seems like it might be counter-productive to our original skills and mobile? Using ySlow?</p>
-<p>Try to keep this from feeling dull-performance work. Push in some good mobile wins.</p>
-<ul>
-<li>Flash</li>
-<li>Big images</li>
-<li>HTTP requests</li>
-<li>gZIP compression (maybe too advanced)</li>
-<li>Non-semantic markup</li>
-<li>Markup errors</li>
-<li>Non-fluid layout (or is this relevant?)</li>
-<li>Height and width on images</li>
-</ul>
-<p>Contest for best performance boost w/o degradation of experience?</p>
+<div class="section titleslide slide level1" id="our-devices"><h1 id="our-devices">Our Devices</h1></div><div class="section slide level2" id="section">
+<h1 id="section"></h1>
 </div>
-<div class="section titleslide slide level1" id="the-one-web-responsive-and-shared"><h1 id="the-one-web-responsive-and-shared">The One Web: Responsive and Shared</h1></div><div class="section slide level2" id="ideas-1">
-<h1 id="ideas-1">Ideas</h1>
+<div class="section titleslide slide level1" id="part-1.-starting-from-scratch"><h1 id="part-1.-starting-from-scratch">Part 1. Starting from scratch</h1></div><div class="section slide level2" id="starting-with-nothing">
+<h1 id="starting-with-nothing">Starting with nothing</h1>
+<blockquote>
+<p>&quot;Be not afeard; the isle is full of noises.&quot; —<em>The Tempest</em>, Act III, Scene 2, Wm. Shakespeare</p>
+</blockquote>
+</div><div class="section slide level2" id="so-many-options">
+<h1 id="so-many-options">So many options</h1>
+<p>When we start from scratch, we have so many choices to make.</p>
+<ul>
+<li>Web site</li>
+<li>Native application</li>
+<li>Web site that works on mobile devices</li>
+<li>Web site that works &quot;everywhere&quot;</li>
+<li>Web site that works on selected devices</li>
+<li>Web site using development framework or tools</li>
+<li>Adaptation of existing web site</li>
+</ul>
+<p>Mobile web development has a complicated and somewhat mysterious history.</p>
+</div><div class="section slide level2" id="need-to-flesh-out-high-level-slides-here">
+<h1 id="need-to-flesh-out-high-level-slides-here">NEED TO FLESH OUT HIGH-LEVEL SLIDES HERE</h1>
+</div><div class="section slide level2" id="the-evolution-of-mobile-markup-and-options">
+<h1 id="the-evolution-of-mobile-markup-and-options">The evolution of mobile markup and options</h1>
+<h3 id="wml-xhtml-mp...">WML, XHTML-MP...</h3>
+<ul>
+<li>SGML</li>
+<li>HDML (OpenWave) -&gt; WML</li>
+<li>HTML/XHTML</li>
+<li>cHTML (Compact HTML/iMode)</li>
+<li>XHTML-MP 1.1</li>
+<li>XHTML-MP 1.2</li>
+<li>XHTML-Basic</li>
+</ul>
+</div><div class="section slide level2" id="xhtml-mp">
+<h1 id="xhtml-mp">XHTML-MP</h1>
+<h3 id="doctypes">DOCTYPES</h3>
+<pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot;
+&quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot;&gt;
+
+&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.1//EN&quot;
+&quot;http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd&quot;&gt;
+
+&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.2//EN&quot;
+&quot;http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd&quot;&gt;</code></pre>
+</div><div class="section slide level2" id="xhtml-mp-cont.">
+<h1 id="xhtml-mp-cont.">XHTML-MP, cont.</h1>
+<ul>
+<li>Modularized XHTML</li>
+<li>Provided a bridge between simplified (WML) mobile markup and more full-featured support</li>
+<li>DOCTYPE triggers (some) mobile browsers to use different layout modes</li>
+<li>Was commonly used</li>
+</ul>
+<h3 id="not-supported">Not supported</h3>
+<ul>
+<li><code>&lt;iframe&gt;</code></li>
+<li><code>target</code> attribute in links</li>
+<li>Certain <code>&lt;table&gt;</code> tags (<code>&lt;tbody&gt;</code>, etc.)</li>
+<li>Plugins</li>
+</ul>
+<h4 id="handout">Handout</h4>
+<h5 id="references">References</h5>
+<ul>
+<li>Gail Rahn-Frederick and Rajesh Lal's <a href="http://www.amazon.com/Beginning-Smartphone-Web-Development-Applications/dp/143022620X"><em>Beginning Smartphone Web Development</em></a> is a few years old now but has an in-depth look at the history, evolution and specifics of mobile markup and DOCTYPEs.</li>
+<li><a href="http://bit.ly/hf-mw">Jason and my book</a> covers some of this in chapter 3.</li>
+<li>Lynda.com <a href="http://www.youtube.com/watch?v=egKQhGLomcQ">&quot;History of Mobile Markup Languages&quot; on YouTube</a> is a great little summary. I think it <em>might</em> swap XHTML-MP and XHTML-Basic in the timeline, but, really, these things are pretty complex.</li>
+</ul>
+</div><div class="section slide level2" id="html5-is-the-way-forward">
+<h1 id="html5-is-the-way-forward">HTML5 is the way forward</h1>
+<ul>
+<li>HTML5 by and large is tolerated by phones, even really old ones.</li>
+<li>No studies I know of using non-MP XHTML-variant doctypes.</li>
+</ul>
+<h4 id="good-enough-for-jazz-html5-is-usually-ok">Good enough for jazz: HTML5 is usually OK</h4>
+<h4 id="beware-informal-html5-might-cause-choking">Beware: Informal HTML5 might cause choking</h4>
+<h4 id="hold-that-thought-issues-with-html5-support">Hold that thought: Issues with HTML5 support</h4>
+</div><div class="section slide level2" id="theres-more-than-one-way-to...">
+<h1 id="theres-more-than-one-way-to...">There's more than one way to...</h1>
+<ul>
+<li>Targeting older or feature phones?</li>
+<li>Which is more important: bulletproof support in your market or the ability to do more powerful stuff?</li>
+</ul>
+<h4 id="theme-choice">Theme: Choice</h4>
+</div><div class="section slide level2" id="options-in-markup-and-semantics">
+<h1 id="options-in-markup-and-semantics">Options in markup and semantics</h1>
+<h3 id="adaptive-content">Adaptive Content</h3>
+<ul>
+<li>Future of content on the Web is complex</li>
+<li>Adaptability is key</li>
+<li>CMSes are the evil</li>
+</ul>
+<h4 id="handout-1">Handout</h4>
+<h5 id="references-1">References</h5>
+<ul>
+<li><a href="http://karenmcgrane.com/">Karen McGrane</a> is a leader in adaptive content and adaptive mobile content.</li>
+</ul>
+<h4 id="theme-content">Theme: Content</h4>
+</div><div class="section slide level2" id="one-approach">
+<h1 id="one-approach">One Approach</h1>
+<p>HTML as result of translation by &quot;robots.&quot; Classes and IDs are attached to content and are auto-generated. Limited use of classes and IDs.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;section</span><span class="ot"> class=</span><span class="st">&quot;level2&quot;</span><span class="ot"> id=</span><span class="st">&quot;we-make-the-web-mobile.&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;h2&gt;</span>We make the Web <span class="kw">&lt;em&gt;</span>mobile<span class="kw">&lt;/em&gt;</span>.<span class="kw">&lt;/h2&gt;</span>
+<span class="kw">&lt;/section&gt;</span>
+<span class="kw">&lt;section</span><span class="ot"> class=</span><span class="st">&quot;level2&quot;</span><span class="ot"> id=</span><span class="st">&quot;what-we-do&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;h2&gt;</span>What we do<span class="kw">&lt;/h2&gt;</span>
+<span class="kw">&lt;section</span><span class="ot"> class=</span><span class="st">&quot;level3&quot;</span><span class="ot"> id=</span><span class="st">&quot;mobile-development&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;h3&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;services/mobile-development.html&quot;</span><span class="ot"> title=</span><span class="st">&quot;Our Mobile Development Process&quot;</span><span class="kw">&gt;</span>Mobile Development<span class="kw">&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="kw">&lt;p&gt;</span>Cloud Four designs and builds mobile-optimized websites and hybrid mobile applications using web technology.<span class="kw">&lt;/p&gt;</span>
+<span class="kw">&lt;p&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;services/mobile-development.html&quot;</span><span class="ot"> title=</span><span class="st">&quot;Our Mobile Development Process&quot;</span><span class="kw">&gt;</span>Building the Mobile Web<span class="kw">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="kw">&lt;/section&gt;</span></code></pre>
+<h4 id="handout-2">Handout</h4>
+<h5 id="references-2">References</h5>
+<ul>
+<li>I gave a talk about the kind of adaptive content driving this approach at <a href="http://mobilism.nl">Mobilism 2012</a>. See my deck <a href="https://speakerdeck.com/u/lyzadanger/p/cutting-through-the-crap-the-essence-of-content-on-the-future-web">Cutting Through the Crap: The Essence of Content on the Future Web</a></li>
+</ul>
+</div><div class="section slide level2" id="another-approach">
+<h1 id="another-approach">Another Approach</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;section</span><span class="ot"> class=</span><span class="st">&quot;scene&quot;</span><span class="kw">&gt;</span>
+
+  <span class="kw">&lt;header&gt;</span>
+    <span class="kw">&lt;h4</span><span class="ot"> class=</span><span class="st">&quot;stage-direction&quot;</span><span class="kw">&gt;</span>
+      Enter <span class="kw">&lt;strong&gt;</span>Caliban<span class="kw">&lt;/strong&gt;</span>, <span class="kw">&lt;strong&gt;</span>Stephano<span class="kw">&lt;/strong&gt;</span>, and <span class="kw">&lt;strong&gt;</span>Trinculo<span class="kw">&lt;/strong&gt;</span>
+    <span class="kw">&lt;/h4&gt;</span>
+  <span class="kw">&lt;/header&gt;</span>
+
+  <span class="kw">&lt;dl&gt;</span>
+    <span class="kw">&lt;dt&gt;</span>Stephano<span class="kw">&lt;/dt&gt;</span>
+    <span class="kw">&lt;dd&gt;</span>
+      <span class="kw">&lt;em</span><span class="ot"> class=</span><span class="st">&quot;stage-direction&quot;</span><span class="kw">&gt;</span>(To <span class="kw">&lt;strong&gt;</span>Trinculo<span class="kw">&lt;/strong&gt;</span>)<span class="kw">&lt;/em&gt;</span>
+      <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;</span>Tell not me; when the butt is out, we<span class="kw">&lt;/span&gt;</span>
+      <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;</span>will drink water; not a drop before: therefore bear up, and<span class="kw">&lt;/span&gt;</span>
+      <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;</span>board &#39;em. Servant-monster, drink to me.<span class="kw">&lt;/span&gt;</span>
+    <span class="kw">&lt;/dd&gt;</span></code></pre>
+<h4 id="theme-philosophy">Theme: Philosophy</h4>
+</div><div class="section slide level2" id="all-this-boils-down-to-content">
+<h1 id="all-this-boils-down-to-content">All this boils down to CONTENT</h1>
+<ul>
+<li>Content-first design and process</li>
+<li>Stripping away crap</li>
+<li>This is a philosophical shift, even if it seems like &quot;duh&quot;</li>
+<li>We're going to start simple to ease into our work here</li>
+</ul>
+<blockquote>
+<p>&quot;Simplify before you suppress.&quot; —Ethan Marcotte</p>
+</blockquote>
+<h4 id="hold-that-thought-mobile-first-design">Hold that thought: Mobile-first design</h4>
+<h4 id="theme-content-1">Theme: Content</h4>
+<h4 id="handout-3">Handout</h4>
+<h5 id="references-3">References</h5>
+<ul>
+<li>A nice post from <a href="http://adactio.com/journal">Jeremy Keith</a> from last year about <a href="http://adactio.com/journal/4523/">content first</a></li>
+<li>Coverage from <a href="http://www.lukew.com/">Luke Wroblewski</a> of Jeffrey Zeldman's <a href="http://www.lukew.com/ff/entry.asp?1430">&quot;Content First&quot;</a> presentation at <a href="http://aneventapart.com/2011/dc/">An Event Apart October 2011</a>.</li>
+<li>Stephen Hay's talk <a href="http://www.slideshare.net/stephenhay/structured-content-first">Structured Content First</a> is another perspective.</li>
+</ul>
+</div><div class="section slide level2" id="exercise">
+<h1 id="exercise">Exercise</h1>
+<p>Exploring the feel of unstyled, basic HTML5 content in different devices and browsers. Urge folks to load page on their own phones. Those without devices could hit the opera simulator.</p>
+<ul>
+<li>http://www.opera.com/developer/tools/mini/</li>
+</ul>
+<p>Note title differences. Things fit on screen</p>
+</div><div class="section slide level2" id="workflow-getting-into-the-browser">
+<h1 id="workflow-getting-into-the-browser">Workflow: getting into the browser</h1>
+<ul>
+<li>Mobile web development demands the revisiting of design and development processes</li>
+<li>Get into the browser early and often</li>
+</ul>
+<h4 id="theme-process-evolution">Theme: Process Evolution</h4>
+<h4 id="hold-that-thought-more-to-come-on-process">Hold that Thought: More to come on process</h4>
+</div><div class="section slide level2" id="basic-support-is-good">
+<h1 id="basic-support-is-good">Basic support is good</h1>
+<h4 id="good-enough-for-jazz-basic-support-is-good-but-not-infallible">Good enough for jazz: Basic support is good but not infallible</h4>
+<h4 id="beware-these-css-gotchas-in-older-devices">Beware: These CSS gotchas in older devices</h4>
+</div><div class="section slide level2" id="viewports">
+<h1 id="viewports">Viewports!</h1>
+<ul>
+<li>Tag syntax</li>
+<li>Visible viewport</li>
+<li>Layout viewport</li>
+<li>PPK's article(s)</li>
+<li>Demo</li>
+</ul>
+</div><div class="section slide level2" id="baseline-css">
+<h1 id="baseline-css">Baseline CSS</h1>
+</div><div class="section slide level2" id="css-organization">
+<h1 id="css-organization">CSS Organization</h1>
+<ul>
+<li>Reference to Snook, SMACSS</li>
+<li>Options</li>
+<li>Touch on pre-compilers?</li>
+<li>Hold that thought: precompilers</li>
+</ul>
+</div><div class="section slide level2" id="pro-tips">
+<h1 id="pro-tips">Pro Tips</h1>
+<ul>
+<li>Don't chase down every form factor</li>
+<li>Don't assume or assert more control than you have or is necessary</li>
+<li>Don't start from the top</li>
+<li>Don't ignore mobile issues</li>
+<li>Don't ignore the import of serious talent in HTML, CSS and JavaScript</li>
+</ul>
+</div><div class="section slide level2" id="section-1">
+<h1 id="section-1"></h1>
+</div>
+<div class="section titleslide slide level1" id="the-one-web-responsive-and-shared"><h1 id="the-one-web-responsive-and-shared">The One Web: Responsive and Shared</h1></div><div class="section slide level2" id="ideas">
+<h1 id="ideas">Ideas</h1>
 <ul>
 <li>RWD</li>
 <li>Fluid formula</li>
 <li>Fluid layouts</li>
 <li>Flexible images/media</li>
 <li>Media Queries</li>
-<li>Media Query Management</li>
-<li>CSS Organization</li>
+<li><p>Media Query Management</p></li>
 <li>Performance</li>
+<li><code>&lt;img&gt;</code> tag conundrum</li>
 <li><code>&lt;img&gt;</code> Revisit</li>
 <li>Advanced CSS</li>
 <li>Flexbox</li>
-<li>The New Design Workflow</li>
+<li><p>The New Design Workflow</p></li>
 </ul>
-</div><div class="section slide level2" id="exercises-1">
-<h1 id="exercises-1">Exercises</h1>
+</div><div class="section slide level2" id="the-one-web">
+<h1 id="the-one-web">The One Web</h1>
+</div><div class="section slide level2" id="web-approach-philosophy">
+<h1 id="web-approach-philosophy">Web Approach Philosophy</h1>
+<p>You're here, so you've at least partially voted for the web.</p>
+</div><div class="section slide level2" id="exercises">
+<h1 id="exercises">Exercises</h1>
 <p>Converting something fixed-width to fluid. Implementing em-based media queries per personal discretion.</p>
+</div><div class="section slide level2" id="section-2">
+<h1 id="section-2"></h1>
 </div>
-<div class="section titleslide slide level1" id="the-differentiated-web"><h1 id="the-differentiated-web">The Differentiated Web</h1></div><div class="section slide level2" id="ideas-2">
-<h1 id="ideas-2">Ideas</h1>
+<div class="section titleslide slide level1" id="the-differentiated-web"><h1 id="the-differentiated-web">The Differentiated Web</h1></div><div class="section slide level2" id="ideas-1">
+<h1 id="ideas-1">Ideas</h1>
 <ul>
 <li>Feature vs. device detection</li>
 <li>Progressive Enhancement</li>
 <li>Re-visit CSS; more advanced techniques</li>
 <li>Columns</li>
-<li>More Flexbox</li>
 <li>Animations, transitions</li>
 <li>Typography</li>
-<li>Polyfills</li>
+<li><h2>Polyfills</h2></li>
 <li>Rolling your own</li>
 <li>The binary fallacy</li>
 <li>Behavioral vs. presentational</li>
@@ -87,14 +289,16 @@ Lyza Gardner
 <li>UA sniffing</li>
 <li>DDRs</li>
 </ul>
-</div><div class="section slide level2" id="exercises-2">
-<h1 id="exercises-2">Exercises</h1>
+</div><div class="section slide level2" id="exercises-1">
+<h1 id="exercises-1">Exercises</h1>
 <ul>
 <li>Feature-testing and enhancing a layout</li>
 </ul>
+</div><div class="section slide level2" id="section-3">
+<h1 id="section-3"></h1>
 </div>
-<div class="section titleslide slide level1" id="behaviors-and-apis"><h1 id="behaviors-and-apis">Behaviors and APIs</h1></div><div class="section slide level2" id="ideas-3">
-<h1 id="ideas-3">Ideas</h1>
+<div class="section titleslide slide level1" id="behaviors-and-apis"><h1 id="behaviors-and-apis">Behaviors and APIs</h1></div><div class="section slide level2" id="ideas-2">
+<h1 id="ideas-2">Ideas</h1>
 <ul>
 <li>Geolocation</li>
 <li>Cross-platform consistencies</li>
@@ -107,12 +311,12 @@ Lyza Gardner
 <li>Rough support charts</li>
 <li>JS vs. HTML APIs</li>
 </ul>
-</div><div class="section slide level2" id="exercises-3">
-<h1 id="exercises-3">Exercises</h1>
+</div><div class="section slide level2" id="exercises-2">
+<h1 id="exercises-2">Exercises</h1>
 <p>Write geolocation script/page integration and test on device.</p>
 </div>
-<div class="section titleslide slide level1" id="tools-and-frameworks"><h1 id="tools-and-frameworks">Tools and Frameworks</h1></div><div class="section slide level2" id="ideas-4">
-<h1 id="ideas-4">Ideas</h1>
+<div class="section titleslide slide level1" id="tools-and-frameworks"><h1 id="tools-and-frameworks">Tools and Frameworks</h1></div><div class="section slide level2" id="ideas-3">
+<h1 id="ideas-3">Ideas</h1>
 <ul>
 <li>Development frameworks</li>
 <li>CSS frameworks</li>
@@ -127,12 +331,12 @@ Lyza Gardner
 <li>Throwing libraries at the problem</li>
 <li>Sencha</li>
 </ul>
-</div><div class="section slide level2" id="exercises-4">
-<h1 id="exercises-4">Exercises</h1>
+</div><div class="section slide level2" id="exercises-3">
+<h1 id="exercises-3">Exercises</h1>
 <p>Exercise idea: Style same page w/different frameworks</p>
 </div>
-<div class="section titleslide slide level1" id="testing-and-workflows"><h1 id="testing-and-workflows">Testing and Workflows</h1></div><div class="section slide level2" id="ideas-5">
-<h1 id="ideas-5">Ideas</h1>
+<div class="section titleslide slide level1" id="testing-and-workflows"><h1 id="testing-and-workflows">Testing and Workflows</h1></div><div class="section slide level2" id="ideas-4">
+<h1 id="ideas-4">Ideas</h1>
 <ul>
 <li>Untesting</li>
 <li>remote debug</li>
@@ -146,9 +350,10 @@ Lyza Gardner
 <li>Automated testing</li>
 <li>Devices</li>
 </ul>
-</div><div class="section slide level2" id="exercises-5">
-<h1 id="exercises-5">Exercises</h1>
+</div><div class="section slide level2" id="exercises-4">
+<h1 id="exercises-4">Exercises</h1>
 <p>TBD</p>
 </div>
+<div class="section titleslide slide level1" id="master-resources"><h1 id="master-resources">Master Resources</h1></div>
 </body>
 </html>

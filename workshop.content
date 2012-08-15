@@ -6,82 +6,113 @@
 
 * BlackBerry 8320 Curve v4.5.0.81 native browser
 * BlackBerry 9670 Style v6.0.0.123 native browser
-* Toshiba AT105 tablet Android 3.1 native browser
+* Toshiba Thrive (AT105) tablet Android 3.1 native browser
 * Nexus S Android 4.1.1 Firefox 14.0.2
+* Nexus S Android 4.1.1 native
 * Motorola Backflip (version TBD)
 * iPhone 4 iOS 5.1.1 native Safari browser
 * iPhone 4 iOS 5.1.1...Opera? (TBD)
 * Nokia N8 (if I can get it to work)
-* Opera Mini emulator
+* [Opera Mini simulator](http://www.opera.com/developer/tools/mini/)
 * Kindle Fire native browser (version?)
 
-# Starting from Scratch
+-------------------------------------------------------------------------------
 
-## Outline
+# Part 1. Starting from scratch
 
-* Starting with nothing
-* What am I building?
-* So many options
-* CONTENT
-    * starting simple
-    * content first
-    * hold that thought
-* markup options
-* semantics
-* EVALUATING CHOICES
-* WORKFLOW
-    * getting into the browser
-    * exercise point?
-    * iteration tight
-    * hold that thought
-* basic support is good
-* viewports!
-* baseline CSS
-* CSS organization
-* PROCESS
-* exercise point?
-* basic mobile happiness
+-------------------------------------------------------------------------------
 
 ## Starting with nothing
 
-## What am I building?
+> "Be not afeard; the isle is full of noises." —*The Tempest*, Act III, Scene 2, Wm. Shakespeare
 
-> "Be not afeard; the isle is full of noises."
-
-Description of basic reference for *The Tempest*
+-------------------------------------------------------------------------------
 
 ## So many options
 
 When we start from scratch, we have so many choices to make.
 
-## How did we get here?
+* Web site
+* Native application
+* Web site that works on mobile devices
+* Web site that works "everywhere"
+* Web site that works on selected devices
+* Web site using development framework or tools
+* Adaptation of existing web site
 
-## Where are we, anyway?
+Mobile web development has a complicated and somewhat mysterious history.
 
-## The evolution of options
+-------------------------------------------------------------------------------
 
-## Mobile-specific options
+## NEED TO FLESH OUT HIGH-LEVEL SLIDES HERE 
 
-## WML, XHTML-MP...
+-------------------------------------------------------------------------------
 
-* Gail's book
-* Our book, chapter 3
-* WML, C-HTML (Compact HTML), XHTML-MP 1.1, XHTML-MP 1.2
+## The evolution of mobile markup and options
+
+### WML, XHTML-MP...
+
+* SGML
+* HDML (OpenWave) -> WML
+* HTML/XHTML
+* cHTML (Compact HTML/iMode)
+* XHTML-MP 1.1
+* XHTML-MP 1.2
 * XHTML-Basic
 
-## CONTENT is the name of the game
+## XHTML-MP
 
-## HTML5
+### DOCTYPES
 
-Study by Riegers.
+~~~
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN"
+"http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+ 
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.1//EN"
+"http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd">
+ 
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN"
+"http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+~~~
 
-No known studies of using non-MP XHTML-variant doctypes.
+-------------------------------------------------------------------------------
+
+## XHTML-MP, cont.
+
+* Modularized XHTML
+* Provided a bridge between simplified (WML) mobile markup and more full-featured support
+* DOCTYPE triggers (some) mobile browsers to use different layout modes
+* Was commonly used
+
+### Not supported
+
+* `<iframe>`
+* `target` attribute in links
+* Certain `<table>` tags (`<tbody>`, etc.)
+* Plugins
+
+#### Handout
+
+##### References
+
+* Gail Rahn-Frederick and Rajesh Lal's [*Beginning Smartphone Web Development*][rahn-frederick] is a few years old now but has an in-depth look at the history, evolution and specifics of mobile markup and DOCTYPEs.
+* [Jason and my book][hfmw] covers some of this in chapter 3.
+* Lynda.com ["History of Mobile Markup Languages" on YouTube][history-markup] is a great little summary. I think it *might* swap XHTML-MP and XHTML-Basic in the timeline, but, really, these things are pretty complex.
+
+-------------------------------------------------------------------------------
+
+## HTML5 is the way forward
+
+* HTML5 by and large is tolerated by phones, even really old ones.
+* No studies I know of using non-MP XHTML-variant doctypes.
 
 #### Good enough for jazz: HTML5 is usually OK
 
 #### Beware: Informal HTML5 might cause choking
 
 #### Hold that thought: Issues with HTML5 support
+
+-------------------------------------------------------------------------------
 
 ## There's more than one way to...
 
@@ -90,36 +121,120 @@ No known studies of using non-MP XHTML-variant doctypes.
 
 #### Theme: Choice
 
+-------------------------------------------------------------------------------
+
 ## Options in markup and semantics
 
 ### Adaptive Content
 
-* My content presentation
-* Karen McGrane
+* Future of content on the Web is complex
+* Adaptability is key
+* CMSes are the evil
 
-### Semantic Content/HTML first
+#### Handout
 
-* Classes
+##### References
 
-### Code examples
+* [Karen McGrane][mcgrane] is a leader in adaptive content and adaptive mobile content.
+
+#### Theme: Content
+
+-------------------------------------------------------------------------------
+
+## One Approach
+
+HTML as result of translation by "robots." Classes and IDs are attached to content and are auto-generated. Limited use of classes and IDs.
+
+~~~{.html}
+<section class="level2" id="we-make-the-web-mobile.">
+<h2>We make the Web <em>mobile</em>.</h2>
+</section>
+<section class="level2" id="what-we-do">
+<h2>What we do</h2>
+<section class="level3" id="mobile-development">
+<h3><a href="services/mobile-development.html" title="Our Mobile Development Process">Mobile Development</a></h3>
+<p>Cloud Four designs and builds mobile-optimized websites and hybrid mobile applications using web technology.</p>
+<p><a href="services/mobile-development.html" title="Our Mobile Development Process">Building the Mobile Web</a></p>
+</section>
+~~~
+
+#### Handout
+
+##### References
+
+* I gave a talk about the kind of adaptive content driving this approach at [Mobilism 2012][mobilism]. See my deck [Cutting Through the Crap: The Essence of Content on the Future Web][cut-crap]
+
+-------------------------------------------------------------------------------
+
+## Another Approach
+
+~~~{.html}
+<section class="scene">
+
+  <header>
+    <h4 class="stage-direction">
+      Enter <strong>Caliban</strong>, <strong>Stephano</strong>, and <strong>Trinculo</strong>
+    </h4>
+  </header>
+
+  <dl>
+    <dt>Stephano</dt>
+    <dd>
+      <em class="stage-direction">(To <strong>Trinculo</strong>)</em>
+      <span class="prose line">Tell not me; when the butt is out, we</span>
+      <span class="prose line">will drink water; not a drop before: therefore bear up, and</span>
+      <span class="prose line">board 'em. Servant-monster, drink to me.</span>
+    </dd>
+~~~
 
 #### Theme: Philosophy
 
+-------------------------------------------------------------------------------
+
 ## All this boils down to CONTENT
 
-Introduce content-first (in prelude to mobile-first)
+* Content-first design and process
+* Stripping away crap
+* This is a philosophical shift, even if it seems like "duh"
+* We're going to start simple to ease into our work here
+
+> "Simplify before you suppress." —Ethan Marcotte
 
 #### Hold that thought: Mobile-first design
 
 #### Theme: Content
 
+#### Handout
+
+##### References
+
+* A nice post from [Jeremy Keith][adactio] from last year about [content first][adactio-content-first]
+* Coverage from [Luke Wroblewski][lukew] of Jeffrey Zeldman's ["Content First"][lukew-aea-content-first] presentation at [An Event Apart October 2011][aea-oct-12].
+* Stephen Hay's talk [Structured Content First][stephenhay-structured-content] is another perspective.
+
+-------------------------------------------------------------------------------
+
+## Exercise
+
+Exploring the feel of unstyled, basic HTML5 content in different devices and browsers. Urge folks to load page on their own phones. Those without devices could hit the opera simulator.
+
+* http://www.opera.com/developer/tools/mini/
+
+Note title differences.
+Things fit on screen
+
+-------------------------------------------------------------------------------
+
 ## Workflow: getting into the browser
+
+* Mobile web development demands the revisiting of design and development processes
+* Get into the browser early and often
 
 #### Theme: Process Evolution
 
 #### Hold that Thought: More to come on process
 
-## Exercise
+-------------------------------------------------------------------------------
 
 ## Basic support is good
 
@@ -275,6 +390,16 @@ TBD
 
 # Master Resources
 
-[^cssweekly]: Weekly email with cutting-edge CSS tidbits <http://css-weekly.com>
-
-
+[adactio]: http://adactio.com/journal
+[adactio-content-first]: http://adactio.com/journal/4523/
+[aea-oct-12]: http://aneventapart.com/2011/dc/
+[cssweekly]: http://css-weekly.com
+[cut-crap]: https://speakerdeck.com/u/lyzadanger/p/cutting-through-the-crap-the-essence-of-content-on-the-future-web
+[hfmw]: http://bit.ly/hf-mw
+[history-markup]: http://www.youtube.com/watch?v=egKQhGLomcQ
+[lukew]: http://www.lukew.com/
+[lukew-aea-content-first]: http://www.lukew.com/ff/entry.asp?1430
+[mcgrane]: http://karenmcgrane.com/
+[mobilism]: http://mobilism.nl
+[rahn-frederick]: http://www.amazon.com/Beginning-Smartphone-Web-Development-Applications/dp/143022620X
+[stephenhay-structured-content]: http://www.slideshare.net/stephenhay/structured-content-first
