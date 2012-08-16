@@ -5,6 +5,7 @@
 1. Edit `tempest.html`
     1. Add a `viewport` tag
     2. Add a `<link>` tag to reference `styles.css`
+    3. Update the `<title>` tag
 2. Edit `styles.css`
     3. Add CSS reset rules from <http://meyerweb.com/eric/tools/css/reset/>
     4. Add a rule for the `html` element and add a font reset. 
