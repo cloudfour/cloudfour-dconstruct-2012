@@ -219,8 +219,12 @@ Exploring the feel of unstyled, basic HTML5 content in different devices and bro
 
 * http://www.opera.com/developer/tools/mini/
 
-Note title differences.
-Things fit on screen
+### Notes
+
+* What looks the same? Different?
+* Fonts? Zoom level? Margins?
+* Titles?
+* Interfaces?
 
 -------------------------------------------------------------------------------
 
@@ -237,19 +241,100 @@ Things fit on screen
 
 ## Basic support is good
 
+* There is a CSS-MP to go along with XHTML-MP
+* But we're going to move beyond that...
+
 #### Good enough for jazz: Basic support is good but not infallible
 
 #### Beware: These CSS gotchas in older devices
 
+* Background: colors, positioning, images
+* Positioning
+* Selectors
+* Performance!
+
+-------------------------------------------------------------------------------
+
+## Viewports are crazytown
+
+### These two screenshots are from the same device, different browser
+
+![Safari on iPhone 4](exercises/101-explore/images/iphone.png)
+
+![Opera Mini on iPhone 4](exercises/101-explore/images/iphone-opera.png)
+
+-------------------------------------------------------------------------------
+
 ## Viewports!
 
-* Tag syntax
-* Visible viewport
-* Layout viewport
-* PPK's article(s)
-* Demo
+![](assets/images/viewports.png)
 
-## Baseline CSS
+-------------------------------------------------------------------------------
+
+## Or, why is the zoom all different and funny?
+
+![](assets/images/different-viewports.png)
+
+-------------------------------------------------------------------------------
+
+## Layout viewport versus visible
+
+![](assets/images/layout-visible.png)
+
+-------------------------------------------------------------------------------
+
+## Getting to know viewports
+
+Before we get beyond where we are with overall layout and control, let's talk about viewports.
+
+* Visible Viewport: The view of visible content (keyhole)
+* Layout Viewport: The width of the entire layout
+
+-------------------------------------------------------------------------------
+
+## Anatomy of a `viewport` tag
+
+~~~{.html}
+<meta name="viewport" content="width=device-width,initial-scale=1">
+~~~
+
+* `width=device-width`: Set the viewport width to the width of the device, in CSS pixels.
+* `initial-scale=1`: Set initial zoom to 1, that is, 100% or normal size.
+
+-------------------------------------------------------------------------------
+
+## Starting from a slightly more level playing field
+
+* CSS Reset
+* Viewport tag
+
+-------------------------------------------------------------------------------
+
+## Font baseline
+
+#### Rule of thumb: font reset
+
+![](assets/images/baseline.png)
+
+-------------------------------------------------------------------------------
+
+## The variations abound!
+
+It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like:
+
+![](exercises/101-explore/images/9670.png)
+
+-------------------------------------------------------------------------------
+
+## Other things to consider with basic CSS
+
+* Font differences: size, faces
+* DOCTYPES
+
+#### Exercise! Getting ur baselines going
+
+-------------------------------------------------------------------------------
+
 
 ## CSS Organization
 
@@ -265,8 +350,6 @@ Things fit on screen
 * Don't start from the top
 * Don't ignore mobile issues
 * Don't ignore the import of serious talent in HTML, CSS and JavaScript
-
-
 
 
 --------------------------------------------------------------------------

@@ -19,7 +19,7 @@ my $exercise_path = $basepath . "/exercises";
 ## Settings for this project
 my $pandoc = '/usr/local/bin/pandoc';
 
-my $flags  = '-f markdown -t slidy --standalone --slide-level=2';
+my $flags  = '-f markdown -t slidy --standalone --css=assets/css/workshop.css --slide-level=2';
 my $input  = $basepath . "/workshop.content";
 my $output = $basepath . "/workshop.html";
 
@@ -29,7 +29,7 @@ sub build_exercises {
   if ($_ =~ /\.content/) {
     ($base, $dir, $ext) = fileparse($File::Find::name, '\..*'); # Split path into dir, file basename, extension
     my $output = $dir . '/' . $base . '.html';
-    system("$pandoc --from=markdown --to=html5 --standalone --section-divs $_ > $output");
+    system("$pandoc --from=markdown --to=html5 --standalone --css=../../assets/css/workshop.css --section-divs $_ > $output");
   }
 }
 

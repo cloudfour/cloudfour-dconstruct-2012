@@ -29,6 +29,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
   </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="assets/css/workshop.css" />
   <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
     charset="utf-8" type="text/javascript"></script>
 </head>
@@ -201,7 +203,13 @@ Lyza Gardner
 <ul>
 <li>http://www.opera.com/developer/tools/mini/</li>
 </ul>
-<p>Note title differences. Things fit on screen</p>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>What looks the same? Different?</li>
+<li>Fonts? Zoom level? Margins?</li>
+<li>Titles?</li>
+<li>Interfaces?</li>
+</ul>
 </div><div class="section slide level2" id="workflow-getting-into-the-browser">
 <h1 id="workflow-getting-into-the-browser">Workflow: getting into the browser</h1>
 <ul>
@@ -212,19 +220,81 @@ Lyza Gardner
 <h4 id="hold-that-thought-more-to-come-on-process">Hold that Thought: More to come on process</h4>
 </div><div class="section slide level2" id="basic-support-is-good">
 <h1 id="basic-support-is-good">Basic support is good</h1>
+<ul>
+<li>There is a CSS-MP to go along with XHTML-MP</li>
+<li>But we're going to move beyond that...</li>
+</ul>
 <h4 id="good-enough-for-jazz-basic-support-is-good-but-not-infallible">Good enough for jazz: Basic support is good but not infallible</h4>
 <h4 id="beware-these-css-gotchas-in-older-devices">Beware: These CSS gotchas in older devices</h4>
+<ul>
+<li>Background: colors, positioning, images</li>
+<li>Positioning</li>
+<li>Selectors</li>
+<li>Performance!</li>
+</ul>
+</div><div class="section slide level2" id="viewports-are-crazytown">
+<h1 id="viewports-are-crazytown">Viewports are crazytown</h1>
+<h3 id="these-two-screenshots-are-from-the-same-device-different-browser">These two screenshots are from the same device, different browser</h3>
+<div class="figure">
+<img src="exercises/101-explore/images/iphone.png" alt="Safari on iPhone 4" /><p class="caption">Safari on iPhone 4</p>
+</div>
+<div class="figure">
+<img src="exercises/101-explore/images/iphone-opera.png" alt="Opera Mini on iPhone 4" /><p class="caption">Opera Mini on iPhone 4</p>
+</div>
 </div><div class="section slide level2" id="viewports">
 <h1 id="viewports">Viewports!</h1>
+<div class="figure">
+<img src="assets/images/viewports.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="or-why-is-the-zoom-all-different-and-funny">
+<h1 id="or-why-is-the-zoom-all-different-and-funny">Or, why is the zoom all different and funny?</h1>
+<div class="figure">
+<img src="assets/images/different-viewports.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="layout-viewport-versus-visible">
+<h1 id="layout-viewport-versus-visible">Layout viewport versus visible</h1>
+<div class="figure">
+<img src="assets/images/layout-visible.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="getting-to-know-viewports">
+<h1 id="getting-to-know-viewports">Getting to know viewports</h1>
+<p>Before we get beyond where we are with overall layout and control, let's talk about viewports.</p>
 <ul>
-<li>Tag syntax</li>
-<li>Visible viewport</li>
-<li>Layout viewport</li>
-<li>PPK's article(s)</li>
-<li>Demo</li>
+<li>Visible Viewport: The view of visible content (keyhole)</li>
+<li>Layout Viewport: The width of the entire layout</li>
 </ul>
-</div><div class="section slide level2" id="baseline-css">
-<h1 id="baseline-css">Baseline CSS</h1>
+</div><div class="section slide level2" id="anatomy-of-a-viewport-tag">
+<h1 id="anatomy-of-a-viewport-tag">Anatomy of a <code>viewport</code> tag</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width,initial-scale=1&quot;</span><span class="kw">&gt;</span></code></pre>
+<ul>
+<li><code>width=device-width</code>: Set the viewport width to the width of the device, in CSS pixels.</li>
+<li><code>initial-scale=1</code>: Set initial zoom to 1, that is, 100% or normal size.</li>
+</ul>
+</div><div class="section slide level2" id="starting-from-a-slightly-more-level-playing-field">
+<h1 id="starting-from-a-slightly-more-level-playing-field">Starting from a slightly more level playing field</h1>
+<ul>
+<li>CSS Reset</li>
+<li>Viewport tag</li>
+</ul>
+</div><div class="section slide level2" id="font-baseline">
+<h1 id="font-baseline">Font baseline</h1>
+<h4 id="rule-of-thumb-font-reset">Rule of thumb: font reset</h4>
+<div class="figure">
+<img src="assets/images/baseline.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="the-variations-abound">
+<h1 id="the-variations-abound">The variations abound!</h1>
+<p>It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like:</p>
+<div class="figure">
+<img src="exercises/101-explore/images/9670.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="other-things-to-consider-with-basic-css">
+<h1 id="other-things-to-consider-with-basic-css">Other things to consider with basic CSS</h1>
+<ul>
+<li>Font differences: size, faces</li>
+<li>DOCTYPES</li>
+</ul>
+<h4 id="exercise-getting-ur-baselines-going">Exercise! Getting ur baselines going</h4>
 </div><div class="section slide level2" id="css-organization">
 <h1 id="css-organization">CSS Organization</h1>
 <ul>

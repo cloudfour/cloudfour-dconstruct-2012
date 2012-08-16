@@ -1,0 +1,31 @@
+% Exercise 2: Getting our Baseline Going
+
+## Add some common, common denominator CSS and viewport normalization
+
+1. Edit `tempest.html`
+    1. Add a `viewport` tag
+    2. Add a `<link>` tag to reference `styles.css`
+2. Edit `styles.css`
+    3. Add CSS reset rules from <http://meyerweb.com/eric/tools/css/reset/>
+    4. Add a rule for the `html` element and add a font reset. 
+    5. Add a `font-family` property to the `html` rule, as well.
+3. Continue editing `styles.css`. Add the following:
+
+~~~~{.css}
+body {
+  background-color: #f9faef;
+  color: #443333; }
+
+h1 {
+  font-size: 2.5em;
+  color: #d94343; }
+
+h2 {
+  font-weight: 700; }
+
+h2, h4 {
+  display: inline; }
+
+section {
+  margin: .5em; }
+~~~~

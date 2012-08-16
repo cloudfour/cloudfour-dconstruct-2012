@@ -1,0 +1,162 @@
+@import 'common';
+
+
+  a, a:visited, a:active, a:hover {
+    color: $color-title;
+  }
+  ul {
+    list-style-type: none;
+    li {
+      padding: .25em;
+      list-style-type: none;
+      background-image: url('bullet.png');
+      background-repeat: no-repeat;
+      padding-left: 50px;
+      background-position: 0.5em .5em;
+      &:nth-of-type(odd) {
+        background-color: $color-background-pale;
+      }
+    }
+  }
+  // Image alignment styles
+  ///////////////////
+  div.figure {
+    text-align: center;
+    p.caption {
+      font-family: $font-mono;
+    }
+    @include ghetto-clearfix;
+    max-width:    50%;
+    min-width:    35%;
+    min-height:   50%;
+    float: left;
+    border-right: .1em solid $color-accent;
+    padding-right: .5em;
+    margin-right:  .5em;
+    img {
+      max-width: 100%;
+      max-height: 70%;
+    }
+    img:only-of-type {
+      max-width:  92.5%;
+      padding:    0;
+      box-shadow: .5em 1em 1.5em $color-pale;
+    }
+    & + ul {
+     margin-left: 52.5%;
+    }
+    &:nth-of-type(1n+2) {
+      border-right: none;
+    }
+  }
+  div[id^="figure"],
+  div[id^="reverse"],
+  div[id^="illustration"] {
+    & h1, & h2, & h3 {
+      display: none;
+    }
+    img {
+      max-height: 75%;
+    }
+  }
+  div[id^="figure"], div[id^='reverse'] {
+    img {
+      max-height: 70%;
+    }
+  }
+  div[id^='figure'],
+  div[id^='illustration'] {
+    div.figure {
+      max-width:      100%;
+      width:          100%;
+      text-align: center;
+      border:         none;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  div[id^='figure'] div.figure {
+    img {
+      border:         .1em solid $color-yellow;
+      padding:        .5em;
+    }
+  }
+  div[id^='reverse'] div.figure {
+    float:            right;
+    border-left:      .1em solid $color-accent;
+    border-right:     none;
+    img {
+      padding-left:   1em;
+    }
+    & + ul {
+      margin: 0 .5em 0 0;
+      max-width: 47.5%;
+    }
+  }
+  div[id^='illustration'] div.figure {
+    img {
+      box-shadow: none;
+    }
+  }
+  div[id^='three'] {
+    h1, h2, h3, h4 {
+      display: none;
+    }
+    p > img {
+      max-width: 30%;
+      padding: 0 1%;
+    }
+    div.figure {
+      padding: 0 1%;
+      max-width: 30%;
+    }
+  }
+  //////// End Image alignment styles //////
+  // Title Styles
+  .titleslide {
+    position: absolute;
+    h1 {  
+      padding-top: 10%;
+      margin-right: 0;
+    }
+  }
+  ///// CODE //////
+  div[id^='code'] {
+    h1, h2, h3, h4 {
+      display: none;
+    }
+    pre code.sourceCode {
+      font-size: .65em;
+    }
+    pre {
+      line-height:  70%;
+    }
+  }
+  pre {
+    overflow:         scroll;
+    font-weight:      normal;
+    border:           .2em $color-green;
+    box-shadow:       inset 0 0 .5em $color-text;
+    background-color: $color-background-mid;
+    padding:          .5em;
+    code {
+      color:          $color-text;
+      font-size:      .8em;
+      padding:        0;
+      background-color: transparent;
+    }
+    .sourceCode {
+      color:          $color-text;
+    }
+  }
+  
+  code {
+    background-color: $color-background-mid;
+    padding:          0 .35em;
+    border:           .05em dashed $color-pale;
+  }
+  
+
+  // Syntax highlighting
+  @include code-colors;
