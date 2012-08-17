@@ -335,6 +335,64 @@ It's a bit difficult to tell from this not-so-great photo, but the background co
 
 -------------------------------------------------------------------------------
 
+## Exercise 102
+
+![BlackBerry 8320](exercises/102-baseline/images/8320.png)
+
+-------------------------------------------------------------------------------
+
+## Exercise 102
+
+![Motorola BackFlip](exercises/102-baseline/images/backflip.png)
+
+-------------------------------------------------------------------------------
+
+## Exercise 102
+
+![Kindle Fire](exercises/102-baseline/images/fire.png)
+
+-------------------------------------------------------------------------------
+
+## Exercise 102
+
+![iPhone](exercises/102-baseline/images/iphone.png)
+
+![Opera Mini on iPhone](exercises/102-baseline/images/iphone-opera.png)
+
+-------------------------------------------------------------------------------
+
+## Exercise 102
+
+![Nexus S](exercises/102-baseline/images/nexus.png)
+
+![Nexus S: FireFox](exercises/102-baseline/images/nexus-firefox.png)
+
+-------------------------------------------------------------------------------
+
+## Exercise 102
+
+![Nokia N8](exercises/102-baseline/images/nokia-n8.png)
+
+-------------------------------------------------------------------------------
+
+## So what?
+
+### Some things to think about
+
+* Complexity of simplicity
+* What does the word *device* mean?
+* Importance of care and organization
+* And the world is nowhere near this simple
+
+-------------------------------------------------------------------------------
+
+## Tools and Tips
+
+* Validate, validate, validate [W3C Validator][w3c-validator]
+* Start simple, when possible
+* Embrace variation
+
+TODO
 
 ## CSS Organization
 
@@ -486,3 +544,4 @@ TBD
 [opera-mini-simulator]: http://www.opera.com/developer/tools/mini/
 [rahn-frederick]: http://www.amazon.com/Beginning-Smartphone-Web-Development-Applications/dp/143022620X
 [stephenhay-structured-content]: http://www.slideshare.net/stephenhay/structured-content-first
+[w3c-validator]: http://validator.w3c.org
