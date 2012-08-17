@@ -1,0 +1,38 @@
+html {
+  font-size: 1.125em;
+}
+
+body {
+  width: 1060px;
+}
+
+h1 {
+  font-size        : 4em;
+}
+
+/** Straw man? */
+span.prose {
+  display          : block;
+  clear            : right;
+}
+
+.scene dl dt, .scene dl em {
+  float        : left;
+  margin-right : .25em;
+}
+
+.scene dd {
+  margin       : .5em 0 .5em 1.25em;
+}
+
+section {
+  margin           : 0 1em 1em 1em;
+}
+
+.scene {
+  float: left;
+}
+.scene dl {
+  width : 600px;
+}
+
