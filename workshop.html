@@ -646,20 +646,141 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   <span class="kw">text-align</span>      <span class="kw">:</span> <span class="dt">center</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p>Explanatory notes...</p>
+</div><div class="section slide level2" id="a-new-baseline">
+<h1 id="a-new-baseline">A new baseline</h1>
+<p>After ripping out desktop-specific style rules, we have a new baseline.</p>
+<div class="figure">
+<img src="presenter-exercises/202-new-baseline/images/backflip.png" alt="Motorola Backflip" /><p class="caption">Motorola Backflip</p>
+</div>
+</div><div class="section slide level2" id="looks-decent...">
+<h1 id="looks-decent...">Looks decent...</h1>
+<div class="figure">
+<img src="presenter-exercises/202-new-baseline/images/nokia-n8.jpg" alt="Nokia N8" /><p class="caption">Nokia N8</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/202-new-baseline/images/iphone.png" alt="iPhone 4" /><p class="caption">iPhone 4</p>
+</div>
+</div><div class="section slide level2" id="looks-decent...-1">
+<h1 id="looks-decent...-1">Looks decent...</h1>
+<div class="figure">
+<img src="presenter-exercises/202-new-baseline/images/iphone-opera.png" alt="Opera Mini on iPhone4" /><p class="caption">Opera Mini on iPhone4</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/202-new-baseline/images/iphone-opera2.png" alt="Opera Mini on iPhone4" /><p class="caption">Opera Mini on iPhone4</p>
+</div>
+</div><div class="section slide level2" id="now-we-can-enhance-for-wider-screens">
+<h1 id="now-we-can-enhance-for-wider-screens">NOW we can enhance for wider screens</h1>
+<p>Let's use RWD's third tenet to enhance our scene page for bigger displays.</p>
+<p><strong>CSS3 Media Queries</strong> are the third leg of the RWD tripod.</p>
+<p>Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.</p>
+</div><div class="section slide level2" id="media-queries-explained-media-types">
+<h1 id="media-queries-explained-media-types">Media queries explained: Media types</h1>
+<p>Media types have been around a while. It's how we make print stylesheets, e.g.</p>
+<pre class="sourceCode html"><code class="sourceCode html">
+<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> media=</span><span class="st">&quot;print&quot;</span><span class="ot"> href=</span><span class="st">&quot;print.css&quot;</span><span class="kw">&gt;</span></code></pre>
+</div><div class="section slide level2" id="media-queries-explained-media-features">
+<h1 id="media-queries-explained-media-features">Media queries explained: Media features</h1>
+<ul>
+<li>Media types have media features.</li>
+<li>For example, <code>width</code> is a media feature of several media types. <code>orientation</code> is a media feature of various bitmap media types. <code>color</code> and <code>monochrome</code> are more examples.</li>
+<li>Different media types have different types of values. <code>color</code> and <code>monochrome</code> are Boolean (TRUE/FALSE) values. <code>width</code> is an integer.</li>
+</ul>
+<p>The most relevant <strong>media types</strong> are:</p>
+<ul>
+<li>all</li>
+<li>screen</li>
+<li>print</li>
+</ul>
+</div><div class="section slide level2" id="logical-expressions">
+<h1 id="logical-expressions">Logical expressions</h1>
+<h4 id="css-media-queries-evaluate-the-current-value-of-media-features-in-logical-expressions-to-determine-whether-to-apply-the-enclosed-css.">CSS media queries evaluate the current value of <em>media features</em> in logical expressions to determine whether to apply the enclosed CSS.</h4>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">600px)</span> <span class="dv">{</span>
+  // In browsers that support media queries,
+  // rules in here will only be applied if the
+  // query expression evaluates as true
+<span class="dv">}</span></code></pre>
+<h3 id="also">Also</h3>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> media=</span><span class="st">&quot;screen and (min-width:600px)&quot;</span><span class="ot"> href=</span><span class="st">&quot;thing.css&quot;</span><span class="kw">&gt;</span></code></pre>
+<ul>
+<li><code>@import</code> syntax is also supported.</li>
+</ul>
+</div><div class="section slide level2" id="media-queries">
+<h1 id="media-queries">Media Queries</h1>
+<h3 id="illustration-syntax">Illustration: Syntax</h3>
+<div class="figure">
+<img src="assets/images/media-query-syntax.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="media-queries-1">
+<h1 id="media-queries-1">Media Queries</h1>
+<h3 id="illustration-example">Illustration: Example</h3>
+<div class="figure">
+<img src="assets/images/media-query-example.png" /><p class="caption"></p>
+</div>
+<p>But before we whip up a media query or two for the scene web page...</p>
+</div><div class="section slide level2" id="fluid-isnt-just-for-block-element-widths">
+<h1 id="fluid-isnt-just-for-block-element-widths">Fluid isn't just for block element widths</h1>
+<ul>
+<li>Fluid formula can be used to derive proportional font sizes in <code>em</code>s or percentages</li>
+<li>Borders, indents, padding and margin-anything dimensional</li>
+</ul>
+</div><div class="section slide level2" id="breakpoints-and-media-queries">
+<h1 id="breakpoints-and-media-queries">Breakpoints and media queries</h1>
+<p>You may have heard the term <strong>breakpoint</strong> before.</p>
+<p>A <em>breakpoint</em> is a window/screen width at which layout changes significantly. We can define one or more breakpoints in a layout. For example, we may want to reduce a two- or three-column layout down to a single column when the window is narrower than a certain threshold.</p>
+<p>Generally, media queries and breakpoints have been defined in pixels in the past:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">screen</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">600px)</span> <span class="dv">{</span>
+<span class="dv">}</span></code></pre>
+<ul>
+<li>But we just talked about how things should be fluid</li>
+<li>...and we're trying to design the flow of this page based on its content</li>
+</ul>
+<p>Definition of <code>em</code> in notes</p>
+</div><div class="section slide level2" id="re-thinking-the-media-query">
+<h1 id="re-thinking-the-media-query">Re-thinking the media query</h1>
+<div class="figure">
+<img src="assets/images/baseline.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>The scene lines need about <code>28em</code> to lay out correctly.</li>
+<li>Recall our baseline. <code>28em ~= 448px</code>.</li>
+<li>That's more CSS pixels than many mobile browsers have to work with.</li>
+</ul>
+</div><div class="section slide level2" id="thats-okay">
+<h1 id="thats-okay">That's Okay</h1>
+<div class="figure">
+<img src="presenter-exercises/202-new-baseline/images/iphone-opera2.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>We're allowing <code>span.prose</code> lines to wrap naturally.</li>
+<li>Verse lines are what matter for layout. We'd ideally like verse lines to fit on one line, but when they wrap, we want to indent them to make it clear that they are part of the previous line:</li>
+</ul>
+<pre class="sourceCode css"><code class="sourceCode css">span<span class="fl">.verse</span> <span class="kw">{</span>
+  <span class="kw">clear</span>           <span class="kw">:</span> <span class="dt">both</span><span class="kw">;</span>
+  <span class="kw">display</span>         <span class="kw">:</span> <span class="dt">block</span><span class="kw">;</span>
+  <span class="kw">text-indent</span>     <span class="kw">:</span> <span class="dt">-1.5em</span><span class="kw">;</span>
+  <span class="kw">margin-left</span>     <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="so-where-does-that-leave-us">
+<h1 id="so-where-does-that-leave-us">So where does that leave us?</h1>
+<p>We're pretty good on narrow screens now, but we have some enhancement to do for wider screens.</p>
+<div class="figure">
+<img src="presenter-exercises/202-new-baseline/images/desktop.png" alt="Desktop" /><p class="caption">Desktop</p>
+</div>
+</div><div class="section slide level2" id="defining-a-breakpoint-and-media-query">
+<h1 id="defining-a-breakpoint-and-media-query">Defining a breakpoint and media query</h1>
+<ul>
+<li>We know we need about <code>28em</code> or <code>448px</code> to display the text of the play</li>
+<li>We need a few hundred more pixels for the image to feel comfortable floating right.</li>
+</ul>
+<pre><code>28em or 448px + 22em or 352px = 50em or 800px</code></pre>
+<ul>
+<li>That is, the desktop-y layout feels comfortable &gt;= 50em or 800px</li>
+</ul>
 </div><div class="section slide level2" id="exercise-1">
 <h1 id="exercise-1">Exercise</h1>
 <ul>
 <li>Add floats and little modules, carefully</li>
 <li>fluid widths on body, dl</li>
-</ul>
-</div><div class="section slide level2" id="fluid-isnt-just-for-block-element-widths">
-<h1 id="fluid-isnt-just-for-block-element-widths">Fluid isn't just for block element widths</h1>
-<div class="figure">
-<img src="assets/images/baseline.png" /><p class="caption"></p>
-</div>
-<ul>
-<li>Fluid formula can be used to derive proportional font sizes in <code>em</code>s or percentages</li>
-<li>Borders, indents, padding and margin-anything dimensional</li>
 </ul>
 </div><div class="section slide level2" id="ideas">
 <h1 id="ideas">Ideas</h1>

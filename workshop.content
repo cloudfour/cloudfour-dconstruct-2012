@@ -714,6 +714,154 @@ span.song {
 
 Explanatory notes...
 
+## A new baseline
+
+After ripping out desktop-specific style rules, we have a new baseline.
+
+![Motorola Backflip](presenter-exercises/202-new-baseline/images/backflip.png)
+
+## Looks decent...
+
+![Nokia N8](presenter-exercises/202-new-baseline/images/nokia-n8.jpg)
+
+![iPhone 4](presenter-exercises/202-new-baseline/images/iphone.png)
+
+## Looks decent...
+
+![Opera Mini on iPhone4](presenter-exercises/202-new-baseline/images/iphone-opera.png)
+
+![Opera Mini on iPhone4](presenter-exercises/202-new-baseline/images/iphone-opera2.png)
+
+## NOW we can enhance for wider screens
+
+Let's use RWD's third tenet to enhance our scene page for bigger displays.
+
+**CSS3 Media Queries** are the third leg of the RWD tripod.
+
+Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.
+
+## Media queries explained: Media types
+
+Media types have been around a while. It's how we make print stylesheets, e.g.
+
+~~~{.html}
+
+<link rel="stylesheet" media="print" href="print.css">
+
+~~~
+
+## Media queries explained: Media features
+
+* Media types have media features.
+* For example, `width` is a media feature of several media types. `orientation` is a media feature of various bitmap media types. `color` and `monochrome` are more examples.
+* Different media types have different types of values. `color` and `monochrome` are Boolean (TRUE/FALSE) values. `width` is an integer.
+
+The most relevant **media types** are:
+
+* all
+* screen
+* print
+
+## Logical expressions
+
+#### CSS media queries evaluate the current value of *media features* in logical expressions to determine whether to apply the enclosed CSS.
+
+~~~ {.css}
+@media screen and (min-width: 600px) {
+  // In browsers that support media queries,
+  // rules in here will only be applied if the
+  // query expression evaluates as true
+}
+~~~
+
+### Also
+
+~~~ {.html}
+<link rel="stylesheet" media="screen and (min-width:600px)" href="thing.css">
+~~~
+
+* `@import` syntax is also supported.
+
+## Media Queries
+
+### Illustration: Syntax
+
+![](assets/images/media-query-syntax.png)
+
+## Media Queries
+
+### Illustration: Example
+
+![](assets/images/media-query-example.png)
+
+But before we whip up a media query or two for the scene web page...
+
+## Fluid isn't just for block element widths
+
+* Fluid formula can be used to derive proportional font sizes in `em`s or percentages
+* Borders, indents, padding and margin-anything dimensional
+
+## Breakpoints and media queries
+
+You may have heard the term **breakpoint** before.
+
+A *breakpoint* is a window/screen width at which layout changes significantly. We can define one or more breakpoints in a layout. For example, we may want to reduce a two- or three-column layout down to a single column when the window is narrower than a certain threshold.
+
+Generally, media queries and breakpoints have been defined in pixels in the past:
+
+~~~ {.css}
+@media screen and (min-width: 600px) {
+}
+~~~
+
+* But we just talked about how things should be fluid
+* ...and we're trying to design the flow of this page based on its content
+
+Definition of `em` in notes
+
+## Re-thinking the media query
+
+![](assets/images/baseline.png)
+
+* The scene lines need about `28em` to lay out correctly.
+* Recall our baseline. `28em ~= 448px`. 
+* That's more CSS pixels than many mobile browsers have to work with.
+
+## That's Okay
+
+![](presenter-exercises/202-new-baseline/images/iphone-opera2.png)
+
+* We're allowing `span.prose` lines to wrap naturally.
+* Verse lines are what matter for layout. We'd ideally like verse lines to fit on one line, but when they wrap, we want to indent them to make it clear that they are part of the previous line:
+
+~~~{.css}
+span.verse {
+  clear           : both;
+  display         : block;
+  text-indent     : -1.5em;
+  margin-left     : 1.5em;
+}
+~~~
+
+## So where does that leave us?
+
+We're pretty good on narrow screens now, but we have some enhancement to do for wider screens.
+
+![Desktop](presenter-exercises/202-new-baseline/images/desktop.png)
+
+## Defining a breakpoint and media query
+
+* We know we need about `28em` or `448px` to display the text of the play
+* We need a few hundred more pixels for the image to feel comfortable floating right.
+
+~~~~
+28em or 448px + 22em or 352px = 50em or 800px
+~~~~
+
+* That is, the desktop-y layout feels comfortable >= 50em or 800px
+
+
+
 ## Exercise
 
 * Add floats and little modules, carefully
@@ -721,12 +869,6 @@ Explanatory notes...
 
 
 
-## Fluid isn't just for block element widths
-
-![](assets/images/baseline.png)
-
-* Fluid formula can be used to derive proportional font sizes in `em`s or percentages
-* Borders, indents, padding and margin-anything dimensional
 
 ## Ideas
 
