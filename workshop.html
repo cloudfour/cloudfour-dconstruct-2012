@@ -567,6 +567,85 @@ h1 <span class="kw">{</span>
 <div class="figure">
 <img src="presenter-exercises/201-proportional/images/narrow2.png" /><p class="caption"></p>
 </div>
+</div><div class="section slide level2" id="ok-total-disaster">
+<h1 id="ok-total-disaster">OK, total disaster</h1>
+<div class="figure">
+<img src="presenter-exercises/201-proportional/images/nokia-n8.png" alt="Nokia N8" /><p class="caption">Nokia N8</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/201-proportional/images/nexus.png" alt="Nexus S" /><p class="caption">Nexus S</p>
+</div>
+</div><div class="section slide level2" id="yet-more-complications">
+<h1 id="yet-more-complications">Yet more complications</h1>
+<p>Part of the CSS added for desktop enhancement included:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.scene</span> dl dt, <span class="fl">.scene</span> dl em <span class="kw">{</span>
+  <span class="kw">float</span>        <span class="kw">:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">margin-right</span> <span class="kw">:</span> <span class="dt">.25em</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+<span class="fl">.scene</span> dd <span class="kw">{</span>
+  <span class="kw">margin</span>       <span class="kw">:</span> <span class="dt">.5em</span> <span class="dt">0</span> <span class="dt">.5em</span> <span class="dt">1.25em</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<p>This affects the box model layout widths of our fluid elements and causes the wrap you see on narrow screens.</p>
+<p><em>We need to stop, catch our breath, and think about things a bit differently.</em></p>
+</div><div class="section slide level2" id="letting-the-content-dictate-our-flow">
+<h1 id="letting-the-content-dictate-our-flow">Letting the content dictate our flow</h1>
+<div class="figure">
+<img src="presenter-exercises/201-proportional/images/narrow2.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>Did you notice that even on desktop widths, the wrapping on the text of the lines of the play is wonky?</li>
+<li>We're coming at this backward</li>
+</ul>
+</div><div class="section slide level2" id="what-matters">
+<h1 id="what-matters">What matters?</h1>
+<ol style="list-style-type: decimal">
+<li>Making the text of this scene of the play acceptably readable on as many devices as possible</li>
+<li>Presenting the text of the play in a way true to dramatic and historical form</li>
+<li>Providing font and color differentiation to increase readability and contrast</li>
+<li>Providing font and color differentiation to increase visual appeal</li>
+<li>Showing relevant, related illustrations for this section of the play</li>
+</ol>
+<p><strong>In that order</strong></p>
+<p>We achieved much of the first goal in our first baseline layout but have since then not kept to the list of priorities...</p>
+</div><div class="section slide level2" id="lets-get-content-first-on-this-thing">
+<h1 id="lets-get-content-first-on-this-thing">Let's get content-first on this thing</h1>
+<ol style="list-style-type: decimal">
+<li>Rip out desktop-centric CSS</li>
+<li>Build our baseline by enhancing our existing baseline</li>
+<li>Take advantage of RWD's third tenet (Media Queries) to apply different layouts to different environments</li>
+</ol>
+<h4 id="beware-proportional-layouts-on-their-own-cant-get-us-all-the-way-there">Beware! Proportional layouts on their own can't get us all the way there</h4>
+</div><div class="section slide level2" id="we-dont-have-to-start-over">
+<h1 id="we-dont-have-to-start-over">We don't have to start over</h1>
+<p>Some of the CSS added to enhance the layout and appearance can stay:</p>
+<ul>
+<li>Small-caps treatment on a few selectors</li>
+<li>Minor styling on <code>figure</code> and <code>figcaption</code> (holds the woodcut image in our case)</li>
+<li>The flexible images and objects rule we added</li>
+<li>A few modular bits of CSS for different line types (more info coming up)</li>
+</ul>
+</div><div class="section slide level2" id="css-treatments-for-different-line-types">
+<h1 id="css-treatments-for-different-line-types">CSS treatments for different line types</h1>
+<pre class="sourceCode css"><code class="sourceCode css">span<span class="fl">.verse</span> <span class="kw">{</span>
+  <span class="kw">clear</span>           <span class="kw">:</span> <span class="dt">both</span><span class="kw">;</span>
+  <span class="kw">display</span>         <span class="kw">:</span> <span class="dt">block</span><span class="kw">;</span>
+  <span class="kw">text-indent</span>     <span class="kw">:</span> <span class="dt">-1.5em</span><span class="kw">;</span>
+  <span class="kw">margin-left</span>     <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+span<span class="fl">.verse-end</span> <span class="kw">{</span>
+  <span class="kw">display</span>         <span class="kw">:</span> <span class="dt">block</span><span class="kw">;</span>
+  <span class="kw">float</span>           <span class="kw">:</span> <span class="dt">right</span><span class="kw">;</span>
+  <span class="kw">padding-right</span>   <span class="kw">:</span> <span class="dt">2em</span><span class="kw">;</span>
+  <span class="kw">clear</span>           <span class="kw">:</span> <span class="dt">right</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+span<span class="fl">.song</span> <span class="kw">{</span>
+  <span class="kw">display</span>         <span class="kw">:</span> <span class="dt">block</span><span class="kw">;</span>
+  <span class="kw">text-align</span>      <span class="kw">:</span> <span class="dt">center</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<p>Explanatory notes...</p>
 </div><div class="section slide level2" id="exercise-1">
 <h1 id="exercise-1">Exercise</h1>
 <ul>

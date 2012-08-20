@@ -628,6 +628,91 @@ img, object {
 
 ![](presenter-exercises/201-proportional/images/narrow2.png)
 
+## OK, total disaster
+
+![Nokia N8](presenter-exercises/201-proportional/images/nokia-n8.png)
+
+![Nexus S](presenter-exercises/201-proportional/images/nexus.png)
+
+## Yet more complications
+
+Part of the CSS added for desktop enhancement included:
+
+~~~{.css}
+.scene dl dt, .scene dl em {
+  float        : left;
+  margin-right : .25em;
+}
+
+.scene dd {
+  margin       : .5em 0 .5em 1.25em;
+}
+~~~
+
+This affects the box model layout widths of our fluid elements and causes the wrap you see on narrow screens.
+
+*We need to stop, catch our breath, and think about things a bit differently.*
+
+## Letting the content dictate our flow
+
+![](presenter-exercises/201-proportional/images/narrow2.png)
+
+* Did you notice that even on desktop widths, the wrapping on the text of the lines of the play is wonky?
+* We're coming at this backward
+
+## What matters?
+
+1. Making the text of this scene of the play acceptably readable on as many devices as possible
+1. Presenting the text of the play in a way true to dramatic and historical form
+1. Providing font and color differentiation to increase readability and contrast
+1. Providing font and color differentiation to increase visual appeal
+1. Showing relevant, related illustrations for this section of the play
+
+**In that order**
+
+We achieved much of the first goal in our first baseline layout but have since then not kept to the list of priorities...
+
+## Let's get content-first on this thing
+
+1. Rip out desktop-centric CSS
+1. Build our baseline by enhancing our existing baseline
+1. Take advantage of RWD's third tenet (Media Queries) to apply different layouts to different environments
+
+#### Beware! Proportional layouts on their own can't get us all the way there
+
+## We don't have to start over
+
+Some of the CSS added to enhance the layout and appearance can stay:
+
+* Small-caps treatment on a few selectors
+* Minor styling on `figure` and `figcaption` (holds the woodcut image in our case)
+* The flexible images and objects rule we added
+* A few modular bits of CSS for different line types (more info coming up)
+
+## CSS treatments for different line types
+
+~~~{.css}
+span.verse {
+  clear           : both;
+  display         : block;
+  text-indent     : -1.5em;
+  margin-left     : 1.5em;
+}
+
+span.verse-end {
+  display         : block;
+  float           : right;
+  padding-right   : 2em;
+  clear           : right;
+}
+
+span.song {
+  display         : block;
+  text-align      : center;
+}
+~~~
+
+Explanatory notes...
 
 ## Exercise
 
