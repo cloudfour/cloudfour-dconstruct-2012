@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  width: 1060px;
+  width: 100%;
 }
 
 h1 {
@@ -29,9 +29,11 @@ section {
 }
 
 .scene {
+  width : 56.6%;
   float: left;
 }
-.scene dl {
-  width : 600px;
-}
 
+.illustrations {
+  float: right;
+  width: 30%;
+}

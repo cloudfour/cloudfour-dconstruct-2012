@@ -441,21 +441,207 @@ TODO
 
 Emulating more forms of text layout: verse and song elements
 
+[Let's take a look](presenter-exercises/200-strawman/tempest.html)
+
 ## What ickiness
 
-## Adapt
+![Nokia N8](presenter-exercises/200-strawman/images/nokia-n8.png)
 
-## RWD
+![iPhone 4](presenter-exercises/200-strawman/images/iphone.png)
 
-## RWD...
+## Argh!
 
-## Fluid Formula
+![BlackBerry 9670](presenter-exercises/200-strawman/images/9670.png)
+
+![BlackBerry 8320](presenter-exercises/200-strawman/images/8320.png)
+
+#### Hold that thought: Fonts on older mobile browsers
+
+
+## Stop the madness!
+
+* Situations like this emphasize the need for us to recalibrate how we think about creating for the Web
+* My attempt to impose some forms of "control" over the layout and styling of the web page created havoc
+
+## Technical causes
+
+~~~~{.css}
+body {
+  width: 1060px;
+}
+/* ... */
+h1 {
+  font-size: 4em;
+}
+.scene {
+  float: left;
+}
+.scene dl {
+  width : 600px;
+}
+~~~~
+
+### Issues
+
+* Outsized image
+* Font sizes
+* Layout widths fixed, in absolute units
+* [Relevant CSS](presenter-exercises/200-strawman/desktop.css)
+
+## Let's back up
+
+* Mobile- or content-first design thinking
+* Systematized way of thinking about content and its presentation on the web
+* Very relevant to the mobile evolution...and beyond
+
+## Content-first design
+
+* Emphasis on progressive enhancement as core tenet
+* Really focusing on a *baseline experience*
+* Enhancing based on browser features and/or characteristics
+
+#### But how do we make the same HTML page look good and work well on all those different browsers and devices?
+
+We use techniques to make our websites *adaptive*.
+
+#### Hold that thought: Separate mobile sites/content differentiation
+
+## Responsive Web Design (RWD)
+
+Responsive Web Design (RWD) is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure.
+
+RWD is based upon the notion of creating a fluid, proportional layout. RWD layouts *scale, flex and adapt* to flow comfortably in the user's browser, whatever size or shape it might be at the moment.
+
+## RWD tenets
+
+RWD is a combination of three core tactics:
+
+1. Fluid CSS layouts
+2. Responsive Images and Objects
+3. CSS3 Media Queries
+
+## Fluidity
+
+#### What can adaptive design via RWD do to help us get our web page in order?
+
+Let's look again at our rather simple set of structural CSS that is getting us in trouble on some of our devices:
+
+~~~{.css}
+body {
+  width: 1060px;
+}
+.scene {
+  float: left;
+}
+.scene dl {
+  width : 600px;
+}
+~~~
+
+## Recall viewports?
+
+![](assets/images/layout-visible.png)
+
+* The visible viewport for our page is set to `device-width`
+* The layout viewport contains the entire layout of the page, which in our case is defined by the `body` CSS rule (`1060px`).
+
+## Fluid layouts
+
+Fluid layouts bring visible and layout viewports into harmony, and use *proportional* layout units instead of *fixed* or *absolute* units. That way, layout can scale to different window and screen sizes.
+
+#### Fluid CSS-based layouts are RWD tenet #1
+
+*So how do we make layouts fluid?*
+
+## The fluid formula
+
+![](assets/images/fluid-formula.png)
+
+## The fluid formula, annotated
+
+![](assets/images/fluid-formula-explained.png)
 
 ## Applying the fluid formula
 
-## Image busto, still
+![](assets/images/fluid-example.png)
+
+## In our case, a simple change
+
+We can change our `body` and `.scene` rules:
+
+* `body = 1060px / 1060px = 100%`
+* `.scene = 600px / 1060px = 56.603774...%` 
+
+### Well, one more thing
+
+`section.illustrations` doesn't currently have a width set. Let's do this:
+
+* `.illustrations = 30%`
+
+#### BLEH
+
+Ugly math:
+
+* My fixed layout wasn't very proportional in the first place, eh?
+* *To round or not to round?* I round.
+
+## So, plug that in:
+
+~~~{.css}
+body {
+  width: 100%;
+}
+.scene {
+  float: left;
+  width: 56.6%;
+}
+.illustrations {
+  float: right;
+  width: 30%;
+}
+~~~
 
 
+## So, what did that get us?
+
+![Sadly, not much. Much wasted space on wider windows](presenter-exercises/201-proportional/images/wide.png)
+
+## And where'd the image go?
+
+![The image has...disappeared](presenter-exercises/201-proportional/images/narrow.png)
+
+## Flexible images and objects
+
+We can solve the mystery of that missing image by using the second tenet of Responsive Web Design: **flexible images and objects**.
+
+While the element containing the image is flexible and proportional, the image itself isn't scaling up and down to flex to its container—the container can never get narrower than the image it contains. That causes it to wrap in our layout. Uh oh.
+
+We can add a simple rule to our CSS:
+
+~~~{.css}
+img, object {
+  max-width: 100%;
+}
+~~~
+
+## And...?
+
+![](presenter-exercises/201-proportional/images/narrow2.png)
+
+
+## Exercise
+
+* Add floats and little modules, carefully
+* fluid widths on body, dl
+
+
+
+## Fluid isn't just for block element widths
+
+![](assets/images/baseline.png)
+
+* Fluid formula can be used to derive proportional font sizes in `em`s or percentages
+* Borders, indents, padding and margin-anything dimensional
 
 ## Ideas
 

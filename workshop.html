@@ -396,20 +396,192 @@ Lyza Gardner
 </div>
 <h3 id="text">Text</h3>
 <p>Emulating more forms of text layout: verse and song elements</p>
+<p><a href="presenter-exercises/200-strawman/tempest.html">Let's take a look</a></p>
 </div><div class="section slide level2" id="what-ickiness">
 <h1 id="what-ickiness">What ickiness</h1>
-</div><div class="section slide level2" id="adapt">
-<h1 id="adapt">Adapt</h1>
-</div><div class="section slide level2" id="rwd">
-<h1 id="rwd">RWD</h1>
-</div><div class="section slide level2" id="rwd...">
-<h1 id="rwd...">RWD...</h1>
-</div><div class="section slide level2" id="fluid-formula">
-<h1 id="fluid-formula">Fluid Formula</h1>
+<div class="figure">
+<img src="presenter-exercises/200-strawman/images/nokia-n8.png" alt="Nokia N8" /><p class="caption">Nokia N8</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/200-strawman/images/iphone.png" alt="iPhone 4" /><p class="caption">iPhone 4</p>
+</div>
+</div><div class="section slide level2" id="argh">
+<h1 id="argh">Argh!</h1>
+<div class="figure">
+<img src="presenter-exercises/200-strawman/images/9670.png" alt="BlackBerry 9670" /><p class="caption">BlackBerry 9670</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/200-strawman/images/8320.png" alt="BlackBerry 8320" /><p class="caption">BlackBerry 8320</p>
+</div>
+<h4 id="hold-that-thought-fonts-on-older-mobile-browsers">Hold that thought: Fonts on older mobile browsers</h4>
+</div><div class="section slide level2" id="stop-the-madness">
+<h1 id="stop-the-madness">Stop the madness!</h1>
+<ul>
+<li>Situations like this emphasize the need for us to recalibrate how we think about creating for the Web</li>
+<li>My attempt to impose some forms of &quot;control&quot; over the layout and styling of the web page created havoc</li>
+</ul>
+</div><div class="section slide level2" id="technical-causes">
+<h1 id="technical-causes">Technical causes</h1>
+<pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
+  <span class="kw">width:</span> <span class="dt">1060px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="co">/* ... */</span>
+h1 <span class="kw">{</span>
+  <span class="kw">font-size:</span> <span class="dt">4em</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.scene</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.scene</span> dl <span class="kw">{</span>
+  <span class="kw">width</span> <span class="kw">:</span> <span class="dt">600px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<h3 id="issues">Issues</h3>
+<ul>
+<li>Outsized image</li>
+<li>Font sizes</li>
+<li>Layout widths fixed, in absolute units</li>
+<li><a href="presenter-exercises/200-strawman/desktop.css">Relevant CSS</a></li>
+</ul>
+</div><div class="section slide level2" id="lets-back-up">
+<h1 id="lets-back-up">Let's back up</h1>
+<ul>
+<li>Mobile- or content-first design thinking</li>
+<li>Systematized way of thinking about content and its presentation on the web</li>
+<li>Very relevant to the mobile evolution...and beyond</li>
+</ul>
+</div><div class="section slide level2" id="content-first-design">
+<h1 id="content-first-design">Content-first design</h1>
+<ul>
+<li>Emphasis on progressive enhancement as core tenet</li>
+<li>Really focusing on a <em>baseline experience</em></li>
+<li>Enhancing based on browser features and/or characteristics</li>
+</ul>
+<h4 id="but-how-do-we-make-the-same-html-page-look-good-and-work-well-on-all-those-different-browsers-and-devices">But how do we make the same HTML page look good and work well on all those different browsers and devices?</h4>
+<p>We use techniques to make our websites <em>adaptive</em>.</p>
+<h4 id="hold-that-thought-separate-mobile-sitescontent-differentiation">Hold that thought: Separate mobile sites/content differentiation</h4>
+</div><div class="section slide level2" id="responsive-web-design-rwd">
+<h1 id="responsive-web-design-rwd">Responsive Web Design (RWD)</h1>
+<p>Responsive Web Design (RWD) is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure.</p>
+<p>RWD is based upon the notion of creating a fluid, proportional layout. RWD layouts <em>scale, flex and adapt</em> to flow comfortably in the user's browser, whatever size or shape it might be at the moment.</p>
+</div><div class="section slide level2" id="rwd-tenets">
+<h1 id="rwd-tenets">RWD tenets</h1>
+<p>RWD is a combination of three core tactics:</p>
+<ol style="list-style-type: decimal">
+<li>Fluid CSS layouts</li>
+<li>Responsive Images and Objects</li>
+<li>CSS3 Media Queries</li>
+</ol>
+</div><div class="section slide level2" id="fluidity">
+<h1 id="fluidity">Fluidity</h1>
+<h4 id="what-can-adaptive-design-via-rwd-do-to-help-us-get-our-web-page-in-order">What can adaptive design via RWD do to help us get our web page in order?</h4>
+<p>Let's look again at our rather simple set of structural CSS that is getting us in trouble on some of our devices:</p>
+<pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
+  <span class="kw">width:</span> <span class="dt">1060px</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.scene</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.scene</span> dl <span class="kw">{</span>
+  <span class="kw">width</span> <span class="kw">:</span> <span class="dt">600px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="recall-viewports">
+<h1 id="recall-viewports">Recall viewports?</h1>
+<div class="figure">
+<img src="assets/images/layout-visible.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>The visible viewport for our page is set to <code>device-width</code></li>
+<li>The layout viewport contains the entire layout of the page, which in our case is defined by the <code>body</code> CSS rule (<code>1060px</code>).</li>
+</ul>
+</div><div class="section slide level2" id="fluid-layouts">
+<h1 id="fluid-layouts">Fluid layouts</h1>
+<p>Fluid layouts bring visible and layout viewports into harmony, and use <em>proportional</em> layout units instead of <em>fixed</em> or <em>absolute</em> units. That way, layout can scale to different window and screen sizes.</p>
+<h4 id="fluid-css-based-layouts-are-rwd-tenet-1">Fluid CSS-based layouts are RWD tenet #1</h4>
+<p><em>So how do we make layouts fluid?</em></p>
+</div><div class="section slide level2" id="the-fluid-formula">
+<h1 id="the-fluid-formula">The fluid formula</h1>
+<div class="figure">
+<img src="assets/images/fluid-formula.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="the-fluid-formula-annotated">
+<h1 id="the-fluid-formula-annotated">The fluid formula, annotated</h1>
+<div class="figure">
+<img src="assets/images/fluid-formula-explained.png" /><p class="caption"></p>
+</div>
 </div><div class="section slide level2" id="applying-the-fluid-formula">
 <h1 id="applying-the-fluid-formula">Applying the fluid formula</h1>
-</div><div class="section slide level2" id="image-busto-still">
-<h1 id="image-busto-still">Image busto, still</h1>
+<div class="figure">
+<img src="assets/images/fluid-example.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="in-our-case-a-simple-change">
+<h1 id="in-our-case-a-simple-change">In our case, a simple change</h1>
+<p>We can change our <code>body</code> and <code>.scene</code> rules:</p>
+<ul>
+<li><code>body = 1060px / 1060px = 100%</code></li>
+<li><code>.scene = 600px / 1060px = 56.603774...%</code></li>
+</ul>
+<h3 id="well-one-more-thing">Well, one more thing</h3>
+<p><code>section.illustrations</code> doesn't currently have a width set. Let's do this:</p>
+<ul>
+<li><code>.illustrations = 30%</code></li>
+</ul>
+<h4 id="bleh">BLEH</h4>
+<p>Ugly math:</p>
+<ul>
+<li>My fixed layout wasn't very proportional in the first place, eh?</li>
+<li><em>To round or not to round?</em> I round.</li>
+</ul>
+</div><div class="section slide level2" id="so-plug-that-in">
+<h1 id="so-plug-that-in">So, plug that in:</h1>
+<pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
+  <span class="kw">width:</span> <span class="dt">100%</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.scene</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">56.6%</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.illustrations</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">right</span><span class="kw">;</span>
+  <span class="kw">width:</span> <span class="dt">30%</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="so-what-did-that-get-us">
+<h1 id="so-what-did-that-get-us">So, what did that get us?</h1>
+<div class="figure">
+<img src="presenter-exercises/201-proportional/images/wide.png" alt="Sadly, not much. Much wasted space on wider windows" /><p class="caption">Sadly, not much. Much wasted space on wider windows</p>
+</div>
+</div><div class="section slide level2" id="and-whered-the-image-go">
+<h1 id="and-whered-the-image-go">And where'd the image go?</h1>
+<div class="figure">
+<img src="presenter-exercises/201-proportional/images/narrow.png" alt="The image has...disappeared" /><p class="caption">The image has...disappeared</p>
+</div>
+</div><div class="section slide level2" id="flexible-images-and-objects">
+<h1 id="flexible-images-and-objects">Flexible images and objects</h1>
+<p>We can solve the mystery of that missing image by using the second tenet of Responsive Web Design: <strong>flexible images and objects</strong>.</p>
+<p>While the element containing the image is flexible and proportional, the image itself isn't scaling up and down to flex to its container—the container can never get narrower than the image it contains. That causes it to wrap in our layout. Uh oh.</p>
+<p>We can add a simple rule to our CSS:</p>
+<pre class="sourceCode css"><code class="sourceCode css">img, object <span class="kw">{</span>
+  <span class="kw">max-width:</span> <span class="dt">100%</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="and...">
+<h1 id="and...">And...?</h1>
+<div class="figure">
+<img src="presenter-exercises/201-proportional/images/narrow2.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="exercise-1">
+<h1 id="exercise-1">Exercise</h1>
+<ul>
+<li>Add floats and little modules, carefully</li>
+<li>fluid widths on body, dl</li>
+</ul>
+</div><div class="section slide level2" id="fluid-isnt-just-for-block-element-widths">
+<h1 id="fluid-isnt-just-for-block-element-widths">Fluid isn't just for block element widths</h1>
+<div class="figure">
+<img src="assets/images/baseline.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>Fluid formula can be used to derive proportional font sizes in <code>em</code>s or percentages</li>
+<li>Borders, indents, padding and margin-anything dimensional</li>
+</ul>
 </div><div class="section slide level2" id="ideas">
 <h1 id="ideas">Ideas</h1>
 <ul>
