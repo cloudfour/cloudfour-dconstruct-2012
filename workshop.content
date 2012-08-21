@@ -882,33 +882,140 @@ We're pretty good on narrow screens now, but we have some enhancement to do for 
 
 # Differentiating the web
 
-## Hot Mess on IE
+## How are we doing?
+
+So, we've got what seems like a solid baseline for narrow screens and a single breakpoint to adapt the layout for wider screens.
+
+![](assets/images/desktop-rwd.png)
+
+## Hot mess in IE
+
+But it's a hot mess in IE8. What gives?
+
+![](assets/images/ie8-hot-mess.png)
 
 ## Understanding media query support
 
+### Tackling the lack of media query support
+
+TODO: BB 8320 Screen shot
+
 > "The absence of support for media queries is in fact the first media query."—Bryan Rieger
+
+![](assets/images/media-query-support.png)
 
 ## Media query support options
 
-## IE conditional tags
+### IE conditional tags
 
-## Polyfills
+TODO: Steve Souders performance concern
 
-## What about fonts?
+~~~~{.css}
+<link rel="stylesheet" type="text/css" href="taps.css" />
+<link rel="stylesheet" type="text/css" href="layout.css" media="all and min-width: 481px)">
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" type="text/css" href="layout.css" media="all" />
+<![endif]-->
+~~~~
 
-## Ugh. Lowest common denominator again?
+### Polyfills
+
+* Respond.js: <https://github.com/scottjehl/Respond>
+* CSS3MediaQueries.js: <http://code.google.com/p/css3-mediaqueries-js/>
+
+Respond is faster, but only contains a subset of CSS support. Start with it.
+
+## Updating our web page
+
+~~~{.html}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css" />
+  <!--[if (lt IE 9) & (!IEMobile)]>
+  <link rel="stylesheet" type="text/css" href="ie.css" media="all" />
+  <![endif]-->
+  <title>The Tempest: Act 3, Sc. 2 | Shakespeare</title>
+</head>
+~~~
+
+`ie.css` contains the same CSS as is inside the media query.
+
+## Um.
+
+![](assets/images/ie8-hot-mess2.png)
+
+Turns out there's another problem here: lack of HTML5 element support.
 
 ## It's a question of features
 
-## Modernizr
+A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details.
 
-## Fonts and generated content
+We can help to keep some of our sanity by:
 
-## Exercise?
+* Being good about progressive enhancement
+* Thinking about things in terms of what **features** the different user agents accessing our site support
+* Assessing shortcomings and fomenting a strategy about support priorities and tools to broaden support
 
-## Feature-detected layout
+## Some tools at our disposal
+
+* Industry-standard techniques (e.g. IE conditional tags)
+* Feature-detection code and libraries (e.g. Modernizr)
+* Broadly-adopted core support tools and polyfills for broader concerns (e.g. HTML5 shim, Selectivizr)
+* Libraries and polyfills for more specific concerns (e.g. video.js, placeholder.js)
+
+## Arming ourselves
+
+Let's try to beat IE 8 into submission, shall we?
+
+* HTML5 Shim via Modernizr
+
+~~~~{.html}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="Modernizr.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <!--[if (lt IE 9) & (!IEMobile)]>
+  <link rel="stylesheet" type="text/css" href="ie.css" media="all" />
+  <![endif]-->
+  <title>The Tempest: Act 3, Sc. 2 | Shakespeare</title>
+</head>
+~~~~
+
+## Better!
+
+![](presenter-exercises/301-polyfilled/images/ie8.png)
+
+## So, wait, tell me more about Modernizr
+
+![](assets/images/modernizr.jpg)
+
+* Feature detection for common HTML5 things
+* Enhancing content when we have positive test results
+* CSS Classes
+
+## Font Squirrel
+
+![](assets/images/font-squirrel.png)
+
+## Using Modernizr and Font Squirrel to enhance
+
+* Modernizr test for @font-face and generated content support
+* Font-squirrel-generated @font-face syntax and font files
+
+## Exercise
+
+* Add @font-face code
+* Write CSS rule for html.fontface
+* Add jQuery library
+* Write CSS rule for generated-content (hint: not in IE.css)
 
 ## Performance issues
+
+We just threw a lot of JS and fonts out there
+
+
 
 ## Performance tools
 

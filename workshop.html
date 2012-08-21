@@ -799,35 +799,131 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Talk about CSS organization</li>
 </ul>
 </div>
-<div class="section titleslide slide level1" id="differentiating-the-web"><h1 id="differentiating-the-web">Differentiating the web</h1></div><div class="section slide level2" id="hot-mess-on-ie">
-<h1 id="hot-mess-on-ie">Hot Mess on IE</h1>
+<div class="section titleslide slide level1" id="differentiating-the-web"><h1 id="differentiating-the-web">Differentiating the web</h1></div><div class="section slide level2" id="how-are-we-doing">
+<h1 id="how-are-we-doing">How are we doing?</h1>
+<p>So, we've got what seems like a solid baseline for narrow screens and a single breakpoint to adapt the layout for wider screens.</p>
+<div class="figure">
+<img src="assets/images/desktop-rwd.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="hot-mess-in-ie">
+<h1 id="hot-mess-in-ie">Hot mess in IE</h1>
+<p>But it's a hot mess in IE8. What gives?</p>
+<div class="figure">
+<img src="assets/images/ie8-hot-mess.png" /><p class="caption"></p>
+</div>
 </div><div class="section slide level2" id="understanding-media-query-support">
 <h1 id="understanding-media-query-support">Understanding media query support</h1>
+<h3 id="tackling-the-lack-of-media-query-support">Tackling the lack of media query support</h3>
+<p>TODO: BB 8320 Screen shot</p>
 <blockquote>
 <p>&quot;The absence of support for media queries is in fact the first media query.&quot;—Bryan Rieger</p>
 </blockquote>
+<div class="figure">
+<img src="assets/images/media-query-support.png" /><p class="caption"></p>
+</div>
 </div><div class="section slide level2" id="media-query-support-options">
 <h1 id="media-query-support-options">Media query support options</h1>
-</div><div class="section slide level2" id="ie-conditional-tags">
-<h1 id="ie-conditional-tags">IE conditional tags</h1>
-</div><div class="section slide level2" id="polyfills">
-<h1 id="polyfills">Polyfills</h1>
-</div><div class="section slide level2" id="what-about-fonts">
-<h1 id="what-about-fonts">What about fonts?</h1>
-</div><div class="section slide level2" id="ugh.-lowest-common-denominator-again">
-<h1 id="ugh.-lowest-common-denominator-again">Ugh. Lowest common denominator again?</h1>
+<h3 id="ie-conditional-tags">IE conditional tags</h3>
+<p>TODO: Steve Souders performance concern</p>
+<pre class="sourceCode css"><code class="sourceCode css">&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> href=<span class="st">&quot;taps.css&quot;</span> /&gt;
+&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> href=<span class="st">&quot;layout.css&quot;</span> media=<span class="st">&quot;all and min-width: 481px)&quot;</span>&gt;
+&lt;!--<span class="ch">[if (lt IE 9) &amp; (!IEMobile)]</span>&gt;
+&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> href=<span class="st">&quot;layout.css&quot;</span> media=<span class="st">&quot;all&quot;</span> /&gt;
+&lt;!<span class="ch">[endif]</span>--&gt;</code></pre>
+<h3 id="polyfills">Polyfills</h3>
+<ul>
+<li>Respond.js: <a href="https://github.com/scottjehl/Respond"><code class="url">https://github.com/scottjehl/Respond</code></a></li>
+<li>CSS3MediaQueries.js: <a href="http://code.google.com/p/css3-mediaqueries-js/"><code class="url">http://code.google.com/p/css3-mediaqueries-js/</code></a></li>
+</ul>
+<p>Respond is faster, but only contains a subset of CSS support. Start with it.</p>
+</div><div class="section slide level2" id="updating-our-web-page">
+<h1 id="updating-our-web-page">Updating our web page</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span>
+  <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width,initial-scale=1&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;styles.css&quot;</span> <span class="kw">/&gt;</span>
+  <span class="co">&lt;!--[if (lt IE 9) &amp; (!IEMobile)]&gt;</span>
+<span class="co">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;ie.css&quot; media=&quot;all&quot; /&gt;</span>
+<span class="co">  &lt;![endif]--&gt;</span>
+  <span class="kw">&lt;title&gt;</span>The Tempest: Act 3, Sc. 2 | Shakespeare<span class="kw">&lt;/title&gt;</span>
+<span class="kw">&lt;/head&gt;</span></code></pre>
+<p><code>ie.css</code> contains the same CSS as is inside the media query.</p>
+</div><div class="section slide level2" id="um.">
+<h1 id="um.">Um.</h1>
+<div class="figure">
+<img src="assets/images/ie8-hot-mess2.png" /><p class="caption"></p>
+</div>
+<p>Turns out there's another problem here: lack of HTML5 element support.</p>
 </div><div class="section slide level2" id="its-a-question-of-features">
 <h1 id="its-a-question-of-features">It's a question of features</h1>
-</div><div class="section slide level2" id="modernizr">
-<h1 id="modernizr">Modernizr</h1>
-</div><div class="section slide level2" id="fonts-and-generated-content">
-<h1 id="fonts-and-generated-content">Fonts and generated content</h1>
+<p>A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details.</p>
+<p>We can help to keep some of our sanity by:</p>
+<ul>
+<li>Being good about progressive enhancement</li>
+<li>Thinking about things in terms of what <strong>features</strong> the different user agents accessing our site support</li>
+<li>Assessing shortcomings and fomenting a strategy about support priorities and tools to broaden support</li>
+</ul>
+</div><div class="section slide level2" id="some-tools-at-our-disposal">
+<h1 id="some-tools-at-our-disposal">Some tools at our disposal</h1>
+<ul>
+<li>Industry-standard techniques (e.g. IE conditional tags)</li>
+<li>Feature-detection code and libraries (e.g. Modernizr)</li>
+<li>Broadly-adopted core support tools and polyfills for broader concerns (e.g. HTML5 shim, Selectivizr)</li>
+<li>Libraries and polyfills for more specific concerns (e.g. video.js, placeholder.js)</li>
+</ul>
+</div><div class="section slide level2" id="arming-ourselves">
+<h1 id="arming-ourselves">Arming ourselves</h1>
+<p>Let's try to beat IE 8 into submission, shall we?</p>
+<ul>
+<li>HTML5 Shim via Modernizr</li>
+</ul>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span>
+  <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width,initial-scale=1&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Modernizr.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+  <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;styles.css&quot;</span> <span class="kw">/&gt;</span>
+  <span class="co">&lt;!--[if (lt IE 9) &amp; (!IEMobile)]&gt;</span>
+<span class="co">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;ie.css&quot; media=&quot;all&quot; /&gt;</span>
+<span class="co">  &lt;![endif]--&gt;</span>
+  <span class="kw">&lt;title&gt;</span>The Tempest: Act 3, Sc. 2 | Shakespeare<span class="kw">&lt;/title&gt;</span>
+<span class="kw">&lt;/head&gt;</span></code></pre>
+</div><div class="section slide level2" id="better">
+<h1 id="better">Better!</h1>
+<div class="figure">
+<img src="presenter-exercises/301-polyfilled/images/ie8.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="so-wait-tell-me-more-about-modernizr">
+<h1 id="so-wait-tell-me-more-about-modernizr">So, wait, tell me more about Modernizr</h1>
+<div class="figure">
+<img src="assets/images/modernizr.jpg" /><p class="caption"></p>
+</div>
+<ul>
+<li>Feature detection for common HTML5 things</li>
+<li>Enhancing content when we have positive test results</li>
+<li>CSS Classes</li>
+</ul>
+</div><div class="section slide level2" id="font-squirrel">
+<h1 id="font-squirrel">Font Squirrel</h1>
+<div class="figure">
+<img src="assets/images/font-squirrel.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="using-modernizr-and-font-squirrel-to-enhance">
+<h1 id="using-modernizr-and-font-squirrel-to-enhance">Using Modernizr and Font Squirrel to enhance</h1>
+<ul>
+<li>Modernizr test for @font-face and generated content support</li>
+<li>Font-squirrel-generated @font-face syntax and font files</li>
+</ul>
 </div><div class="section slide level2" id="exercise-2">
-<h1 id="exercise-2">Exercise?</h1>
-</div><div class="section slide level2" id="feature-detected-layout">
-<h1 id="feature-detected-layout">Feature-detected layout</h1>
+<h1 id="exercise-2">Exercise</h1>
+<ul>
+<li>Add @font-face code</li>
+<li>Write CSS rule for html.fontface</li>
+<li>Add jQuery library</li>
+<li>Write CSS rule for generated-content (hint: not in IE.css)</li>
+</ul>
 </div><div class="section slide level2" id="performance-issues">
 <h1 id="performance-issues">Performance issues</h1>
+<p>We just threw a lot of JS and fonts out there</p>
 </div><div class="section slide level2" id="performance-tools">
 <h1 id="performance-tools">Performance tools</h1>
 </div><div class="section slide level2" id="ideas">
