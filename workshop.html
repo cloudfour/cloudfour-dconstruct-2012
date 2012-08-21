@@ -776,12 +776,60 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>That is, the desktop-y layout feels comfortable &gt;= 50em or 800px</li>
 </ul>
+<h3 id="so">So</h3>
+<p><strong>We want to wrap the CSS for enhancing for wider screens in a media query</strong>.</p>
+<ul>
+<li>That media query should apply for screens with widths &gt;= 50em.</li>
+<li>Also, <code>em</code>s should dictate the width of our lines, not a simple percentage.</li>
+</ul>
 </div><div class="section slide level2" id="exercise-1">
 <h1 id="exercise-1">Exercise</h1>
 <ul>
-<li>Add floats and little modules, carefully</li>
-<li>fluid widths on body, dl</li>
+<li>Wrap CSS in a media query (I'll provide the desktop.css)</li>
+<li>Update the rule for .scene and .scene dl
+<ul>
+<li>For baseline rule, give <code>max-width: 28em</code></li>
+<li>Remove <code>width</code> from <code>.scene</code> (probably)</li>
+</ul></li>
+<li>Advanced: make image float treatment better</li>
 </ul>
+</div><div class="section slide level2" id="summary-and-pro-tips">
+<h1 id="summary-and-pro-tips">Summary and pro tips</h1>
+<ul>
+<li>Talk about CSS organization</li>
+</ul>
+</div>
+<div class="section titleslide slide level1" id="differentiating-the-web"><h1 id="differentiating-the-web">Differentiating the web</h1></div><div class="section slide level2" id="hot-mess-on-ie">
+<h1 id="hot-mess-on-ie">Hot Mess on IE</h1>
+</div><div class="section slide level2" id="understanding-media-query-support">
+<h1 id="understanding-media-query-support">Understanding media query support</h1>
+<blockquote>
+<p>&quot;The absence of support for media queries is in fact the first media query.&quot;—Bryan Rieger</p>
+</blockquote>
+</div><div class="section slide level2" id="media-query-support-options">
+<h1 id="media-query-support-options">Media query support options</h1>
+</div><div class="section slide level2" id="ie-conditional-tags">
+<h1 id="ie-conditional-tags">IE conditional tags</h1>
+</div><div class="section slide level2" id="polyfills">
+<h1 id="polyfills">Polyfills</h1>
+</div><div class="section slide level2" id="what-about-fonts">
+<h1 id="what-about-fonts">What about fonts?</h1>
+</div><div class="section slide level2" id="ugh.-lowest-common-denominator-again">
+<h1 id="ugh.-lowest-common-denominator-again">Ugh. Lowest common denominator again?</h1>
+</div><div class="section slide level2" id="its-a-question-of-features">
+<h1 id="its-a-question-of-features">It's a question of features</h1>
+</div><div class="section slide level2" id="modernizr">
+<h1 id="modernizr">Modernizr</h1>
+</div><div class="section slide level2" id="fonts-and-generated-content">
+<h1 id="fonts-and-generated-content">Fonts and generated content</h1>
+</div><div class="section slide level2" id="exercise-2">
+<h1 id="exercise-2">Exercise?</h1>
+</div><div class="section slide level2" id="feature-detected-layout">
+<h1 id="feature-detected-layout">Feature-detected layout</h1>
+</div><div class="section slide level2" id="performance-issues">
+<h1 id="performance-issues">Performance issues</h1>
+</div><div class="section slide level2" id="performance-tools">
+<h1 id="performance-tools">Performance tools</h1>
 </div><div class="section slide level2" id="ideas">
 <h1 id="ideas">Ideas</h1>
 <ul>
@@ -803,11 +851,6 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </div><div class="section slide level2" id="web-approach-philosophy">
 <h1 id="web-approach-philosophy">Web Approach Philosophy</h1>
 <p>You're here, so you've at least partially voted for the web.</p>
-</div><div class="section slide level2" id="exercises">
-<h1 id="exercises">Exercises</h1>
-<p>Converting something fixed-width to fluid. Implementing em-based media queries per personal discretion.</p>
-</div><div class="section slide level2" id="section-2">
-<h1 id="section-2"></h1>
 </div>
 <div class="section titleslide slide level1" id="the-differentiated-web"><h1 id="the-differentiated-web">The Differentiated Web</h1></div><div class="section slide level2" id="ideas-1">
 <h1 id="ideas-1">Ideas</h1>
@@ -826,13 +869,13 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>UA sniffing</li>
 <li>DDRs</li>
 </ul>
-</div><div class="section slide level2" id="exercises-1">
-<h1 id="exercises-1">Exercises</h1>
+</div><div class="section slide level2" id="exercises">
+<h1 id="exercises">Exercises</h1>
 <ul>
 <li>Feature-testing and enhancing a layout</li>
 </ul>
-</div><div class="section slide level2" id="section-3">
-<h1 id="section-3"></h1>
+</div><div class="section slide level2" id="section-2">
+<h1 id="section-2"></h1>
 </div>
 <div class="section titleslide slide level1" id="behaviors-and-apis"><h1 id="behaviors-and-apis">Behaviors and APIs</h1></div><div class="section slide level2" id="ideas-2">
 <h1 id="ideas-2">Ideas</h1>
@@ -848,8 +891,8 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Rough support charts</li>
 <li>JS vs. HTML APIs</li>
 </ul>
-</div><div class="section slide level2" id="exercises-2">
-<h1 id="exercises-2">Exercises</h1>
+</div><div class="section slide level2" id="exercises-1">
+<h1 id="exercises-1">Exercises</h1>
 <p>Write geolocation script/page integration and test on device.</p>
 </div>
 <div class="section titleslide slide level1" id="tools-and-frameworks"><h1 id="tools-and-frameworks">Tools and Frameworks</h1></div><div class="section slide level2" id="ideas-3">
@@ -868,8 +911,8 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Throwing libraries at the problem</li>
 <li>Sencha</li>
 </ul>
-</div><div class="section slide level2" id="exercises-3">
-<h1 id="exercises-3">Exercises</h1>
+</div><div class="section slide level2" id="exercises-2">
+<h1 id="exercises-2">Exercises</h1>
 <p>Exercise idea: Style same page w/different frameworks</p>
 </div>
 <div class="section titleslide slide level1" id="testing-and-workflows"><h1 id="testing-and-workflows">Testing and Workflows</h1></div><div class="section slide level2" id="ideas-4">
@@ -887,8 +930,8 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Automated testing</li>
 <li>Devices</li>
 </ul>
-</div><div class="section slide level2" id="exercises-4">
-<h1 id="exercises-4">Exercises</h1>
+</div><div class="section slide level2" id="exercises-3">
+<h1 id="exercises-3">Exercises</h1>
 <p>TBD</p>
 </div>
 <div class="section titleslide slide level1" id="master-resources"><h1 id="master-resources">Master Resources</h1></div>

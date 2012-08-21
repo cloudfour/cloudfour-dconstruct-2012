@@ -1,0 +1,30 @@
+% Exercise 3: Media queries and RWD
+
+1. Add a media query to `styles.css` that should apply to screens at least 50em or wider.
+1. Inside of this media query, cook up some CSS to effect the following:
+    1. Font sizes: `body` font should be `1.125em`. `h1` should be `4em`.
+    1. The `.scene` layout element (it's a `section`, if you are curious) should `float:left`
+    1. `section` elements should have a margin of `.5em 1em`
+1. Add the following class-specific CSS:
+
+    ~~~~{.css}
+    /* Float the names of the characters speaking left
+       (they are in <dt> elements). Also float em.stage-direction
+       items (overriding previous display:block for span.stage-direction)
+    */
+    .scene dl dt, .scene dl em {
+      float: left;
+      margin-right: .25em;
+    }
+    /* MOAR margin */
+    .scene dl dd {
+      margin: .5em 0 .5em 1.25em;
+    }
+    /* We have the room to explicitly break after each
+       prose line. These are left to wrap naturally 
+       in narrower views. */
+    span.prose {
+      display: block;
+      clear: right;
+    }
+    ~~~~

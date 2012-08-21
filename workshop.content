@@ -860,13 +860,57 @@ We're pretty good on narrow screens now, but we have some enhancement to do for 
 
 * That is, the desktop-y layout feels comfortable >= 50em or 800px
 
+### So
+
+**We want to wrap the CSS for enhancing for wider screens in a media query**. 
+
+* That media query should apply for screens with widths >= 50em.
+* Also, `em`s should dictate the width of our lines, not a simple percentage.
 
 
 ## Exercise
 
-* Add floats and little modules, carefully
-* fluid widths on body, dl
+* Wrap CSS in a media query (I'll provide the desktop.css)
+* Update the rule for .scene and .scene dl
+    * For baseline rule, give `max-width: 28em`
+    * Remove `width` from `.scene` (probably)
+* Advanced: make image float treatment better
 
+## Summary and pro tips
+
+* Talk about CSS organization
+
+# Differentiating the web
+
+## Hot Mess on IE
+
+## Understanding media query support
+
+> "The absence of support for media queries is in fact the first media query."—Bryan Rieger
+
+## Media query support options
+
+## IE conditional tags
+
+## Polyfills
+
+## What about fonts?
+
+## Ugh. Lowest common denominator again?
+
+## It's a question of features
+
+## Modernizr
+
+## Fonts and generated content
+
+## Exercise?
+
+## Feature-detected layout
+
+## Performance issues
+
+## Performance tools
 
 
 
@@ -892,11 +936,6 @@ We're pretty good on narrow screens now, but we have some enhancement to do for 
 
 You're here, so you've at least partially voted for the web.
 
-## Exercises
-
-Converting something fixed-width to fluid. Implementing em-based media queries per personal discretion.
-
----------------------------------------------------------------------
 
 
 # The Differentiated Web
