@@ -368,7 +368,7 @@ Lyza Gardner
 </div><div class="section slide level2" id="section-1">
 <h1 id="section-1"></h1>
 </div>
-<div class="section titleslide slide level1" id="the-one-web-responsive-and-shared"><h1 id="the-one-web-responsive-and-shared">The One Web: Responsive and Shared</h1></div><div class="section slide level2" id="is-this-the-best-we-can-do">
+<div class="section titleslide slide level1" id="part-ii-towards-an-adaptive-web"><h1 id="part-ii-towards-an-adaptive-web">Part II: Towards an Adaptive Web</h1></div><div class="section slide level2" id="is-this-the-best-we-can-do">
 <h1 id="is-this-the-best-we-can-do">Is this the best we can do?</h1>
 <div class="figure">
 <img src="assets/images/desktop-dull.jpg" /><p class="caption"></p>
@@ -798,8 +798,10 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>Talk about CSS organization</li>
 </ul>
+</div><div class="section slide level2" id="section-2">
+<h1 id="section-2"></h1>
 </div>
-<div class="section titleslide slide level1" id="differentiating-the-web"><h1 id="differentiating-the-web">Differentiating the web</h1></div><div class="section slide level2" id="how-are-we-doing">
+<div class="section titleslide slide level1" id="part-iii-balancing-a-differentiated-web"><h1 id="part-iii-balancing-a-differentiated-web">Part III: Balancing a differentiated web</h1></div><div class="section slide level2" id="how-are-we-doing">
 <h1 id="how-are-we-doing">How are we doing?</h1>
 <p>So, we've got what seems like a solid baseline for narrow screens and a single breakpoint to adapt the layout for wider screens.</p>
 <div class="figure">
@@ -921,11 +923,218 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Add jQuery library</li>
 <li>Write CSS rule for generated-content (hint: not in IE.css)</li>
 </ul>
-</div><div class="section slide level2" id="performance-issues">
-<h1 id="performance-issues">Performance issues</h1>
-<p>We just threw a lot of JS and fonts out there</p>
-</div><div class="section slide level2" id="performance-tools">
-<h1 id="performance-tools">Performance tools</h1>
+</div><div class="section slide level2" id="section-3">
+<h1 id="section-3"></h1>
+</div>
+<div class="section titleslide slide level1" id="part-iv-on-the-frontiers-of-the-adaptive-web"><h1 id="part-iv-on-the-frontiers-of-the-adaptive-web">Part IV: On the frontiers of the adaptive web</h1></div><div class="section slide level2" id="most-rwd-sites-are-not-mobile-first">
+<h1 id="most-rwd-sites-are-not-mobile-first">Most RWD sites are not mobile First</h1>
+<h3 id="reverse-mobile-rwd">Reverse: Mobile RWD?</h3>
+<div class="figure">
+<img src="assets/images/mobile-rwd.png" /><p class="caption"></p>
+</div>
+<p>Jason reviewed over 100 RWD sites in 2011. Found that:</p>
+<ul>
+<li>38% had a mobile site that was &lt; 10% smaller than the desktop</li>
+<li>4% mobile was the same size</li>
+<li>25% mobile was LARGER than the desktop</li>
+</ul>
+</div><div class="section slide level2" id="screen-size-bandwidth">
+<h1 id="screen-size-bandwidth">Screen size != bandwidth</h1>
+<p>Yes, this is true, but so what?</p>
+<p>On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users.</p>
+</div><div class="section slide level2" id="why-are-they-so-big">
+<h1 id="why-are-they-so-big">Why are they so big?</h1>
+<ul>
+<li>Hiding a background image by using <code>display:none</code> on the element will not prevent it from downloading.</li>
+<li>Large desktop-size images are delivered to all devices even if they never use the image at that size.</li>
+<li>Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads.</li>
+</ul>
+</div><div class="section slide level2" id="lets-back-up-1">
+<h1 id="lets-back-up-1">Let's back up</h1>
+<p>Before we get specific about things, let's think about the bigger picture.</p>
+<p>Images and other embedded things have long been a source of consternation with respect to different browsers.</p>
+<h3 id="what-are-the-high-level-problems-here">What are the high-level problems here?</h3>
+<ul>
+<li>The <code>img</code> tag only provides one <code>src</code> attribute presently.</li>
+<li>Contrast this with <code>audio</code> and <code>video</code> HTML5 elements (so, smart folks <em>are</em> thinking about things like this)</li>
+<li>Some of our techniques actually cause multiple (large) images to be downloaded</li>
+</ul>
+<p>These issues apply both to CSS background images and inline images. Let's take a look at some ideas for patching the problem over...</p>
+</div><div class="section slide level2" id="css-background-images">
+<h1 id="css-background-images">CSS Background images</h1>
+<h3 id="get-your-media-queries-in-order">Get your media queries in order</h3>
+<p>First thing to fix media queries is to put them in order. Small screen before large screens.</p>
+<p>This causes means the fallback for images will be the small images, not the large ones.</p>
+<h3 id="prevent-extra-background-image-downloads">Prevent extra background image downloads</h3>
+<p>Things that work:</p>
+<ul>
+<li>Use <code>display:none</code> on the parent element</li>
+<li>Use media queries that don’t overlap (that is, are mutually exclusive):</li>
+</ul>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">500px)</span> <span class="dv">{</span>
+    <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;small.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
+<span class="dv">}</span>
+<span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">501px)</span> <span class="dv">{</span>
+    <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;large.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
+<span class="dv">}</span></code></pre>
+</div><div class="section slide level2" id="css-background-images-in-different-browsers">
+<h1 id="css-background-images-in-different-browsers">CSS background images in different browsers</h1>
+<p>As of iOS 4.2:</p>
+<ul>
+<li>replacing a <code>background-image</code> will only result in one image being downloaded</li>
+</ul>
+<p>But, <code>display:none</code> on the element itself still downloads images.</p>
+<ul>
+<li><a href="http://timkadlec.com/2012/04/media-query-asset-downloading-results/">Tim Kadlec’s comprehensive test results for background images</a></li>
+</ul>
+</div><div class="section slide level2" id="the-inline-html-img-tag-conundrum">
+<h1 id="the-inline-html-img-tag-conundrum">The inline HTML <code>img</code> tag conundrum</h1>
+<ul>
+<li><code>&lt;img&gt;</code> can only have one src attribute</li>
+<li>First load problem: server knows nothing about the client. How do you know what <code>src</code> to use?</li>
+<li>Delivering the right-sized image can mean huge savings (up to 80%) on file size.</li>
+</ul>
+<p>Many people are seeking a solution for responsive images.</p>
+</div><div class="section slide level2" id="responsive-images-option-1">
+<h1 id="responsive-images-option-1">Responsive images: Option 1</h1>
+<ul>
+<li>JavaScript checks the width of the screen and sets a cookie.</li>
+<li>Image requests contain that cookie giving the server the information it needs.</li>
+<li><code>.htaccess</code> file on server checks for cookie and routes requests to the correct file depending on screen size.</li>
+</ul>
+</div><div class="section slide level2" id="option-1-problems">
+<h1 id="option-1-problems">Option 1 Problems</h1>
+<ul>
+<li>Sometimes the browser requests images before the JavaScript executes which means the cookie isn’t set. Race condition.</li>
+<li>What is the fallback if cookies aren’t enabled?</li>
+<li>Relies on the current way browsers load content which could change. No contract between the browser and the developer.</li>
+</ul>
+</div><div class="section slide level2" id="responsive-images-option-2">
+<h1 id="responsive-images-option-2">Responsive images: Option 2</h1>
+<ul>
+<li>Put small image inside <code>&lt;noscript&gt;</code> tag.</li>
+<li>Put info for other images in <code>data-*</code> on noscript tag.</li>
+<li>Use javascript to build correct img tag for screen size.</li>
+</ul>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;noscript</span><span class="ot"> data-large=</span><span class="st">&quot;Koala.jpg&quot;</span><span class="ot"> data-small=</span><span class="st">&quot;Koala-small.jpg&quot;</span><span class="ot"> data-alt=</span><span class="st">&quot;Koala&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;Koala.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Koala&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;/noscript&gt;</span></code></pre>
+</div><div class="section slide level2" id="option-2-problems">
+<h1 id="option-2-problems">Option 2 Problems</h1>
+<ul>
+<li>Markup has been changed in a way that only makes sense for this solution.</li>
+<li>No longer semantic.</li>
+</ul>
+</div><div class="section slide level2" id="responsive-images-option-3">
+<h1 id="responsive-images-option-3">Responsive images: Option 3</h1>
+<ul>
+<li>Use or build a service like Sencha.io SRC to deliver the correctly sized image:</li>
+</ul>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;http://src.sencha.io/[ORIGINAL IMAGE URL]&quot;</span> <span class="kw">/&gt;</span></code></pre>
+</div><div class="section slide level2" id="option-3-problems">
+<h1 id="option-3-problems">Option 3 Problems</h1>
+<ul>
+<li>All of your images are being routed through a third-party service.</li>
+<li>How does Sencha know what size image to use anyways? It relies on device detection which some developers dislike.</li>
+</ul>
+</div><div class="section slide level2" id="what-we-really-need-to-solve-for-images">
+<h1 id="what-we-really-need-to-solve-for-images">What we really need to solve for images</h1>
+<p>There are two separate issues when it comes to the img tag:</p>
+<ul>
+<li>Ability to authors to provide img art direction based on breakpoints</li>
+<li>Ensuring that the right image size is downloaded based on a combo of bandwidth, screen size, pixel density and user preference.</li>
+</ul>
+<p>The picture element is focused on solving the first issue. There are a lot of different ways to address the second.</p>
+</div><div class="section slide level2" id="only-real-solution-is-new-standard">
+<h1 id="only-real-solution-is-new-standard">Only real solution is new standard</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;picture</span><span class="ot"> alt=</span><span class="st">&quot;Giraffe&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;source</span><span class="ot"> src=</span><span class="st">&quot;giraffe-sml.jpg&quot;</span><span class="ot"> media=</span><span class="st">&quot;(max-width:480px)&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;source</span><span class="ot"> src=</span><span class="st">&quot;giraffe-lrg.jpg&quot;</span><span class="ot"> media=</span><span class="st">&quot;(min-width:481px)&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;giraffe-sml.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Giraffe&quot;</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;p&gt;</span>Long description<span class="kw">&lt;/p&gt;</span>
+<span class="kw">&lt;/picture&gt;</span></code></pre>
+<p>OR maybe</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;face-600-200 at 1.jpeg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;&quot;</span>
+<span class="ot">     srcset=</span><span class="st">&quot;face-600-200 at 1.jpeg 600w 200h 1x,</span>
+<span class="st">             face-600-200 at 2.jpeg 600w 200h 2x,</span>
+<span class="st">             face-icon.png          200w 200h&quot;</span><span class="kw">&gt;</span></code></pre>
+</div><div class="section slide level2" id="the-challenge-is-real...hard">
+<h1 id="the-challenge-is-real...hard">The challenge is real...hard</h1>
+<h3 id="some-other-things-to-consider">Some (other) things to consider</h3>
+<ol style="list-style-type: decimal">
+<li>Canonical URL for images: multiple <code>src</code> attributes fragment a single resource into multiple URIs</li>
+<li>HTTP headers: Should the future hold new HTTP headers that user agents can use to help servers serve the right things?</li>
+<li>Semantics: don't box yourself in</li>
+</ol>
+</div><div class="section slide level2" id="lyzas-crazy-ass-idea-of-the-month">
+<h1 id="lyzas-crazy-ass-idea-of-the-month">Lyza's crazy-ass idea of the month</h1>
+<p>I think it would be kind of neat if the CSS Media Query module spec allowed for media query references or classes.</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="er">narrow-all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">30em),</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">30em)</span> <span class="dv">{</span> <span class="dv">}</span></code></pre>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;picture</span><span class="ot"> alt=</span><span class="st">&quot;My Cool Image&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;source</span><span class="ot"> src=</span><span class="st">&quot;image-small.jpg&quot;</span><span class="ot"> media=</span><span class="st">&quot;narrow&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;image.jpg&quot;</span> <span class="kw">/&gt;</span>
+<span class="kw">&lt;/picture&gt;</span></code></pre>
+<ol style="list-style-type: decimal">
+<li><code>src</code> in <code>img</code> tag considered canonical.</li>
+<li>Named/classed media queries keep presentational media query syntax out of the markup (and have other benefits, IMHO!).</li>
+</ol>
+<h4 id="beware">Beware!</h4>
+<p>This is a product of my imagination and probably represents a syntax that would conflict with older browsers, etc.</p>
+</div><div class="section slide level2" id="other-rwd-challenges">
+<h1 id="other-rwd-challenges">Other RWD Challenges</h1>
+<ul>
+<li>Delivering the right size video</li>
+<li>Breakpoint management and zoom levels</li>
+<li>Progressively enhancing from XHTML-MP to HTML5</li>
+<li>Content ordering (Flexbox can’t come soon enough*)</li>
+<li>Third-party widgets (particularly ad networks)</li>
+<li><p>Integrating with content management systems</p></li>
+<li><p>Or, at least, it can't stop <em>changing</em> soon enough</p></li>
+</ul>
+<h3 id="this-is-all-very-new">This is all very new</h3>
+<p>No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.</p>
+</div><div class="section slide level2" id="other-rwd-drawbacks">
+<h1 id="other-rwd-drawbacks">Other RWD Drawbacks</h1>
+</div><div class="section slide level2" id="binary-fallacy">
+<h1 id="binary-fallacy">Binary fallacy</h1>
+<p>Most feature testing is thought of in a yep/nope frame of reference. But real life isn't that simple.</p>
+<ul>
+<li>Just because this older Android device supports CSS transitions...can it really handle them in a performant way?</li>
+<li>What does it mean if a particular feature-testing tool reports that the <code>canvas</code> tag is supported?</li>
+<li>And even if @fontface is supported, should we send (potentially large) font files to mobile users?</li>
+</ul>
+<h4 id="beware-1">Beware!</h4>
+<p>Don't get lulled into a false sense of clarity or confidence about feature testing.</p>
+</div><div class="section slide level2" id="and-then-theres-stuff-like-this">
+<h1 id="and-then-theres-stuff-like-this">And then there's stuff like this</h1>
+<ul>
+<li>Used Font Squirrel to generate fonts and CSS</li>
+<li>Used Modernizr to test for @font-face support</li>
+<li>And this is what it looks like on a BB Torch</li>
+</ul>
+<h4 id="rule-of-thumb-font-support-on-mobile-is-very-challenging.-be-wary.">Rule of thumb: Font support on mobile is very challenging. Be wary.</h4>
+</div><div class="section slide level2" id="lets-back-up-again">
+<h1 id="lets-back-up-again">Let's back up again</h1>
+<p>This BlackBerry Torch conundrum highlights some issues:</p>
+<ol style="list-style-type: decimal">
+<li>Feature detection is useful but not foolproof</li>
+<li>Quirks are more the rule than the exception in mobile browsers</li>
+<li>We also need to look at performance and what we're trying to accomplish</li>
+</ol>
+</div><div class="section slide level2" id="other-options">
+<h1 id="other-options">Other options</h1>
+</div><div class="section slide level2" id="detection-redux">
+<h1 id="detection-redux">Detection redux</h1>
+</div><div class="section slide level2" id="fonts-hell">
+<h1 id="fonts-hell">Fonts hell</h1>
+</div><div class="section slide level2" id="ua-hell">
+<h1 id="ua-hell">UA hell</h1>
+</div><div class="section slide level2" id="server-side-options">
+<h1 id="server-side-options">Server-side options</h1>
+</div><div class="section slide level2" id="donts">
+<h1 id="donts">Don'ts</h1>
+</div><div class="section slide level2" id="balance">
+<h1 id="balance">Balance!</h1>
 </div><div class="section slide level2" id="ideas">
 <h1 id="ideas">Ideas</h1>
 <ul>
@@ -970,8 +1179,8 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>Feature-testing and enhancing a layout</li>
 </ul>
-</div><div class="section slide level2" id="section-2">
-<h1 id="section-2"></h1>
+</div><div class="section slide level2" id="section-4">
+<h1 id="section-4"></h1>
 </div>
 <div class="section titleslide slide level1" id="behaviors-and-apis"><h1 id="behaviors-and-apis">Behaviors and APIs</h1></div><div class="section slide level2" id="ideas-2">
 <h1 id="ideas-2">Ideas</h1>
