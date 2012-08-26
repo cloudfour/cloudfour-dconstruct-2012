@@ -987,6 +987,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li><a href="http://timkadlec.com/2012/04/media-query-asset-downloading-results/">Tim Kadlec’s comprehensive test results for background images</a></li>
 </ul>
+</div><div class="section slide level2" id="image-set">
+<h1 id="image-set"><code>image-set</code></h1>
+<p>Cover this here.</p>
 </div><div class="section slide level2" id="the-inline-html-img-tag-conundrum">
 <h1 id="the-inline-html-img-tag-conundrum">The inline HTML <code>img</code> tag conundrum</h1>
 <ul>
@@ -1105,12 +1108,32 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 <h4 id="beware-1">Beware!</h4>
 <p>Don't get lulled into a false sense of clarity or confidence about feature testing.</p>
-</div><div class="section slide level2" id="and-then-theres-stuff-like-this">
-<h1 id="and-then-theres-stuff-like-this">And then there's stuff like this</h1>
+</div><div class="section slide level2" id="rude-awakening-blackberry-style">
+<h1 id="rude-awakening-blackberry-style">Rude awakening, BlackBerry style</h1>
+<div class="figure">
+<img src="presenter-exercises/302-fonts/images/9670.png" alt="BlackBerry 9670 OS 6" /><p class="caption">BlackBerry 9670 OS 6</p>
+</div>
 <ul>
-<li>Used Font Squirrel to generate fonts and CSS</li>
+<li><code>small-caps</code> sad</li>
+<li>Hmmm...maybe something is odd about the combination of styles on this page...maybe something's wonky...</li>
+</ul>
+</div><div class="section slide level2" id="it-gets-better">
+<h1 id="it-gets-better">It gets better</h1>
+<div class="figure">
+<img src="presenter-exercises/400-woes/images/9670.png" alt="BlackBerry 9670 OS 6" /><p class="caption">BlackBerry 9670 OS 6</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/400-woes/images/9800.png" alt="BlackBerry 9800 Torch OS 6" /><p class="caption">BlackBerry 9800 Torch OS 6</p>
+</div>
+</div><div class="section slide level2" id="the-coup-de-grace">
+<h1 id="the-coup-de-grace">The coup de grace</h1>
+<div class="figure">
+<img src="presenter-exercises/400-woes/images/9810.png" alt="BlackBerry 9810" /><p class="caption">BlackBerry 9810</p>
+</div>
+<ul>
+<li>Used Font Squirrel to generate fonts and CSS, including the SVG font BB 6 needs</li>
 <li>Used Modernizr to test for @font-face support</li>
-<li>And this is what it looks like on a BB Torch</li>
+<li>And this is what it looks like on a BB 9810</li>
 </ul>
 <h4 id="rule-of-thumb-font-support-on-mobile-is-very-challenging.-be-wary.">Rule of thumb: Font support on mobile is very challenging. Be wary.</h4>
 </div><div class="section slide level2" id="lets-back-up-again">
@@ -1121,20 +1144,483 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Quirks are more the rule than the exception in mobile browsers</li>
 <li>We also need to look at performance and what we're trying to accomplish</li>
 </ol>
-</div><div class="section slide level2" id="other-options">
-<h1 id="other-options">Other options</h1>
-</div><div class="section slide level2" id="detection-redux">
-<h1 id="detection-redux">Detection redux</h1>
-</div><div class="section slide level2" id="fonts-hell">
-<h1 id="fonts-hell">Fonts hell</h1>
-</div><div class="section slide level2" id="ua-hell">
-<h1 id="ua-hell">UA hell</h1>
-</div><div class="section slide level2" id="server-side-options">
-<h1 id="server-side-options">Server-side options</h1>
-</div><div class="section slide level2" id="donts">
-<h1 id="donts">Don'ts</h1>
-</div><div class="section slide level2" id="balance">
-<h1 id="balance">Balance!</h1>
+</div><div class="section slide level2" id="what-matters-1">
+<h1 id="what-matters-1">What matters?</h1>
+<ol style="list-style-type: decimal">
+<li>Making the text of this scene of the play acceptably readable on as many devices as possible</li>
+<li>Presenting the text of the play in a way true to dramatic and historical form</li>
+<li>Providing font and color differentiation to increase readability and contrast</li>
+<li>Providing font and color differentiation to increase visual appeal</li>
+<li>Showing relevant, related illustrations for this section of the play</li>
+</ol>
+<p>Objective #1 trumps objectives #2 and #3.</p>
+</div><div class="section slide level2" id="but-wait...">
+<h1 id="but-wait...">But wait...</h1>
+<p><em>Aren't we just flirting with the lowest common denominator again?</em></p>
+<h3 id="our-options">Our options</h3>
+<ol style="list-style-type: decimal">
+<li>Leave everything as-is. Screw the buggy BlackBerry Torch.</li>
+<li>Worry a lot about <code>@font-face</code> on mobile devices. Decide to put the <code>@font-face</code> rules inside of the wider-screen media query, but leave the <code>text-transform</code> and <code>small-caps</code> intact for all devices.</li>
+<li>Decide BlackBerry support is incredibly key. Move @font-face <em>and</em> other font rules (<code>small-caps</code> and <code>lowercase</code>) into the wider-screen media query.</li>
+</ol>
+<h3 id="things-to-consider">Things to consider</h3>
+<ol style="list-style-type: decimal">
+<li>Whom you are supporting with your site or app.</li>
+<li>Consistency.</li>
+<li>Performance.</li>
+</ol>
+</div><div class="section slide level2" id="exercise-you-are-the-decider">
+<h1 id="exercise-you-are-the-decider">Exercise: You are the decider</h1>
+<ul>
+<li>Put @font-face rules wherever you are comfortable</li>
+<li>Decide on the <code>small-caps</code> and <code>lowercase</code> stuff</li>
+</ul>
+</div><div class="section slide level2" id="a-diversion-about-performance">
+<h1 id="a-diversion-about-performance">A diversion about performance</h1>
+</div><div class="section slide level2" id="yslow">
+<h1 id="yslow">ySlow</h1>
+</div><div class="section slide level2" id="progressive-enhancement-electric-boogaloo">
+<h1 id="progressive-enhancement-electric-boogaloo">Progressive enhancement: electric boogaloo</h1>
+<ul>
+<li>Think through what support is required for your enhancement</li>
+<li>Think through the dependencies</li>
+<li>Think through the failure states</li>
+<li>Consider your tools</li>
+</ul>
+</div><div class="section slide level2" id="line-number-enhancement">
+<h1 id="line-number-enhancement">Line number enhancement</h1>
+<p>TODO: Screen shot of goal</p>
+<p>On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes.</p>
+<p>Part of this can be done by incrementing a CSS counter on every <code>span.line</code> and using an <code>:after</code> pseudo-element to display the value of the CSS counter.</p>
+<p>The challenge is that I'd like to do this only every 10 lines, and there isn't a viable CSS selector for that. So I need a bit of JS support here.</p>
+</div><div class="section slide level2" id="line-number-enhancement-1">
+<h1 id="line-number-enhancement-1">Line number enhancement</h1>
+<p>All answers must be &quot;yes&quot;:</p>
+<ul>
+<li>Can we use JavaScript to select, traverse and manipulate DOM nodes in the way we'd like in this browser?</li>
+<li>Does this browser support media queries?</li>
+<li>Is the wider-screen media query applied?</li>
+<li>Does this browser support generated content/:after?</li>
+<li>Does this browser support CSS counters?</li>
+</ul>
+</div><div class="section slide level2" id="dependencies">
+<h1 id="dependencies">2. Dependencies</h1>
+<ul>
+<li>:after generated content relies on css counter support — that is, we don't want to add generated content if it is invalid</li>
+<li>Fortunately the set of browsers that supports :before/:after is effectively the same as those who support CSS counter</li>
+</ul>
+<div class="figure">
+<img src="assets/images/generated-support.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="tools">
+<h1 id="tools">Tools</h1>
+<ul>
+<li>Modernizr's integration with yepnope.js and the Modernizr.mq() test</li>
+<li>Conditionally load the <em>jQuery</em> library when:
+<ul>
+<li>Wider screen media query is applied</li>
+<li>Modernizr.generatedcontent is true</li>
+<li>Then, use jQuery selection to select and act on the DOM elements in question</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="like-this">
+<h1 id="like-this">Like this</h1>
+<p>Here's the full JavaScript we'll need:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;script src=<span class="st">&quot;Modernizr.js&quot;</span>&gt;&lt;/script&gt;
+&lt;script&gt;
+<span class="kw">Modernizr</span>.<span class="fu">load</span>([
+  {
+    <span class="dt">test</span>:       <span class="kw">Modernizr</span>.<span class="fu">mq</span>(<span class="ch">&#39;only all and (min-width:50em)&#39;</span>) &amp;&amp; <span class="kw">Modernizr</span>.<span class="fu">generatedcontent</span>,
+    <span class="dt">yep</span>:        <span class="ch">&#39;//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js&#39;</span>,
+    <span class="dt">callback</span>:   <span class="kw">function</span>(url, result, key) {
+      $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() { 
+        $(<span class="ch">&#39;html.generatedcontent span.line&#39;</span>).<span class="fu">filter</span>(<span class="kw">function</span>(index) {
+          <span class="kw">return</span> (((index + <span class="dv">1</span>) % <span class="dv">10</span> == <span class="dv">0</span>) &amp;&amp; index &gt; <span class="dv">0</span>);
+        }).<span class="fu">addClass</span>(<span class="ch">&#39;line-number&#39;</span>);
+      });
+    }
+  }
+]);
+&lt;/script&gt;</code></pre>
+</div><div class="section slide level2" id="walking-through-the-script">
+<h1 id="walking-through-the-script">Walking through the script</h1>
+<pre class="sourceCode html"><code class="sourceCode html"> <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Modernizr.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<p>This includes our custom Modernizr build with:</p>
+<ul>
+<li><code>generatedcontent</code> testing</li>
+<li><code>mq</code> (Media Query) testing</li>
+<li><code>yepnope.js</code> conditional JavaScript loading</li>
+<li><code>fontface</code> testing (from before!)</li>
+</ul>
+</div><div class="section slide level2" id="walking-through-more">
+<h1 id="walking-through-more">Walking through more</h1>
+<p>Then:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;script&gt;
+<span class="kw">Modernizr</span>.<span class="fu">load</span>([
+  {
+    <span class="dt">test</span>:       <span class="co">// A test or tests...truthiness is evaluated</span>
+    <span class="dt">yep</span>:        <span class="co">// If test is truthy, load this or these scripts</span>
+    <span class="dt">callback</span>:   <span class="co">// And then...</span>
+  }
+]);
+&lt;/script&gt;</code></pre>
+</div><div class="section slide level2" id="fleshing-that-out...">
+<h1 id="fleshing-that-out...">Fleshing that out...</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">Modernizr</span>.<span class="fu">load</span>([
+  {
+    <span class="dt">test</span>:       <span class="kw">Modernizr</span>.<span class="fu">mq</span>(<span class="ch">&#39;only all and (min-width:50em)&#39;</span>) &amp;&amp; <span class="kw">Modernizr</span>.<span class="fu">generatedcontent</span>,
+    <span class="dt">yep</span>:        <span class="ch">&#39;//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js&#39;</span>,
+    <span class="dt">callback</span>:   <span class="co">// Once we&#39;re here, we know we&#39;re ready to go with our jQuery manipulation</span>
+  }
+]);
+&lt;/script&gt;</code></pre>
+<p>Note that we're repeating our media query verbatim. Not great, but...options are limited these days.</p>
+</div><div class="section slide level2" id="and-our-jquery...">
+<h1 id="and-our-jquery...">And our jQuery...</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">Modernizr</span>.<span class="fu">load</span>([
+  {
+    <span class="dt">test</span>:       <span class="kw">Modernizr</span>.<span class="fu">mq</span>(<span class="ch">&#39;only all and (min-width:50em)&#39;</span>) &amp;&amp; <span class="kw">Modernizr</span>.<span class="fu">generatedcontent</span>,
+    <span class="dt">yep</span>:        <span class="ch">&#39;//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js&#39;</span>,
+    <span class="dt">callback</span>:   <span class="kw">function</span>(url, result, key) {
+      $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() { 
+        $(<span class="ch">&#39;html.generatedcontent span.line&#39;</span>).<span class="fu">filter</span>(<span class="kw">function</span>(index) {
+          <span class="kw">return</span> (((index + <span class="dv">1</span>) % <span class="dv">10</span> == <span class="dv">0</span>) &amp;&amp; index &gt; <span class="dv">0</span>);
+        }).<span class="fu">addClass</span>(<span class="ch">&#39;line-number&#39;</span>);
+      });
+    }
+  }
+]);
+&lt;/script&gt;</code></pre>
+<ul>
+<li>When document is ready, filter all <code>html.generatedcontent span.line</code> elements against the anonymous function here that returns <code>true</code> for every 10th line that isn't the first line (0). For those elements that pass this filter, add the class <code>line-number</code>.</li>
+<li>The non-existent CSS selector I'm emulating here is something like <code>html.generatedcontent span.line:nth-of-type(10n)</code> but doesn't reset when its parent element closes.</li>
+</ul>
+</div><div class="section slide level2" id="the-css">
+<h1 id="the-css">The CSS</h1>
+<p>All of this within the media query for the wider screen:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Set up and increment the line-count counter */</span>
+<span class="fl">.scene</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+  <span class="kw">counter-reset:</span> line-count<span class="kw">;</span>
+<span class="kw">}</span>
+<span class="co">/* ... */</span>
+span<span class="fl">.line</span> <span class="kw">{</span>
+  <span class="kw">counter-increment:</span> line-count<span class="kw">;</span>
+<span class="kw">}</span>
+<span class="co">/* ... */</span>
+<span class="co">/* And now the .line-number spans...show the counter value */</span>
+html<span class="fl">.generatedcontent</span> span<span class="fl">.line-number</span><span class="dv">:after</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">right</span><span class="kw">;</span>
+  <span class="kw">content:</span> <span class="dt">counter(</span>line-count<span class="dt">)</span><span class="kw">;</span>
+  <span class="kw">display:</span> <span class="dt">inline-block</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="et-voila">
+<h1 id="et-voila">Et, voila</h1>
+<p>TODO: Screen shots</p>
+</div><div class="section slide level2" id="section-4">
+<h1 id="section-4"></h1>
+</div>
+<div class="section titleslide slide level1" id="part-v-web-sites-that-do-things-in-the-mobile-world"><h1 id="part-v-web-sites-that-do-things-in-the-mobile-world">Part V: Web sites that do things, in the mobile world</h1></div><div class="section slide level2" id="the-reading-web-vs.-the-doing-web">
+<h1 id="the-reading-web-vs.-the-doing-web">The reading web vs. the doing web</h1>
+<p>It makes a lot of us devs uncomfortable, but we can't help but notice that there is a fundamental difference between the reference-and-reading Web (Wikipedia, news sites, documentation, blogs, etc.) and the doing-stuff Web (Gmail, Flickr, etc.).</p>
+<p>When we talk about mobile, often the glory of the app-based world makes us naturally think of the latter. Which is why I started with the former—the heart of the Web is still content.</p>
+<p>Now it's time to talk about doing things on the mobile-device Web.</p>
+</div><div class="section slide level2" id="making-shakespeare-more-useful">
+<h1 id="making-shakespeare-more-useful">Making Shakespeare more useful</h1>
+<ul>
+<li>Adding a glossary for both unusual words, historical notes, and potentially-confusing turns of phrase</li>
+<li>I had a bunch of bright ideas at first</li>
+</ul>
+</div><div class="section slide level2" id="wouldnt-it-be-cool-if...">
+<h1 id="wouldnt-it-be-cool-if...">Wouldn't it be cool if...</h1>
+<h3 id="an-early-idea">An early idea</h3>
+<p>Users could touch-and-drag to highlight content in the play (a la iBooks or Kindle apps). Custom notes or simple highlights could be saved.</p>
+<ul>
+<li>On desktop it's pretty easy to access selected text using <code>window.getSelection()</code> or similar by binding to the <code>mouseup</code> and <code>keyup</code> events.</li>
+<li>On other devices, I can get at the selected text using the same approach, but I need to bind to different events. <code>touchstart</code> works fairly well for iOS and Androids.</li>
+</ul>
+</div><div class="section slide level2" id="but...">
+<h1 id="but...">But...</h1>
+<p>Things got complicated quickly.</p>
+<p>One idea might be to look at the results of <code>Modernizr.touch</code> (an available test in Modernizr) and change the way selected text is handled based on that.</p>
+<h4 id="beware-2">Beware!</h4>
+<p>What do you think it means when <code>Modernizr.touch</code> is <code>true</code>?</p>
+</div><div class="section slide level2" id="touch-events-and-touch-models-are-still-fractured-and-disparate">
+<h1 id="touch-events-and-touch-models-are-still-fractured-and-disparate">Touch events and touch models are still fractured and disparate</h1>
+<p>Not to say that touch-rich web apps cannot be successfully developed, but sorting out the nuances of each platform's touch situation was more than I wanted to dive into here. Especially as we want to support a broader set of devices than just the newest Webkit-based phones.</p>
+<h3 id="i-should-emphasize">I should emphasize</h3>
+<p>Such a web app is definitely possible. It's just beyond the scope of my explorations here! I wanted to demonstrate the kinds of thinking and learning that go into these sorts of exercises.</p>
+</div><div class="section slide level2" id="mobile-development-demands-flexible-evolved-thinking">
+<h1 id="mobile-development-demands-flexible-evolved-thinking">Mobile development demands flexible, evolved thinking</h1>
+<p>Moreso in mobile than perhaps any other time in software development, BDUF (big-development-up-front), waterfalled processes tend to break down.</p>
+<p>The unknowns are so numerous, the complications and quirks so widespread and the testing such an investment that an iterative process both in design/spec-ing and implementing sort of forces itself upon us.</p>
+<p>Planning mobile web sites and apps seems to demand an open-ended, very flexible approach.</p>
+</div><div class="section slide level2" id="a-slightly-more-humble-plan">
+<h1 id="a-slightly-more-humble-plan">A slightly more humble plan</h1>
+<ol style="list-style-type: decimal">
+<li>Add footnotes to glossed terms and phrases and add a glossary to the end of the document.</li>
+<li>For browsers and devices that support it, use JavaScript to make glossed items tappable, and pop up the definition or note in a modal dialog or lightbox.</li>
+<li>Allow the user to save glossary entries. This is a bit contrived, but, hey, this is an example.</li>
+</ol>
+</div><div class="section slide level2" id="step-1-glossed-terms-and-a-glossary">
+<h1 id="step-1-glossed-terms-and-a-glossary">Step 1: Glossed terms and a glossary</h1>
+<p>Step 1 is easy enough. Just need to add some HTML markup and some styles for it.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;dt&gt;</span>Stephano<span class="kw">&lt;/dt&gt;</span>
+<span class="kw">&lt;dd&gt;</span>
+  <span class="kw">&lt;em</span><span class="ot"> class=</span><span class="st">&quot;stage-direction&quot;</span><span class="kw">&gt;</span>(To <span class="kw">&lt;strong&gt;</span>Trinculo<span class="kw">&lt;/strong&gt;</span>)<span class="kw">&lt;/em&gt;</span>
+  <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;tell-not-me&quot;</span><span class="kw">&gt;</span>Tell not me<span class="kw">&lt;/span&gt;</span>; when the <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;gloss-butt&quot;</span><span class="kw">&gt;</span>butt<span class="kw">&lt;/span&gt;</span> is out, we<span class="kw">&lt;/span&gt;</span>
+  <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;</span>will <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;drink-water&quot;</span><span class="kw">&gt;</span>drink water<span class="kw">&lt;/span&gt;</span>; not a drop before: therefore <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;bear-up&quot;</span><span class="kw">&gt;</span>bear up, and<span class="kw">&lt;/span&gt;&lt;/span&gt;</span>
+  <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;bear-up&quot;</span><span class="kw">&gt;</span>board &#39;em<span class="kw">&lt;/span&gt;</span>. Servant-monster, drink to me.<span class="kw">&lt;/span&gt;</span>
+<span class="kw">&lt;/dd&gt;</span></code></pre>
+<ul>
+<li>Note the use of <code>data-gloss</code>. This will be used to match up <code>span.gloss</code> elements to the ID of their glossary counterparts.</li>
+</ul>
+</div><div class="section slide level2" id="step-1-a-glossary-section">
+<h1 id="step-1-a-glossary-section">Step 1: A glossary section</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;section</span><span class="ot"> class=</span><span class="st">&quot;glossary&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;h2&gt;</span>Glossary<span class="kw">&lt;/h2&gt;</span>
+  <span class="kw">&lt;ol&gt;</span>
+    <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;tell-not-me&quot;</span><span class="kw">&gt;&lt;em&gt;</span>i.e.<span class="kw">&lt;/em&gt;</span> Don&#39;t tell me not to drink so much.<span class="kw">&lt;/li&gt;</span>
+    <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;gloss-butt&quot;</span><span class="kw">&gt;</span>An archaeic unit of wine, and quite a lot of it. A butt of wine around Shakespeare&#39;s time was about 126 gallons (104 imperial gallons). Compare the average US beer keg barrel size of about 15.5 gallons.<span class="kw">&lt;/li&gt;</span></code></pre>
+<p>etc.</p>
+</div><div class="section slide level2" id="step-1-some-styles">
+<h1 id="step-1-some-styles">Step 1: Some styles</h1>
+<pre class="sourceCode css"><code class="sourceCode css">ol <span class="kw">{</span>
+  <span class="kw">list-style-type:</span> <span class="dt">decimal</span><span class="kw">;</span>
+  <span class="kw">margin</span> <span class="kw">:</span> <span class="dt">.5em</span> <span class="dt">0</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+ol li <span class="kw">{</span>
+  <span class="kw">margin:</span> <span class="dt">.5em</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+sup <span class="kw">{</span>
+  <span class="kw">position</span> <span class="kw">:</span> <span class="dt">relative</span><span class="kw">;</span>
+  <span class="kw">top:</span> <span class="dt">-.35em</span><span class="kw">;</span>
+  <span class="kw">font-size</span> <span class="kw">:</span> <span class="dt">.85em</span><span class="kw">;</span>
+  <span class="kw">padding:</span> <span class="dt">.125em</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="co">/* Glossary styles */</span>
+<span class="fl">.glossary</span> <span class="kw">{</span>
+  <span class="kw">float:</span> <span class="dt">none</span><span class="kw">;</span>
+  <span class="kw">clear</span> <span class="kw">:</span> <span class="dt">both</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.glossary</span> em <span class="kw">{</span>
+  <span class="kw">font-style</span> <span class="kw">:</span> <span class="dt">italic</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="and-now-we-have-our-baseline">
+<h1 id="and-now-we-have-our-baseline">And now we have our baseline</h1>
+<p>At this point, we stop and test on our supported devices*.</p>
+<p>* I should note that, while developing the markup and styles for this example, I did find a problem in test. I had initially set a <code>width: 100%</code> on the <code>section.glossary</code> element. My <code>section</code> styles already had a padding on them, and this broke the box model and caused horizontal scrolling. C'est la vie. Easily fixed when caught at this stage. Test, iterate, test. Often.</p>
+<h4 id="hold-that-thought">Hold that thought!</h4>
+<p>We're going to have an extravaganza of testing discussion soon.</p>
+</div><div class="section slide level2" id="step-2-enhancing-the-glossed-items">
+<h1 id="step-2-enhancing-the-glossed-items">Step 2: Enhancing the glossed items</h1>
+<ol style="list-style-type: decimal">
+<li>We'll be needing the jQuery library for everyone now, not just browsers that have the wider-screen media query applied—we need to take the conditional loading via <code>yepnope</code> away.</li>
+<li>I'm somewhat randomly going to select the &quot;Messi&quot; jQuery plugin for popups/modals. We'll need to include that JavaScript in our page and its CSS in our CSS.</li>
+<li>We'll need to write a bit of jQuery JavaScript to convert our glossary entries into popup modals and make the glossed items tappable.</li>
+<li>We'll want to update our styles again to add classes for enhanced glossary items.</li>
+</ol>
+</div><div class="section slide level2" id="bleh-1">
+<h1 id="bleh-1">Bleh</h1>
+<p>As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.</p>
+<p>Also, we need to add some styles of our own to indicate that the glossed items are tappable.</p>
+<h4 id="theme-performance-optimization">Theme: Performance optimization</h4>
+</div><div class="section slide level2" id="state-of-the-apis">
+<h1 id="state-of-the-apis">State of the APIs</h1>
+<ul>
+<li><a href="http://caniuse.com/#cats=JS_API">CanIUse.com JS APIs info</a></li>
+</ul>
+</div><div class="section slide level2" id="domstorage">
+<h1 id="domstorage">DOMStorage</h1>
+<blockquote>
+<p>&quot;DOM Storage is the name given to the set of storage-related features first introduced in the Web Applications 1.0 specification, and now split off into its own W3C Web Storage specification. DOM Storage is designed to provide a larger, more secure, and easier-to-use alternative to storing information in cookies. It was first introduced with Firefox 2 and Safari 4.&quot; — <a href="https://developer.mozilla.org/en-US/docs/DOM/Storage">Mozilla Developer Network website</a></p>
+</blockquote>
+<ul>
+<li>Overall situation: decent; with polyfills: quite good</li>
+<li>localStorage</li>
+<li><p>sessionStorage</p></li>
+<li>Cookie polyfill (https://developer.mozilla.org/en-US/docs/DOM/Storage) Caveat about maximum cookie size</li>
+<li><p><a href="http://brian.io/lawnchair">Lawnchair</a></p></li>
+</ul>
+</div><div class="section slide level2" id="file-api">
+<h1 id="file-api">File API</h1>
+</div><div class="section slide level2" id="mediacapture">
+<h1 id="mediacapture">mediaCapture</h1>
+<ul>
+<li>Overall situation: still mostly sad</li>
+<li>One of the chief reasons we still reach for PhoneGap, etc.</li>
+</ul>
+<h4 id="beware-3">Beware!</h4>
+<p>mediaCapture is really two things: * <a href="http://www.w3.org/TR/mediacapture-streams/">mediaCapture/Streams</a> aka getUserMedia aka chaos * <a href="http://www.w3.org/TR/html-media-capture/">HTMLInputElement</a></p>
+</div><div class="section slide level2" id="htmlinputelement-mediacapture">
+<h1 id="htmlinputelement-mediacapture">HTMLInputElement mediaCapture</h1>
+<ul>
+<li>Implemented in Android 4 (Ice Cream Sandwich)</li>
+<li>Starting to show up in other mobile browsers</li>
+<li><code>&lt;input type=&quot;file&quot; accept=&quot;image/*&quot; capture=&quot;camera&quot;&gt;</code></li>
+<li><code>capture=&quot;camcorder&quot;</code> makes me giggle</li>
+</ul>
+</div><div class="section slide level2" id="mediacapture-streams-api">
+<h1 id="mediacapture-streams-api">mediaCapture Streams API</h1>
+<ul>
+<li>Lots of churn and change here</li>
+<li>No browser (mobile or otherwise) currently shipping implements this spec</li>
+<li>It would seem that the Tizen browser <em>might</em></li>
+</ul>
+</div><div class="section slide level2" id="geolocation">
+<h1 id="geolocation">Geolocation</h1>
+<ul>
+<li>Overall status: Kinda good, actually; with polyfills: even better</li>
+<li>W3C GeoLocation more widely implemented than most Device APIs</li>
+</ul>
+</div><div class="section slide level2" id="more-about-localstorage">
+<h1 id="more-about-localstorage">More about localStorage</h1>
+<ul>
+<li>String-based key-value storage</li>
+<li>Strings only</li>
+<li>Not so much in IE</li>
+</ul>
+</div><div class="section slide level2" id="whats-the-holdup">
+<h1 id="whats-the-holdup">What's the holdup?</h1>
+</div><div class="section slide level2" id="things-change-knowing-where-to-look">
+<h1 id="things-change-knowing-where-to-look">Things change; knowing where to look</h1>
+</div><div class="section slide level2" id="using-localstorage-with-a-polyfill">
+<h1 id="using-localstorage-with-a-polyfill">Using localStorage with a polyfill</h1>
+<ul>
+<li>Lawnchair.js</li>
+</ul>
+</div><div class="section slide level2" id="section-5">
+<h1 id="section-5"></h1>
+<p>Part VI: Making sure it works</p>
+</div><div class="section slide level2" id="start-broad">
+<h1 id="start-broad">Start broad</h1>
+<p>The majority of your testing likely will not be done on mobile devices at all.</p>
+</div><div class="section slide level2" id="hardware">
+<h1 id="hardware">Hardware</h1>
+</div><div class="section slide level2" id="building-a-device-collection">
+<h1 id="building-a-device-collection">Building a device collection</h1>
+<ul>
+<li>A &quot;modern&quot; iOS device. iPads are obviously a different form factor than iPhones, but having just one of the two covers a lot of bases.</li>
+<li>A &quot;modern&quot; Android device running Ice Cream Sandwich (OS 4) or at least Gingerbread (2.3).</li>
+<li>A slightly older Android running 2.0-2.2.</li>
+<li>A modern BlackBerry (OS 6 or newer).</li>
+<li>An older BlackBerry (OS 5).</li>
+<li>Are you in Europe? A Symbian Nokia phone.</li>
+<li>If your organization focuses on a demographic heavy on BlackBerrys, consider an old BlackBerry running OS 4.</li>
+<li>A &quot;modern&quot; Windows phone. The Nokia N8 and N9 are very nice devices.</li>
+<li>An old Android running &lt;2.</li>
+<li>A device (BlackBerry has many) with an unusual aspect ratio.</li>
+<li>A larger-format Android device that is not a tablet, e.g. Samsung Note</li>
+</ul>
+</div><div class="section slide level2" id="tablets">
+<h1 id="tablets">Tablets</h1>
+<ul>
+<li>iPad</li>
+<li>Kindle Fire</li>
+<li>Android tablet</li>
+<li>BlackBerry PlayBook</li>
+<li>Windows 8 tablet (coming soon)</li>
+</ul>
+</div><div class="section slide level2" id="tactics-for-acquiring-devices">
+<h1 id="tactics-for-acquiring-devices">Tactics for acquiring devices</h1>
+<ul>
+<li>Add your own devices to your testing library as your replace them with newer ones. Having out-of-date devices is actually a huge boon.</li>
+<li>Factor in the cost of a device or two in projects focusing on those devices.</li>
+<li>Join developer programs at different device manufacturers. These are generally not free. BlackBerry has a well-established one. Nokia has a developer relations program as well.</li>
+<li>Buy devices used online (Craiglist is a great source in the U.S.; eBay is decent, too). Some can be quite cheap.</li>
+<li>Buying devices in the US can save money. But be very aware that the vast majority of these devices are &quot;locked&quot; to carrier.</li>
+<li>Talk to device manufacturers and mobile companies directly. It's surprising how often they're quite keen to help.</li>
+<li>Go to events and conferences and hope. Lots of mobile conferences give away (often many) devices as door prizes. Heck, I won a BlackBerry torch that way. If you can go to Google I/O you may well walk away with four or five devices (Cloud Four co-founder Jason did, recently).</li>
+</ul>
+</div><div class="section slide level2" id="the-biggest-tip-for-device-libraries">
+<h1 id="the-biggest-tip-for-device-libraries">The biggest tip for device libraries</h1>
+<h3 id="team-up">TEAM UP</h3>
+<p>Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade.</p>
+<p>For example, the Mobile Portland group in, well, Portland, has a very active discussion list...</p>
+</div><div class="section slide level2" id="efficiencies">
+<h1 id="efficiencies">Efficiencies</h1>
+<ul>
+<li>Define a spot for your devices. A bookshelf, table or desk for them to live on or in.</li>
+<li>Keep as many devices charged as is reasonably possible.</li>
+<li>Group devices by charger and platform.</li>
+<li>Have a plan for system and software updates.</li>
+<li>Perform system and app updates on multiple devices at once, when possible.</li>
+<li>Have a work area at or near the testing library.</li>
+<li>Keep in mind the overhead required for device maintenance when establishing a collection.</li>
+<li>If you're the organized type, create a spreadsheet or somesuch for tracking the details of your devices.</li>
+<li>If possible, have folks borrowing your devices do their work on-site. This can be an easier sell if you have a nice work area around your devices.</li>
+<li>While it's good to have devices that run different versions of a given platform, you don't need to go crazy-town.</li>
+</ul>
+</div><div class="section slide level2" id="resources">
+<h1 id="resources">Resources</h1>
+<p><a href="https://bagcheck.com/blog/22-mobile-device-testing-the-gear">BagCheck Device Testing Gear</a> <a href="http://mobiletestingfordummies.tumblr.com/post/20056227958/testing">BBC Devices</a> <a href="http://www.youtube.com/watch?v=51E3FWMKkig&amp;feature=player_embedded#!">jQueryMobile Automated Selenium Testing</a></p>
+</div><div class="section slide level2" id="testing-workflows">
+<h1 id="testing-workflows">Testing workflows</h1>
+</div><div class="section slide level2" id="remote-testing-and-debug">
+<h1 id="remote-testing-and-debug">Remote testing and debug</h1>
+<ul>
+<li>Adobe Shadow</li>
+<li>weinre</li>
+<li>shim</li>
+<li>Opera Dragonfly</li>
+<li>FireFox remote debug (NEW!)</li>
+</ul>
+</div><div class="section slide level2" id="emulators">
+<h1 id="emulators">Emulators</h1>
+<ul>
+<li>Looking for some real old stuff? http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70</li>
+</ul>
+</div><div class="section slide level2" id="other-tools">
+<h1 id="other-tools">Other tools</h1>
+<ul>
+<li>http://responsivepx.com/</li>
+</ul>
+</div><div class="section slide level2" id="watch-out-for">
+<h1 id="watch-out-for">Watch out for</h1>
+<ul>
+<li>Fixed breakpoint sizes</li>
+<li>iOS fixation</li>
+</ul>
+</div><div class="section slide level2" id="some-halfway-techniques">
+<h1 id="some-halfway-techniques">Some halfway techniques</h1>
+<p>Something I've done lately when doing Rails development is use the combination of:</p>
+<ul>
+<li>rSpec/Capybara</li>
+<li>poltergeist: Phantom.js Web driver for Capybara tests</li>
+<li>jasmine for JS testing</li>
+</ul>
+<p>Within my test specs, I can use Phantom.js as the test driver to launch a headless instance of Webkit and run my tests within it. I can resize the (virtual) window in that Phantom.js instance to various dimensions that emulate possible mobile device widths/heights. I can test for the location and placement of elements, execute JavaScript, and take automated screen shots.</p>
+<p>It is theoretically possible—though not on Mac right now—to run the Phantom.js as a remote to an actual device. This would be <em>awesome</em>.</p>
+<p>This obviously only covers Webkit. Swapping over to the default Selenium web driver for Rails, I get things tested in Mozilla desktop. Though these are tests run on the desktop, they are still incredibly useful as a basis to continue testing.</p>
+</div><div class="section slide level2" id="remote-testing">
+<h1 id="remote-testing">Remote testing</h1>
+</div><div class="section slide level2" id="what-i-hope-is-the-way-of-the-future">
+<h1 id="what-i-hope-is-the-way-of-the-future">What I hope is the way of the future</h1>
+<p>I would love to see the continued evolution of remote, on-hardware testing.</p>
+<p>Some interesting stuff is happening at the confluence of Selenium and Ruby. iPhone web driver. I hope that Shadow will evolve and allow scripting.</p>
+</div><div class="section slide level2" id="emulators-1">
+<h1 id="emulators-1">Emulators</h1>
+</div><div class="section slide level2" id="testing-and-performance-tools">
+<h1 id="testing-and-performance-tools">Testing and performance tools</h1>
+<ul>
+<li>jDrop</li>
+<li>Blaze.io</li>
+</ul>
+</div><div class="section slide level2" id="un-testing">
+<h1 id="un-testing">Un-testing</h1>
+<p>The more mobile web sites you build, the more you will be able to get away with a certain amount of &quot;un-testing.&quot;</p>
+</div><div class="section slide level2" id="challenging-zones">
+<h1 id="challenging-zones">Challenging Zones</h1>
+<ul>
+<li>CSS positioning, box model</li>
+<li>CSS 3 effects, especially anything vendor-prefixed: gradients, shadows, etc.</li>
+<li>HTML5 elements</li>
+<li>DOM manipulation</li>
+<li>Character encoding</li>
+<li>Embedded media</li>
+</ul>
 </div><div class="section slide level2" id="ideas">
 <h1 id="ideas">Ideas</h1>
 <ul>
@@ -1179,8 +1665,8 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>Feature-testing and enhancing a layout</li>
 </ul>
-</div><div class="section slide level2" id="section-4">
-<h1 id="section-4"></h1>
+</div><div class="section slide level2" id="section-6">
+<h1 id="section-6"></h1>
 </div>
 <div class="section titleslide slide level1" id="behaviors-and-apis"><h1 id="behaviors-and-apis">Behaviors and APIs</h1></div><div class="section slide level2" id="ideas-2">
 <h1 id="ideas-2">Ideas</h1>

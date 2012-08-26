@@ -1096,6 +1096,10 @@ But, `display:none` on the element itself still downloads images.
 
 * [Tim Kadlec’s comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
 
+## `image-set`
+
+Cover this here.
+
 ## The inline HTML `img` tag conundrum
 
 * `<img>` can only have one src attribute
@@ -1236,11 +1240,26 @@ Most feature testing is thought of in a yep/nope frame of reference. But real li
 
 Don't get lulled into a false sense of clarity or confidence about feature testing. 
 
-## And then there's stuff like this
+## Rude awakening, BlackBerry style
 
-* Used Font Squirrel to generate fonts and CSS
+![BlackBerry 9670 OS 6](presenter-exercises/302-fonts/images/9670.png)
+
+* `small-caps` sad
+* Hmmm...maybe something is odd about the combination of styles on this page...maybe something's wonky...
+
+## It gets better
+
+![BlackBerry 9670 OS 6](presenter-exercises/400-woes/images/9670.png)
+
+![BlackBerry 9800 Torch OS 6](presenter-exercises/400-woes/images/9800.png)
+
+## The coup de grace
+
+![BlackBerry 9810](presenter-exercises/400-woes/images/9810.png)
+
+* Used Font Squirrel to generate fonts and CSS, including the SVG font BB 6 needs
 * Used Modernizr to test for @font-face support
-* And this is what it looks like on a BB Torch
+* And this is what it looks like on a BB 9810
 
 #### Rule of thumb: Font support on mobile is very challenging. Be wary.
 
@@ -1253,23 +1272,541 @@ This BlackBerry Torch conundrum highlights some issues:
 1. We also need to look at performance and what we're trying to accomplish
 
 
-## Other options
+## What matters?
 
-## Detection redux
+1. Making the text of this scene of the play acceptably readable on as many devices as possible
+1. Presenting the text of the play in a way true to dramatic and historical form
+1. Providing font and color differentiation to increase readability and contrast
+1. Providing font and color differentiation to increase visual appeal
+1. Showing relevant, related illustrations for this section of the play
 
-## Fonts hell
+Objective #1 trumps objectives #2 and #3.
+
+## But wait...
+
+*Aren't we just flirting with the lowest common denominator again?*
+
+### Our options
+
+1. Leave everything as-is. Screw the buggy BlackBerry Torch.
+1. Worry a lot about `@font-face` on mobile devices. Decide to put the `@font-face` rules inside of the wider-screen media query, but leave the `text-transform` and `small-caps` intact for all devices. 
+1. Decide BlackBerry support is incredibly key. Move @font-face *and* other font rules (`small-caps` and `lowercase`) into the wider-screen media query.
+
+### Things to consider
+
+1. Whom you are supporting with your site or app.
+1. Consistency.
+1. Performance.
+
+## Exercise: You are the decider
+
+* Put @font-face rules wherever you are comfortable
+* Decide on the `small-caps` and `lowercase` stuff
+
+## A diversion about performance
+
+## ySlow
+
+## Progressive enhancement: electric boogaloo
+
+* Think through what support is required for your enhancement
+* Think through the dependencies
+* Think through the failure states
+* Consider your tools
+
+## Line number enhancement
+
+TODO: Screen shot of goal
+
+On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes.
+
+Part of this can be done by incrementing a CSS counter on every `span.line` and using an `:after` pseudo-element to display the value of the CSS counter.
+
+The challenge is that I'd like to do this only every 10 lines, and there isn't a viable CSS selector for that. So I need a bit of JS support here.
+
+## Line number enhancement
+
+All answers must be "yes":
+
+* Can we use JavaScript to select, traverse and manipulate DOM nodes in the way we'd like in this browser?
+* Does this browser support media queries?
+* Is the wider-screen media query applied?
+* Does this browser support generated content/:after?
+* Does this browser support CSS counters?
 
 
-## UA hell
+## 2. Dependencies
 
-## Server-side options
+* :after generated content relies on css counter support — that is, we don't want to add generated content if it is invalid
+* Fortunately the set of browsers that supports :before/:after is effectively the same as those who support CSS counter
 
-## Don'ts
-
-## Balance!
-
+![](assets/images/generated-support.png)
 
 
+## Tools
+
+* Modernizr's integration with yepnope.js and the Modernizr.mq() test
+* Conditionally load the *jQuery* library when:
+    * Wider screen media query is applied
+    * Modernizr.generatedcontent is true
+    * Then, use jQuery selection to select and act on the DOM elements in question
+
+## Like this
+
+Here's the full JavaScript we'll need:
+
+~~~{.javascript}
+<script src="Modernizr.js"></script>
+<script>
+Modernizr.load([
+  {
+    test:       Modernizr.mq('only all and (min-width:50em)') && Modernizr.generatedcontent,
+    yep:        '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
+    callback:   function(url, result, key) {
+      $(document).ready(function() { 
+        $('html.generatedcontent span.line').filter(function(index) {
+          return (((index + 1) % 10 == 0) && index > 0);
+        }).addClass('line-number');
+      });
+    }
+  }
+]);
+</script>
+~~~~
+
+## Walking through the script
+
+~~~{.html}
+ <script src="Modernizr.js"></script>
+~~~
+
+This includes our custom Modernizr build with:
+
+* `generatedcontent` testing
+* `mq` (Media Query) testing
+* `yepnope.js` conditional JavaScript loading
+* `fontface` testing (from before!)
+
+## Walking through more
+
+Then: 
+
+~~~{.javascript}
+<script>
+Modernizr.load([
+  {
+    test:       // A test or tests...truthiness is evaluated
+    yep:        // If test is truthy, load this or these scripts
+    callback:   // And then...
+  }
+]);
+</script>
+~~~~
+
+## Fleshing that out...
+
+~~~{.javascript}
+Modernizr.load([
+  {
+    test:       Modernizr.mq('only all and (min-width:50em)') && Modernizr.generatedcontent,
+    yep:        '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
+    callback:   // Once we're here, we know we're ready to go with our jQuery manipulation
+  }
+]);
+</script>
+~~~~
+
+Note that we're repeating our media query verbatim. Not great, but...options are limited these days.
+
+## And our jQuery...
+
+~~~{.javascript}
+Modernizr.load([
+  {
+    test:       Modernizr.mq('only all and (min-width:50em)') && Modernizr.generatedcontent,
+    yep:        '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
+    callback:   function(url, result, key) {
+      $(document).ready(function() { 
+        $('html.generatedcontent span.line').filter(function(index) {
+          return (((index + 1) % 10 == 0) && index > 0);
+        }).addClass('line-number');
+      });
+    }
+  }
+]);
+</script>
+~~~~
+
+* When document is ready, filter all `html.generatedcontent span.line` elements against the anonymous function here that returns `true` for every 10th line that isn't the first line (0). For those elements that pass this filter, add the class `line-number`.
+* The non-existent CSS selector I'm emulating here is something like `html.generatedcontent span.line:nth-of-type(10n)` but doesn't reset when its parent element closes.
+
+## The CSS
+
+All of this within the media query for the wider screen:
+
+~~~{.css}
+/* Set up and increment the line-count counter */
+.scene {
+  float: left;
+  counter-reset: line-count;
+}
+/* ... */
+span.line {
+  counter-increment: line-count;
+}
+/* ... */
+/* And now the .line-number spans...show the counter value */
+html.generatedcontent span.line-number:after {
+  float: right;
+  content: counter(line-count);
+  display: inline-block;
+}
+~~~
+
+## Et, voila
+
+TODO: Screen shots
+
+-------------------------------------------------------------------------------
+
+# Part V: Web sites that do things, in the mobile world
+
+
+## The reading web vs. the doing web
+
+It makes a lot of us devs uncomfortable, but we can't help but notice that there is a fundamental difference between the reference-and-reading Web (Wikipedia, news sites, documentation, blogs, etc.) and the doing-stuff Web (Gmail, Flickr, etc.).
+
+When we talk about mobile, often the glory of the app-based world makes us naturally think of the latter. Which is why I started with the former—the heart of the Web is still content.
+
+Now it's time to talk about doing things on the mobile-device Web.
+
+## Making Shakespeare more useful
+
+* Adding a glossary for both unusual words, historical notes, and potentially-confusing turns of phrase
+* I had a bunch of bright ideas at first
+
+## Wouldn't it be cool if...
+
+### An early idea
+
+Users could touch-and-drag to highlight content in the play (a la iBooks or Kindle apps). Custom notes or simple highlights could be saved.
+
+* On desktop it's pretty easy to access selected text using `window.getSelection()` or similar by binding to the `mouseup` and `keyup` events.
+* On other devices, I can get at the selected text using the same approach, but I need to bind to different events. `touchstart` works fairly well for iOS and Androids.
+
+## But...
+
+Things got complicated quickly.
+
+One idea might be to look at the results of `Modernizr.touch` (an available test in Modernizr) and change the way selected text is handled based on that.
+
+#### Beware!
+
+What do you think it means when `Modernizr.touch` is `true`?
+
+## Touch events and touch models are still fractured and disparate
+
+Not to say that touch-rich web apps cannot be successfully developed, but sorting out the nuances of each platform's touch situation was more than I wanted to dive into here. Especially as we want to support a broader set of devices than just the newest Webkit-based phones.
+
+### I should emphasize
+
+Such a web app is definitely possible. It's just beyond the scope of my explorations here! I wanted to demonstrate the kinds of thinking and learning that go into these sorts of exercises.
+
+## Mobile development demands flexible, evolved thinking
+
+Moreso in mobile than perhaps any other time in software development, BDUF (big-development-up-front), waterfalled processes tend to break down.
+
+The unknowns are so numerous, the complications and quirks so widespread and the testing such an investment that an iterative process both in design/spec-ing and implementing sort of forces itself upon us.
+
+Planning mobile web sites and apps seems to demand an open-ended, very flexible approach.
+
+## A slightly more humble plan
+
+1. Add footnotes to glossed terms and phrases and add a glossary to the end of the document.
+1. For browsers and devices that support it, use JavaScript to make glossed items tappable, and pop up the definition or note in a modal dialog or lightbox.
+1. Allow the user to save glossary entries. This is a bit contrived, but, hey, this is an example.
+
+## Step 1: Glossed terms and a glossary
+
+Step 1 is easy enough. Just need to add some HTML markup and some styles for it.
+
+~~~{.html}
+<dt>Stephano</dt>
+<dd>
+  <em class="stage-direction">(To <strong>Trinculo</strong>)</em>
+  <span class="prose line"><span class="gloss" data-gloss="tell-not-me">Tell not me</span>; when the <span class="gloss" data-gloss="gloss-butt">butt</span> is out, we</span>
+  <span class="prose line">will <span class="gloss" data-gloss="drink-water">drink water</span>; not a drop before: therefore <span class="gloss" data-gloss="bear-up">bear up, and</span></span>
+  <span class="prose line"><span class="gloss" data-gloss="bear-up">board 'em</span>. Servant-monster, drink to me.</span>
+</dd>
+~~~
+
+* Note the use of `data-gloss`. This will be used to match up `span.gloss` elements to the ID of their glossary counterparts.
+
+## Step 1: A glossary section
+
+~~~{.html}
+<section class="glossary">
+  <h2>Glossary</h2>
+  <ol>
+    <li id="tell-not-me"><em>i.e.</em> Don't tell me not to drink so much.</li>
+    <li id="gloss-butt">An archaeic unit of wine, and quite a lot of it. A butt of wine around Shakespeare's time was about 126 gallons (104 imperial gallons). Compare the average US beer keg barrel size of about 15.5 gallons.</li>
+~~~
+
+etc.
+
+## Step 1: Some styles
+
+~~~{.css}
+ol {
+  list-style-type: decimal;
+  margin : .5em 0;
+}
+
+ol li {
+  margin: .5em;
+}
+
+sup {
+  position : relative;
+  top: -.35em;
+  font-size : .85em;
+  padding: .125em;
+}
+/* Glossary styles */
+.glossary {
+  float: none;
+  clear : both;
+}
+.glossary em {
+  font-style : italic;
+}
+~~~
+
+## And now we have our baseline
+
+At this point, we stop and test on our supported devices*.
+
+\* I should note that, while developing the markup and styles for this example, I did find a problem in test. I had initially set a `width: 100%` on the `section.glossary` element. My `section` styles already had a padding on them, and this broke the box model and caused horizontal scrolling. C'est la vie. Easily fixed when caught at this stage. Test, iterate, test. Often.
+
+#### Hold that thought!
+
+We're going to have an extravaganza of testing discussion soon.
+
+## Step 2: Enhancing the glossed items
+
+1. We'll be needing the jQuery library for everyone now, not just browsers that have the wider-screen media query applied—we need to take the conditional loading via `yepnope` away.
+1. I'm somewhat randomly going to select the "Messi" jQuery plugin for popups/modals. We'll need to include that JavaScript in our page and its CSS in our CSS.
+1. We'll need to write a bit of jQuery JavaScript to convert our glossary entries into popup modals and make the glossed items tappable.
+1. We'll want to update our styles again to add classes for enhanced glossary items.
+
+## Bleh
+
+As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.
+
+Also, we need to add some styles of our own to indicate that the glossed items are tappable.
+
+#### Theme: Performance optimization
+
+## State of the APIs
+
+* [CanIUse.com JS APIs info](http://caniuse.com/#cats=JS_API)
+
+## DOMStorage
+
+> "DOM Storage is the name given to the set of storage-related features first introduced in the Web Applications 1.0 specification, and now split off into its own W3C Web Storage specification. DOM Storage is designed to provide a larger, more secure, and easier-to-use alternative to storing information in cookies. It was first introduced with Firefox 2 and Safari 4." — [Mozilla Developer Network website](https://developer.mozilla.org/en-US/docs/DOM/Storage)
+
+* Overall situation: decent; with polyfills: quite good
+* localStorage
+* sessionStorage
+
+* Cookie polyfill (https://developer.mozilla.org/en-US/docs/DOM/Storage) Caveat about maximum cookie size
+* [Lawnchair](http://brian.io/lawnchair)
+
+## File API
+
+
+## mediaCapture
+
+* Overall situation: still mostly sad
+* One of the chief reasons we still reach for PhoneGap, etc.
+
+#### Beware!
+
+mediaCapture is really two things:
+* [mediaCapture/Streams](http://www.w3.org/TR/mediacapture-streams/) aka getUserMedia aka chaos
+* [HTMLInputElement](http://www.w3.org/TR/html-media-capture/)
+
+## HTMLInputElement mediaCapture
+
+* Implemented in Android 4 (Ice Cream Sandwich)
+* Starting to show up in other mobile browsers
+* `<input type="file" accept="image/*" capture="camera">`
+* `capture="camcorder"` makes me giggle
+
+## mediaCapture Streams API
+
+* Lots of churn and change here
+* No browser (mobile or otherwise) currently shipping implements this spec
+* It would seem that the Tizen browser *might*
+
+## Geolocation
+
+* Overall status: Kinda good, actually; with polyfills: even better
+* W3C GeoLocation more widely implemented than most Device APIs
+
+## More about localStorage
+
+* String-based key-value storage
+* Strings only
+* Not so much in IE
+
+## What's the holdup?
+
+## Things change; knowing where to look
+
+## Using localStorage with a polyfill
+
+* Lawnchair.js
+
+-------------------------------------------------------------------------------
+
+Part VI: Making sure it works
+
+## Start broad
+
+The majority of your testing likely will not be done on mobile devices at all.
+
+## Hardware
+
+## Building a device collection
+
+* A "modern" iOS device. iPads are obviously a different form factor than iPhones, but having just one of the two covers a lot of bases.
+* A "modern" Android device running Ice Cream Sandwich (OS 4) or at least Gingerbread (2.3).
+* A slightly older Android running 2.0-2.2.
+* A modern BlackBerry (OS 6 or newer).
+* An older BlackBerry (OS 5).
+* Are you in Europe? A Symbian Nokia phone.
+* If your organization focuses on a demographic heavy on BlackBerrys, consider an old BlackBerry running OS 4.
+* A "modern" Windows phone. The Nokia N8 and N9 are very nice devices.
+* An old Android running <2.
+* A device (BlackBerry has many) with an unusual aspect ratio.
+* A larger-format Android device that is not a tablet, e.g. Samsung Note
+
+## Tablets
+
+* iPad
+* Kindle Fire
+* Android tablet
+* BlackBerry PlayBook
+* Windows 8 tablet (coming soon)
+
+## Tactics for acquiring devices
+
+* Add your own devices to your testing library as your replace them with newer ones. Having out-of-date devices is actually a huge boon.
+* Factor in the cost of a device or two in projects focusing on those devices.
+* Join developer programs at different device manufacturers. These are generally not free. BlackBerry has a well-established one. Nokia has a developer relations program as well.
+* Buy devices used online (Craiglist is a great source in the U.S.; eBay is decent, too). Some can be quite cheap.
+* Buying devices in the US can save money. But be very aware that the vast majority of these devices are "locked" to carrier.
+* Talk to device manufacturers and mobile companies directly. It's surprising how often they're quite keen to help.
+* Go to events and conferences and hope. Lots of mobile conferences give away (often many) devices as door prizes. Heck, I won a BlackBerry torch that way. If you can go to Google I/O you may well walk away with four or five devices (Cloud Four co-founder Jason did, recently).
+
+## The biggest tip for device libraries
+
+### TEAM UP
+
+Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade. 
+
+For example, the Mobile Portland group in, well, Portland, has a very active discussion list...
+
+## Efficiencies
+
+* Define a spot for your devices. A bookshelf, table or desk for them to live on or in.
+* Keep as many devices charged as is reasonably possible.
+* Group devices by charger and platform.
+* Have a plan for system and software updates.
+* Perform system and app updates on multiple devices at once, when possible.
+* Have a work area at or near the testing library.
+* Keep in mind the overhead required for device maintenance when establishing a collection.
+* If you're the organized type, create a spreadsheet or somesuch for tracking the details of your devices.
+* If possible, have folks borrowing your devices do their work on-site. This can be an easier sell if you have a nice work area around your devices.
+* While it's good to have devices that run different versions of a given platform, you don't need to go crazy-town.
+
+
+## Resources
+
+[BagCheck Device Testing Gear](https://bagcheck.com/blog/22-mobile-device-testing-the-gear)
+[BBC Devices](http://mobiletestingfordummies.tumblr.com/post/20056227958/testing)
+[jQueryMobile Automated Selenium Testing](http://www.youtube.com/watch?v=51E3FWMKkig&feature=player_embedded#!)
+
+## Testing workflows
+
+## Remote testing and debug
+
+* Adobe Shadow
+* weinre
+* shim
+* Opera Dragonfly
+* FireFox remote debug (NEW!)
+
+
+
+## Emulators
+
+* Looking for some real old stuff? http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70
+
+## Other tools
+
+* http://responsivepx.com/
+
+## Watch out for
+
+* Fixed breakpoint sizes
+* iOS fixation
+
+
+## Some halfway techniques
+
+Something I've done lately when doing Rails development is use the combination of:
+
+* rSpec/Capybara
+* poltergeist: Phantom.js Web driver for Capybara tests
+* jasmine for JS testing
+
+Within my test specs, I can use Phantom.js as the test driver to launch a headless instance of Webkit and run my tests within it. I can resize the (virtual) window in that Phantom.js instance to various dimensions that emulate possible mobile device widths/heights. I can test for the location and placement of elements, execute JavaScript, and take automated screen shots.
+
+It is theoretically possible—though not on Mac right now—to run the Phantom.js as a remote to an actual device. This would be *awesome*.
+
+This obviously only covers Webkit. Swapping over to the default Selenium web driver for Rails, I get things tested in Mozilla desktop. Though these are tests run on the desktop, they are still incredibly useful as a basis to continue testing.
+
+## Remote testing
+
+## What I hope is the way of the future
+
+I would love to see the continued evolution of remote, on-hardware testing.
+
+Some interesting stuff is happening at the confluence of Selenium and Ruby. iPhone web driver.
+I hope that Shadow will evolve and allow scripting.
+
+## Emulators
+
+
+## Testing and performance tools
+
+* jDrop
+* Blaze.io
+
+## Un-testing
+
+The more mobile web sites you build, the more you will be able to get away with a certain amount of "un-testing." 
+
+## Challenging Zones
+
+* CSS positioning, box model
+* CSS 3 effects, especially anything vendor-prefixed: gradients, shadows, etc.
+* HTML5 elements
+* DOM manipulation
+* Character encoding
+* Embedded media
 
 
 
