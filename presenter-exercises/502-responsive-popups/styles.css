@@ -1,0 +1,535 @@
+
+/* http           ://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License        : none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin          : 0;
+  padding         : 0;
+  border          : 0;
+  font-size       : 100%;
+  font            : inherit;
+  vertical-align  : baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display         : block; }
+
+body {
+  line-height     : 1; }
+
+ol, ul {
+  list-style      : none; }
+
+blockquote, q {
+  quotes          : none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content         : '';
+  content         : none; }
+
+table {
+  border-collapse : collapse;
+  border-spacing  : 0; }
+
+@font-face {
+  font-family: 'sorts_mill_goudy';
+  src: url("fonts/sortsmillgoudy-regular-webfont.eot");
+  src: url("fonts/sortsmillgoudy-regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/sortsmillgoudy-regular-webfont.woff") format("woff"), url("fonts/sortsmillgoudy-regular-webfont.ttf") format("truetype"), url("fonts/sortsmillgoudy-regular-webfont.svg#sorts_mill_goudyregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sorts_mill_goudy';
+  src: url("fonts/sortsmillgoudy-italic-webfont.eot");
+  src: url("fonts/sortsmillgoudy-italic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/sortsmillgoudy-italic-webfont.woff") format("woff"), url("fonts/sortsmillgoudy-italic-webfont.ttf") format("truetype"), url("fonts/sortsmillgoudy-italic-webfont.svg#sorts_mill_goudyitalic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+/** Baseline CSS **/
+
+html {
+  font-size       : 100%;
+  font-family     : Georgia, serif;
+}
+
+body {
+  background-color: #f9faef;
+  color           : #443333; }
+
+h1 {
+  font-size       : 2.5em;
+  color           : #d94343;
+  text-transform  : lowercase;
+  font-variant    : small-caps;
+}
+
+h2 {
+  font-weight     : 700; }
+
+h2, h4 {
+  display         : inline;
+}
+
+section {
+  margin          : .5em; }
+
+figure {
+  display: block;
+}
+
+figcaption {
+  padding: .25em;
+  font-size: .85em;
+  font-style: italic;
+}
+
+img, object {
+  max-width: 100%;
+}
+
+ol {
+  list-style-type: decimal;
+  margin : .5em 0;
+  line-height: 1.25em;
+}
+
+ol li {
+  margin: .5em 2em;
+}
+
+sup {
+  position : relative;
+  top      : -.5em;
+  font-size: .75em;
+  color    : #888;
+  padding  : .125em;
+}
+
+/* Re-usable Modules */
+
+.scene {
+  line-height     : 1.333em;
+  max-width       : 28em;
+}
+.scene dl {
+  width           : 100%;
+}
+.scene dl dt {
+  color           : #222211;
+  font-size       : 1.125em;
+  text-transform  : lowercase;
+  font-variant    : small-caps;
+  clear           : left;
+}
+.scene dl dd {
+  margin          : 0 0 .5em 0;
+}
+.scene em {
+  font-size       : .85em;
+  margin          : 0 .25em;
+}
+.glossed .scene {
+  line-height     : 1.5em;
+}
+
+.stage-direction {
+  font-style      : italic;
+}
+.stage-direction strong {
+  text-transform  : lowercase;
+  font-variant    : small-caps;
+  font-style      : normal;
+}
+span.stage-direction {
+  display         : block;
+  float           : none;
+}
+
+span.gloss-item {
+  border-bottom: 1px dashed #dcc;
+}
+span.gloss-item:hover,
+span.gloss-item:active {
+  color: #d94343;
+  cursor: pointer;
+}
+
+/** Different kinds of lines **/
+
+span.verse {
+  clear           : both;
+  display         : block;
+  text-indent     : -1.5em;
+  margin-left     : 1.5em;
+}
+
+span.verse-end {
+  display         : block;
+  float           : right;
+  padding-right   : 2em;
+  clear           : right;
+}
+
+span.song {
+  display         : block;
+  text-align      : center;
+}
+
+/* Glossary styles */
+.glossary {
+  float : none;
+  clear : both;
+}
+
+.glossary em {
+  font-style : italic;
+}
+
+.glossed .glossary {
+  display : none;
+}
+
+@media all and (min-width: 50em) {
+  html.fontface {
+    font-family: "sorts_mill_goudy", Georgia, serif;
+    font-weight: normal;
+  }
+  body {
+    font-size: 1.125em;
+  }
+  h1 {
+    font-size: 4em;
+  }
+  section {
+    margin: .5em 1em;
+  }
+  .scene, .glossed .scene {
+    line-height: 1.3333em;
+    float: left;
+    counter-reset: line-count;
+  }
+  .scene dl dt, .scene dl em {
+    float: left;
+    margin-right: .25em;
+  }
+  .scene dl dd {
+    margin: .5em 0 .5em 1.25em;
+  }
+  span.line {
+    counter-increment: line-count;
+  }
+  span.prose {
+    display: block;
+    clear: right;
+  }
+  .glossary ol {
+    -moz-column-count   : 2;
+    -moz-column-gap     : 1.5em;
+    -webkit-column-count: 2;
+    -webkit-column-gap  : 1.5em;
+    column-count        : 2;
+    column-gap          : 1.5em;
+  }
+  html.generatedcontent span.line-number:after {
+    float: right;
+    content: counter(line-count);
+    display: inline-block;
+  }
+}
+/* Messi CSS */
+
+.messi-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+  opacity: 0;
+}
+
+.messi {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  text-shadow: none;
+  font-size: .9em;
+}
+
+.messi-box {
+  position: relative;
+  width: 500px;
+  height: auto;
+  padding: .5em;
+  overflow: hidden;
+  background-color: rgba(204, 204, 204, 0.2);
+  border-radius: .375em;
+  opacity: 1;
+  box-shadow: 0 0 1em #444;
+}
+
+.messi-wrapper {
+  position: relative;
+  background-color: #fff;
+  border-radius: .375em;
+}
+
+.messi-titlebox {
+  padding: .5em;
+  overflow: hidden;
+  color: #fff;
+  background-color: #443333;
+  font-size: 1.25em;
+}
+
+.messi-titlebox.info {
+  background-color: #4ea5cd;
+  background-image: none;
+}
+
+/* convert to ems */
+.messi-closebtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: block;
+  width: 25px;
+  height: 25px;
+  color: #333;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.messi-closebtn::before {
+  position: relative;
+  top: 2px;
+  display: block;
+  width: 25px;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  content: '\00D7';
+}
+
+.messi-content {
+  padding: .5em;
+  overflow: hidden;
+  line-height: 1.375em;
+}
+.messi-content p {
+  margin: 0 0 1.3em;
+}
+
+.messi-content .messi-closebtn {
+  top: 7px;
+  font: 1.3em bold helvetica, arial;
+  color: #fff;
+  background-color: #333;
+  opacity: 0;
+  -webkit-transition: opacity .25s linear, visibility .1s linear .5s;
+     -moz-transition: opacity .25s linear, visibility .1s linear .5s;
+       -o-transition: opacity .25s linear, visibility .1s linear .5s;
+          transition: opacity .25s linear, visibility .1s linear .5s;
+}
+
+.messi-content:hover .messi-closebtn {
+  opacity: 1;
+}
+
+.messi-footbox {
+  width: 100%;
+  height: 55px;
+  overflow: hidden;
+}
+
+.messi-actions {
+  display: table;
+  width: 96%;
+  /*
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  */
+  padding-top: .5em;
+  margin: 0 2%;
+  border-top: 1px solid #eee;
+}
+
+.messi-actions .btnbox {
+  width: 50%;
+  display: table-cell;
+  text-align: center;
+}
+
+.messi-actions .btnbox .btn {
+  min-width: 75px;
+}
+
+/* CSS Buttons from Twitter Bootstrap: http://twitter.github.com/bootstrap/ */
+
+.messi .btn {
+  display: inline-block;
+  *display: inline;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  *margin-left: .3em;
+  font-size: 13px;
+  line-height: 26px;
+  color: #333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  *background-color: #e6e6e6;
+  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.messi .btn:hover,
+.messi .btn:active,
+.messi .btn.active,
+.messi .btn.disabled,
+.messi .btn[disabled] {
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+
+.messi .btn:active,
+.messi .btn.active {
+  background-color: #cccccc \9;
+}
+
+.messi .btn:first-child {
+  *margin-left: 0;
+}
+
+.messi .btn:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+      -ms-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
+}
+
+.messi .btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.messi .btn.active,
+.messi .btn:active {
+  background-color: #e6e6e6;
+  background-color: #d9d9d9 \9;
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.messi .btn-success,
+.messi .btn-success:hover,
+.messi .btn-info,
+.messi .btn-info:hover,
+.messi .btn-inverse,
+.messi .btn-inverse:hover {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.messi .btn-primary.active,
+.messi .btn-warning.active,
+.messi .btn-danger.active,
+.messi .btn-success.active,
+.messi .btn-info.active,
+.messi .btn-inverse.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.messi .btn {
+  border-color: #ccc;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+.messi .btn-success {
+  background-color: #5bb75b;
+  *background-color: #51a351;
+  background-image: -ms-linear-gradient(top, #62c462, #51a351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+  background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+  background-image: -o-linear-gradient(top, #62c462, #51a351);
+  background-image: -moz-linear-gradient(top, #62c462, #51a351);
+  background-image: linear-gradient(top, #62c462, #51a351);
+  background-repeat: repeat-x;
+  border-color: #51a351 #51a351 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#62c462', endColorstr='#51a351', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.messi .btn-success:hover,
+.messi .btn-success:active,
+.messi .btn-success.active,
+.messi .btn-success.disabled,
+.messi .btn-success[disabled] {
+  background-color: #51a351;
+  *background-color: #499249;
+}
+
+.messi .btn-success:active,
+.messi .btn-success.active {
+  background-color: #408140 \9;
+}
+
+.messi button {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+button.messi .btn::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}

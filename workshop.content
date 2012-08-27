@@ -2,7 +2,15 @@
 % Lyza Gardner
 % September 6, 2012
 
-# Our Devices
+# Part 0: Setting the scene
+
+-------------------------------------------------------------------------------
+
+## This magical web world
+
+> "Be not afeard; the isle is full of noises." —*The Tempest*, Act III, Scene 2, Wm. Shakespeare
+
+## Our Devices
 
 * BlackBerry 8320 Curve v4.5.0.81 (native browser). Our project manager Megan's old phone. Hardware keyboard and pointer.
 * BlackBerry 9670 Style v6.0.0.123 (native browser). BlackBerry flip phone.
@@ -15,17 +23,18 @@
 * [Opera Mini simulator](http://www.opera.com/developer/tools/mini/)
 * Kindle Fire tablet v6.3 native browser 
 
+
 -------------------------------------------------------------------------------
 
 # Part 1. Starting from scratch
 
--------------------------------------------------------------------------------
-
 ## Starting with nothing
 
-> "Be not afeard; the isle is full of noises." —*The Tempest*, Act III, Scene 2, Wm. Shakespeare
+To set our stage, our scene, our story today, we are going to start from a fresh slate, as if we are building a web project from scratch.
 
--------------------------------------------------------------------------------
+#### Real world moment
+
+The options for truly starting from scratch, with no legacy or history, are limited. But let's pretend we have that luxury.
 
 ## So many options
 
@@ -41,11 +50,9 @@ When we start from scratch, we have so many choices to make.
 
 Mobile web development has a complicated and somewhat mysterious history.
 
--------------------------------------------------------------------------------
 
 ## NEED TO FLESH OUT HIGH-LEVEL SLIDES HERE 
 
--------------------------------------------------------------------------------
 
 ## The evolution of mobile markup and options
 
@@ -60,6 +67,8 @@ Mobile web development has a complicated and somewhat mysterious history.
 * XHTML-Basic
 
 ## XHTML-MP
+
+XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like experience (certainly better than WAP/WML!) tailored to a mobile environment.
 
 ### DOCTYPES
 
@@ -107,7 +116,7 @@ Mobile web development has a complicated and somewhat mysterious history.
 
 #### Good enough for jazz: HTML5 is usually OK
 
-#### Beware: Informal HTML5 might cause choking
+#### Beware!: Informal HTML5 might cause choking
 
 #### Hold that thought: Issues with HTML5 support
 
@@ -120,6 +129,10 @@ Mobile web development has a complicated and somewhat mysterious history.
 
 #### Theme: Choice
 
+#### Pro Tip
+
+HTML5 is acceptable for most things, these days.
+
 -------------------------------------------------------------------------------
 
 ## Options in markup and semantics
@@ -130,13 +143,14 @@ Mobile web development has a complicated and somewhat mysterious history.
 * Adaptability is key
 * CMSes are the evil
 
+#### Theme: Content
+
+
 #### Handout
 
 ##### References
 
 * [Karen McGrane][mcgrane] is a leader in adaptive content and adaptive mobile content.
-
-#### Theme: Content
 
 -------------------------------------------------------------------------------
 
@@ -162,6 +176,7 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 ##### References
 
 * I gave a talk about the kind of adaptive content driving this approach at [Mobilism 2012][mobilism]. See my deck [Cutting Through the Crap: The Essence of Content on the Future Web][cut-crap]
+* [Cloud Four's current site](http://cloudfour.com) is built in this way.
 
 -------------------------------------------------------------------------------
 
@@ -186,7 +201,7 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
     </dd>
 ~~~
 
-#### Theme: Philosophy
+#### Theme: Choice
 
 -------------------------------------------------------------------------------
 
@@ -213,18 +228,21 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 
 -------------------------------------------------------------------------------
 
+## So what are we building today?
+
+I was inspired by my iminent viewing of Shakespeare's *The Tempest* in Stratford-upon-Avon. I thought it might be nice to have a web-based refernce of the text of the play in a handsome, device-friendly, readable way.
+
+Sure, there's lots of places I can find Shakespeare's content online, but none of it quite satisfies me aesthetically or on my different devices. So I thought I'd reinvent the wheel a bit.
+
+Our little project today involves Act III, Scene 2...
+
 ## Exercise
 
-Exploring the feel of unstyled, basic HTML5 content in different devices and browsers. Urge folks to load page on their own phones. Those without devices could hit the opera simulator.
+Like I said, we're starting from scratch today. With super basic HTML5 markup. I've created a basic HTML page with the content of the 2nd scene of Act III from *The Tempest*.
 
-* http://www.opera.com/developer/tools/mini/
+There is no styling, no nothing on this page so far. And yet, if you explore it on various devices and browsers, you'll find that it starts out, even in its most basic form, feeling quite different in different places.
 
-### Notes
-
-* What looks the same? Different?
-* Fonts? Zoom level? Margins?
-* Titles?
-* Interfaces?
+### [Exercise 1: Exploring the baseline](exercises/101-explore)
 
 -------------------------------------------------------------------------------
 
@@ -232,8 +250,6 @@ Exploring the feel of unstyled, basic HTML5 content in different devices and bro
 
 * Mobile web development demands the revisiting of design and development processes
 * Get into the browser early and often
-
-#### Theme: Process Evolution
 
 #### Hold that Thought: More to come on process
 
@@ -1554,33 +1570,54 @@ Step 1 is easy enough. Just need to add some HTML markup and some styles for it.
 
 etc.
 
+TODO drawing showing mapping of gloss item to gloss content.
+
 ## Step 1: Some styles
 
 ~~~{.css}
 ol {
   list-style-type: decimal;
   margin : .5em 0;
+  line-height: 1.25em;
 }
-
 ol li {
-  margin: .5em;
+  margin: .5em 2em;
 }
-
 sup {
   position : relative;
-  top: -.35em;
-  font-size : .85em;
-  padding: .125em;
+  top      : -.5em;
+  font-size: .75em;
+  color    : #888;
+  padding  : .125em;
 }
-/* Glossary styles */
 .glossary {
-  float: none;
+  float : none;
   clear : both;
 }
 .glossary em {
   font-style : italic;
 }
 ~~~
+
+## As an added bonus...
+
+Threw in some CSS columns:
+
+~~~{.css}
+@media all and (min-width: 50em) {
+  /* ... */
+  .glossary ol {
+    -moz-column-count   : 2;
+    -moz-column-gap     : 1.5em;
+    -webkit-column-count: 2;
+    -webkit-column-gap  : 1.5em;
+    column-count        : 2;
+    column-gap          : 1.5em;
+  }
+}
+~~~
+
+### Why didn't I use the CSS Columns test in Modernizr before using this style?
 
 ## And now we have our baseline
 
@@ -1592,12 +1629,71 @@ At this point, we stop and test on our supported devices*.
 
 We're going to have an extravaganza of testing discussion soon.
 
+## An updated baseline
+
+![BlackBerry 9670](presenter-exercises/500-glossed/images/9670.png)
+
+![Nokia N8](presenter-exercises/500-glossed/images/nokia-n8.png)
+
+![Opera Mini on iPhone](presenter-exercises/500-glossed/images/iphone-opera.png)
+
+## Notice tablets
+
+![iPad](presenter-exercises/500-glossed/images/ipad.png)
+
+![iPad](presenter-exercises/500-glossed/images/ipad.png)
+
+## Both iPad and Fire support CSS Columns
+
+![Kindle Fire](presenter-exercises/500-glossed/images/fire.png)
+
+
 ## Step 2: Enhancing the glossed items
 
 1. We'll be needing the jQuery library for everyone now, not just browsers that have the wider-screen media query applied—we need to take the conditional loading via `yepnope` away.
-1. I'm somewhat randomly going to select the "Messi" jQuery plugin for popups/modals. We'll need to include that JavaScript in our page and its CSS in our CSS.
+1. I'm somewhat randomly going to select the ["Messi"](http://marcosesperon.es/apps/messi) jQuery plugin for popups/modals. We'll need to include that JavaScript in our page and its CSS in our CSS.
 1. We'll need to write a bit of jQuery JavaScript to convert our glossary entries into popup modals and make the glossed items tappable.
-1. We'll want to update our styles again to add classes for enhanced glossary items.
+
+## Part A: Re-futzing our JavaScript
+
+~~~
+<script src="Modernizr.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="gloss.js"></script>
+<script>
+  $(document).ready(function() {
+    if (Modernizr.generatedcontent && Modernizr.mq('only all and (min-width:50em)')) {
+      $('html.generatedcontent span.line').filter(function(index) {
+        return (((index + 1) % 10 == 0) && index > 0);
+      }).addClass('line-number');
+    }
+  });
+</script>
+~~~
+
+1. Including jQuery for everyone
+1. Creating JavaScript for glossary items (`gloss.js`)
+1. Line-number jQuery still here
+
+## Part B and C: Messi jQuery Plugin, Glossary JavaScript
+
+#### `gloss.js`
+
+~~~{.javascript}
+function Messi(a,b) { ... } /* Minified Messi JS */
+
+$(document).ready(function() {
+  $('.glossary ol li').each(function(index) {
+    $('span[data-gloss="' + $(this).attr('id') + '"]').click(function() {
+      var $content = $('li#' + $(this).attr('data-gloss')).html();
+      new Messi($content, { title: 'Glossary' });
+    });
+  });
+});
+~~~
+
+Finally, added a bunch of styles to the end of `styles.css`: Messi's CSS.
+
 
 ## Bleh
 
@@ -1606,6 +1702,224 @@ As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pix
 Also, we need to add some styles of our own to indicate that the glossed items are tappable.
 
 #### Theme: Performance optimization
+
+The Messi CSS, lifted from Twitter Bootstrap, contains over 500 lines of CSS (more than twice the length of all of the rest of our CSS). There are many rules that aren't getting used, and a lot of pixel dimensions and gradients and animations and whatnot.
+
+(What do you think? When should we stop using vendor prefixes and move to standard property names only?)
+
+## Screen shots
+
+## Refactor the CSS
+
+* I culled the Messi CSS by about 250 lines, removing unused styles and minimizing certain CSS effects.
+* I did leave in some of the button gradients and button transition effects, some opacity things and some text styling and shadows.
+
+## Making the popups somewhat responsive
+
+So, we need to size the popups to fit different window sizes. Messi allows you to define a width for your popups:
+
+* Percentage widths seem appealing, but don't center in the window and look a bit ugly.
+* So we need to determine what the correct width is before launching the popup: getting the width of the screen is not as straightforward as it sounds.
+
+## Viewports again
+
+Here's some pre-baked code to get a reasonably approximate window width:
+
+~~~{.javascript}
+function viewport() {
+  return { width: window.innerWidth || 
+          (document.documentElement || document.body).clientWidth, 
+         height: window.innerHeight || 
+          (document.documentElement || document.body).clientHeight};
+}
+~~~
+
+## Updating our gloss.js
+
+This is what we have now:
+
+~~~~{.javascript}
+$(document).ready(function() {
+  $('.glossary ol li').each(function(index) {
+    $('span[data-gloss="' + $(this).attr('id') + '"]').click(function() {
+      var $content = $('li#' + $(this).attr('data-gloss')).html();
+      new Messi($content, { title: 'Glossary' });
+    });
+  });
+});
+~~~~
+
+## Updating our gloss.js
+
+~~~~{.javascript}
+$(document).ready(function() {
+  var popupWidth       = viewport().width - 30;
+  popupWidth           = (popupWidth > 500) ? 500 : popupWidth;
+  $('.glossary ol li').each(function(index) {
+    $('span[data-gloss ="' + $(this).attr('id') + '"]').addClass('gloss-item').click(function() {
+      var $content     = $('li#' + $(this).attr('data-gloss')).html();
+      new Messi($content, { title: 'Glossary', 
+                            modal: true,
+                            width: popupWidth + 'px',
+                            buttons: [ { id: 'close-gloss-' + $(this).attr('data-gloss'),
+                                        label: 'Close' },
+                                       { id: 'save-gloss-' + $(this).attr('data-gloss'),
+                                        label: 'Save',
+                                        val: 'save',
+                                        btnClass: 'btn-success' }]
+                });
+    });
+  });
+  function viewport() { /** ... **/  }
+});
+~~~~
+
+## Nuances in a world of clicks and touches
+
+We need to suggest, visually, that the glossed items are clickable (desktop) or tap-able (touch devices). We can start with:
+
+~~~{.css}
+span.gloss-item {
+  border-bottom: 1px dashed #dcc;
+}
+span.gloss-item:hover,
+span.gloss-item:active {
+  color: #d94343;
+  cursor: pointer;
+}
+~~~
+
+And then update our JavaScript a teensy bit to assign the `.gloss-item` class as part of our initialization process for the glossary popups:
+
+~~~{.javascript}
+$('.glossary ol li').each(function(index) {
+  $('span[data-gloss ="' + $(this).attr('id') + '"]').addClass('gloss-item').click(function() {
+    /* ... */
+  });
+  /* ... */
+});
+~~~
+
+## It's a start
+
+* The :hover styling helps emphasize the click-ability of the spans, at least on desktop devices.
+* But tapping on the spans can feel a bit cramped on touch devices. Our fingers need more room!
+
+Let's add one more line to our JavaScript, at the end of the glossary-setup loop:
+
+~~~{.javascript}
+$('html').addClass('glossed');
+~~~
+
+Now we have `html.glossed` as a class indicating that we have a JS-driven glossary going on.
+
+## Adjusting for touch
+
+~~~{.css}
+.glossed .scene {
+  /* More line height for narrow/baseline
+     when glossary items are active. */
+  line-height     : 1.5em;
+}
+/* ... */
+@media all and (min-width: 50em) {
+  /* But we don't really need more room
+     on wider screens, desktops */
+  .scene, .glossed .scene {
+    line-height: 1.3333em;
+    float: left;
+    counter-reset: line-count;
+  }
+}
+~~~
+
+## That's pretty nice
+
+
+## The elephant in everyone's room: performance
+
+* This glossary stuff works swimmingly on newer iOS devices, decent Androids, the Nokia N8, the Kindle Fire, and on the newest BlackBerrys.
+* It's borderline on BlackBerry 6 devices.
+* It's almost frustratingly slow on old Android (<2).
+
+### Why?
+
+* DOM processing
+* JS inefficencies
+* Complex CSS
+* Slower hardware
+* Less sophisticated browsers
+
+## How could one make it better
+
+* Rolling your own JavaScript for the popups instead of relying on a third-party, handsome, but potentially draining library
+* Reducing or eliminating performance-hammering CSS (gradients, box and text shadows, transitions) altogether
+* Profiling the JavaScript
+* Cooking up a combination of feature- or UA-detection that indicates a "lesser" class of devices and disabling this feature on them.
+
+#### Theme: Choice
+
+## Client-side programming from scratch can be hard
+
+It can get tiring if, every time you need to implement something, you have to build it from scratch. Even if you take that route, building up your own library of re-usable components and keeping them maintained as the mobile landscape sways so wildly beneath you can be challenging if not impossible.
+
+Messi is a good example of the pros and cons of a third-party tool.
+
+## Frameworks
+
+## What frameworks do for us
+
+* Often a combination of UI framework and development framework
+* Solve common issues and help with cross-platform support:
+    * "Mobile-like" layout vis-a-vis viewport normalization, responsive breakpoints and the like.
+    * "Mobile-like" UI elements: buttons, nav bars, fixed-position toolbars, form inputs.
+    * Emulation of "native-like" transitions between screens and views.
+    * Navigation and AJAX loading of elements, often using the History API and pushState.
+    * Abstraction layers to simplify coding against device APIs.
+
+## Popular mobile web frameworks
+
+* jQuery Mobile
+* Sencha Touch
+* [The M Project](http://the-m-project.net/)
+* [DHTMLX Touch](http://www.dhtmlx.com/touch/)
+* [SproutCore](http://sproutcore.com/)
+
+## Framework and library pros and cons
+
+### Pros
+
+* Speeds development time, sometimes massively
+* Great for prototyping
+* (Greatly) eases cross-platform gotchas
+* Maintained (often) by communities who are hyper-focused on specific issues (so you don't have to be)
+* Provides UI elements to use as baselines
+
+### Cons
+
+* Often heavy, large, performance-draining
+* Might not support the devices you need to
+* Native UI emulation or consistent UI metaphors can encourage bland or awkward web apps
+* Can be difficult to customize
+
+## A balanced approach
+
+Sometimes, there is a third option between framework and from-scratch. Using third-party *libraries* to solve specific issues in your development can often be a boon.
+
+An example: AJAX-rich navigation, with dynamically-loaded content, using the History API to enable the proper usage of back buttons and refresh.
+
+* Framework options: jQuery Mobile, Sencha Touch, etc.
+* Another way: Lightweight JavaScript library like asfar.js
+
+#### Pro Tip
+
+Try to isolate the issue or issues you really want to solve and find a more focused library or tool to solve that problem. Try to have a good understanding of how the library or tool you end up selecting *works*.
+
+
+
+-------------------------------------------------------------------------------
+
+# Part VI: The State of the Web (HTML5, APIs and whatnot)
 
 ## State of the APIs
 

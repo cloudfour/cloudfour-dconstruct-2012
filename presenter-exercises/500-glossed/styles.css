@@ -221,12 +221,12 @@ span.song {
     clear: right;
   }
   .glossary ol {
-    -moz-column-count: 2;
-    -moz-column-gap: 1.5em;
+    -moz-column-count   : 2;
+    -moz-column-gap     : 1.5em;
     -webkit-column-count: 2;
-    -webkit-column-gap: 1.5em;
-    column-count: 2;
-    column-gap: 1.5em;
+    -webkit-column-gap  : 1.5em;
+    column-count        : 2;
+    column-gap          : 1.5em;
   }
   html.generatedcontent span.line-number:after {
     float: right;

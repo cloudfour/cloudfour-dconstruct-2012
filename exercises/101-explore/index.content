@@ -2,7 +2,7 @@
 
 Review a most simplified HTML5 page in various browsers and devices to get a feel for the baseline in a bunch of different places.
 
-1. Load and view the first version of the [scene from *The Tempest*](tempest.html) in browsers that you have with you. Desktop, any devices. You can also find this web page hosted externally at <http://lyzadanger.com/d/101>.
+1. Load and view the first version of the [scene from *The Tempest*](tempest.html) in browsers that you have with you. Desktop, laptop, tablets, phones—any device. You can also find this web page hosted externally at <http://lyzadanger.com/d/101>.
 2. Review screen shots of the same page rendered in various devices (below).
 3. Try out the [Opera Mini simulator](http://www.opera.com/developer/tools/mini/) (load up the version at <http://lyzadanger.com/d/101>).
 
@@ -19,15 +19,10 @@ Review a most simplified HTML5 page in various browsers and devices to get a fee
 * [iPhone 4](images/iphone.png)
 * [Opera Mini on iPhone 4](images/iphone-opera.png)
 
-#### Pro Tips
+## Questions for thought
 
-1. The Opera Mini Simulator is a great tool
-1. Screen shots from (all versions of) Android? Do this:
-    1. Install the Android SDK
-    1. Make sure to install `platform-tools`
-    1. Connect the Android device in question to USB
-    1. In the Android SDK directory, find `ddms` under `tools` and launch it (You can also run `ddms` from a Terminal window in most Android SDK installs).
-    1. Find the connected device in the `Dalvik Debug Monitor` window and use Device -> Capture Screen... to do a screen grab. [Here's a screenshot](images/ddms.png).
-
-
-
+* What similarities do you see?
+* What differences?
+* Consider: overall page size, zoom level, fonts, headings
+* What about default layout rendering: margins, padding, etc.?
+* Anything else?
