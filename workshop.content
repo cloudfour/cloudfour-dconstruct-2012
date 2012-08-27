@@ -19,7 +19,7 @@
 * Motorola Backflip Android 1.5 (Motorola Blur Build)
 * iPhone 4 iOS 5.1.1 native Safari browser
 * iPhone 4 iOS 5.1.1 Opera Mini
-* Nokia N8 Windows Phone native browser (version?)
+* Nokia N8 Windows Phone 7.5 Internet Explorer
 * [Opera Mini simulator](http://www.opera.com/developer/tools/mini/)
 * Kindle Fire tablet v6.3 native browser 
 
@@ -51,7 +51,7 @@ When we start from scratch, we have so many choices to make.
 Mobile web development has a complicated and somewhat mysterious history.
 
 
-## NEED TO FLESH OUT HIGH-LEVEL SLIDES HERE 
+## TODO: Move over high-level slides
 
 
 ## The evolution of mobile markup and options
@@ -116,7 +116,15 @@ XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like
 
 #### Good enough for jazz: HTML5 is usually OK
 
-#### Beware!: Informal HTML5 might cause choking
+
+## Informal HTML5 might cause choking
+
+* Mobile browsers are less tolerant of invalid code of any stripe: validate, validate, validate [W3C Validator][w3c-validator]
+* HTML5's inherent less formal spec can get us into trouble with mobile browsers.
+
+### Example
+
+Once I had an HTML5 page. I had validated it using the W3C validator. It passed. I kept getting reports that the page showed up as just a blank screen on certain Androids. Turns out I had an opening `<body>` tag but not a closing one. HTML5 is cool with this. But the Android browser didn't tolerate it.
 
 #### Hold that thought: Issues with HTML5 support
 
@@ -250,6 +258,7 @@ There is no styling, no nothing on this page so far. And yet, if you explore it 
 
 * Mobile web development demands the revisiting of design and development processes
 * Get into the browser early and often
+* You'll hear this a lot today: tight iterations
 
 #### Hold that Thought: More to come on process
 
@@ -262,7 +271,9 @@ There is no styling, no nothing on this page so far. And yet, if you explore it 
 
 #### Good enough for jazz: Basic support is good but not infallible
 
-#### Beware: These CSS gotchas in older devices
+#### Beware!
+
+As we start thinking about adding some basic CSS, keep in mind these challenging areas in older devices/browsers. They can trip you up:
 
 * Background: colors, positioning, images
 * Positioning
@@ -324,6 +335,14 @@ Before we get beyond where we are with overall layout and control, let's talk ab
 * CSS Reset
 * Viewport tag
 
+#### Pro Tip
+
+By resetting our CSS and normalizing our viewport, we bring disparate browsers more into a common frame of reference.
+
+#### Handout
+
+[Eric Meyer's Reset CSS](http://meyerweb.com/eric/tools/css/reset/) is industry-standard.
+
 -------------------------------------------------------------------------------
 
 ## Font baseline
@@ -336,18 +355,27 @@ Before we get beyond where we are with overall layout and control, let's talk ab
 
 ## The variations abound!
 
-It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like:
-
 ![](exercises/101-explore/images/9670.png)
+
+It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like. Recall that user or client default stylesheets can be part of the game you're playing. Another place where CSS resets can help.
 
 -------------------------------------------------------------------------------
 
 ## Other things to consider with basic CSS
 
-* Font differences: size, faces
-* DOCTYPES
+* Font differences: Though we're armed with a CSS font reset, it's important to understand that fonts on devices are challenging:
+    * Not all devices "conform" to the 16px ~= 1em rule of thumb. Example: Kindle Touch.
+    * Devices often have a very limited set of system fonts. e.g. Windows phones have a number of Windows-Phone-specific fonts that are rather decent-looking but different from our familiar Georgia and Helvetica (etc.).
+* DOCTYPES: Somewhat confusingly, different DOCTYPEs can cause some browsers to use different CSS layout algorithms. Example: Opera Mini's box model is slightly different in XHTML-MP vs. HTML5.
+* HTML `title`s. Pay attention to the title of the HTML page as we look at some screenshots. I changed it.
 
 #### Exercise! Getting ur baselines going
+
+#### Handout
+
+* I talk a bit about the Kindle Touch's font size differences in [this post on our blog](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/). "Sadly," I left that Kindle Touch on a flight from Ireland to Amsterdam a few months ago and, tragically, AerLingus couldn't find it.
+* There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of [our book](http://bit.ly/hf-mw)
+
 
 -------------------------------------------------------------------------------
 
@@ -355,17 +383,27 @@ It's a bit difficult to tell from this not-so-great photo, but the background co
 
 ![BlackBerry 8320](exercises/102-baseline/images/8320.png)
 
+Note the lack of any margins/padding on the `<section>` elements. This older (4.5) BlackBerry doesn't understand the new HTML5 semantic elements and isn't applying any styles to them.
+
+My updated `title` means that even though some of it is getting cut off, we still see the most relevant pieces first.
+
+#### Hold that thought: HTML5 support in older browsers
+
 -------------------------------------------------------------------------------
 
 ## Exercise 102
 
 ![Motorola BackFlip](exercises/102-baseline/images/backflip.png)
 
+This Android 1.5 browser does a decent job of handling HTML5 elements and dealing with basic styling. Its fonts aren't that much fun to look at.
+
 -------------------------------------------------------------------------------
 
 ## Exercise 102
 
 ![Kindle Fire](exercises/102-baseline/images/fire.png)
+
+We've set our `viewport` but the Fire simply has more CSS pixels to work with that our smaller devices.
 
 -------------------------------------------------------------------------------
 
@@ -375,6 +413,8 @@ It's a bit difficult to tell from this not-so-great photo, but the background co
 
 ![Opera Mini on iPhone](exercises/102-baseline/images/iphone-opera.png)
 
+Same font, same font size, same device, slightly different results in different browsers.
+
 -------------------------------------------------------------------------------
 
 ## Exercise 102
@@ -383,48 +423,28 @@ It's a bit difficult to tell from this not-so-great photo, but the background co
 
 ![Nexus S: FireFox](exercises/102-baseline/images/nexus-firefox.png)
 
+Nearly identical.
+
 -------------------------------------------------------------------------------
 
 ## Exercise 102
 
 ![Nokia N8](exercises/102-baseline/images/nokia-n8.png)
 
--------------------------------------------------------------------------------
-
-## So what?
-
-### Some things to think about
-
-* Complexity of simplicity
-* What does the word *device* mean?
-* Importance of care and organization
-* And the world is nowhere near this simple
+Nothing significant to report!
 
 -------------------------------------------------------------------------------
 
-## Tools and Tips
+## Now we have our baseline
 
-* Validate, validate, validate [W3C Validator][w3c-validator]
-* Start simple, when possible
-* Embrace variation
+* By starting simple, we really understand most of what's going on here
+* And yet, there is still so much differentiation!
+* And of course, the real web pages of the world are far more complex...
 
-TODO
+### For your consideration
 
-## CSS Organization
-
-* Reference to Snook, SMACSS
-* Options
-* Touch on pre-compilers?
-* Hold that thought: precompilers
-
-## Pro Tips
-
-* Don't chase down every form factor
-* Don't assume or assert more control than you have or is necessary
-* Don't start from the top
-* Don't ignore mobile issues
-* Don't ignore the import of serious talent in HTML, CSS and JavaScript
-
+* What does the word *device* mean? *Browser*? *Client*? *User agent*? How does our usage of these terms cause confusion?
+* How many of the differences spotted did you anticipate? What surprised you?
 
 --------------------------------------------------------------------------
 

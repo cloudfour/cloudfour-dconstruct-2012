@@ -57,7 +57,7 @@ Lyza Gardner
 <li>Motorola Backflip Android 1.5 (Motorola Blur Build)</li>
 <li>iPhone 4 iOS 5.1.1 native Safari browser</li>
 <li>iPhone 4 iOS 5.1.1 Opera Mini</li>
-<li>Nokia N8 Windows Phone native browser (version?)</li>
+<li>Nokia N8 Windows Phone 7.5 Internet Explorer</li>
 <li><a href="http://www.opera.com/developer/tools/mini/">Opera Mini simulator</a></li>
 <li>Kindle Fire tablet v6.3 native browser</li>
 </ul>
@@ -82,8 +82,8 @@ Lyza Gardner
 <li>Adaptation of existing web site</li>
 </ul>
 <p>Mobile web development has a complicated and somewhat mysterious history.</p>
-</div><div class="section slide level2" id="need-to-flesh-out-high-level-slides-here">
-<h1 id="need-to-flesh-out-high-level-slides-here">NEED TO FLESH OUT HIGH-LEVEL SLIDES HERE</h1>
+</div><div class="section slide level2" id="todo-move-over-high-level-slides">
+<h1 id="todo-move-over-high-level-slides">TODO: Move over high-level slides</h1>
 </div><div class="section slide level2" id="the-evolution-of-mobile-markup-and-options">
 <h1 id="the-evolution-of-mobile-markup-and-options">The evolution of mobile markup and options</h1>
 <h3 id="wml-xhtml-mp...">WML, XHTML-MP...</h3>
@@ -137,7 +137,14 @@ Lyza Gardner
 <li>No studies I know of using non-MP XHTML-variant doctypes.</li>
 </ul>
 <h4 id="good-enough-for-jazz-html5-is-usually-ok">Good enough for jazz: HTML5 is usually OK</h4>
-<h4 id="beware-informal-html5-might-cause-choking">Beware!: Informal HTML5 might cause choking</h4>
+</div><div class="section slide level2" id="informal-html5-might-cause-choking">
+<h1 id="informal-html5-might-cause-choking">Informal HTML5 might cause choking</h1>
+<ul>
+<li>Mobile browsers are less tolerant of invalid code of any stripe: validate, validate, validate <a href="http://validator.w3c.org">W3C Validator</a></li>
+<li>HTML5's inherent less formal spec can get us into trouble with mobile browsers.</li>
+</ul>
+<h3 id="example">Example</h3>
+<p>Once I had an HTML5 page. I had validated it using the W3C validator. It passed. I kept getting reports that the page showed up as just a blank screen on certain Androids. Turns out I had an opening <code>&lt;body&gt;</code> tag but not a closing one. HTML5 is cool with this. But the Android browser didn't tolerate it.</p>
 <h4 id="hold-that-thought-issues-with-html5-support">Hold that thought: Issues with HTML5 support</h4>
 </div><div class="section slide level2" id="theres-more-than-one-way-to...">
 <h1 id="theres-more-than-one-way-to...">There's more than one way to...</h1>
@@ -235,6 +242,7 @@ Lyza Gardner
 <ul>
 <li>Mobile web development demands the revisiting of design and development processes</li>
 <li>Get into the browser early and often</li>
+<li>You'll hear this a lot today: tight iterations</li>
 </ul>
 <h4 id="hold-that-thought-more-to-come-on-process">Hold that Thought: More to come on process</h4>
 </div><div class="section slide level2" id="basic-support-is-good">
@@ -244,7 +252,8 @@ Lyza Gardner
 <li>But we're going to move beyond that...</li>
 </ul>
 <h4 id="good-enough-for-jazz-basic-support-is-good-but-not-infallible">Good enough for jazz: Basic support is good but not infallible</h4>
-<h4 id="beware-these-css-gotchas-in-older-devices">Beware: These CSS gotchas in older devices</h4>
+<h4 id="beware">Beware!</h4>
+<p>As we start thinking about adding some basic CSS, keep in mind these challenging areas in older devices/browsers. They can trip you up:</p>
 <ul>
 <li>Background: colors, positioning, images</li>
 <li>Positioning</li>
@@ -295,6 +304,10 @@ Lyza Gardner
 <li>CSS Reset</li>
 <li>Viewport tag</li>
 </ul>
+<h4 id="pro-tip-1">Pro Tip</h4>
+<p>By resetting our CSS and normalizing our viewport, we bring disparate browsers more into a common frame of reference.</p>
+<h4 id="handout-4">Handout</h4>
+<p><a href="http://meyerweb.com/eric/tools/css/reset/">Eric Meyer's Reset CSS</a> is industry-standard.</p>
 </div><div class="section slide level2" id="font-baseline">
 <h1 id="font-baseline">Font baseline</h1>
 <h4 id="rule-of-thumb-font-reset">Rule of thumb: font reset</h4>
@@ -303,32 +316,47 @@ Lyza Gardner
 </div>
 </div><div class="section slide level2" id="the-variations-abound">
 <h1 id="the-variations-abound">The variations abound!</h1>
-<p>It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like:</p>
 <div class="figure">
 <img src="exercises/101-explore/images/9670.png" /><p class="caption"></p>
 </div>
+<p>It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like. Recall that user or client default stylesheets can be part of the game you're playing. Another place where CSS resets can help.</p>
 </div><div class="section slide level2" id="other-things-to-consider-with-basic-css">
 <h1 id="other-things-to-consider-with-basic-css">Other things to consider with basic CSS</h1>
 <ul>
-<li>Font differences: size, faces</li>
-<li>DOCTYPES</li>
+<li>Font differences: Though we're armed with a CSS font reset, it's important to understand that fonts on devices are challenging:
+<ul>
+<li>Not all devices &quot;conform&quot; to the 16px ~= 1em rule of thumb. Example: Kindle Touch.</li>
+<li>Devices often have a very limited set of system fonts. e.g. Windows phones have a number of Windows-Phone-specific fonts that are rather decent-looking but different from our familiar Georgia and Helvetica (etc.).</li>
+</ul></li>
+<li>DOCTYPES: Somewhat confusingly, different DOCTYPEs can cause some browsers to use different CSS layout algorithms. Example: Opera Mini's box model is slightly different in XHTML-MP vs. HTML5.</li>
+<li>HTML <code>title</code>s. Pay attention to the title of the HTML page as we look at some screenshots. I changed it.</li>
 </ul>
 <h4 id="exercise-getting-ur-baselines-going">Exercise! Getting ur baselines going</h4>
+<h4 id="handout-5">Handout</h4>
+<ul>
+<li>I talk a bit about the Kindle Touch's font size differences in <a href="http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/">this post on our blog</a>. &quot;Sadly,&quot; I left that Kindle Touch on a flight from Ireland to Amsterdam a few months ago and, tragically, AerLingus couldn't find it.</li>
+<li>There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of <a href="http://bit.ly/hf-mw">our book</a></li>
+</ul>
 </div><div class="section slide level2" id="exercise-102">
 <h1 id="exercise-102">Exercise 102</h1>
 <div class="figure">
 <img src="exercises/102-baseline/images/8320.png" alt="BlackBerry 8320" /><p class="caption">BlackBerry 8320</p>
 </div>
+<p>Note the lack of any margins/padding on the <code>&lt;section&gt;</code> elements. This older (4.5) BlackBerry doesn't understand the new HTML5 semantic elements and isn't applying any styles to them.</p>
+<p>My updated <code>title</code> means that even though some of it is getting cut off, we still see the most relevant pieces first.</p>
+<h4 id="hold-that-thought-html5-support-in-older-browsers">Hold that thought: HTML5 support in older browsers</h4>
 </div><div class="section slide level2" id="exercise-102-1">
 <h1 id="exercise-102-1">Exercise 102</h1>
 <div class="figure">
 <img src="exercises/102-baseline/images/backflip.png" alt="Motorola BackFlip" /><p class="caption">Motorola BackFlip</p>
 </div>
+<p>This Android 1.5 browser does a decent job of handling HTML5 elements and dealing with basic styling. Its fonts aren't that much fun to look at.</p>
 </div><div class="section slide level2" id="exercise-102-2">
 <h1 id="exercise-102-2">Exercise 102</h1>
 <div class="figure">
 <img src="exercises/102-baseline/images/fire.png" alt="Kindle Fire" /><p class="caption">Kindle Fire</p>
 </div>
+<p>We've set our <code>viewport</code> but the Fire simply has more CSS pixels to work with that our smaller devices.</p>
 </div><div class="section slide level2" id="exercise-102-3">
 <h1 id="exercise-102-3">Exercise 102</h1>
 <div class="figure">
@@ -337,6 +365,7 @@ Lyza Gardner
 <div class="figure">
 <img src="exercises/102-baseline/images/iphone-opera.png" alt="Opera Mini on iPhone" /><p class="caption">Opera Mini on iPhone</p>
 </div>
+<p>Same font, same font size, same device, slightly different results in different browsers.</p>
 </div><div class="section slide level2" id="exercise-102-4">
 <h1 id="exercise-102-4">Exercise 102</h1>
 <div class="figure">
@@ -345,44 +374,24 @@ Lyza Gardner
 <div class="figure">
 <img src="exercises/102-baseline/images/nexus-firefox.png" alt="Nexus S: FireFox" /><p class="caption">Nexus S: FireFox</p>
 </div>
+<p>Nearly identical.</p>
 </div><div class="section slide level2" id="exercise-102-5">
 <h1 id="exercise-102-5">Exercise 102</h1>
 <div class="figure">
 <img src="exercises/102-baseline/images/nokia-n8.png" alt="Nokia N8" /><p class="caption">Nokia N8</p>
 </div>
-</div><div class="section slide level2" id="so-what">
-<h1 id="so-what">So what?</h1>
-<h3 id="some-things-to-think-about">Some things to think about</h3>
+<p>Nothing significant to report!</p>
+</div><div class="section slide level2" id="now-we-have-our-baseline">
+<h1 id="now-we-have-our-baseline">Now we have our baseline</h1>
 <ul>
-<li>Complexity of simplicity</li>
-<li>What does the word <em>device</em> mean?</li>
-<li>Importance of care and organization</li>
-<li>And the world is nowhere near this simple</li>
+<li>By starting simple, we really understand most of what's going on here</li>
+<li>And yet, there is still so much differentiation!</li>
+<li>And of course, the real web pages of the world are far more complex...</li>
 </ul>
-</div><div class="section slide level2" id="tools-and-tips">
-<h1 id="tools-and-tips">Tools and Tips</h1>
+<h3 id="for-your-consideration">For your consideration</h3>
 <ul>
-<li>Validate, validate, validate <a href="http://validator.w3c.org">W3C Validator</a></li>
-<li>Start simple, when possible</li>
-<li>Embrace variation</li>
-</ul>
-<p>TODO</p>
-</div><div class="section slide level2" id="css-organization">
-<h1 id="css-organization">CSS Organization</h1>
-<ul>
-<li>Reference to Snook, SMACSS</li>
-<li>Options</li>
-<li>Touch on pre-compilers?</li>
-<li>Hold that thought: precompilers</li>
-</ul>
-</div><div class="section slide level2" id="pro-tips">
-<h1 id="pro-tips">Pro Tips</h1>
-<ul>
-<li>Don't chase down every form factor</li>
-<li>Don't assume or assert more control than you have or is necessary</li>
-<li>Don't start from the top</li>
-<li>Don't ignore mobile issues</li>
-<li>Don't ignore the import of serious talent in HTML, CSS and JavaScript</li>
+<li>What does the word <em>device</em> mean? <em>Browser</em>? <em>Client</em>? <em>User agent</em>? How does our usage of these terms cause confusion?</li>
+<li>How many of the differences spotted did you anticipate? What surprised you?</li>
 </ul>
 </div><div class="section slide level2" id="section-1">
 <h1 id="section-1"></h1>
@@ -1100,7 +1109,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li><code>src</code> in <code>img</code> tag considered canonical.</li>
 <li>Named/classed media queries keep presentational media query syntax out of the markup (and have other benefits, IMHO!).</li>
 </ol>
-<h4 id="beware">Beware!</h4>
+<h4 id="beware-1">Beware!</h4>
 <p>This is a product of my imagination and probably represents a syntax that would conflict with older browsers, etc.</p>
 </div><div class="section slide level2" id="other-rwd-challenges">
 <h1 id="other-rwd-challenges">Other RWD Challenges</h1>
@@ -1125,7 +1134,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>What does it mean if a particular feature-testing tool reports that the <code>canvas</code> tag is supported?</li>
 <li>And even if @fontface is supported, should we send (potentially large) font files to mobile users?</li>
 </ul>
-<h4 id="beware-1">Beware!</h4>
+<h4 id="beware-2">Beware!</h4>
 <p>Don't get lulled into a false sense of clarity or confidence about feature testing.</p>
 </div><div class="section slide level2" id="rude-awakening-blackberry-style">
 <h1 id="rude-awakening-blackberry-style">Rude awakening, BlackBerry style</h1>
@@ -1362,7 +1371,7 @@ html<span class="fl">.generatedcontent</span> span<span class="fl">.line-number<
 <h1 id="but...">But...</h1>
 <p>Things got complicated quickly.</p>
 <p>One idea might be to look at the results of <code>Modernizr.touch</code> (an available test in Modernizr) and change the way selected text is handled based on that.</p>
-<h4 id="beware-2">Beware!</h4>
+<h4 id="beware-3">Beware!</h4>
 <p>What do you think it means when <code>Modernizr.touch</code> is <code>true</code>?</p>
 </div><div class="section slide level2" id="touch-events-and-touch-models-are-still-fractured-and-disparate">
 <h1 id="touch-events-and-touch-models-are-still-fractured-and-disparate">Touch events and touch models are still fractured and disparate</h1>
@@ -1699,7 +1708,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Framework options: jQuery Mobile, Sencha Touch, etc.</li>
 <li>Another way: Lightweight JavaScript library like asfar.js</li>
 </ul>
-<h4 id="pro-tip-1">Pro Tip</h4>
+<h4 id="pro-tip-2">Pro Tip</h4>
 <p>Try to isolate the issue or issues you really want to solve and find a more focused library or tool to solve that problem. Try to have a good understanding of how the library or tool you end up selecting <em>works</em>.</p>
 </div><div class="section slide level2" id="section-5">
 <h1 id="section-5"></h1>
@@ -1729,7 +1738,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Overall situation: still mostly sad</li>
 <li>One of the chief reasons we still reach for PhoneGap, etc.</li>
 </ul>
-<h4 id="beware-3">Beware!</h4>
+<h4 id="beware-4">Beware!</h4>
 <p>mediaCapture is really two things: * <a href="http://www.w3.org/TR/mediacapture-streams/">mediaCapture/Streams</a> aka getUserMedia aka chaos * <a href="http://www.w3.org/TR/html-media-capture/">HTMLInputElement</a></p>
 </div><div class="section slide level2" id="htmlinputelement-mediacapture">
 <h1 id="htmlinputelement-mediacapture">HTMLInputElement mediaCapture</h1>
