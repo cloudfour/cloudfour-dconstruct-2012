@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../../assets/css/workshop.css">
+</head>
+<body>
+<section class="level1" id="exercise-using-feature-detection-for-font-face-support">
+<h1>Exercise: Using feature detection for @font-face support</h1>
+<ol type="1">
+<li>Create and include a Modernizr script:
+<ol type="1">
+<li>Go to <a href="http://Modernizr.com"><code class="url">http://Modernizr.com</code></a> and click into the <code>Download</code> section.</li>
+<li>Build a Modernizr version that contains the following:
+<ol type="1">
+<li><code>@font-face</code> CSS3 test</li>
+<li>Leave the other options as default (but do make sure the <code>html5shiv</code> and <code>Add CSS Classes</code> are selected)</li>
+</ol></li>
+<li>Download this build and save in this directory as <code>Modernizr.js</code>.</li>
+</ol></li>
+<li>Include the script
+<ol type="1">
+<li>Edit <code>tempest.html</code> and add a <code>&lt;script&gt;</code> tag to include the <code>Modernizr.js</code> script you just created.</li>
+</ol></li>
+<li>Add the CSS. Edit <code>styles.css</code>
+<ol type="1">
+<li>Add the CSS below (all of the referenced font files are already in the <code>fonts</code> directory for you).</li>
+<li><strong>Make sure to</strong> add this CSS after the CSS reset rules, near the top of the baseline CSS (commented).</li>
+</ol></li>
+<li>View the results (<a href="tempest.html">tempest.html</a>) in any browser (mobile or otherwise).</li>
+</ol>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@font-face</span> <span class="kw">{</span>
+  <span class="kw">font-family:</span> <span class="st">&#39;sorts_mill_goudy&#39;</span><span class="kw">;</span>
+  <span class="kw">src:</span> <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-regular-webfont.eot&quot;</span><span class="dt">)</span><span class="kw">;</span>
+  <span class="kw">src:</span> <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-regular-webfont.eot?#iefix&quot;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&quot;embedded-opentype&quot;</span><span class="dt">)</span>, <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-regular-webfont.woff&quot;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&quot;woff&quot;</span><span class="dt">)</span>, <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-regular-webfont.ttf&quot;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&quot;truetype&quot;</span><span class="dt">)</span>, <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-regular-webfont.svg#sorts_mill_goudyregular&quot;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&quot;svg&quot;</span><span class="dt">)</span><span class="kw">;</span>
+  <span class="kw">font-weight:</span> <span class="dt">normal</span><span class="kw">;</span>
+  <span class="kw">font-style:</span> <span class="dt">normal</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+<span class="dv">@font-face</span> <span class="kw">{</span>
+  <span class="kw">font-family:</span> <span class="st">&#39;sorts_mill_goudy&#39;</span><span class="kw">;</span>
+  <span class="kw">src:</span> <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-italic-webfont.eot&quot;</span><span class="dt">)</span><span class="kw">;</span>
+  <span class="kw">src:</span> <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-italic-webfont.eot?#iefix&quot;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&quot;embedded-opentype&quot;</span><span class="dt">)</span>, <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-italic-webfont.woff&quot;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&quot;woff&quot;</span><span class="dt">)</span>, <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-italic-webfont.ttf&quot;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&quot;truetype&quot;</span><span class="dt">)</span>, <span class="dt">url(</span><span class="st">&quot;fonts/sortsmillgoudy-italic-webfont.svg#sorts_mill_goudyitalic&quot;</span><span class="dt">)</span> <span class="dt">format(</span><span class="st">&quot;svg&quot;</span><span class="dt">)</span><span class="kw">;</span>
+  <span class="kw">font-weight:</span> <span class="dt">normal</span><span class="kw">;</span>
+  <span class="kw">font-style:</span> <span class="dt">italic</span><span class="kw">;</span>
+<span class="kw">}</span>
+
+html<span class="fl">.fontface</span> <span class="kw">{</span>
+  <span class="kw">font-family:</span> <span class="st">&quot;sorts_mill_goudy&quot;</span>, Georgia, <span class="dt">serif</span><span class="kw">;</span>
+  <span class="kw">font-weight:</span> <span class="dt">normal</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<section class="level3" id="for-your-consideration">
+<h3>For your consideration</h3>
+<ul>
+<li>Where does <code>html.fontface</code> come from?</li>
+<li>Why are there two @font-face rules for a single font?</li>
+</ul>
+</section>
+</section>
+</body>
+</html>
