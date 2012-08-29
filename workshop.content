@@ -1044,6 +1044,8 @@ So, we've got what seems like a solid baseline for narrow screens and a single b
 
 ![](assets/images/desktop-rwd.png)
 
+![FireFox on Nexus S (Android 4)](presenter-exercises/203-media-queries/images/firefox-nexus.png)
+
 ## Hot mess in IE
 
 But it's a hot mess in IE8. What gives?
@@ -1064,7 +1066,6 @@ TODO: BB 8320 Screen shot
 
 ### IE conditional tags
 
-TODO: Steve Souders performance concern
 
 ~~~~{.css}
 <link rel="stylesheet" type="text/css" href="taps.css" />
@@ -1080,6 +1081,10 @@ TODO: Steve Souders performance concern
 * CSS3MediaQueries.js: <http://code.google.com/p/css3-mediaqueries-js/>
 
 Respond is faster, but only contains a subset of CSS support. Start with it.
+
+### Handout
+
+* Advanced performance note: [IE conditional tags can block downloads, hampering performance](http://www.phpied.com/conditional-comments-block-downloads/)
 
 ## Updating our web page
 
@@ -1101,7 +1106,10 @@ Respond is faster, but only contains a subset of CSS support. Start with it.
 
 ![](assets/images/ie8-hot-mess2.png)
 
-Turns out there's another problem here: lack of HTML5 element support.
+* Turns out there's another problem here: lack of HTML5 element support.
+* This version IE doesn't "speak HTML5". It doesn't recognize HTML5 elements like `<section>`, `<header>`, etc.
+    * Those elements cannot be selected in CSS for styling
+    * Those elements do not exist properly in the DOM
 
 ## It's a question of features
 
@@ -1155,6 +1163,8 @@ Let's try to beat IE 8 into submission, shall we?
 
 ![](assets/images/font-squirrel.png)
 
+* An example of feature detection and third party tools: Modernizr (for testing @font-face support) and Font Squirrel (for reducing the ugh factor of creating web font files and CSS)
+
 ## Using Modernizr and Font Squirrel to enhance
 
 * Modernizr test for @font-face and generated content support
@@ -1162,12 +1172,9 @@ Let's try to beat IE 8 into submission, shall we?
 
 ## Exercise
 
-* Add @font-face code
-* Write CSS rule for html.fontface
-* Add jQuery library
-* Write CSS rule for generated-content (hint: not in IE.css)
+* You be the enhancer!
+* [Exercise: feature enhancement vis-a-vis @font-face](exercises/301-features)
 
--------------------------------------------------------------------------------
 
 # Part IV: On the frontiers of the adaptive web
 
@@ -1248,7 +1255,7 @@ But, `display:none` on the element itself still downloads images.
 
 ## `image-set`
 
-Cover this here.
+TODO: Image-set coverage
 
 ## The inline HTML `img` tag conundrum
 
@@ -1376,8 +1383,6 @@ This is a product of my imagination and probably represents a syntax that would 
 
 No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.
 
-## Other RWD Drawbacks
-
 ## Binary fallacy
 
 Most feature testing is thought of in a yep/nope frame of reference. But real life isn't that simple.
@@ -1453,7 +1458,11 @@ Objective #1 trumps objectives #2 and #3.
 * Put @font-face rules wherever you are comfortable
 * Decide on the `small-caps` and `lowercase` stuff
 
+TODO: I think we could make this a discussion-based exercise
+
 ## A diversion about performance
+
+TODO: Performance
 
 ## ySlow
 
@@ -1495,7 +1504,7 @@ All answers must be "yes":
 
 ## Tools
 
-* Modernizr's integration with yepnope.js and the Modernizr.mq() test
+* Modernizr's integration with yepnope.js and the Modernizr.mq() test. I'll need a new version of Modernizr that also tests for generated content support.
 * Conditionally load the *jQuery* library when:
     * Wider screen media query is applied
     * Modernizr.generatedcontent is true
@@ -1650,7 +1659,7 @@ Things got complicated quickly.
 
 One idea might be to look at the results of `Modernizr.touch` (an available test in Modernizr) and change the way selected text is handled based on that.
 
-#### Beware!
+### For your consideration
 
 What do you think it means when `Modernizr.touch` is `true`?
 
@@ -1751,7 +1760,9 @@ Threw in some CSS columns:
 }
 ~~~
 
-### Why didn't I use the CSS Columns test in Modernizr before using this style?
+### For your consideration
+
+ Why didn't I use the CSS Columns test in Modernizr before using this style?
 
 ## And now we have our baseline
 
@@ -1775,7 +1786,6 @@ We're going to have an extravaganza of testing discussion soon.
 
 ![iPad](presenter-exercises/500-glossed/images/ipad.png)
 
-![iPad](presenter-exercises/500-glossed/images/ipad.png)
 
 ## Both iPad and Fire support CSS Columns
 
@@ -1828,22 +1838,28 @@ $(document).ready(function() {
 
 Finally, added a bunch of styles to the end of `styles.css`: Messi's CSS.
 
+TODO: Drawing of the way these pieces fit together
+
+## Looks OK on my desktop...
+
+![](presenter-exercises/501-popups/images/chrome.png)
+
+* We can [try it out](presenter-exercises/501-popups/tempest.html)
+
+## But...
+
+![Oh, boy](presenter-exercises/501-popups/images/iphone.png)
 
 ## Bleh
 
-As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.
-
-Also, we need to add some styles of our own to indicate that the glossed items are tappable.
+* As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.
+* Also, we need to add some styles of our own to indicate that the glossed items are tappable.
 
 #### Theme: Performance optimization
 
 The Messi CSS, lifted from Twitter Bootstrap, contains over 500 lines of CSS (more than twice the length of all of the rest of our CSS). There are many rules that aren't getting used, and a lot of pixel dimensions and gradients and animations and whatnot.
 
-(What do you think? When should we stop using vendor prefixes and move to standard property names only?)
-
-## Screen shots
-
-## Refactor the CSS
+## Refactoring the CSS
 
 * I culled the Messi CSS by about 250 lines, removing unused styles and minimizing certain CSS effects.
 * I did leave in some of the button gradients and button transition effects, some opacity things and some text styling and shadows.
@@ -1854,6 +1870,8 @@ So, we need to size the popups to fit different window sizes. Messi allows you t
 
 * Percentage widths seem appealing, but don't center in the window and look a bit ugly.
 * So we need to determine what the correct width is before launching the popup: getting the width of the screen is not as straightforward as it sounds.
+
+How do we figure out how wide the popup should be?
 
 ## Viewports again
 
@@ -1867,6 +1885,13 @@ function viewport() {
           (document.documentElement || document.body).clientHeight};
 }
 ~~~
+
+## Still more CSS brutalization
+
+![](presenter-exercises/501-popups/images/nokia-n8.jpg)
+
+* The Messi CSS, even shortened, is making some assumptions about CSS layout. It uses `flexbox` or `box` layouts, which this Windows Phone browser doesn't grok.
+* I tend to find it ironic that Twitter Bootstrap gets touted as a "mobile-friendly" and "responsive" CSS framework.
 
 ## Updating our gloss.js
 
@@ -1936,7 +1961,7 @@ $('.glossary ol li').each(function(index) {
 
 ## It's a start
 
-* The :hover styling helps emphasize the click-ability of the spans, at least on desktop devices.
+* The `:hover` styling helps emphasize the click-ability of the spans, at least on desktop devices.
 * But tapping on the spans can feel a bit cramped on touch devices. Our fingers need more room!
 
 Let's add one more line to our JavaScript, at the end of the glossary-setup loop:
@@ -1969,6 +1994,27 @@ Now we have `html.glossed` as a class indicating that we have a JS-driven glossa
 
 ## That's pretty nice
 
+![BlackBerry 9670](presenter-exercises/502-responsive-popups/images/9670.png)
+
+![Kindle Fire](presenter-exercises/502-responsive-popups/images/fire.png)
+
+## More better for touch
+
+![Behaves nicely on the iPhone](presenter-exercises/502-responsive-popups/images/iphone.png)
+
+![Increased line-height and visual cues for tappable items](presenter-exercises/502-responsive-popups/images/iphone2.png)
+
+## It works on Opera Mini...but
+
+![Opera Mini is a proxy browser](presenter-exercises/502-responsive-popups/images/opera-iphone2.png)
+
+![Why is the line-height so scrunched?](presenter-exercises/502-responsive-popups/images/opera-iphone.png)
+
+## Surprise.
+
+![Turns out Opera Mini doesn't support line-height](presenter-exercises/502-responsive-popups/images/opera-line-height.png)
+
+![Same document rendered on an iPhone](presenter-exercises/502-responsive-popups/images/iphone-line-height.png)
 
 ## The elephant in everyone's room: performance
 

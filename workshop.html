@@ -957,6 +957,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <div class="figure">
 <img src="assets/images/desktop-rwd.png" /><p class="caption"></p>
 </div>
+<div class="figure">
+<img src="presenter-exercises/203-media-queries/images/firefox-nexus.png" alt="FireFox on Nexus S (Android 4)" /><p class="caption">FireFox on Nexus S (Android 4)</p>
+</div>
 </div><div class="section slide level2" id="hot-mess-in-ie">
 <h1 id="hot-mess-in-ie">Hot mess in IE</h1>
 <p>But it's a hot mess in IE8. What gives?</p>
@@ -976,7 +979,6 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </div><div class="section slide level2" id="media-query-support-options">
 <h1 id="media-query-support-options">Media query support options</h1>
 <h3 id="ie-conditional-tags">IE conditional tags</h3>
-<p>TODO: Steve Souders performance concern</p>
 <pre class="sourceCode css"><code class="sourceCode css">&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> href=<span class="st">&quot;taps.css&quot;</span> /&gt;
 &lt;link rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> href=<span class="st">&quot;layout.css&quot;</span> media=<span class="st">&quot;all and min-width: 481px)&quot;</span>&gt;
 &lt;!--<span class="ch">[if (lt IE 9) &amp; (!IEMobile)]</span>&gt;
@@ -988,6 +990,10 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>CSS3MediaQueries.js: <a href="http://code.google.com/p/css3-mediaqueries-js/"><code class="url">http://code.google.com/p/css3-mediaqueries-js/</code></a></li>
 </ul>
 <p>Respond is faster, but only contains a subset of CSS support. Start with it.</p>
+<h3 id="handout-8">Handout</h3>
+<ul>
+<li>Advanced performance note: <a href="http://www.phpied.com/conditional-comments-block-downloads/">IE conditional tags can block downloads, hampering performance</a></li>
+</ul>
 </div><div class="section slide level2" id="updating-our-web-page">
 <h1 id="updating-our-web-page">Updating our web page</h1>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span>
@@ -1005,7 +1011,14 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <div class="figure">
 <img src="assets/images/ie8-hot-mess2.png" /><p class="caption"></p>
 </div>
-<p>Turns out there's another problem here: lack of HTML5 element support.</p>
+<ul>
+<li>Turns out there's another problem here: lack of HTML5 element support.</li>
+<li>This version IE doesn't &quot;speak HTML5&quot;. It doesn't recognize HTML5 elements like <code>&lt;section&gt;</code>, <code>&lt;header&gt;</code>, etc.
+<ul>
+<li>Those elements cannot be selected in CSS for styling</li>
+<li>Those elements do not exist properly in the DOM</li>
+</ul></li>
+</ul>
 </div><div class="section slide level2" id="its-a-question-of-features">
 <h1 id="its-a-question-of-features">It's a question of features</h1>
 <p>A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details.</p>
@@ -1059,6 +1072,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <div class="figure">
 <img src="assets/images/font-squirrel.png" /><p class="caption"></p>
 </div>
+<ul>
+<li>An example of feature detection and third party tools: Modernizr (for testing @font-face support) and Font Squirrel (for reducing the ugh factor of creating web font files and CSS)</li>
+</ul>
 </div><div class="section slide level2" id="using-modernizr-and-font-squirrel-to-enhance">
 <h1 id="using-modernizr-and-font-squirrel-to-enhance">Using Modernizr and Font Squirrel to enhance</h1>
 <ul>
@@ -1068,13 +1084,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </div><div class="section slide level2" id="exercise-2">
 <h1 id="exercise-2">Exercise</h1>
 <ul>
-<li>Add @font-face code</li>
-<li>Write CSS rule for html.fontface</li>
-<li>Add jQuery library</li>
-<li>Write CSS rule for generated-content (hint: not in IE.css)</li>
+<li>You be the enhancer!</li>
+<li><a href="exercises/301-features">Exercise: feature enhancement vis-a-vis @font-face</a></li>
 </ul>
-</div><div class="section slide level2" id="section-1">
-<h1 id="section-1"></h1>
 </div>
 <div class="section titleslide slide level1" id="part-iv-on-the-frontiers-of-the-adaptive-web"><h1 id="part-iv-on-the-frontiers-of-the-adaptive-web">Part IV: On the frontiers of the adaptive web</h1></div><div class="section slide level2" id="most-rwd-sites-are-not-mobile-first">
 <h1 id="most-rwd-sites-are-not-mobile-first">Most RWD sites are not mobile First</h1>
@@ -1139,7 +1151,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 </div><div class="section slide level2" id="image-set">
 <h1 id="image-set"><code>image-set</code></h1>
-<p>Cover this here.</p>
+<p>TODO: Image-set coverage</p>
 </div><div class="section slide level2" id="the-inline-html-img-tag-conundrum">
 <h1 id="the-inline-html-img-tag-conundrum">The inline HTML <code>img</code> tag conundrum</h1>
 <ul>
@@ -1246,8 +1258,6 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 <h3 id="this-is-all-very-new">This is all very new</h3>
 <p>No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.</p>
-</div><div class="section slide level2" id="other-rwd-drawbacks">
-<h1 id="other-rwd-drawbacks">Other RWD Drawbacks</h1>
 </div><div class="section slide level2" id="binary-fallacy">
 <h1 id="binary-fallacy">Binary fallacy</h1>
 <p>Most feature testing is thought of in a yep/nope frame of reference. But real life isn't that simple.</p>
@@ -1325,8 +1335,10 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Put @font-face rules wherever you are comfortable</li>
 <li>Decide on the <code>small-caps</code> and <code>lowercase</code> stuff</li>
 </ul>
+<p>TODO: I think we could make this a discussion-based exercise</p>
 </div><div class="section slide level2" id="a-diversion-about-performance">
 <h1 id="a-diversion-about-performance">A diversion about performance</h1>
+<p>TODO: Performance</p>
 </div><div class="section slide level2" id="yslow">
 <h1 id="yslow">ySlow</h1>
 </div><div class="section slide level2" id="progressive-enhancement-electric-boogaloo">
@@ -1365,7 +1377,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </div><div class="section slide level2" id="tools">
 <h1 id="tools">Tools</h1>
 <ul>
-<li>Modernizr's integration with yepnope.js and the Modernizr.mq() test</li>
+<li>Modernizr's integration with yepnope.js and the Modernizr.mq() test. I'll need a new version of Modernizr that also tests for generated content support.</li>
 <li>Conditionally load the <em>jQuery</em> library when:
 <ul>
 <li>Wider screen media query is applied</li>
@@ -1467,8 +1479,8 @@ html<span class="fl">.generatedcontent</span> span<span class="fl">.line-number<
 </div><div class="section slide level2" id="et-voila">
 <h1 id="et-voila">Et, voila</h1>
 <p>TODO: Screen shots</p>
-</div><div class="section slide level2" id="section-2">
-<h1 id="section-2"></h1>
+</div><div class="section slide level2" id="section-1">
+<h1 id="section-1"></h1>
 </div>
 <div class="section titleslide slide level1" id="part-v-web-sites-that-do-things-in-the-mobile-world"><h1 id="part-v-web-sites-that-do-things-in-the-mobile-world">Part V: Web sites that do things, in the mobile world</h1></div><div class="section slide level2" id="the-reading-web-vs.-the-doing-web">
 <h1 id="the-reading-web-vs.-the-doing-web">The reading web vs. the doing web</h1>
@@ -1493,7 +1505,7 @@ html<span class="fl">.generatedcontent</span> span<span class="fl">.line-number<
 <h1 id="but...">But...</h1>
 <p>Things got complicated quickly.</p>
 <p>One idea might be to look at the results of <code>Modernizr.touch</code> (an available test in Modernizr) and change the way selected text is handled based on that.</p>
-<h4 id="beware-3">Beware!</h4>
+<h3 id="for-your-consideration-4">For your consideration</h3>
 <p>What do you think it means when <code>Modernizr.touch</code> is <code>true</code>?</p>
 </div><div class="section slide level2" id="touch-events-and-touch-models-are-still-fractured-and-disparate">
 <h1 id="touch-events-and-touch-models-are-still-fractured-and-disparate">Touch events and touch models are still fractured and disparate</h1>
@@ -1572,7 +1584,8 @@ sup <span class="kw">{</span>
     <span class="kw">column-gap</span>          <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
-<h3 id="why-didnt-i-use-the-css-columns-test-in-modernizr-before-using-this-style">Why didn't I use the CSS Columns test in Modernizr before using this style?</h3>
+<h3 id="for-your-consideration-5">For your consideration</h3>
+<p>Why didn't I use the CSS Columns test in Modernizr before using this style?</p>
 </div><div class="section slide level2" id="and-now-we-have-our-baseline">
 <h1 id="and-now-we-have-our-baseline">And now we have our baseline</h1>
 <p>At this point, we stop and test on our supported devices*.</p>
@@ -1592,9 +1605,6 @@ sup <span class="kw">{</span>
 </div>
 </div><div class="section slide level2" id="notice-tablets">
 <h1 id="notice-tablets">Notice tablets</h1>
-<div class="figure">
-<img src="presenter-exercises/500-glossed/images/ipad.png" alt="iPad" /><p class="caption">iPad</p>
-</div>
 <div class="figure">
 <img src="presenter-exercises/500-glossed/images/ipad.png" alt="iPad" /><p class="caption">iPad</p>
 </div>
@@ -1643,17 +1653,30 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
   });
 });</code></pre>
 <p>Finally, added a bunch of styles to the end of <code>styles.css</code>: Messi's CSS.</p>
+<p>TODO: Drawing of the way these pieces fit together</p>
+</div><div class="section slide level2" id="looks-ok-on-my-desktop...">
+<h1 id="looks-ok-on-my-desktop...">Looks OK on my desktop...</h1>
+<div class="figure">
+<img src="presenter-exercises/501-popups/images/chrome.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>We can <a href="presenter-exercises/501-popups/tempest.html">try it out</a></li>
+</ul>
+</div><div class="section slide level2" id="but...-1">
+<h1 id="but...-1">But...</h1>
+<div class="figure">
+<img src="presenter-exercises/501-popups/images/iphone.png" alt="Oh, boy" /><p class="caption">Oh, boy</p>
+</div>
 </div><div class="section slide level2" id="bleh-1">
 <h1 id="bleh-1">Bleh</h1>
-<p>As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.</p>
-<p>Also, we need to add some styles of our own to indicate that the glossed items are tappable.</p>
+<ul>
+<li>As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.</li>
+<li>Also, we need to add some styles of our own to indicate that the glossed items are tappable.</li>
+</ul>
 <h4 id="theme-performance-optimization">Theme: Performance optimization</h4>
 <p>The Messi CSS, lifted from Twitter Bootstrap, contains over 500 lines of CSS (more than twice the length of all of the rest of our CSS). There are many rules that aren't getting used, and a lot of pixel dimensions and gradients and animations and whatnot.</p>
-<p>(What do you think? When should we stop using vendor prefixes and move to standard property names only?)</p>
-</div><div class="section slide level2" id="screen-shots">
-<h1 id="screen-shots">Screen shots</h1>
-</div><div class="section slide level2" id="refactor-the-css">
-<h1 id="refactor-the-css">Refactor the CSS</h1>
+</div><div class="section slide level2" id="refactoring-the-css">
+<h1 id="refactoring-the-css">Refactoring the CSS</h1>
 <ul>
 <li>I culled the Messi CSS by about 250 lines, removing unused styles and minimizing certain CSS effects.</li>
 <li>I did leave in some of the button gradients and button transition effects, some opacity things and some text styling and shadows.</li>
@@ -1665,6 +1688,7 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
 <li>Percentage widths seem appealing, but don't center in the window and look a bit ugly.</li>
 <li>So we need to determine what the correct width is before launching the popup: getting the width of the screen is not as straightforward as it sounds.</li>
 </ul>
+<p>How do we figure out how wide the popup should be?</p>
 </div><div class="section slide level2" id="viewports-again">
 <h1 id="viewports-again">Viewports again</h1>
 <p>Here's some pre-baked code to get a reasonably approximate window width:</p>
@@ -1674,6 +1698,15 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
          <span class="dt">height</span>: <span class="kw">window</span>.<span class="fu">innerHeight</span> || 
           (<span class="kw">document</span>.<span class="fu">documentElement</span> || <span class="kw">document</span>.<span class="fu">body</span>).<span class="fu">clientHeight</span>};
 }</code></pre>
+</div><div class="section slide level2" id="still-more-css-brutalization">
+<h1 id="still-more-css-brutalization">Still more CSS brutalization</h1>
+<div class="figure">
+<img src="presenter-exercises/501-popups/images/nokia-n8.jpg" /><p class="caption"></p>
+</div>
+<ul>
+<li>The Messi CSS, even shortened, is making some assumptions about CSS layout. It uses <code>flexbox</code> or <code>box</code> layouts, which this Windows Phone browser doesn't grok.</li>
+<li>I tend to find it ironic that Twitter Bootstrap gets touted as a &quot;mobile-friendly&quot; and &quot;responsive&quot; CSS framework.</li>
+</ul>
 </div><div class="section slide level2" id="updating-our-gloss.js">
 <h1 id="updating-our-gloss.js">Updating our gloss.js</h1>
 <p>This is what we have now:</p>
@@ -1728,7 +1761,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </div><div class="section slide level2" id="its-a-start">
 <h1 id="its-a-start">It's a start</h1>
 <ul>
-<li>The :hover styling helps emphasize the click-ability of the spans, at least on desktop devices.</li>
+<li>The <code>:hover</code> styling helps emphasize the click-ability of the spans, at least on desktop devices.</li>
 <li>But tapping on the spans can feel a bit cramped on touch devices. Our fingers need more room!</li>
 </ul>
 <p>Let's add one more line to our JavaScript, at the end of the glossary-setup loop:</p>
@@ -1753,6 +1786,36 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <span class="dv">}</span></code></pre>
 </div><div class="section slide level2" id="thats-pretty-nice">
 <h1 id="thats-pretty-nice">That's pretty nice</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/9670.png" alt="BlackBerry 9670" /><p class="caption">BlackBerry 9670</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/fire.png" alt="Kindle Fire" /><p class="caption">Kindle Fire</p>
+</div>
+</div><div class="section slide level2" id="more-better-for-touch">
+<h1 id="more-better-for-touch">More better for touch</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/iphone.png" alt="Behaves nicely on the iPhone" /><p class="caption">Behaves nicely on the iPhone</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/iphone2.png" alt="Increased line-height and visual cues for tappable items" /><p class="caption">Increased line-height and visual cues for tappable items</p>
+</div>
+</div><div class="section slide level2" id="it-works-on-opera-mini...but">
+<h1 id="it-works-on-opera-mini...but">It works on Opera Mini...but</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/opera-iphone2.png" alt="Opera Mini is a proxy browser" /><p class="caption">Opera Mini is a proxy browser</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/opera-iphone.png" alt="Why is the line-height so scrunched?" /><p class="caption">Why is the line-height so scrunched?</p>
+</div>
+</div><div class="section slide level2" id="surprise.">
+<h1 id="surprise.">Surprise.</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/opera-line-height.png" alt="Turns out Opera Mini doesn&#39;t support line-height" /><p class="caption">Turns out Opera Mini doesn't support line-height</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/iphone-line-height.png" alt="Same document rendered on an iPhone" /><p class="caption">Same document rendered on an iPhone</p>
+</div>
 </div><div class="section slide level2" id="the-elephant-in-everyones-room-performance">
 <h1 id="the-elephant-in-everyones-room-performance">The elephant in everyone's room: performance</h1>
 <ul>
@@ -1832,8 +1895,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </ul>
 <h4 id="pro-tip-2">Pro Tip</h4>
 <p>Try to isolate the issue or issues you really want to solve and find a more focused library or tool to solve that problem. Try to have a good understanding of how the library or tool you end up selecting <em>works</em>.</p>
-</div><div class="section slide level2" id="section-3">
-<h1 id="section-3"></h1>
+</div><div class="section slide level2" id="section-2">
+<h1 id="section-2"></h1>
 </div>
 <div class="section titleslide slide level1" id="part-vi-the-state-of-the-web-html5-apis-and-whatnot"><h1 id="part-vi-the-state-of-the-web-html5-apis-and-whatnot">Part VI: The State of the Web (HTML5, APIs and whatnot)</h1></div><div class="section slide level2" id="state-of-the-apis">
 <h1 id="state-of-the-apis">State of the APIs</h1>
@@ -1860,7 +1923,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Overall situation: still mostly sad</li>
 <li>One of the chief reasons we still reach for PhoneGap, etc.</li>
 </ul>
-<h4 id="beware-4">Beware!</h4>
+<h4 id="beware-3">Beware!</h4>
 <p>mediaCapture is really two things: * <a href="http://www.w3.org/TR/mediacapture-streams/">mediaCapture/Streams</a> aka getUserMedia aka chaos * <a href="http://www.w3.org/TR/html-media-capture/">HTMLInputElement</a></p>
 </div><div class="section slide level2" id="htmlinputelement-mediacapture">
 <h1 id="htmlinputelement-mediacapture">HTMLInputElement mediaCapture</h1>
@@ -1899,8 +1962,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <ul>
 <li>Lawnchair.js</li>
 </ul>
-</div><div class="section slide level2" id="section-4">
-<h1 id="section-4"></h1>
+</div><div class="section slide level2" id="section-3">
+<h1 id="section-3"></h1>
 <p>Part VI: Making sure it works</p>
 </div><div class="section slide level2" id="start-broad">
 <h1 id="start-broad">Start broad</h1>
@@ -2073,8 +2136,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <ul>
 <li>Feature-testing and enhancing a layout</li>
 </ul>
-</div><div class="section slide level2" id="section-5">
-<h1 id="section-5"></h1>
+</div><div class="section slide level2" id="section-4">
+<h1 id="section-4"></h1>
 </div>
 <div class="section titleslide slide level1" id="behaviors-and-apis"><h1 id="behaviors-and-apis">Behaviors and APIs</h1></div><div class="section slide level2" id="ideas-2">
 <h1 id="ideas-2">Ideas</h1>
