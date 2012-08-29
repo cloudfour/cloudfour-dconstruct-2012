@@ -1,6 +1,6 @@
 % Exercise 3: Media queries and RWD
 
-1. Add a media query to `styles.css` that should apply to screens at least 50em or wider.
+1. Add a media query to `styles.css` that should apply to screens at least `50em` or wider.
 1. Inside of this media query, cook up some CSS to effect the following:
     1. Font sizes: `body` font should be `1.125em`. `h1` should be `4em`.
     1. The `.scene` layout element (it's a `section`, if you are curious) should `float:left`

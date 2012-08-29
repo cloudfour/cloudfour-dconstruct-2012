@@ -50,9 +50,59 @@ When we start from scratch, we have so many choices to make.
 
 Mobile web development has a complicated and somewhat mysterious history.
 
+## Preaching to the choir
 
-## TODO: Move over high-level slides
+![](assets/images/mobile-graph.png)
 
+* Mobile devices are omnipresent
+* iPod Touch and iPhone alone [growing faster than the early days of the Internet](http://www.morganstanley.com/institutional/techresearch/mobile_internet_report122009.html)
+* And Android's growth curve was greater than the iPhone's...
+
+## "Dumb" phones are accelerating, too
+
+![](assets/images/dumbphone-graph.png)
+
+## Soon more mobile phones than humans
+
+* Currently 5.9B mobile subscriptions
+* 7B people
+* Soon more mobile phones than people
+* Then what will we do?
+
+## It's complicated
+
+![](assets/images/android-fragmentation.jpg)
+
+* [Mobile operating systems still growing](http://radar.oreilly.com/2010/05/mobile-operating-systems-and-b.html)
+* New versions released quickly
+* [There is no Android](http://stephanierieger.com/the-trouble-with-android/)
+
+## And phones are just one symptom
+
+### The Zombie Apocalypse of Devices
+
+* Phones are just one wave—an enormous tsunami, to be sure—in a major onslaught
+* Tablets, TVs, embedded devices...the future is insane
+* We can't just focus on phones, or we'll get left in the dust
+
+### Zombie Apocalypse?
+
+* Cost of smart chips heading towards zero
+* RFID taking off ahead of near field communications (NFC)
+* More and more of the inanimate things that surround us will become "alive"
+* Challenges our definitions of computers, phones and devices
+
+## And soon there will be 10 billion devices
+
+![](assets/images/10-billion-devices.png)
+
+## New winners will emerge
+
+![](assets/images/new-winners.png)
+
+## So how did we get here?
+
+TODO: Image of how we got here
 
 ## The evolution of mobile markup and options
 
@@ -162,7 +212,7 @@ HTML5 is acceptable for most things, these days.
 
 -------------------------------------------------------------------------------
 
-## One Approach
+## HTML content: one approach
 
 HTML as result of translation by "robots." Classes and IDs are attached to content and are auto-generated. Limited use of classes and IDs.
 
@@ -188,7 +238,7 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 
 -------------------------------------------------------------------------------
 
-## Another Approach
+## HTML content, approach #2
 
 ~~~{.html}
 <section class="scene">
@@ -282,6 +332,10 @@ As we start thinking about adding some basic CSS, keep in mind these challenging
 
 -------------------------------------------------------------------------------
 
+## What causes such difference?
+
+TODO: Drawing of difference
+
 ## Viewports are crazytown
 
 ### These two screenshots are from the same device, different browser
@@ -302,20 +356,16 @@ As we start thinking about adding some basic CSS, keep in mind these challenging
 
 ![](assets/images/different-viewports.png)
 
+Viewports are like a keyhole or window into the layout of the entire web page.
+
 -------------------------------------------------------------------------------
 
 ## Layout viewport versus visible
 
 ![](assets/images/layout-visible.png)
 
--------------------------------------------------------------------------------
-
-## Getting to know viewports
-
-Before we get beyond where we are with overall layout and control, let's talk about viewports.
-
-* Visible Viewport: The view of visible content (keyhole)
-* Layout Viewport: The width of the entire layout
+* **Visible Viewport**: The view of visible content (keyhole)
+* **Layout Viewport**: The width of the entire layout
 
 -------------------------------------------------------------------------------
 
@@ -326,14 +376,38 @@ Before we get beyond where we are with overall layout and control, let's talk ab
 ~~~
 
 * `width=device-width`: Set the viewport width to the width of the device, in CSS pixels.
+    * The actual value of this, as is likely obvious, will vary depending on the device or window width.
 * `initial-scale=1`: Set initial zoom to 1, that is, 100% or normal size.
+
+#### Rule of thumb
+
+This is a pretty decent default `viewport` tag. Like everything on the mobile web, it's not bulletproof, but it's a good template.
+
+### Handout
+
+* [Page on Mozilla Developer Network (MDN) about viewport tags](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag)
+
+## Viewports are "fun"
+
+* Certain mobile browsers are less...accurate...about viewport tag adherence
+    * Known culprits include some Samsung Galaxy phones in the US (Android)
+* There is ongoing angst over disabling user zoom via the `maximum-scale=1` and/or `user-scalable=no` attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.
+
+### Handout
+
+* Oh, turns out there is a [Stack Overflow post of someone else running into the viewport fun on the Galaxy Nexus](http://stackoverflow.com/questions/9374611/why-is-the-viewport-tag-on-the-galaxy-nexus-android-4-not-working)
+* Jeremy Keith has [something to say on the topic](http://adactio.com/journal/4470/)
 
 -------------------------------------------------------------------------------
 
 ## Starting from a slightly more level playing field
 
-* CSS Reset
-* Viewport tag
+* **CSS Reset**: As you saw, the default stylesheets for the different browsers and devices means we're dealing with a lot of diversity. Using a *CSS reset* is one option if we want to try to normalize some of the starting-point styling.
+* **Viewport tag**: By normalizing our viewports with a `viewport` tag (like we just saw), we reduce some of the complexity and diversity we're facing.
+
+### For your consideration
+
+* How do you feel about CSS resets? Can you think of downsides?
 
 #### Pro Tip
 
@@ -355,11 +429,10 @@ By resetting our CSS and normalizing our viewport, we bring disparate browsers m
 
 ## The variations abound!
 
-![](exercises/101-explore/images/9670.png)
+![BlackBerry 9670](exercises/101-explore/images/9670.png)
 
 It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like. Recall that user or client default stylesheets can be part of the game you're playing. Another place where CSS resets can help.
 
--------------------------------------------------------------------------------
 
 ## Other things to consider with basic CSS
 
@@ -367,17 +440,18 @@ It's a bit difficult to tell from this not-so-great photo, but the background co
     * Not all devices "conform" to the 16px ~= 1em rule of thumb. Example: Kindle Touch.
     * Devices often have a very limited set of system fonts. e.g. Windows phones have a number of Windows-Phone-specific fonts that are rather decent-looking but different from our familiar Georgia and Helvetica (etc.).
 * DOCTYPES: Somewhat confusingly, different DOCTYPEs can cause some browsers to use different CSS layout algorithms. Example: Opera Mini's box model is slightly different in XHTML-MP vs. HTML5.
-* HTML `title`s. Pay attention to the title of the HTML page as we look at some screenshots. I changed it.
-
-#### Exercise! Getting ur baselines going
+* HTML `title`s. Display of a web page's title differs in different mobile browsers and is usually limited in space. Make sure to put the most information first.
 
 #### Handout
 
 * I talk a bit about the Kindle Touch's font size differences in [this post on our blog](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/). "Sadly," I left that Kindle Touch on a flight from Ireland to Amsterdam a few months ago and, tragically, AerLingus couldn't find it.
 * There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of [our book](http://bit.ly/hf-mw)
 
+## Exercise! Getting ur baselines going
 
--------------------------------------------------------------------------------
+Head on over to [exercise 102](exercises/102-baseline) to play around with baseline CSS.
+
+After you're done, you can see the end result I got to in [presenter-exercises/102-baseline/tempest.html](presenter-exercises/102-baseline/tempest.html).
 
 ## Exercise 102
 
@@ -413,7 +487,8 @@ We've set our `viewport` but the Fire simply has more CSS pixels to work with th
 
 ![Opera Mini on iPhone](exercises/102-baseline/images/iphone-opera.png)
 
-Same font, same font size, same device, slightly different results in different browsers.
+* Same font, same font size, same device, slightly different results in different browsers.
+* I happen to know why after stumbling upon it during research for sections later in this workshop. Any ideas? I'll disclose it later...
 
 -------------------------------------------------------------------------------
 
@@ -446,15 +521,13 @@ Nothing significant to report!
 * What does the word *device* mean? *Browser*? *Client*? *User agent*? How does our usage of these terms cause confusion?
 * How many of the differences spotted did you anticipate? What surprised you?
 
---------------------------------------------------------------------------
-
 # Part II: Towards an Adaptive Web
 
 --------------------------------------------------------------------------
 
 ## Is this the best we can do?
 
-![](assets/images/desktop-dull.jpg)
+![Baseline after exercise 102, in a desktop browser](assets/images/desktop-dull.jpg)
 
 ### Let me count the ways...
 
@@ -467,9 +540,11 @@ Nothing significant to report!
 
 ### Adding...
 
-1. Nicer text treatment (small-caps) and bigger fonts overall (heading and body)
+1. Nicer text treatment (`small-caps`) and bigger fonts overall (heading and body)
 2. "Wrapping" the lines correctly
 3. Adding an illustration
+
+I want to maximize this experience. I'm tired of looking at something so boring!
 
 ## Enhancing...
 
@@ -478,6 +553,19 @@ Nothing significant to report!
 ### Text
 
 Emulating more forms of text layout: verse and song elements
+
+Adding styles for
+
+~~~{.css}
+span.line         { } /* every line in the play */
+span.verse        { } /* lines spoken in meter */
+span.prose        { } /* lines not spoken in meter */
+span.verse-end    { } /* verse lines spoken by a speaker 
+                      /* that complete a line 
+                       started by another character */
+span.song         { } /* to format content that is a song */
+.stage-direction  { } /* stage directions */
+~~~
 
 [Let's take a look](presenter-exercises/200-strawman/tempest.html)
 
@@ -493,13 +581,77 @@ Emulating more forms of text layout: verse and song elements
 
 ![BlackBerry 8320](presenter-exercises/200-strawman/images/8320.png)
 
-#### Hold that thought: Fonts on older mobile browsers
-
 
 ## Stop the madness!
 
 * Situations like this emphasize the need for us to recalibrate how we think about creating for the Web
 * My attempt to impose some forms of "control" over the layout and styling of the web page created havoc
+
+
+## Let's back up
+
+* Mobile- or content-first design thinking
+* Systematized way of thinking about content and its presentation on the web
+* Very relevant to the mobile evolution...and beyond
+
+## Content-first design
+
+* Emphasis on progressive enhancement as core tenet
+* Really focusing on a *baseline experience*
+* Enhancing based on browser features and/or characteristics
+
+#### But how do we make the same HTML page look good and work well on all those different browsers and devices?
+
+We use techniques to make our websites *adaptive*.
+
+### For your consideration
+
+What do you think? Do you prefer *mobile-first*, *content-first* or *baseline-first* to describe this kind of philosophy?
+
+#### Hold that thought: Separate mobile sites/content differentiation
+
+## Responsive Web Design (RWD)
+
+Responsive Web Design (RWD) is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure. *Responsive Web Design* was coined by Ethan Marcotte.
+
+RWD is based upon the notion of creating a fluid, proportional layout. RWD layouts *scale, flex and adapt* to flow comfortably in the user's browser, whatever size or shape it might be at the moment.
+
+## RWD tenets
+
+RWD is a combination of three core tactics:
+
+1. Fluid CSS layouts
+2. Responsive Images and Objects
+3. CSS3 Media Queries
+
+The goal: Insomuch as possible, the same HTML document can be rendered comfortably in as many environments as possible. Instead of imposing an inflexible, single experience, we can create something that adapts to the user.
+
+## Fluidity
+
+#### What can adaptive design via RWD do to help us get our web page in order?
+
+Let's look again at our rather simple set of structural CSS that is getting us in trouble on some of our devices:
+
+~~~{.css}
+body {
+  width: 1060px;
+}
+.scene {
+  float: left;
+}
+.scene dl {
+  width : 600px;
+}
+~~~
+
+Recall that I was working in a hurry, so this isn't exactly masterful CSS, folks.
+
+## Recall viewports?
+
+![](assets/images/layout-visible.png)
+
+* The visible viewport for our page is set to `device-width`
+* The layout viewport contains the entire layout of the page, which in our case is defined by the `body` CSS rule (`1060px`).
 
 ## Technical causes
 
@@ -526,63 +678,6 @@ h1 {
 * Layout widths fixed, in absolute units
 * [Relevant CSS](presenter-exercises/200-strawman/desktop.css)
 
-## Let's back up
-
-* Mobile- or content-first design thinking
-* Systematized way of thinking about content and its presentation on the web
-* Very relevant to the mobile evolution...and beyond
-
-## Content-first design
-
-* Emphasis on progressive enhancement as core tenet
-* Really focusing on a *baseline experience*
-* Enhancing based on browser features and/or characteristics
-
-#### But how do we make the same HTML page look good and work well on all those different browsers and devices?
-
-We use techniques to make our websites *adaptive*.
-
-#### Hold that thought: Separate mobile sites/content differentiation
-
-## Responsive Web Design (RWD)
-
-Responsive Web Design (RWD) is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure.
-
-RWD is based upon the notion of creating a fluid, proportional layout. RWD layouts *scale, flex and adapt* to flow comfortably in the user's browser, whatever size or shape it might be at the moment.
-
-## RWD tenets
-
-RWD is a combination of three core tactics:
-
-1. Fluid CSS layouts
-2. Responsive Images and Objects
-3. CSS3 Media Queries
-
-## Fluidity
-
-#### What can adaptive design via RWD do to help us get our web page in order?
-
-Let's look again at our rather simple set of structural CSS that is getting us in trouble on some of our devices:
-
-~~~{.css}
-body {
-  width: 1060px;
-}
-.scene {
-  float: left;
-}
-.scene dl {
-  width : 600px;
-}
-~~~
-
-## Recall viewports?
-
-![](assets/images/layout-visible.png)
-
-* The visible viewport for our page is set to `device-width`
-* The layout viewport contains the entire layout of the page, which in our case is defined by the `body` CSS rule (`1060px`).
-
 ## Fluid layouts
 
 Fluid layouts bring visible and layout viewports into harmony, and use *proportional* layout units instead of *fixed* or *absolute* units. That way, layout can scale to different window and screen sizes.
@@ -602,6 +697,18 @@ Fluid layouts bring visible and layout viewports into harmony, and use *proporti
 ## Applying the fluid formula
 
 ![](assets/images/fluid-example.png)
+
+`target / context = result`
+
+`720px / 960px = .75`
+
+`75%`
+
+## A more complicated example
+
+### For your consideration
+
+TODO: Graphic of challenging fluid conversion
 
 ## In our case, a simple change
 
@@ -648,6 +755,8 @@ body {
 
 ![The image has...disappeared](presenter-exercises/201-proportional/images/narrow.png)
 
+Make the window a bit narrower, and the image disappears.
+
 ## Flexible images and objects
 
 We can solve the mystery of that missing image by using the second tenet of Responsive Web Design: **flexible images and objects**.
@@ -665,6 +774,8 @@ img, object {
 ## And...?
 
 ![](presenter-exercises/201-proportional/images/narrow2.png)
+
+[You can see it for yourself](presenter-exercises/201-proportional/tempest.html)
 
 ## OK, total disaster
 
@@ -691,6 +802,8 @@ This affects the box model layout widths of our fluid elements and causes the wr
 
 *We need to stop, catch our breath, and think about things a bit differently.*
 
+### Theme: Content
+
 ## Letting the content dictate our flow
 
 ![](presenter-exercises/201-proportional/images/narrow2.png)
@@ -712,7 +825,7 @@ We achieved much of the first goal in our first baseline layout but have since t
 
 ## Let's get content-first on this thing
 
-1. Rip out desktop-centric CSS
+1. Rip out desktop-centric CSS and re-think
 1. Build our baseline by enhancing our existing baseline
 1. Take advantage of RWD's third tenet (Media Queries) to apply different layouts to different environments
 
@@ -750,13 +863,19 @@ span.song {
 }
 ~~~
 
-Explanatory notes...
+## What the modular CSS does
+
+* `span.verse` Sets its display to `block` and `clear`s `both`. This assures each verse line gets its own...well, line. The negative text indent assures that if the line wraps (i.e. because the container/window is too narrow) it will have an indent on any wrapped lines.
+* `span.verse-end` floats `right`. It's for lines that are in meter, spoken by a different character than the first part of the line.
+* `span.song` centers its content and displays `block`.
+* `span.prose` lines retain default inline styling.
 
 ## A new baseline
 
-After ripping out desktop-specific style rules, we have a new baseline.
 
 ![Motorola Backflip](presenter-exercises/202-new-baseline/images/backflip.png)
+
+After ripping out desktop-specific style rules, we have a new baseline.
 
 ## Looks decent...
 
@@ -768,31 +887,21 @@ After ripping out desktop-specific style rules, we have a new baseline.
 
 ![Opera Mini on iPhone4](presenter-exercises/202-new-baseline/images/iphone-opera.png)
 
-![Opera Mini on iPhone4](presenter-exercises/202-new-baseline/images/iphone-opera2.png)
+![Opera Mini on iPhone4: You can see the negative `text-indent` on the `prose.verse` lines that wrap here](presenter-exercises/202-new-baseline/images/iphone-opera2.png)
 
 ## NOW we can enhance for wider screens
 
-Let's use RWD's third tenet to enhance our scene page for bigger displays.
-
-**CSS3 Media Queries** are the third leg of the RWD tripod.
-
-Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.
+* Let's use RWD's third tenet to enhance our scene page for bigger displays.
+* **CSS3 Media Queries** are the third leg of the RWD tripod.
+* Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.
 
 ## Media queries explained: Media types
 
 Media types have been around a while. It's how we make print stylesheets, e.g.
 
 ~~~{.html}
-
 <link rel="stylesheet" media="print" href="print.css">
-
 ~~~
-
-## Media queries explained: Media features
-
-* Media types have media features.
-* For example, `width` is a media feature of several media types. `orientation` is a media feature of various bitmap media types. `color` and `monochrome` are more examples.
-* Different media types have different types of values. `color` and `monochrome` are Boolean (TRUE/FALSE) values. `width` is an integer.
 
 The most relevant **media types** are:
 
@@ -800,9 +909,20 @@ The most relevant **media types** are:
 * screen
 * print
 
+## Media queries explained: Media features
+
+* Media types have **media features**.
+    * `width` is a media feature of several media types.
+    * `orientation` is a media feature of various bitmap media types.
+    * `color` and `monochrome` are more examples.
+* Different media features have different types of values. 
+    * `color` and `monochrome` are Boolean (TRUE/FALSE) values.
+    * `width` is an integer.
+
+
 ## Logical expressions
 
-#### CSS media queries evaluate the current value of *media features* in logical expressions to determine whether to apply the enclosed CSS.
+CSS media queries are logical expressions that evaluate the current value of *media features* on a given *media type* (or types). If the expression evaluates to `true`, the enclosed CSS is applied.
 
 ~~~ {.css}
 @media screen and (min-width: 600px) {
@@ -832,18 +952,13 @@ The most relevant **media types** are:
 
 ![](assets/images/media-query-example.png)
 
-But before we whip up a media query or two for the scene web page...
-
-## Fluid isn't just for block element widths
-
-* Fluid formula can be used to derive proportional font sizes in `em`s or percentages
-* Borders, indents, padding and margin-anything dimensional
+But before we whip up a media query or two for the scene web page...let's think about what we're doing.
 
 ## Breakpoints and media queries
 
-You may have heard the term **breakpoint** before.
-
-A *breakpoint* is a window/screen width at which layout changes significantly. We can define one or more breakpoints in a layout. For example, we may want to reduce a two- or three-column layout down to a single column when the window is narrower than a certain threshold.
+* You may have heard the term **breakpoint** before.
+* A *breakpoint* is a window/screen width at which layout changes significantly. 
+* We can define one or more breakpoints in a layout. For example, we may want to reduce a two- or three-column layout down to a single column when the window is narrower than a certain threshold.
 
 Generally, media queries and breakpoints have been defined in pixels in the past:
 
@@ -854,6 +969,8 @@ Generally, media queries and breakpoints have been defined in pixels in the past
 
 * But we just talked about how things should be fluid
 * ...and we're trying to design the flow of this page based on its content
+
+TODO: Come back and explain the whole content-based `em` thing
 
 Definition of `em` in notes
 
@@ -914,11 +1031,8 @@ We're pretty good on narrow screens now, but we have some enhancement to do for 
     * Remove `width` from `.scene` (probably)
 * Advanced: make image float treatment better
 
-## Summary and pro tips
+### [Exercise 201: Responsive layout via media queries](exercises/201-rwd)
 
-* Talk about CSS organization
-
--------------------------------------------------------------------------------
 
 # Part III: Balancing a differentiated web
 
