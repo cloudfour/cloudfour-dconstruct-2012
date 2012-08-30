@@ -2310,25 +2310,46 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <h1 id="and-you-can-set-yourself-up-for-increased-likelihood-of-success">And you can set yourself up for increased likelihood of success</h1>
 <ul>
 <li>Careful adherence to standards</li>
-<li>Modularized CSS for easier debug</li>
-<li>Clarity in your dev-test workflow MORE</li>
+<li>Techniques like modularized CSS for easier debug</li>
+<li>Clarity in your dev-test workflow</li>
+</ul>
+<h3 id="learning-the-art-of-un-testing">Learning the art of un-testing</h3>
+<ul>
+<li>The more mobile web things you build, the more you can anticipate trouble areas</li>
+<li>Likewise, you can also learn about dependable techniques</li>
 </ul>
 </div><div class="section slide level2" id="a-testing-workflow">
 <h1 id="a-testing-workflow">A testing workflow</h1>
+<ul>
+<li>A key to successful testing is mapping out the points in your development cycle to insert device-specific testing.</li>
+</ul>
+<p>TODO: Drawing</p>
+</div><div class="section slide level2" id="a-testing-workflow-example">
+<h1 id="a-testing-workflow-example">A testing workflow example</h1>
 <ol style="list-style-type: decimal">
-<li>Foundational work on desktop</li>
+<li>Initial foundation work on desktop</li>
 <li>First set of testing across collection of test devices (broad)</li>
-<li>Iteration + development</li>
+<li>Iteration + development cycles</li>
 <li>Test on core devices</li>
 <li>Repeat 3 and 4</li>
 <li>Test across test devices (broad) on larger feature releases</li>
-<li>Occasionally throw in a random device into test to keep yourself honest.</li>
+<li>Occasionally throw in a random device into test to keep yourself honest</li>
+<li>Repeat 3 through 7</li>
 </ol>
+<p>TODO: Drawing of loops</p>
 </div><div class="section slide level2" id="the-devices">
 <h1 id="the-devices">The devices</h1>
 <ul>
-<li>A smaller set of core devices</li>
-<li>A larger set of supported devices</li>
+<li>A smaller set of core devices: test on each iteration with these</li>
+<li>A larger set of supported devices: test every nth iteration</li>
+<li>Use common sense</li>
+<li>Keep a couple of easy-to-test devices within arm's reach</li>
+</ul>
+<h3 id="be-ready-to-be-caught-by-surprise">Be ready to be caught by surprise</h3>
+<p>Some issues are hard to anticipate and arise from changes that seem innocuous. Recall:</p>
+<ul>
+<li>Opera Mini <code>line-height</code> issue</li>
+<li>BlackBerry OS 6 <code>small-caps</code> issues</li>
 </ul>
 </div><div class="section slide level2" id="set-your-foundation">
 <h1 id="set-your-foundation">Set your foundation</h1>
@@ -2347,8 +2368,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>At certain points, especially after significant change, test across your full collection of test devices</li>
 <li>Keep at least one of your older/lesser devices in your core group of test devices, even if it's not the biggest target device</li>
 </ul>
-</div><div class="section slide level2" id="ok.-what-are-the-possible-ways-to-test">
-<h1 id="ok.-what-are-the-possible-ways-to-test">OK. What are the possible ways to test?</h1>
+</div><div class="section slide level2" id="ok.-what-are-the-ways-we-can-test-the-mobile-web">
+<h1 id="ok.-what-are-the-ways-we-can-test-the-mobile-web">OK. What are the ways we can test the mobile web?</h1>
 <ul>
 <li>Desktop-based testing</li>
 <li>On-device testing</li>
@@ -2356,36 +2377,48 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Remote testing of remote devices</li>
 <li>Emulators</li>
 </ul>
-</div><div class="section slide level2" id="what-are-we-testing">
-<h1 id="what-are-we-testing">What are we testing?</h1>
+</div><div class="section slide level2" id="mobile-relevant-desktop-testing">
+<h1 id="mobile-relevant-desktop-testing">Mobile-relevant desktop testing</h1>
 <ul>
-<li>Primarily the views of the application</li>
-<li>Sometimes a bit of controller testing when logic in JS</li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/">User agent switcher</a></li>
+<li><a href="http://techpatterns.com/forums/about304.html">User agent switcher config file</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh">Resizer</a> / <a href="http://chrispederick.com/work/web-developer/">Web Developer Toolkit</a></li>
+<li><a href="http://blaze.io/mobile">Blaze.io Mobile Test</a></li>
+<li>Automated testing foundations: Web drivers for specs can use headless Mozilla or Webkit, resize the browser, take automated screenshots, etc.</li>
+<li><a href="http://responsivepx.com/">ResponsivePX</a></li>
 </ul>
-<p>MORE</p>
-</div><div class="section slide level2" id="automation">
-<h1 id="automation">Automation?</h1>
 </div><div class="section slide level2" id="device-testing-is-tedious-and-hard">
 <h1 id="device-testing-is-tedious-and-hard">Device testing is tedious and hard</h1>
-</div><div class="section slide level2" id="desktop-testing-tools">
-<h1 id="desktop-testing-tools">Desktop testing tools</h1>
-</div><div class="section slide level2" id="device-testing-tools">
-<h1 id="device-testing-tools">Device testing tools</h1>
 <ul>
+<li>Fortunately, there are some tools:</li>
 <li>Adobe Shadow</li>
 <li>weinre</li>
 <li>shim</li>
 <li>Opera Dragonfly</li>
-<li>FireFox remote debug (NEW!)</li>
+<li>FireFox mobile remote debug (NEW!)</li>
 </ul>
-</div><div class="section slide level2" id="emulators-and-other">
-<h1 id="emulators-and-other">Emulators and other</h1>
-</div><div class="section slide level2" id="an-example-1">
-<h1 id="an-example-1">An example</h1>
-<ol style="list-style-type: decimal">
-<li>Base HTML and minimal CSS</li>
-<li>Test across all test devices</li>
-</ol>
+</div><div class="section slide level2" id="adobe-shadow">
+<h1 id="adobe-shadow">Adobe Shadow</h1>
+<p>TODO: Adobe Shadow demo</p>
+</div><div class="section slide level2" id="on-device-testing-tools">
+<h1 id="on-device-testing-tools">On-device testing tools</h1>
+<ul>
+<li><a href="http://stevesouders.com/mobileperf/mobileperfbkm.php">Mobile Performance Bookmarklets</a></li>
+<li><a href="http://jdrop.org/">jDrop</a></li>
+<li>Turning on ... in iOS/Android</li>
+</ul>
+</div><div class="section slide level2" id="emulators">
+<h1 id="emulators">Emulators</h1>
+<ul>
+<li>Generally available in various platform SDKs</li>
+<li>Some web-based emulators</li>
+<li>Try to get hardware when you can</li>
+<li>Can be useful for testing really legacy devices:
+<ul>
+<li><a href="http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70">N70 Emulator</a></li>
+<li>Opera Mini older versions can be found in emulators online</li>
+</ul></li>
+</ul>
 </div><div class="section slide level2" id="building-a-device-collection">
 <h1 id="building-a-device-collection">Building a device collection</h1>
 <ul>
@@ -2421,11 +2454,12 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Talk to device manufacturers and mobile companies directly. It's surprising how often they're quite keen to help.</li>
 <li>Go to events and conferences and hope. Lots of mobile conferences give away (often many) devices as door prizes. Heck, I won a BlackBerry torch that way. If you can go to Google I/O you may well walk away with four or five devices (Cloud Four co-founder Jason did, recently).</li>
 </ul>
-</div><div class="section slide level2" id="the-biggest-tip-for-device-libraries">
-<h1 id="the-biggest-tip-for-device-libraries">The biggest tip for device libraries</h1>
-<h3 id="team-up">TEAM UP</h3>
-<p>Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade.</p>
-<p>For example, the Mobile Portland group in, well, Portland, has a very active discussion list...</p>
+</div><div class="section slide level2" id="the-biggest-tips-for-device-libraries">
+<h1 id="the-biggest-tips-for-device-libraries">The biggest tips for device libraries</h1>
+<ul>
+<li><strong>TEAM UP</strong>: Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade.</li>
+<li><strong>MAKE IT EASY FOR YOURSELF</strong>: Make it easier to test on device and you'll do it more.</li>
+</ul>
 </div><div class="section slide level2" id="efficiencies">
 <h1 id="efficiencies">Efficiencies</h1>
 <ul>
@@ -2433,12 +2467,21 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Keep as many devices charged as is reasonably possible.</li>
 <li>Group devices by charger and platform.</li>
 <li>Have a plan for system and software updates.</li>
-<li>Perform system and app updates on multiple devices at once, when possible.</li>
 <li>Have a work area at or near the testing library.</li>
 <li>Keep in mind the overhead required for device maintenance when establishing a collection.</li>
 <li>If you're the organized type, create a spreadsheet or somesuch for tracking the details of your devices.</li>
 <li>If possible, have folks borrowing your devices do their work on-site. This can be an easier sell if you have a nice work area around your devices.</li>
-<li>While it's good to have devices that run different versions of a given platform, you don't need to go crazy-town.</li>
+<li>Don't over-stock devices.</li>
+</ul>
+</div><div class="section slide level2" id="weird-things-you-might-not-think-of-when-choosing-test-devices">
+<h1 id="weird-things-you-might-not-think-of-when-choosing-test-devices">Weird things you might not think of when choosing test devices</h1>
+<p>When choosing a device within a given plaform, consider:</p>
+<ul>
+<li>Which has the better keyboard (soft or hard)? You'll be entering in URLs willy-nilly, and variations in keyboard layouts and tactile feedback across devices can make a big difference.</li>
+<li>How easy is it to find and change Wifi settings? Any other Wifi issues?</li>
+<li>Battery life when idle/hibernating. Phones that don't need to be charged constantly when not in use are a boon to device libraries.</li>
+<li>Charging interface. Aim for USB mini (becoming more universal these days but there are still outliers, esp. iOS and tablets).</li>
+<li>How easy is it to update the OS and/or apps? Some of this is carrier/operator dependent.</li>
 </ul>
 </div><div class="section slide level2" id="resources">
 <h1 id="resources">Resources</h1>
@@ -2476,8 +2519,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <h1 id="what-i-hope-is-the-way-of-the-future">What I hope is the way of the future</h1>
 <p>I would love to see the continued evolution of remote, on-hardware testing.</p>
 <p>Some interesting stuff is happening at the confluence of Selenium and Ruby. iPhone web driver. I hope that Shadow will evolve and allow scripting.</p>
-</div><div class="section slide level2" id="emulators">
-<h1 id="emulators">Emulators</h1>
+</div><div class="section slide level2" id="emulators-1">
+<h1 id="emulators-1">Emulators</h1>
 </div><div class="section slide level2" id="testing-and-performance-tools">
 <h1 id="testing-and-performance-tools">Testing and performance tools</h1>
 <ul>
@@ -2497,110 +2540,6 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Character encoding</li>
 <li>Embedded media</li>
 </ul>
-</div><div class="section slide level2" id="ideas">
-<h1 id="ideas">Ideas</h1>
-<ul>
-<li>RWD</li>
-<li>Fluid formula</li>
-<li>Fluid layouts</li>
-<li>Flexible images/media</li>
-<li>Media Queries</li>
-<li><p>Media Query Management</p></li>
-<li>Performance</li>
-<li><code>&lt;img&gt;</code> tag conundrum</li>
-<li><code>&lt;img&gt;</code> Revisit</li>
-<li>Advanced CSS</li>
-<li>Flexbox</li>
-<li><p>The New Design Workflow</p></li>
-</ul>
-</div><div class="section slide level2" id="the-one-web">
-<h1 id="the-one-web">The One Web</h1>
-</div><div class="section slide level2" id="web-approach-philosophy">
-<h1 id="web-approach-philosophy">Web Approach Philosophy</h1>
-<p>You're here, so you've at least partially voted for the web.</p>
 </div>
-<div class="section titleslide slide level1" id="the-differentiated-web"><h1 id="the-differentiated-web">The Differentiated Web</h1></div><div class="section slide level2" id="ideas-1">
-<h1 id="ideas-1">Ideas</h1>
-<ul>
-<li>Feature vs. device detection</li>
-<li>Progressive Enhancement</li>
-<li>Re-visit CSS; more advanced techniques</li>
-<li>Columns</li>
-<li>Animations, transitions</li>
-<li>Typography</li>
-<li><h2>Polyfills</h2></li>
-<li>Rolling your own</li>
-<li>The binary fallacy</li>
-<li>Behavioral vs. presentational</li>
-<li>Different experiences for different device classes</li>
-<li>UA sniffing</li>
-<li>DDRs</li>
-</ul>
-</div><div class="section slide level2" id="exercises">
-<h1 id="exercises">Exercises</h1>
-<ul>
-<li>Feature-testing and enhancing a layout</li>
-</ul>
-</div><div class="section slide level2" id="section-4">
-<h1 id="section-4"></h1>
-</div>
-<div class="section titleslide slide level1" id="behaviors-and-apis"><h1 id="behaviors-and-apis">Behaviors and APIs</h1></div><div class="section slide level2" id="ideas-2">
-<h1 id="ideas-2">Ideas</h1>
-<ul>
-<li>Geolocation</li>
-<li>Cross-platform consistencies</li>
-<li>Different types of APIs</li>
-<li>AppCache primer</li>
-<li>LocalStorage primer</li>
-<li>W3C</li>
-<li>WhatWG</li>
-<li>Standards in general</li>
-<li>Rough support charts</li>
-<li>JS vs. HTML APIs</li>
-</ul>
-</div><div class="section slide level2" id="exercises-1">
-<h1 id="exercises-1">Exercises</h1>
-<p>Write geolocation script/page integration and test on device.</p>
-</div>
-<div class="section titleslide slide level1" id="tools-and-frameworks"><h1 id="tools-and-frameworks">Tools and Frameworks</h1></div><div class="section slide level2" id="ideas-3">
-<h1 id="ideas-3">Ideas</h1>
-<ul>
-<li>Development frameworks</li>
-<li>CSS frameworks</li>
-<li>Foundation</li>
-<li>Bootstrap</li>
-<li>beware of &quot;responsive&quot;</li>
-<li>libraries</li>
-<li>tools</li>
-<li>jQM</li>
-<li>Phonegap</li>
-<li>Modernizr redux</li>
-<li>Throwing libraries at the problem</li>
-<li>Sencha</li>
-</ul>
-</div><div class="section slide level2" id="exercises-2">
-<h1 id="exercises-2">Exercises</h1>
-<p>Exercise idea: Style same page w/different frameworks</p>
-</div>
-<div class="section titleslide slide level1" id="testing-and-workflows"><h1 id="testing-and-workflows">Testing and Workflows</h1></div><div class="section slide level2" id="ideas-4">
-<h1 id="ideas-4">Ideas</h1>
-<ul>
-<li>Untesting</li>
-<li>remote debug</li>
-<li>Shadow</li>
-<li>weinre</li>
-<li>shim</li>
-<li>Dragonfly</li>
-<li>jDrop</li>
-<li>Bookmarklets</li>
-<li>Emulators</li>
-<li>Automated testing</li>
-<li>Devices</li>
-</ul>
-</div><div class="section slide level2" id="exercises-3">
-<h1 id="exercises-3">Exercises</h1>
-<p>TBD</p>
-</div>
-<div class="section titleslide slide level1" id="master-resources"><h1 id="master-resources">Master Resources</h1></div>
 </body>
 </html>

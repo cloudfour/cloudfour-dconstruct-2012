@@ -2480,24 +2480,46 @@ Many `localStorage` polyfills use cookies. The cookie polyfill is limited by one
 ## And you can set yourself up for increased likelihood of success
 
 * Careful adherence to standards
-* Modularized CSS for easier debug
+* Techniques like modularized CSS for easier debug
 * Clarity in your dev-test workflow
-MORE
+
+### Learning the art of un-testing
+
+* The more mobile web things you build, the more you can anticipate trouble areas
+* Likewise, you can also learn about dependable techniques
 
 ## A testing workflow
 
-1. Foundational work on desktop
+* A key to successful testing is mapping out the points in your development cycle to insert device-specific testing.
+
+TODO: Drawing
+
+## A testing workflow example
+
+1. Initial foundation work on desktop
 1. First set of testing across collection of test devices (broad)
-1. Iteration + development
+1. Iteration + development cycles
 1. Test on core devices
 1. Repeat 3 and 4
 1. Test across test devices (broad) on larger feature releases
-1. Occasionally throw in a random device into test to keep yourself honest.
+1. Occasionally throw in a random device into test to keep yourself honest
+1. Repeat 3 through 7
+
+TODO: Drawing of loops
 
 ## The devices
 
-* A smaller set of core devices
-* A larger set of supported devices
+* A smaller set of core devices: test on each iteration with these
+* A larger set of supported devices: test every nth iteration
+* Use common sense
+* Keep a couple of easy-to-test devices within arm's reach
+
+### Be ready to be caught by surprise
+
+Some issues are hard to anticipate and arise from changes that seem innocuous. Recall:
+
+* Opera Mini `line-height` issue
+* BlackBerry OS 6 `small-caps` issues
 
 ## Set your foundation
 
@@ -2514,7 +2536,7 @@ MORE
 * At certain points, especially after significant change, test across your full collection of test devices
 * Keep at least one of your older/lesser devices in your core group of test devices, even if it's not the biggest target device
 
-## OK. What are the possible ways to test?
+## OK. What are the ways we can test the mobile web?
 
 * Desktop-based testing
 * On-device testing
@@ -2522,35 +2544,42 @@ MORE
 * Remote testing of remote devices
 * Emulators
 
-## What are we testing?
+## Mobile-relevant desktop testing
 
-* Primarily the views of the application
-* Sometimes a bit of controller testing when logic in JS
-
-MORE
-
-## Automation?
+* [User agent switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/)
+* [User agent switcher config file](http://techpatterns.com/forums/about304.html)
+* [Resizer](https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh) / [Web Developer Toolkit](http://chrispederick.com/work/web-developer/)
+* [Blaze.io Mobile Test](http://blaze.io/mobile)
+* Automated testing foundations: Web drivers for specs can use headless Mozilla or Webkit, resize the browser, take automated screenshots, etc.
+* [ResponsivePX](http://responsivepx.com/)
 
 ## Device testing is tedious and hard
 
-## Desktop testing tools
+* Fortunately, there are some tools:
+  * Adobe Shadow
+  * weinre
+  * shim
+  * Opera Dragonfly
+  * FireFox mobile remote debug (NEW!)
 
+## Adobe Shadow
 
-## Device testing tools
+TODO: Adobe Shadow demo
 
-* Adobe Shadow
-* weinre
-* shim
-* Opera Dragonfly
-* FireFox remote debug (NEW!)
+## On-device testing tools
 
-## Emulators and other
+* [Mobile Performance Bookmarklets](http://stevesouders.com/mobileperf/mobileperfbkm.php)
+* [jDrop](http://jdrop.org/)
+* Turning on ... in iOS/Android
 
-## An example
+## Emulators
 
-1. Base HTML and minimal CSS
-1. Test across all test devices
-
+* Generally available in various platform SDKs
+* Some web-based emulators
+* Try to get hardware when you can
+* Can be useful for testing really legacy devices:
+    * [N70 Emulator](http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70)
+    * Opera Mini older versions can be found in emulators online
 
 ## Building a device collection
 
@@ -2584,13 +2613,12 @@ MORE
 * Talk to device manufacturers and mobile companies directly. It's surprising how often they're quite keen to help.
 * Go to events and conferences and hope. Lots of mobile conferences give away (often many) devices as door prizes. Heck, I won a BlackBerry torch that way. If you can go to Google I/O you may well walk away with four or five devices (Cloud Four co-founder Jason did, recently).
 
-## The biggest tip for device libraries
+## The biggest tips for device libraries
 
-### TEAM UP
+* **TEAM UP**: Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade. 
+* **MAKE IT EASY FOR YOURSELF**: Make it easier to test on device and you'll do it more.
 
-Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade. 
 
-For example, the Mobile Portland group in, well, Portland, has a very active discussion list...
 
 ## Efficiencies
 
@@ -2598,12 +2626,21 @@ For example, the Mobile Portland group in, well, Portland, has a very active dis
 * Keep as many devices charged as is reasonably possible.
 * Group devices by charger and platform.
 * Have a plan for system and software updates.
-* Perform system and app updates on multiple devices at once, when possible.
 * Have a work area at or near the testing library.
 * Keep in mind the overhead required for device maintenance when establishing a collection.
 * If you're the organized type, create a spreadsheet or somesuch for tracking the details of your devices.
 * If possible, have folks borrowing your devices do their work on-site. This can be an easier sell if you have a nice work area around your devices.
-* While it's good to have devices that run different versions of a given platform, you don't need to go crazy-town.
+* Don't over-stock devices.
+
+## Weird things you might not think of when choosing test devices
+
+When choosing a device within a given plaform, consider:
+
+* Which has the better keyboard (soft or hard)? You'll be entering in URLs willy-nilly, and variations in keyboard layouts and tactile feedback across devices can make a big difference.
+* How easy is it to find and change Wifi settings? Any other Wifi issues?
+* Battery life when idle/hibernating. Phones that don't need to be charged constantly when not in use are a boon to device libraries.
+* Charging interface. Aim for USB mini (becoming more universal these days but there are still outliers, esp. iOS and tablets).
+* How easy is it to update the OS and/or apps? Some of this is carrier/operator dependent.
 
 
 ## Resources
@@ -2668,117 +2705,6 @@ The more mobile web sites you build, the more you will be able to get away with 
 * Embedded media
 
 
-
-## Ideas
-
-* RWD
-* Fluid formula
-* Fluid layouts
-* Flexible images/media
-* Media Queries
-* Media Query Management
-
-* Performance
-* `<img>` tag conundrum
-* `<img>` Revisit
-* Advanced CSS
-* Flexbox
-* The New Design Workflow
-
-## The One Web
-
-## Web Approach Philosophy
-
-You're here, so you've at least partially voted for the web.
-
-
-
-# The Differentiated Web
-
-## Ideas
-
-* Feature vs. device detection
-* Progressive Enhancement
-* Re-visit CSS; more advanced techniques
-* Columns
-* Animations, transitions
-* Typography
-* Polyfills
----
-* Rolling your own
-* The binary fallacy
-* Behavioral vs. presentational
-* Different experiences for different device classes
-* UA sniffing
-* DDRs
-
-## Exercises
-
-* Feature-testing and enhancing a layout
-
-
-------------------------------------------------------
-# Behaviors and APIs
-
-## Ideas
-
-* Geolocation
-* Cross-platform consistencies
-* Different types of APIs
-* AppCache primer
-* LocalStorage primer
-* W3C
-* WhatWG
-* Standards in general
-* Rough support charts
-* JS vs. HTML APIs
-
-## Exercises
-
-Write geolocation script/page integration and test on device.
-
-# Tools and Frameworks
-
-## Ideas
-
-* Development frameworks
-* CSS frameworks
-* Foundation
-* Bootstrap
-* beware of "responsive"
-* libraries
-* tools
-* jQM
-* Phonegap
-* Modernizr redux
-* Throwing libraries at the problem
-* Sencha
-
-## Exercises
-
-Exercise idea: Style same page w/different frameworks
-
-# Testing and Workflows
-
-## Ideas
-
-* Untesting
-* remote debug
-* Shadow
-* weinre
-* shim
-* Dragonfly
-* jDrop
-* Bookmarklets
-* Emulators
-* Automated testing
-* Devices
-
-## Exercises
-
-TBD
-
-# Master Resources
 
 [adactio]: http://adactio.com/journal
 [adactio-content-first]: http://adactio.com/journal/4523/
