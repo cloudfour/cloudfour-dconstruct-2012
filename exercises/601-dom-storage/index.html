@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="../../assets/css/workshop.css">
+</head>
+<body>
+<section class="level2" id="exercise-research-localstorage">
+<h2>Exercise: Research localStorage</h2>
+<section class="level3" id="premise">
+<h3>Premise</h3>
+<p>Recall that the last state of our Shakespeare scene contained popups with two buttons: <code>Save</code> and <code>Close</code>. Right now, both buttons simply close the popup. I mocked up the <code>Save</code> button so that I could test the styling, but now it's time to think about how we'd actually save things.</p>
+<figure>
+<img src="../../presenter-exercises/502-responsive-popups/images/iphone.png" alt="Mocked-up popup on an iPhone"><figcaption>Mocked-up popup on an iPhone</figcaption>
+</figure>
+<p>For the implementation of the &quot;save&quot; functionality, <strong>I have opted for the simple <code>localStorage</code> API</strong>.</p>
+</section>
+</section>
+<section class="level2" id="exercise">
+<h2>Exercise</h2>
+<p>Using the following resources and the web as a whole, see if you can find information to help you answer the exercise questions:</p>
+<ul>
+<li><a href="http://html5please.com/">HTML5Please</a></li>
+<li><a href="http://caniuse.com/#cats=JS_API">CanIUse JS APIs</a></li>
+<li><a href="http://www.w3.org/2009/dap/">Device APIS WG at W3C</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/HTML/HTML5">Mozilla Developer Network HTML5 Section</a></li>
+</ul>
+<section class="level3" id="questions">
+<h3>Questions</h3>
+<ol type="1">
+<li>What is <code>Web Storage</code>?</li>
+<li>What is <code>localStorage</code>'s relationship to Web Storage?</li>
+<li>Which browsers support Web Storage? Which don't?</li>
+<li>Find at least two polyfills for localStorage.</li>
+<li>What other API options exist for storing and/or manipulating data in the client or on the device?</li>
+</ol>
+</section>
+<section class="level3" id="for-your-consideration">
+<h3>For your consideration</h3>
+<ol type="1">
+<li>Do you notice a difference in what different sites claim about the status of Web Storage? If so, what do you think might be the reason(s)?</li>
+<li>Can you think of a reasonable chain of enhancement to use during implementation of localStorage in our Shakespeare scene to minimize unpleasant experiences? What are some failure modes?</li>
+<li>If you are JavaScript savvy or generally curious (and don't already have experience with localStorage), do a bit of Googling for the API details themselves (objects, methods, events).</li>
+</ol>
+</section>
+</section>
+</body>
+</html>

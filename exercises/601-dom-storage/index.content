@@ -1,0 +1,34 @@
+## Exercise: Research localStorage
+
+### Premise
+
+Recall that the last state of our Shakespeare scene contained popups with two buttons: `Save` and `Close`. Right now, both buttons simply close the popup. I mocked up the `Save` button so that I could test the styling, but now it's time to think about how we'd actually save things.
+
+![Mocked-up popup on an iPhone](../../presenter-exercises/502-responsive-popups/images/iphone.png)
+
+For the implementation of the "save" functionality, **I have opted for the simple `localStorage` API**.
+
+## Exercise
+
+Using the following resources and the web as a whole, see if you can find information to help you answer the exercise questions:
+
+* [HTML5Please](http://html5please.com/)
+* [CanIUse JS APIs](http://caniuse.com/#cats=JS_API)
+* [Device APIS WG at W3C](http://www.w3.org/2009/dap/)
+* [Mozilla Developer Network HTML5 Section](https://developer.mozilla.org/en-US/docs/HTML/HTML5)
+
+
+### Questions
+
+1. What is `Web Storage`?
+1. What is `localStorage`'s relationship to Web Storage?
+1. Which browsers support Web Storage? Which don't?
+1. Find at least two polyfills for localStorage.
+1. What other API options exist for storing and/or manipulating data in the client or on the device?
+
+### For your consideration
+
+1. Do you notice a difference in what different sites claim about the status of Web Storage? If so, what do you think might be the reason(s)?
+1. Can you think of a reasonable chain of enhancement to use during implementation of localStorage in our Shakespeare scene to minimize unpleasant experiences? What are some failure modes?
+1. If you are JavaScript savvy or generally curious (and don't already have experience with localStorage), do a bit of Googling for the API details themselves (objects, methods, events).
+

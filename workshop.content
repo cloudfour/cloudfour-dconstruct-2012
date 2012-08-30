@@ -10,18 +10,103 @@
 
 > "Be not afeard; the isle is full of noises." —*The Tempest*, Act III, Scene 2, Wm. Shakespeare
 
-## Our Devices
+## Meet the devices!
 
-* BlackBerry 8320 Curve v4.5.0.81 (native browser). Our project manager Megan's old phone. Hardware keyboard and pointer.
-* BlackBerry 9670 Style v6.0.0.123 (native browser). BlackBerry flip phone.
-* Nexus S Android 4.1.1 Firefox 14.0.2. Smart Phone w/touchscreen.
-* Nexus S Android 4.1.1 native
-* Motorola Backflip Android 1.5 (Motorola Blur Build)
-* iPhone 4 iOS 5.1.1 native Safari browser
-* iPhone 4 iOS 5.1.1 Opera Mini
-* Nokia N8 Windows Phone 7.5 Internet Explorer
-* [Opera Mini simulator](http://www.opera.com/developer/tools/mini/)
-* Kindle Fire tablet v6.3 native browser 
+From Cloud Four's device collection I pulled about 7 or 8 core devices that I used for testing most of the examples in today's content. Let's meet them!
+
+## BlackBerry 8320
+
+TODO: Photo
+
+* BlackBerry 8320 Curve
+* BlackBerry OS v4.5.0.81
+* Native browser
+* Hardware keyboard; pointer
+* No touch screen
+* Our project manager Megan's old phone
+
+## BlackBerry 9670
+
+![BlackBerry 9670](assets/images/9670.png)
+
+* BlackBerry 9670 Style
+* BlackBerry OS v6.0.0.123
+* Native browser (Webkit-based)
+* Flip phone; unusual aspect ratio
+* Hardware keyboard; no touch; pointer
+
+## BlackBerry 9670, cont.
+
+![BlackBerry 9670, closed](assets/images/9670-2.png)
+
+* This phone is sort of absurd (flip phone: really?!)
+* But its hardware keyboard *is* rather easy to type on. Shrug.
+
+## Nexus S
+
+![Android Nexus S](assets/images/nexus.png)
+
+* Samsung Nexus S
+* Android version 4.1.1
+* Native browser
+* **Also** Firefox 14.0.2
+* Touchscreen
+* For no good reason, I've never been a big fan of this phone. But there's nothing wrong with it.
+
+## Motorola Backflip
+
+![Motorola Backflip](assets/images/backflip.png)
+
+* Motorola Backflip
+* Android v1.5 (yes, really)
+* Native Android browser
+* Touchscreen
+* Flip-open hardware keyboard
+
+## Motorola Backflip, cont. 
+
+![Someone thought it was a good idea to put the keyboard on the **back**](assets/images/backflip2.png)
+
+* This is the phone everyone loves to hate
+* "MotoBlur" fork of Android
+* Likes to spontaneously reboot
+* Keyboard is horrible
+
+## iPhone 4
+
+* iPhone 4
+* iOS 5.1.1
+* Native (Safari) browser
+* **Also** Opera Mini
+* I don't have a photo of it because it's my phone and I'm embarrassed (the screen has big ol' cracks)
+
+## Nokia N8
+
+![Nokia N8](assets/images/nokia-n8.jpg)
+
+* Nokia N8
+* Windows Phone OS 7.5
+* Native (IE) browser
+* Kind of a pretty device
+
+## Kindle Fire
+
+![Kindle Fire](assets/images/fire.png)
+
+* Kindle Fire tablet
+* OS v6.3
+* Native (Webkit) browser
+* This little guy grew on me over the course of testing
+
+## Supporting cast
+
+Here are some more devices I used for off-and-on testing:
+
+* iPad (1st-generation) OS 5, Safari
+* [Opera Mini simulator](http://www.opera.com/developer/tools/mini/) (not a device, I admit)
+* Several OS 6 BlackBerrys: Two Torches (9800), a 9810
+* BlackBerry PlayBook tablet (TODO: Version?)
+
 
 
 -------------------------------------------------------------------------------
@@ -2099,36 +2184,206 @@ Try to isolate the issue or issues you really want to solve and find a more focu
 
 -------------------------------------------------------------------------------
 
-# Part VI: The State of the Web (HTML5, APIs and whatnot)
+# Part VI: The web as a platform: HTML5, APIs, oh, my!
 
-## State of the APIs
+## HTML5 is complicated and confusing
 
-* [CanIUse.com JS APIs info](http://caniuse.com/#cats=JS_API)
+* What is HTML5?
+* What is a device API?
+* Is there a difference between an HTML API and a JavaScript API?
+* Who manages all this stuff?
+* What's the difference between the W3C and the WHATWG?
+* What works where?
 
-## DOMStorage
+## What is the web?
 
-> "DOM Storage is the name given to the set of storage-related features first introduced in the Web Applications 1.0 specification, and now split off into its own W3C Web Storage specification. DOM Storage is designed to provide a larger, more secure, and easier-to-use alternative to storing information in cookies. It was first introduced with Firefox 2 and Safari 4." — [Mozilla Developer Network website](https://developer.mozilla.org/en-US/docs/DOM/Storage)
+* A bunch of HTML stuff
+* A bunch of CSS stuff
+* A bunch of media stuff
+* JavaScript stuff
+* Stuff that interacts with the hardware
+* Sorta random stuff
+* Server and programming stuff
+* Seriously low-level stuff (HTTP, TCP/IP)
 
-* Overall situation: decent; with polyfills: quite good
-* localStorage
-* sessionStorage
+## WHATWG? W3C? What *is* HTML5?
 
-* Cookie polyfill (https://developer.mozilla.org/en-US/docs/DOM/Storage) Caveat about maximum cookie size
-* [Lawnchair](http://brian.io/lawnchair)
-
-## File API
+* Jeremy Keith's [*HTML for Web Designers*](http://www.abookapart.com/products/html5-for-web-designers) discusses the origins, evolution and relationship between the W3C, the WHATWG and other parties.
+* ["Is this HTML5?" section on WHATWG HTML spec](http://www.whatwg.org/specs/web-apps/current-work/multipage/introduction.html#is-this-html5?) helps to iron out a few things.
 
 
-## mediaCapture
+And all of this is whirling and changing so fast. And *what about mobile?*
 
-* Overall situation: still mostly sad
-* One of the chief reasons we still reach for PhoneGap, etc.
+## Mobile uptake
 
-#### Beware!
+Though we tend (maybe?) to assume that mobile browsers are a slightly ...
+TODO: Flesh out this thought
 
-mediaCapture is really two things:
-* [mediaCapture/Streams](http://www.w3.org/TR/mediacapture-streams/) aka getUserMedia aka chaos
-* [HTMLInputElement](http://www.w3.org/TR/html-media-capture/)
+## But not everywhere
+
+### Proxy browsers
+
+* When proxy browsers are involved, we lose the "device" in the equation.
+* Device and platform interaction is by nature very restricted.
+
+### Older devices
+
+* Older browsers are obviously fairly limited.
+* The older the device is, the less likely it is to have a browser that can or is updated frequently or ever (unscientific).
+
+## Device APIs
+
+### What is a device API?
+
+#### [According to the W3C](http://www.w3.org/2009/dap/)
+
+* Battery Status
+* Media Capture (HTML and JS)
+* Network Information
+* Ambient Light, Humidity and Temperature Events
+* Proximity Events
+* Vibration
+* Web, Pick Media, and Pick Contacts Intents
+* Calendar
+* Menu
+
+## Brian LeRoux defines device APIs:
+
+> "Typically headless/chrome[le]ss/without a visual manifestation, truly crossplatform." —[Brian LeRoux](http://brian.io/slides/beyond-html5/#/23), PhoneGap (Adobe)
+
+He goes on to expand that these APIs usually involve:
+
+* sensors
+* data
+* outputs
+
+## Back to that W3C list...
+
+* Battery Status
+* Media Capture (HTML and JS)
+* Network Information
+* Ambient Light, Humidity and Temperature Events
+* Proximity Events
+* Vibration
+* Web, Pick Media, and Pick Contacts Intents
+* Calendar
+* Menu
+
+## For your consideration
+
+* What's missing here?
+* Anything else seem odd to you?
+
+## Device APIs...yeah, it's cloudy
+
+* **[Geolocation](http://www.w3.org/TR/geolocation-API/)**: Its own thing in the W3C
+* **Accelerometer, Device Orientation**: Under the auspices of geolocation
+* **[File API](http://www.w3.org/TR/FileAPI/) and related**: [Web Applications Working Group](http://www.w3.org/2008/webapps/)
+* Everyone's list of device APIs is different
+* Device APIs are one piece of the puzzle of HTML5 and the web
+
+## The web as platform
+
+![Platform.html5.org](assets/images/html5-platform.jpg)
+
+* [platform.html5.org](http://platform.html5.org)
+
+## What we've seen already
+
+![What we've seen today](assets/images/what-weve-seen.png)
+
+## Mobile-relevant device APIs
+
+![These APIs are hot in mobile](assets/images/mobile_relevant_apis.jpg)
+
+* Pink: Device APIs (roughly)
+* Blue: Other APIs and features relevant to mobile (roughly)
+* As more of these APIs get implemented in real-life mobile browsers, the need to go native for certain platform-level things diminishes
+* Until then: Hybrid development
+
+## Geolocation
+
+* Leaps to mind when we think about mobile
+* Find out where the device (on which the browser is running) is
+* One of the more widely-implemented device APIs in-browser
+* W3C specification is pretty easy to get your head around
+* Is a good example of typical device API progression:
+    1. Proprietary, native-only availability
+    2. Proprietary in-browser availability
+    3. Scattered standards-based support in browser
+    4. Broader standards-based support in browsers, with polyfill fallbacks
+    5. (Not yet/the ideal state) Pervasive standards-based support in (nearly) all browsers
+
+## Geolocation
+
+* Modern browsers have near-universal implementation of geolocation of some kind
+* Notable exceptions are no surprise:
+    * IE < 9
+    * Opera Mini (remember what we said about proxy browsers)
+* Blackberry < 7 and some other legacy mobile browsers use different implementations
+
+## The W3C Geolocation spec
+
+* The [W3C's geolocation spec](http://www.w3.org/TR/geolocation-API/) is widely implemented and pretty straightforward.
+* Browsers that implement the API expose the `navigator.geolocation` object.
+* The key method on that object is `getCurrentPosition(successCallback, failCallback)`.
+
+## An example
+
+~~~{.javascript}
+<script>
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+}
+function onGeoSuccess(position) {
+  var coordinates = position.coords;
+  alert(coordinates.latitude + ", " + coordinates.longitude);
+}
+function onGeoError(error) { alert(error.message); }
+</script>
+~~~
+
+* Here's [an example in an HTML page you can try](presenter-exercises/600-geolocation).
+
+## With polyfill
+
+* It's common to use a polyfill with device APIs to reach more browsers that may have disparate implementations.
+* A commonly-used polyfill for geolocation is [geo-location-javascript](http://code.google.com/p/geo-location-javascript/), though it is less useful now that Google Gears has been discontinued.
+* geo-location-javascript, like many/most polyfills, emulates the existing or proposed standard. Thus, though there is a one-line initiation snippet, geo-location-javascript lets you use the same syntax as the W3C standard geolocation API.
+
+
+## I can't really teach you about device APIs
+
+* I can give you a high-level overview
+* Things are changing so fast that it's more of a game of knowing where to look for information
+
+## And where would that be?
+
+### References
+
+* [The Web platform: Browser technologies](http://platform.html5.org/)
+* [HTML5Please](http://html5please.com/)
+* [CanIUse JS APIs](http://caniuse.com/#cats=JS_API)
+* [Device APIS WG at W3C](http://www.w3.org/2009/dap/)
+* [Mozilla Developer Network HTML5 Section](https://developer.mozilla.org/en-US/docs/HTML/HTML5)
+* [HTML5 Polyfills from Modernizr](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills) A list of tons of polyfills
+
+### Other stuff
+
+* [.net Magazine Article](http://www.netmagazine.com/features/developer-s-guide-html5-apis)
+* [Slide deck from Brian LeRoux on Device APIs](http://brian.io/slides/beyond-html5/)
+
+## MediaCapture API
+
+#### Beware! Actually two things
+
+* [HTMLInputElement](http://www.w3.org/TR/html-media-capture/): New form `<input>` type
+* [mediaCapture/Streams](http://www.w3.org/TR/mediacapture-streams/): Somewhat confusing (mostly in that it is ever-changing/hard to pin down) JavaScript/Programmatic API
+
+### MediaCapture
+
+* Lets you get at the device's camera and audio recording for capturing media streams and (slightly confusing) still images
+* Media Capture non-support is one of the chief reasons we still need to go native for a lot of things. That's when we reach for [PhoneGap](http://phonegap.com/).
 
 ## HTMLInputElement mediaCapture
 
@@ -2136,6 +2391,7 @@ mediaCapture is really two things:
 * Starting to show up in other mobile browsers
 * `<input type="file" accept="image/*" capture="camera">`
 * `capture="camcorder"` makes me giggle
+* Remember, this is the HTML API piece of this, not the programmatic "control the user's camera" piece
 
 ## mediaCapture Streams API
 
@@ -2143,34 +2399,158 @@ mediaCapture is really two things:
 * No browser (mobile or otherwise) currently shipping implements this spec
 * It would seem that the Tizen browser *might*
 
-## Geolocation
+## Yet MOAR Device/Mobile-relevant APIs
 
-* Overall status: Kinda good, actually; with polyfills: even better
-* W3C GeoLocation more widely implemented than most Device APIs
+* Network Information API
+* Battery Status API
+* Vibration
+* Device Orientation
+* File, Filesystem stuff
+* Offline Applications
+    * My personal nightmare
+    * ApplicationCache (AppCache) sounds straightforward, but it is really terrifying; have lost many days of my life to this beast
+    * I punt you to [Jake Archibald's fantastic AppCache: DoucheBag presentation](http://vimeo.com/43336762) (amusing, informative and thorough—I can't possibly compete)
 
-## More about localStorage
+## DOMStorage/Web Storage
 
-* String-based key-value storage
-* Strings only
-* Not so much in IE
+> "DOM Storage is the name given to the set of storage-related features first introduced in the Web Applications 1.0 specification, and now split off into its own W3C Web Storage specification. DOM Storage is designed to provide a larger, more secure, and easier-to-use alternative to storing information in cookies. It was first introduced with Firefox 2 and Safari 4." — [Mozilla Developer Network website](https://developer.mozilla.org/en-US/docs/DOM/Storage)
 
-## What's the holdup?
+### [Exercise: Research Web Storage](exercises/601-dom-storage)
 
-## Things change; knowing where to look
+## `localStorage` in a nutshell
 
-## Using localStorage with a polyfill
+### What is `localStorage` and how does it relate to `Web Storage` a.k.a. `DOM Storage`?
 
-* Lawnchair.js
+* `localStorage` is part of the DOM Storage/Web Storage API oeuvre along with `sessionStorage`.
+* Allows for straightforward storage and retrievel of string key-value pairs.
+* Both the key and the value must be strings.
+* Different platforms allot different amounts of space for `localStorage`. Behaviors can differ when `localStorage` gets full.
+
+## Which browsers support it?
+
+![Information from caniuse.com](assets/images/local-storage-support.png)
+
+* Broadly supported
+* No real surprises that the outliers would be IE and Opera Mini. IE 8 even supports it
+
+## Polyfills for `localStorage`
+
+* [Cookie polyfill](https://developer.mozilla.org/en-US/docs/DOM/Storage)
+* [Remy Sharp's polyfill for Web Storage](https://gist.github.com/350433)
+* Several more polyfills are [listed on Modernizr](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills)
+* You can also use [Lawnchair's DOM adapter](http://brian.io/lawnchair/)
+
+#### Beware!
+
+Many `localStorage` polyfills use cookies. The cookie polyfill is limited by one of the very things that `localStorage` was intended to relieve: maximum cookie size. 4kb is the max size for any cookie. The lowest common denominator is IE6, which may allow as few as 20 cookies per domain. Also, cookies are sent with every request—expensive overhead on high-latency connections.
+
+## Other client and device persistence/data/file options
+
+* [IndexedDB](http://dvcs.w3.org/hg/IndexedDB/raw-file/tip/Overview.html)
+* [File API](http://dev.w3.org/2006/webapi/FileAPI/)
+* [Application Cache/Offline](http://dev.w3.org/html5/spec/offline.html#offline)
+* Blob URLs, [Data URLs](http://tools.ietf.org/html/rfc2397)
+
+## HTML5Please has a bit of a different perspective than CanIUse...
+
+![](assets/images/html5please-localstorage.png)
+
+## This area purposely left blank until Saturday
 
 -------------------------------------------------------------------------------
 
-Part VI: Making sure it works
+# Part VI: Making sure it works, a.k.a. Testing is Hell
 
-## Start broad
+## Testing the mobile web is hard
 
-The majority of your testing likely will not be done on mobile devices at all.
+* Not a lot of methodologies established
+* There are, like, a billion different mobile devices and browsers
+* Hardware required: $$$$ or ££££ or €€€€
+* Remote debugging is still in its relative infancy
 
-## Hardware
+### OK, so, what do we do?
+
+## Most of your testing is actually done on the desktop
+
+* Before you get onto device (or even into emulator), most of your work prepping for testing on those devices is done in the "traditional" place of development: the desktop. 
+* An area where we are more familiar and comfortable.
+* Despite their many differences, desktop and mobile browsers do share a common core. You can make *some* assumptions about support before you get on-device.
+
+
+## And you can set yourself up for increased likelihood of success
+
+* Careful adherence to standards
+* Modularized CSS for easier debug
+* Clarity in your dev-test workflow
+MORE
+
+## A testing workflow
+
+1. Foundational work on desktop
+1. First set of testing across collection of test devices (broad)
+1. Iteration + development
+1. Test on core devices
+1. Repeat 3 and 4
+1. Test across test devices (broad) on larger feature releases
+1. Occasionally throw in a random device into test to keep yourself honest.
+
+## The devices
+
+* A smaller set of core devices
+* A larger set of supported devices
+
+## Set your foundation
+
+* Foundational work of core of site or app on desktop
+* After initial foundation is complete, broad test across your collection of supported devices and emulators
+* Use version control and make discrete, incremental commits for easier rollback
+
+## Iteration-and-test loop
+
+* Small steps
+* After each meaningful change (feature, CSS work, etc.) test on a selected subset of your supported devices
+* Use your increasing experience to guide you what changes are most likely to cause on-device issues
+* Whatever you do, do *not* make testing a single, end-of-project event. You will hate your life.
+* At certain points, especially after significant change, test across your full collection of test devices
+* Keep at least one of your older/lesser devices in your core group of test devices, even if it's not the biggest target device
+
+## OK. What are the possible ways to test?
+
+* Desktop-based testing
+* On-device testing
+* Remote debugging of physical devices
+* Remote testing of remote devices
+* Emulators
+
+## What are we testing?
+
+* Primarily the views of the application
+* Sometimes a bit of controller testing when logic in JS
+
+MORE
+
+## Automation?
+
+## Device testing is tedious and hard
+
+## Desktop testing tools
+
+
+## Device testing tools
+
+* Adobe Shadow
+* weinre
+* shim
+* Opera Dragonfly
+* FireFox remote debug (NEW!)
+
+## Emulators and other
+
+## An example
+
+1. Base HTML and minimal CSS
+1. Test across all test devices
+
 
 ## Building a device collection
 
@@ -2228,24 +2608,9 @@ For example, the Mobile Portland group in, well, Portland, has a very active dis
 
 ## Resources
 
-[BagCheck Device Testing Gear](https://bagcheck.com/blog/22-mobile-device-testing-the-gear)
-[BBC Devices](http://mobiletestingfordummies.tumblr.com/post/20056227958/testing)
-[jQueryMobile Automated Selenium Testing](http://www.youtube.com/watch?v=51E3FWMKkig&feature=player_embedded#!)
-
-## Testing workflows
-
-## Remote testing and debug
-
-* Adobe Shadow
-* weinre
-* shim
-* Opera Dragonfly
-* FireFox remote debug (NEW!)
-
-
-
-## Emulators
-
+* [BagCheck Device Testing Gear](https://bagcheck.com/blog/22-mobile-device-testing-the-gear)
+* [BBC Devices](http://mobiletestingfordummies.tumblr.com/post/20056227958/testing)
+* [jQueryMobile Automated Selenium Testing](http://www.youtube.com/watch?v=51E3FWMKkig&feature=player_embedded#!)
 * Looking for some real old stuff? http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70
 
 ## Other tools
