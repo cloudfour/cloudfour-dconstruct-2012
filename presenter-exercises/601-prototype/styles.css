@@ -196,14 +196,14 @@ div.saved-glosses .remove-glosses:before {
   color: #d94343;
 }
 div.saved-glosses h3:before {
-  width: 2em;
+  display: inline-block;
+  width: 1.5em;
   margin-right: .5em;
   content: "\25B6";
   font-size: .5em;
 }
 
 div.saved-glosses.open h3:before {
-  width: 2em;
   content: "\25BC";
 }
 
@@ -319,7 +319,7 @@ span.song {
   .saved-glosses dl {
     width: 28em;
     position: absolute;
-    top: 1.95em;
+    top: auto;
     box-shadow: 0px 3px 3px #999;
     z-index: 500;
     left: 0;
