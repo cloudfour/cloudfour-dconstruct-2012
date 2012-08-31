@@ -104,17 +104,16 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
       }
     };
     var buildSavedList = function(glosses) {
-      var $list, $remove, glossId;
+      var $list, $remove, glossId, $content, $d, $dtContent, $dd, $definition;
       $list = $('<dl></dl>').addClass('saved-glosses');
 
       for(var i = 0; i < glosses.length; i++) {
-        var glossId = glosses[i],
-            $content = $("#" + glossId).html(),
-            $dt = $('<dt></dt>'),
-            $dtContent = '',
-            $dd;
+        glossId = glosses[i];
+        $content = $("#" + glossId).html();
+        $dt = $('<dt></dt>');
+        $dtContent = '';
         $('span[data-gloss="' + glossId + '"]').each(function() {
-          var $definition = $(this).clone();
+          $definition = $(this).clone();
           $definition.find('sup').remove(); // TODO: spaces
           $dtContent += $definition.html();
         });
@@ -141,10 +140,13 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
           (document.documentElement || document.body).clientHeight};
     };
     var init = function() {
+      var glosses;
       storage = new GlossStorage();
-      var glosses = storage.all();
-      if (glosses.length) {
-        showSavedGlosses(glosses);
+      if (storage.supported()) {
+        glosses = storage.all();
+        if (glosses.length) {
+          showSavedGlosses(glosses);
+        }
       }
       $(glossarySelector).find(glossDefinitionSelector).each(function() {
         var glossId = $(this).attr('id'),
