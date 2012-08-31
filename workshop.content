@@ -1301,25 +1301,27 @@ Jason reviewed over 100 RWD sites in 2011. Found that:
 
 ## Screen size != bandwidth
 
-Yes, this is true, but so what?
+* Yes, this is true, but so what?
+* On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users
 
-On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users.
+#### Rule of thumb
+
+Common sense tells us that *overall* mobile users have more likelihood of slower, more expensive connections.
 
 ## Why are they so big?
 
-* Hiding a background image by using `display:none` on the element will not prevent it from downloading.
-* Large desktop-size images are delivered to all devices even if they never use the image at that size.
-* Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads.
+* Hiding a background image by using `display:none` on the element will not prevent it from downloading
+* Large desktop-size images are delivered to all devices even if they never use the image at that size
+* Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads
 
 ## Let's back up
 
-Before we get specific about things, let's think about the bigger picture.
-
-Images and other embedded things have long been a source of consternation with respect to different browsers.
+* Before we get specific about things, let's think about the bigger picture
+* Images and other embedded things have long been a source of consternation with respect to different browsers
 
 ### What are the high-level problems here?
 
-* The `img` tag only provides one `src` attribute presently.
+* The `img` tag only provides one `src` attribute presently
 * Contrast this with `audio` and `video` HTML5 elements (so, smart folks *are* thinking about things like this)
 * Some of our techniques actually cause multiple (large) images to be downloaded
 
@@ -1327,18 +1329,13 @@ These issues apply both to CSS background images and inline images. Let's take a
 
 ## CSS Background images
 
-### Get your media queries in order
-
-First thing to fix media queries is to put them in order. Small screen before large screens.
-
-This causes means the fallback for images will be the small images, not the large ones.
-
-### Prevent extra background image downloads
-
-Things that work:
-
-* Use `display:none` on the parent element
-* Use media queries that don’t overlap (that is, are mutually exclusive):
+* Get your media queries in order
+    * First thing to fix media queries is to put them in order
+    * Small screen before large screens; use the cascade
+    * This means the fallback for images will be the small images, not the large ones
+* Prevent extra background image downloads
+    * Use `display:none` on the *parent* element
+    * Use media queries that don’t overlap (that is, are mutually exclusive):
 
 ~~~ {.css }
 @media all and (max-width: 500px) {
@@ -1351,12 +1348,8 @@ Things that work:
 
 ## CSS background images in different browsers
 
-As of iOS 4.2:
-
-* replacing a `background-image` will only result in one image being downloaded
-
-But, `display:none` on the element itself still downloads images.
-
+* As of iOS 4.2, replacing a `background-image` in the cascade will result in only one image being downloaded
+* But, `display:none` on the element itself still downloads images
 * [Tim Kadlec’s comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
 
 ## `image-set`
@@ -1479,11 +1472,9 @@ This is a product of my imagination and probably represents a syntax that would 
 * Delivering the right size video
 * Breakpoint management and zoom levels
 * Progressively enhancing from XHTML-MP to HTML5
-* Content ordering (Flexbox can’t come soon enough*)
+* Content ordering
 * Third-party widgets (particularly ad networks)
 * Integrating with content management systems
-
-* Or, at least, it can't stop *changing* soon enough
 
 ### This is all very new
 
@@ -1495,7 +1486,7 @@ Most feature testing is thought of in a yep/nope frame of reference. But real li
 
 * Just because this older Android device supports CSS transitions...can it really handle them in a performant way?
 * What does it mean if a particular feature-testing tool reports that the `canvas` tag is supported?
-* And even if @fontface is supported, should we send (potentially large) font files to mobile users?
+* And even if `@font-face` is supported, should we send (potentially large) font files to mobile users?
 
 #### Beware!
 

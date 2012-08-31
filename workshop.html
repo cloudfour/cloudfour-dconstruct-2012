@@ -1285,36 +1285,46 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 </div><div class="section slide level2" id="screen-size-bandwidth">
 <h1 id="screen-size-bandwidth">Screen size != bandwidth</h1>
-<p>Yes, this is true, but so what?</p>
-<p>On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users.</p>
+<ul>
+<li>Yes, this is true, but so what?</li>
+<li>On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users</li>
+</ul>
+<h4 id="rule-of-thumb-2">Rule of thumb</h4>
+<p>Common sense tells us that <em>overall</em> mobile users have more likelihood of slower, more expensive connections.</p>
 </div><div class="section slide level2" id="why-are-they-so-big">
 <h1 id="why-are-they-so-big">Why are they so big?</h1>
 <ul>
-<li>Hiding a background image by using <code>display:none</code> on the element will not prevent it from downloading.</li>
-<li>Large desktop-size images are delivered to all devices even if they never use the image at that size.</li>
-<li>Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads.</li>
+<li>Hiding a background image by using <code>display:none</code> on the element will not prevent it from downloading</li>
+<li>Large desktop-size images are delivered to all devices even if they never use the image at that size</li>
+<li>Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads</li>
 </ul>
 </div><div class="section slide level2" id="lets-back-up-1">
 <h1 id="lets-back-up-1">Let's back up</h1>
-<p>Before we get specific about things, let's think about the bigger picture.</p>
-<p>Images and other embedded things have long been a source of consternation with respect to different browsers.</p>
+<ul>
+<li>Before we get specific about things, let's think about the bigger picture</li>
+<li>Images and other embedded things have long been a source of consternation with respect to different browsers</li>
+</ul>
 <h3 id="what-are-the-high-level-problems-here">What are the high-level problems here?</h3>
 <ul>
-<li>The <code>img</code> tag only provides one <code>src</code> attribute presently.</li>
+<li>The <code>img</code> tag only provides one <code>src</code> attribute presently</li>
 <li>Contrast this with <code>audio</code> and <code>video</code> HTML5 elements (so, smart folks <em>are</em> thinking about things like this)</li>
 <li>Some of our techniques actually cause multiple (large) images to be downloaded</li>
 </ul>
 <p>These issues apply both to CSS background images and inline images. Let's take a look at some ideas for patching the problem over...</p>
 </div><div class="section slide level2" id="css-background-images">
 <h1 id="css-background-images">CSS Background images</h1>
-<h3 id="get-your-media-queries-in-order">Get your media queries in order</h3>
-<p>First thing to fix media queries is to put them in order. Small screen before large screens.</p>
-<p>This causes means the fallback for images will be the small images, not the large ones.</p>
-<h3 id="prevent-extra-background-image-downloads">Prevent extra background image downloads</h3>
-<p>Things that work:</p>
 <ul>
-<li>Use <code>display:none</code> on the parent element</li>
+<li>Get your media queries in order
+<ul>
+<li>First thing to fix media queries is to put them in order</li>
+<li>Small screen before large screens; use the cascade</li>
+<li>This means the fallback for images will be the small images, not the large ones</li>
+</ul></li>
+<li>Prevent extra background image downloads
+<ul>
+<li>Use <code>display:none</code> on the <em>parent</em> element</li>
 <li>Use media queries that don’t overlap (that is, are mutually exclusive):</li>
+</ul></li>
 </ul>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">500px)</span> <span class="dv">{</span>
     <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;small.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
@@ -1324,12 +1334,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <span class="dv">}</span></code></pre>
 </div><div class="section slide level2" id="css-background-images-in-different-browsers">
 <h1 id="css-background-images-in-different-browsers">CSS background images in different browsers</h1>
-<p>As of iOS 4.2:</p>
 <ul>
-<li>replacing a <code>background-image</code> will only result in one image being downloaded</li>
-</ul>
-<p>But, <code>display:none</code> on the element itself still downloads images.</p>
-<ul>
+<li>As of iOS 4.2, replacing a <code>background-image</code> in the cascade will result in only one image being downloaded</li>
+<li>But, <code>display:none</code> on the element itself still downloads images</li>
 <li><a href="http://timkadlec.com/2012/04/media-query-asset-downloading-results/">Tim Kadlec’s comprehensive test results for background images</a></li>
 </ul>
 </div><div class="section slide level2" id="image-set">
@@ -1434,10 +1441,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Delivering the right size video</li>
 <li>Breakpoint management and zoom levels</li>
 <li>Progressively enhancing from XHTML-MP to HTML5</li>
-<li>Content ordering (Flexbox can’t come soon enough*)</li>
+<li>Content ordering</li>
 <li>Third-party widgets (particularly ad networks)</li>
-<li><p>Integrating with content management systems</p></li>
-<li><p>Or, at least, it can't stop <em>changing</em> soon enough</p></li>
+<li>Integrating with content management systems</li>
 </ul>
 <h3 id="this-is-all-very-new">This is all very new</h3>
 <p>No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.</p>
@@ -1447,7 +1453,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>Just because this older Android device supports CSS transitions...can it really handle them in a performant way?</li>
 <li>What does it mean if a particular feature-testing tool reports that the <code>canvas</code> tag is supported?</li>
-<li>And even if @fontface is supported, should we send (potentially large) font files to mobile users?</li>
+<li>And even if <code>@font-face</code> is supported, should we send (potentially large) font files to mobile users?</li>
 </ul>
 <h4 id="beware-5">Beware!</h4>
 <p>Don't get lulled into a false sense of clarity or confidence about feature testing.</p>
