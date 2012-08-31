@@ -2,7 +2,7 @@
  * jQuery Messi Plugin 1.2
  * http://marcosesperon.es/apps/messi/
  *
- * Copyright 2012, Marcos Esperón
+ * Copyright 2012, Marcos EsperÃ³n
  * http://marcosesperon.es
  *
  * Licensed under the MIT license:
@@ -64,17 +64,17 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
         buttons      = [ { label: 'Close' } ];
         if (storage.supported() && !storage.has(glossId)) {
           buttons[1] = { id: 'save-' + glossId, 
-            label: 'Save', 
-            val: glossId, 
-            btnClass: 'btn-success' 
+            label       : 'Save', 
+            val         : glossId, 
+            btnClass    : 'btn-success' 
           };
         }
         new Messi($content,
-          { title:   'Glossary', 
-            modal:   true, 
-            width:   popupWidth + 'px',
-            buttons: buttons,
-            callback: function(val) { if (val) { saveGloss(val); } } 
+          { title      : 'Glossary', 
+            modal      : true, 
+            width      : popupWidth + 'px',
+            buttons    : buttons,
+            callback   : function(val) { if (val) { saveGloss(val); } } 
           } 
         );
     };
@@ -86,8 +86,8 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
       $('span[data-gloss="' + val + '"]').addClass(savedGlossClass);
     };
     var showSavedGlosses = function(glosses) {
-      var $list = buildSavedList(glosses);
-      var $savedWrapper;
+      var $list = buildSavedList(glosses),
+          $savedWrapper;
       if (!$(savedGlossesSelector).length) {
         $savedWrapper = $('<div></div>').addClass('saved-glosses').html('<h3>Saved Items</h3>');
         $savedWrapper.append($list);
@@ -108,17 +108,18 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
       $list = $('<dl></dl>').addClass('saved-glosses');
 
       for(var i = 0; i < glosses.length; i++) {
-        var glossId = glosses[i];
-        var $content = $("#" + glossId).html();
-        var $dt = $('<dt></dt>');
-        var $dtContent = '';
+        var glossId = glosses[i],
+            $content = $("#" + glossId).html(),
+            $dt = $('<dt></dt>'),
+            $dtContent = '',
+            $dd;
         $('span[data-gloss="' + glossId + '"]').each(function() {
           var $definition = $(this).clone();
-          $definition.find('sup').remove();
+          $definition.find('sup').remove(); // TODO: spaces
           $dtContent += $definition.html();
         });
         $dt.html($dtContent);
-        var $dd = $('<dd></dd>').attr('id', 'saved-' + glossId).html($content);
+        $dd = $('<dd></dd>').attr('id', 'saved-' + glossId).html($content);
         $list.append($dt);
         $list.append($dd);
       }
@@ -146,8 +147,8 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
         showSavedGlosses(glosses);
       }
       $(glossarySelector).find(glossDefinitionSelector).each(function() {
-        var glossId = $(this).attr('id');
-        var glossItemSelector = '[data-gloss="' + glossId + '"]';
+        var glossId = $(this).attr('id'),
+            glossItemSelector = '[data-gloss="' + glossId + '"]';
         $(glossItemSelector).each(function() {
           $(this).addClass('gloss-item');
           if (storage.supported() && storage.has(glossId)) {
@@ -159,9 +160,7 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
           });
         });
       });
-
     }();
-    
   }
 })( jQuery );
 
