@@ -12,8 +12,8 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
 
 (function($) {
   function GlossStorage() {
-    var savedGlosses,
-        glossKey = 'glosses';
+    var savedGlosses  = [],
+        glossKey      = 'glosses';
 
     this.supported = function() {
       return (typeof JSON != 'undefined'
@@ -51,6 +51,7 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
         glossDefinitionSelector = '.glossary-entry',
         glossItemSelector       = 'span.gloss-item',
         savedBeforeSelector     = 'body',
+        glossClass              = 'gloss-item',
         savedGlossClass         = 'gloss-item-saved',
         savedGlossesSelector    = 'div.saved-glosses',
         storage,
@@ -80,47 +81,44 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
     };
     var saveGloss = function(val) {
       var glosses = storage.save(val);
-      if (glosses && glosses.length) {
-        showSavedGlosses(glosses);
-      }
+      showSavedGlosses();
       $('span[data-gloss="' + val + '"]').addClass(savedGlossClass);
     };
-    var showSavedGlosses = function(glosses) {
-      var $list = buildSavedList(glosses),
+    var showSavedGlosses = function() {
+      var glosses,
+          $list,
           $savedWrapper;
+      glosses = storage.all();
+      if (!glosses.length) {
+        return;
+      }
+      $list = buildSavedList(glosses);
       if (!$(savedGlossesSelector).length) {
         $savedWrapper = $('<div></div>').addClass('saved-glosses').html('<h3>Saved Items</h3>');
-        $savedWrapper.append($list);
-        $(savedBeforeSelector).prepend($savedWrapper);
-        // TODO BETTER
+        $savedWrapper.append($list).prependTo($(savedBeforeSelector));
         $(savedGlossesSelector + ' h3').click(function() {
           $(savedGlossesSelector).toggleClass('open').find('dl').slideToggle('fast');
         });
       } else {
-        $(savedGlossesSelector + ' dl').replaceWith($list);
-        if ($(savedGlossesSelector).hasClass('open')) {
-          $(savedGlossesSelector + ' dl').show();
-        }
+        $(savedGlossesSelector + ' dl').replaceWith($list)
+        $(savedGlossesSelector + ' dl').toggle($(savedGlossesSelector).hasClass('open'));
       }
     };
     var buildSavedList = function(glosses) {
       var $list, $remove, glossId, $content, $d, $dtContent, $dd, $definition;
-      $list = $('<dl></dl>').addClass('saved-glosses');
-
+      $list        = $('<dl></dl>').addClass('saved-glosses');
       for(var i = 0; i < glosses.length; i++) {
-        glossId = glosses[i];
-        $content = $("#" + glossId).html();
-        $dt = $('<dt></dt>');
+        glossId    = glosses[i];
+        $content   = $("#" + glossId).html();
         $dtContent = '';
         $('span[data-gloss="' + glossId + '"]').each(function() {
           $definition = $(this).clone();
           $definition.find('sup').remove(); // TODO: spaces
           $dtContent += $definition.html();
         });
-        $dt.html($dtContent);
+        $dt = $('<dt></dt>').html($dtContent);
         $dd = $('<dd></dd>').attr('id', 'saved-' + glossId).html($content);
-        $list.append($dt);
-        $list.append($dd);
+        $list.append($dt).append($dd);
       }
       $remove = $('<dt></dt>').addClass('remove-glosses').html('Clear All').click(function() {
         clearGlosses();
@@ -139,28 +137,15 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
          height: window.innerHeight || 
           (document.documentElement || document.body).clientHeight};
     };
-    var init = function() {
+    var init            = function() {
       var glosses;
-      storage = new GlossStorage();
-      if (storage.supported()) {
-        glosses = storage.all();
-        if (glosses.length) {
-          showSavedGlosses(glosses);
-        }
-      }
+      storage           = new GlossStorage();
+      showSavedGlosses();
       $(glossarySelector).find(glossDefinitionSelector).each(function() {
-        var glossId = $(this).attr('id'),
-            glossItemSelector = '[data-gloss="' + glossId + '"]';
-        $(glossItemSelector).each(function() {
-          $(this).addClass('gloss-item');
-          if (storage.supported() && storage.has(glossId)) {
-            $(this).addClass('gloss-item-saved');
-          }
-          $(this).click(function(event) {
-            event.preventDefault();
-            showGloss($(this), glossId);
-          });
-        });
+        var glossId     = $(this).attr('id'),
+            $glossItems = $('[data-gloss ="' + glossId + '"]');
+        $glossItems.addClass(glossClass).toggleClass(savedGlossClass, storage.has(glossId));
+        $glossItems.click(function(event) { showGloss($(this), glossId); });
       });
     }();
   }
