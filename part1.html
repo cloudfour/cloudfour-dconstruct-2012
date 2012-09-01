@@ -1623,13 +1623,16 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Consistency.</li>
 <li>Performance.</li>
 </ol>
-</div><div class="section slide level2" id="exercise-you-are-the-decider">
-<h1 id="exercise-you-are-the-decider">Exercise: You are the decider</h1>
+</div><div class="section slide level2" id="you-are-the-decider">
+<h1 id="you-are-the-decider">You are the decider</h1>
 <ul>
 <li>Put @font-face rules wherever you are comfortable</li>
 <li>Decide on the <code>small-caps</code> and <code>lowercase</code> stuff</li>
 </ul>
-<p>TODO: I think we could make this a discussion-based exercise</p>
+<h3 id="for-your-consideration-5">For your consideration</h3>
+<ul>
+<li>What would you do?</li>
+</ul>
 </div><div class="section slide level2" id="progressive-enhancement-electric-boogaloo">
 <h1 id="progressive-enhancement-electric-boogaloo">Progressive enhancement: electric boogaloo</h1>
 <ul>
@@ -1648,7 +1651,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Counting lines by:
 <ul>
 <li>Incrementing a CSS <code>counter</code> on every <code>span.line</code></li>
-<li>Using <code>contetn</code> on an <code>:after</code> pseudo-element to display the value of the CSS counter every 10 lines</li>
+<li>Using <code>content</code> on an <code>:after</code> pseudo-element to display the value of the CSS counter every 10 lines</li>
 </ul></li>
 <li>Problem is:
 <ul>
@@ -1664,11 +1667,13 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Can we use JavaScript to select, traverse and manipulate DOM nodes in the way we'd like in this browser?</li>
 <li>Does this browser support media queries?</li>
 <li>Is the wider-screen media query applied?</li>
-<li>Does this browser support generated content/:after?</li>
+<li>Does this browser support generated content?</li>
 <li>Does this browser support CSS counters?</li>
 </ul>
-</div><div class="section slide level2" id="dependencies">
-<h1 id="dependencies">2. Dependencies</h1>
+<h3 id="exercise-2">Exercise</h3>
+<p><a href="exercises/401-enhancement">Exercise: Feature test plan of attack</a></p>
+</div><div class="section slide level2" id="exercise-follow-up">
+<h1 id="exercise-follow-up">Exercise Follow-up</h1>
 <div class="figure">
 <img src="assets/images/generated-support.png" alt="caniuse.com" /><p class="caption">caniuse.com</p>
 </div>
@@ -1679,9 +1684,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </div><div class="section slide level2" id="tools">
 <h1 id="tools">Tools</h1>
 <ul>
-<li>Modernizr's integration with <code>yepnope.js</code> and the <code>Modernizr.mq()</code> method
+<li>Modernizr's integration with <code>yepnope.js</code> via <code>Modernizr.load</code> and the <code>Modernizr.mq()</code> method
 <ul>
-<li>I'll need a new version of Modernizr that also tests for generated content support</li>
+<li>I'll need a new version of Modernizr that also tests for generated content support and contains the <code>.mq</code> support</li>
 </ul></li>
 <li>Conditionally load the <em>jQuery</em> library when:
 <ul>

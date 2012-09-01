@@ -1613,12 +1613,14 @@ Objective #1 trumps objectives #2 and #3.
 1. Consistency.
 1. Performance.
 
-## Exercise: You are the decider
+## You are the decider
 
 * Put @font-face rules wherever you are comfortable
 * Decide on the `small-caps` and `lowercase` stuff
 
-TODO: I think we could make this a discussion-based exercise
+### For your consideration
+
+* What would you do?
 
 ## Progressive enhancement: electric boogaloo
 
@@ -1634,7 +1636,7 @@ TODO: I think we could make this a discussion-based exercise
 * On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes
 * Counting lines by:
     * Incrementing a CSS `counter` on every `span.line`
-    * Using `contetn` on an `:after` pseudo-element to display the value of the CSS counter every 10 lines
+    * Using `content` on an `:after` pseudo-element to display the value of the CSS counter every 10 lines
 * Problem is:
     * There isn't a viable CSS selector for that
     * `nth-of-type()` doesn't suffice because `span.line` elements are in multiple parent (`dd`) elements
@@ -1647,11 +1649,15 @@ All answers must be "yes":
 * Can we use JavaScript to select, traverse and manipulate DOM nodes in the way we'd like in this browser?
 * Does this browser support media queries?
 * Is the wider-screen media query applied?
-* Does this browser support generated content/:after?
+* Does this browser support generated content?
 * Does this browser support CSS counters?
 
+### Exercise
 
-## 2. Dependencies
+[Exercise: Feature test plan of attack](exercises/401-enhancement)
+
+
+## Exercise Follow-up
 
 ![caniuse.com](assets/images/generated-support.png)
 
@@ -1661,8 +1667,8 @@ All answers must be "yes":
 
 ## Tools
 
-* Modernizr's integration with `yepnope.js` and the `Modernizr.mq()` method
-    * I'll need a new version of Modernizr that also tests for generated content support
+* Modernizr's integration with `yepnope.js` via `Modernizr.load` and the `Modernizr.mq()` method
+    * I'll need a new version of Modernizr that also tests for generated content support and contains the `.mq` support
 * Conditionally load the *jQuery* library when:
     * Wider screen media query is applied
     * `Modernizr.generatedcontent` is true

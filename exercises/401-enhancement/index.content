@@ -1,0 +1,22 @@
+## Exercise: What should we test for to enhance our page?
+
+### Recall
+
+All answers must be "yes":
+
+1. Can we use JavaScript to select, traverse and manipulate DOM nodes in the way we'd like in this browser?
+1. Does this browser support media queries?
+1. Is the wider-screen media query applied?
+1. Does this browser support generated content?
+1. Does this browser support CSS counters?
+
+* Let's assume that the answer to #1 is yes (if the JS containing the tests is evaluated, that by default answers question 1)
+* *Hint*: The answers to 2 and 3 are interrelated. Suggest looking at #3 first.
+
+Use the [Modernizr documentation](http://modernizr.com/docs/).
+
+1. Which Modernizr feature test(s) should we use to answer question 4 above?
+1. Which Modernizr feature could help us with question 3 and 2 above?
+1. *For the JS-inclined*: Take a look at `Modernizr.load` (if you are not familiar with it). How could it help us in our endeavors here?
+1. *Challenge question*: There is no Modernizr test for CSS counter support. How can we try to assure that counters are supported?
+
