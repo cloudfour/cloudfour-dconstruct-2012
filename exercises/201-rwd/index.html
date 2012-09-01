@@ -32,15 +32,16 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <header>
 <h1 class="title">Exercise 3: Media queries and RWD</h1>
 </header>
-<ol type="1">
-<li>Add a media query to <code>styles.css</code> that should apply to screens at least <code>50em</code> or wider.</li>
-<li>Inside of this media query, cook up some CSS to effect the following:
+<ul>
+<li>Add a media query to the end of <code>styles.css</code> that should apply to screens at least <code>50em</code> or wider.</li>
+<li>Inside of this media query, cook up some CSS to effect the following differences for wider screens:
 <ol type="1">
 <li>Font sizes: <code>body</code> font should be <code>1.125em</code>. <code>h1</code> should be <code>4em</code>.</li>
-<li>The <code>.scene</code> layout element (it's a <code>section</code>, if you are curious) should <code>float:left</code></li>
+<li>The <code>.scene</code> layout element should <code>float:left</code></li>
 <li><code>section</code> elements should have a margin of <code>.5em 1em</code></li>
 </ol></li>
-<li><p>Add the following class-specific CSS:</p>
+<li>Add the following class-specific CSS inside of the media query:</li>
+</ul>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Float the names of the characters speaking left</span>
 <span class="co">   (they are in &lt;dt&gt; elements). Also float em.stage-direction</span>
 <span class="co">   items (overriding previous display:block for span.stage-direction)</span>
@@ -59,7 +60,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 span<span class="fl">.prose</span> <span class="kw">{</span>
   <span class="kw">display:</span> <span class="dt">block</span><span class="kw">;</span>
   <span class="kw">clear:</span> <span class="dt">right</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></li>
-</ol>
+<span class="kw">}</span></code></pre>
 </body>
 </html>

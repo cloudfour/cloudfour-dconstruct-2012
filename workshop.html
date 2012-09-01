@@ -157,7 +157,8 @@ Lyza Gardner
 <li>iPad (1st-generation) OS 5, Safari</li>
 <li><a href="http://www.opera.com/developer/tools/mini/">Opera Mini simulator</a> (not a device, I admit)</li>
 <li>Several OS 6 BlackBerrys: Two Torches (9800), a 9810</li>
-<li>BlackBerry PlayBook tablet (TODO: Version?)</li>
+<li>Samsung Galaxy S (Android 2.1, native browser)</li>
+<li>BlackBerry PlayBook tablet</li>
 </ul>
 </div>
 <div class="section titleslide slide level1" id="part-1.-starting-from-scratch-on-the-mobile-web"><h1 id="part-1.-starting-from-scratch-on-the-mobile-web">Part 1. Starting from scratch on the mobile web</h1></div><div class="section slide level2" id="starting-with-nothing">
@@ -1149,7 +1150,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </div><div class="section slide level2" id="understanding-media-query-support">
 <h1 id="understanding-media-query-support">Understanding media query support</h1>
 <h3 id="tackling-the-lack-of-media-query-support">Tackling the lack of media query support</h3>
-<p>TODO: BB 8320 Screen shot</p>
+<div class="figure">
+<img src="assets/images/8320-no-mq.png" alt="BB 8320 doesn&#39;t support MQs, but that&#39;s expected!" /><p class="caption">BB 8320 doesn't support MQs, but that's expected!</p>
+</div>
 <blockquote>
 <p>&quot;The absence of support for media queries is in fact the first media query.&quot;—Bryan Rieger</p>
 </blockquote>
@@ -1193,7 +1196,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </div><div class="section slide level2" id="um.">
 <h1 id="um.">Um.</h1>
 <div class="figure">
-<img src="assets/images/ie8-hot-mess2.png" /><p class="caption"></p>
+<img src="assets/images/ie8-hot-mess2.png" alt="IE: This ain&#39;t good" /><p class="caption">IE: This ain't good</p>
 </div>
 <ul>
 <li>Turns out there's another problem here: lack of HTML5 element support.</li>
@@ -1205,12 +1208,14 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 </div><div class="section slide level2" id="its-a-question-of-features">
 <h1 id="its-a-question-of-features">It's a question of features</h1>
-<p>A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details.</p>
-<p>We can help to keep some of our sanity by:</p>
+<ul>
+<li>A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details so that we can develop for a <em>differentiated, fractured web</em>.</li>
+<li>We can help to keep some of our sanity by:
 <ul>
 <li>Being good about progressive enhancement</li>
 <li>Thinking about things in terms of what <strong>features</strong> the different user agents accessing our site support</li>
 <li>Assessing shortcomings and fomenting a strategy about support priorities and tools to broaden support</li>
+</ul></li>
 </ul>
 </div><div class="section slide level2" id="some-tools-at-our-disposal">
 <h1 id="some-tools-at-our-disposal">Some tools at our disposal</h1>
@@ -1254,6 +1259,25 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Enhancing content when we have positive test results</li>
 <li>CSS Classes</li>
 </ul>
+</div><div class="section slide level2" id="modernizr">
+<h1 id="modernizr">Modernizr</h1>
+<ul>
+<li>Many different HTML, CSS and JS feature tests</li>
+<li>Comes default with HTML5 shim/shiv</li>
+<li>Comes default with <code>Modernizr.load()</code></li>
+<li>Tests results are available on the <code>Modernizr</code> object
+<ul>
+<li>e.g. <code>if (Modernizr.touch)</code></li>
+</ul></li>
+<li>Optionally, test results can be added as classes to the <code>html</code> element
+<ul>
+<li>e.g. <code>&lt;html class=&quot;fontface no-touch cssgradients&quot;&gt;</code></li>
+</ul></li>
+<li>I usually use the full/dev version for development, and then <a href="http://modernizr.com/download/">build a version</a> that only contains the tests I need</li>
+<li>Sometimes Modernizr is overkill</li>
+</ul>
+<h4 id="hold-that-thought-1">Hold that thought!</h4>
+<p>We'll come back to <code>Modernizr.load()</code></p>
 </div><div class="section slide level2" id="font-squirrel">
 <h1 id="font-squirrel">Font Squirrel</h1>
 <div class="figure">
@@ -1269,6 +1293,13 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>You be the enhancer!</li>
 <li><a href="exercises/301-features">Exercise: feature enhancement vis-a-vis @font-face</a></li>
+</ul>
+</div><div class="section slide level2" id="todo-moar-polyfills-and-feature-tests">
+<h1 id="todo-moar-polyfills-and-feature-tests">TODO: MOAR polyfills and feature tests</h1>
+<ul>
+<li>Selectivizr</li>
+<li>IE scripts (cloudfour.com)</li>
+<li>Modernizr page of polyfills</li>
 </ul>
 </div>
 <div class="section titleslide slide level1" id="part-iv-on-the-frontiers-of-the-adaptive-web"><h1 id="part-iv-on-the-frontiers-of-the-adaptive-web">Part IV: On the frontiers of the adaptive web</h1></div><div class="section slide level2" id="most-rwd-sites-are-not-mobile-first">
@@ -1291,12 +1322,15 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 <h4 id="rule-of-thumb-2">Rule of thumb</h4>
 <p>Common sense tells us that <em>overall</em> mobile users have more likelihood of slower, more expensive connections.</p>
-</div><div class="section slide level2" id="why-are-they-so-big">
-<h1 id="why-are-they-so-big">Why are they so big?</h1>
+</div><div class="section slide level2" id="why-are-these-sites-so-big">
+<h1 id="why-are-these-sites-so-big">Why are these sites so big?</h1>
+<ul>
+<li>A huge factor is image file sizes and the download of resources that are not used
 <ul>
 <li>Hiding a background image by using <code>display:none</code> on the element will not prevent it from downloading</li>
 <li>Large desktop-size images are delivered to all devices even if they never use the image at that size</li>
 <li>Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads</li>
+</ul></li>
 </ul>
 </div><div class="section slide level2" id="lets-back-up-1">
 <h1 id="lets-back-up-1">Let's back up</h1>
@@ -1341,7 +1375,24 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 </div><div class="section slide level2" id="image-set">
 <h1 id="image-set"><code>image-set</code></h1>
-<p>TODO: Image-set coverage</p>
+<ul>
+<li><a href="http://blog.cloudfour.com/safari-6-and-chrome-21-add-image-set-to-support-retina-images/">Jason's blog post on <code>image-set</code> on our blog</a></li>
+<li>Supported presently in Chrome, Safari 6</li>
+<li>Yep, everyone's very foamy about retina. So, maybe, here you go?</li>
+</ul>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">#test</span> <span class="kw">{</span>
+    <span class="kw">background-image:</span> <span class="dt">url(</span>assets/no-image-set<span class="dt">.</span>png<span class="dt">)</span><span class="kw">;</span> 
+    <span class="kw">background-image:</span> -webkit-image-set(<span class="dt">url(</span>assets/test<span class="dt">.</span>png<span class="dt">)</span> <span class="dt">1</span>x,
+           <span class="dt">url(</span>assets/test-hires<span class="dt">.</span>png<span class="dt">)</span> <span class="dt">2</span>x)<span class="kw">;</span>
+    <span class="kw">background-image:</span> -moz-image-set(<span class="dt">url(</span>assets/test<span class="dt">.</span>png<span class="dt">)</span> <span class="dt">1</span>x,
+           <span class="dt">url(</span>assets/test-hires<span class="dt">.</span>png<span class="dt">)</span> <span class="dt">2</span>x)<span class="kw">;</span>
+    <span class="kw">background-image:</span> -o-image-set(<span class="dt">url(</span>assets/test<span class="dt">.</span>png<span class="dt">)</span> <span class="dt">1</span>x,
+           <span class="dt">url(</span>assets/test-hires<span class="dt">.</span>png<span class="dt">)</span> <span class="dt">2</span>x)<span class="kw">;</span>
+    <span class="kw">background-image:</span> -ms-image-set(<span class="dt">url(</span>assets/test<span class="dt">.</span>png<span class="dt">)</span> <span class="dt">1</span>x,
+           <span class="dt">url(</span>assets/test-hires<span class="dt">.</span>png<span class="dt">)</span> <span class="dt">2</span>x)<span class="kw">;</span>
+    <span class="kw">width:</span><span class="dt">200px</span><span class="kw">;</span>
+    <span class="kw">height:</span><span class="dt">75px</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
 </div><div class="section slide level2" id="the-inline-html-img-tag-conundrum">
 <h1 id="the-inline-html-img-tag-conundrum">The inline HTML <code>img</code> tag conundrum</h1>
 <ul>
@@ -1355,14 +1406,21 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>JavaScript checks the width of the screen and sets a cookie.</li>
 <li>Image requests contain that cookie giving the server the information it needs.</li>
-<li><code>.htaccess</code> file on server checks for cookie and routes requests to the correct file depending on screen size.</li>
+<li><code>.htaccess</code> file on server checks for cookie and routes requests to the correct file depending on screen size.
+<ul>
+<li>Apache rewrite rules or the like can keep HTML <code>img</code> <code>src</code> pointing at a canonical URL, which is nice.</li>
+</ul></li>
 </ul>
 </div><div class="section slide level2" id="option-1-problems">
 <h1 id="option-1-problems">Option 1 Problems</h1>
 <ul>
-<li>Sometimes the browser requests images before the JavaScript executes which means the cookie isn’t set. Race condition.</li>
+<li>Some fragility
+<ul>
+<li>Sometimes the browser requests images before the JavaScript executes which means the cookie isn’t set. Race condition</li>
 <li>What is the fallback if cookies aren’t enabled?</li>
-<li>Relies on the current way browsers load content which could change. No contract between the browser and the developer.</li>
+<li>Relies on the current way browsers load content which could change. No contract between the browser and the developer</li>
+<li>Slightly complex concept</li>
+</ul></li>
 </ul>
 </div><div class="section slide level2" id="responsive-images-option-2">
 <h1 id="responsive-images-option-2">Responsive images: Option 2</h1>
@@ -1391,6 +1449,15 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>All of your images are being routed through a third-party service.</li>
 <li>How does Sencha know what size image to use anyways? It relies on device detection which some developers dislike.</li>
+</ul>
+</div><div class="section slide level2" id="this-just-in">
+<h1 id="this-just-in">This just in!</h1>
+<ul>
+<li><a href="http://www.resrc.it/">http://www.resrc.it/</a> Haven't had a chance to vet it
+<ul>
+<li>Appears to combine server-side image work with responsive front-end stuff</li>
+<li>Has anyone tried it?</li>
+</ul></li>
 </ul>
 </div><div class="section slide level2" id="what-we-really-need-to-solve-for-images">
 <h1 id="what-we-really-need-to-solve-for-images">What we really need to solve for images</h1>
@@ -1447,6 +1514,10 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 <h3 id="this-is-all-very-new">This is all very new</h3>
 <p>No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.</p>
+<h3 id="for-your-consideration-4">For your consideration</h3>
+<ul>
+<li>Which approaches to embedded media seem most appealing to you? Do you have any ideas for how to solve the image problem?</li>
+</ul>
 </div><div class="section slide level2" id="binary-fallacy">
 <h1 id="binary-fallacy">Binary fallacy</h1>
 <p>Most feature testing is thought of in a yep/nope frame of reference. But real life isn't that simple.</p>
@@ -1484,7 +1555,10 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Used Modernizr to test for @font-face support</li>
 <li>And this is what it looks like on a BB 9810</li>
 </ul>
-<h4 id="rule-of-thumb-font-support-on-mobile-is-very-challenging.-be-wary.">Rule of thumb: Font support on mobile is very challenging. Be wary.</h4>
+<h4 id="rule-of-thumb-3">Rule of thumb</h4>
+<ul>
+<li>Font support on mobile is very challenging. Be wary.</li>
+</ul>
 </div><div class="section slide level2" id="lets-back-up-again">
 <h1 id="lets-back-up-again">Let's back up again</h1>
 <p>This BlackBerry Torch conundrum highlights some issues:</p>
@@ -1525,11 +1599,6 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Decide on the <code>small-caps</code> and <code>lowercase</code> stuff</li>
 </ul>
 <p>TODO: I think we could make this a discussion-based exercise</p>
-</div><div class="section slide level2" id="a-diversion-about-performance">
-<h1 id="a-diversion-about-performance">A diversion about performance</h1>
-<p>TODO: Performance</p>
-</div><div class="section slide level2" id="yslow">
-<h1 id="yslow">ySlow</h1>
 </div><div class="section slide level2" id="progressive-enhancement-electric-boogaloo">
 <h1 id="progressive-enhancement-electric-boogaloo">Progressive enhancement: electric boogaloo</h1>
 <ul>
@@ -1540,10 +1609,23 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 </div><div class="section slide level2" id="line-number-enhancement">
 <h1 id="line-number-enhancement">Line number enhancement</h1>
-<p>TODO: Screen shot of goal</p>
-<p>On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes.</p>
-<p>Part of this can be done by incrementing a CSS counter on every <code>span.line</code> and using an <code>:after</code> pseudo-element to display the value of the CSS counter.</p>
-<p>The challenge is that I'd like to do this only every 10 lines, and there isn't a viable CSS selector for that. So I need a bit of JS support here.</p>
+<div class="figure">
+<img src="assets/images/line-numbers.png" alt="Goal: wider screen with line numbers every 10 lines" /><p class="caption">Goal: wider screen with line numbers every 10 lines</p>
+</div>
+<ul>
+<li>On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes</li>
+<li>Counting lines by:
+<ul>
+<li>Incrementing a CSS <code>counter</code> on every <code>span.line</code></li>
+<li>Using <code>contetn</code> on an <code>:after</code> pseudo-element to display the value of the CSS counter every 10 lines</li>
+</ul></li>
+<li>Problem is:
+<ul>
+<li>There isn't a viable CSS selector for that</li>
+<li><code>nth-of-type()</code> doesn't suffice because <code>span.line</code> elements are in multiple parent (<code>dd</code>) elements</li>
+</ul></li>
+<li>Need a bit of JS support</li>
+</ul>
 </div><div class="section slide level2" id="line-number-enhancement-1">
 <h1 id="line-number-enhancement-1">Line number enhancement</h1>
 <p>All answers must be &quot;yes&quot;:</p>
@@ -1556,21 +1638,24 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul>
 </div><div class="section slide level2" id="dependencies">
 <h1 id="dependencies">2. Dependencies</h1>
-<ul>
-<li>:after generated content relies on css counter support — that is, we don't want to add generated content if it is invalid</li>
-<li>Fortunately the set of browsers that supports :before/:after is effectively the same as those who support CSS counter</li>
-</ul>
 <div class="figure">
-<img src="assets/images/generated-support.png" /><p class="caption"></p>
+<img src="assets/images/generated-support.png" alt="caniuse.com" /><p class="caption">caniuse.com</p>
 </div>
+<ul>
+<li><code>:after</code> generated content relies on css <code>counter</code> support — that is, we don't want to add generated content if it is invalid</li>
+<li>Fortunately the set of browsers that supports <code>:before</code>/<code>:after</code> is effectively the same as those who support CSS <code>counter</code></li>
+</ul>
 </div><div class="section slide level2" id="tools">
 <h1 id="tools">Tools</h1>
 <ul>
-<li>Modernizr's integration with yepnope.js and the Modernizr.mq() test. I'll need a new version of Modernizr that also tests for generated content support.</li>
+<li>Modernizr's integration with <code>yepnope.js</code> and the <code>Modernizr.mq()</code> method
+<ul>
+<li>I'll need a new version of Modernizr that also tests for generated content support</li>
+</ul></li>
 <li>Conditionally load the <em>jQuery</em> library when:
 <ul>
 <li>Wider screen media query is applied</li>
-<li>Modernizr.generatedcontent is true</li>
+<li><code>Modernizr.generatedcontent</code> is true</li>
 <li>Then, use jQuery selection to select and act on the DOM elements in question</li>
 </ul></li>
 </ul>
@@ -1625,6 +1710,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   }
 ]);
 &lt;/script&gt;</code></pre>
+<h3 id="ugh-moment">Ugh moment</h3>
 <p>Note that we're repeating our media query verbatim. Not great, but...options are limited these days.</p>
 </div><div class="section slide level2" id="and-our-jquery...">
 <h1 id="and-our-jquery...">And our jQuery...</h1>
@@ -1643,8 +1729,16 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 ]);
 &lt;/script&gt;</code></pre>
 <ul>
-<li>When document is ready, filter all <code>html.generatedcontent span.line</code> elements against the anonymous function here that returns <code>true</code> for every 10th line that isn't the first line (0). For those elements that pass this filter, add the class <code>line-number</code>.</li>
-<li>The non-existent CSS selector I'm emulating here is something like <code>html.generatedcontent span.line:nth-of-type(10n)</code> but doesn't reset when its parent element closes.</li>
+<li>When DOM is ready
+<ul>
+<li>For all <code>html.generatedcontent span.line</code> elements
+<ul>
+<li>jQuery <code>.filter</code> method lets us reduce the set of elements we have</li>
+<li>Filter and only continue for every 10th element (that is also not the 0th element). i.e. remove all but every 10th match</li>
+<li>Add the class <code>line-number</code> on those filtered (every 10th) elements</li>
+</ul></li>
+</ul></li>
+<li>This callback only gets executed if the <code>test</code> passes and after the <code>yep</code> items are loaded and ready</li>
 </ul>
 </div><div class="section slide level2" id="the-css">
 <h1 id="the-css">The CSS</h1>
@@ -1665,9 +1759,17 @@ html<span class="fl">.generatedcontent</span> span<span class="fl">.line-number<
   <span class="kw">content:</span> <span class="dt">counter(</span>line-count<span class="dt">)</span><span class="kw">;</span>
   <span class="kw">display:</span> <span class="dt">inline-block</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
+<ul>
+<li>NB: The set of browsers that support <code>inline-block</code> display is a superset of those that support <code>generatedcontent</code> (roughly)</li>
+</ul>
 </div><div class="section slide level2" id="et-voila">
 <h1 id="et-voila">Et, voila</h1>
-<p>TODO: Screen shots</p>
+<div class="figure">
+<img src="assets/images/line-numbers.png" alt="Line numbers in Chrome" /><p class="caption">Line numbers in Chrome</p>
+</div>
+<div class="figure">
+<img src="assets/images/no-line-numbers.png" alt="No line numbers in narrow widths, even if supported" /><p class="caption">No line numbers in narrow widths, even if supported</p>
+</div>
 </div><div class="section slide level2" id="section">
 <h1 id="section"></h1>
 </div>
@@ -1694,7 +1796,7 @@ html<span class="fl">.generatedcontent</span> span<span class="fl">.line-number<
 <h1 id="but...">But...</h1>
 <p>Things got complicated quickly.</p>
 <p>One idea might be to look at the results of <code>Modernizr.touch</code> (an available test in Modernizr) and change the way selected text is handled based on that.</p>
-<h3 id="for-your-consideration-4">For your consideration</h3>
+<h3 id="for-your-consideration-5">For your consideration</h3>
 <p>What do you think it means when <code>Modernizr.touch</code> is <code>true</code>?</p>
 </div><div class="section slide level2" id="touch-events-and-touch-models-are-still-fractured-and-disparate">
 <h1 id="touch-events-and-touch-models-are-still-fractured-and-disparate">Touch events and touch models are still fractured and disparate</h1>
@@ -1773,13 +1875,13 @@ sup <span class="kw">{</span>
     <span class="kw">column-gap</span>          <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
-<h3 id="for-your-consideration-5">For your consideration</h3>
+<h3 id="for-your-consideration-6">For your consideration</h3>
 <p>Why didn't I use the CSS Columns test in Modernizr before using this style?</p>
 </div><div class="section slide level2" id="and-now-we-have-our-baseline">
 <h1 id="and-now-we-have-our-baseline">And now we have our baseline</h1>
 <p>At this point, we stop and test on our supported devices*.</p>
 <p>* I should note that, while developing the markup and styles for this example, I did find a problem in test. I had initially set a <code>width: 100%</code> on the <code>section.glossary</code> element. My <code>section</code> styles already had a padding on them, and this broke the box model and caused horizontal scrolling. C'est la vie. Easily fixed when caught at this stage. Test, iterate, test. Often.</p>
-<h4 id="hold-that-thought-1">Hold that thought!</h4>
+<h4 id="hold-that-thought-2">Hold that thought!</h4>
 <p>We're going to have an extravaganza of testing discussion soon.</p>
 </div><div class="section slide level2" id="an-updated-baseline">
 <h1 id="an-updated-baseline">An updated baseline</h1>
@@ -2170,8 +2272,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Calendar</li>
 <li>Menu</li>
 </ul>
-</div><div class="section slide level2" id="for-your-consideration-6">
-<h1 id="for-your-consideration-6">For your consideration</h1>
+</div><div class="section slide level2" id="for-your-consideration-7">
+<h1 id="for-your-consideration-7">For your consideration</h1>
 <ul>
 <li>What's missing here?</li>
 <li>Anything else seem odd to you?</li>

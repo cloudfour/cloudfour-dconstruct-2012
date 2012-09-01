@@ -1,0 +1,1812 @@
+% dConstruct 2012
+% Lyza Gardner
+% September 6, 2012
+
+# Part 0: Setting the scene
+
+-------------------------------------------------------------------------------
+
+## This magical web world
+
+> "Be not afeard; the isle is full of noises." —*The Tempest*, Act III, Scene 2, Wm. Shakespeare
+
+## Meet the devices!
+
+From Cloud Four's device collection I pulled about 7 or 8 core devices that I used for testing most of the examples in today's content. Let's meet them!
+
+## BlackBerry 8320
+
+TODO: Photo
+
+* BlackBerry 8320 Curve
+* BlackBerry OS v4.5.0.81
+* Native browser
+* Hardware keyboard; pointer
+* No touch screen
+* Our project manager Megan's old phone
+
+## BlackBerry 9670
+
+![BlackBerry 9670](assets/images/9670.png)
+
+* BlackBerry 9670 Style
+* BlackBerry OS v6.0.0.123
+* Native browser (Webkit-based)
+* Flip phone; unusual aspect ratio
+* Hardware keyboard; no touch; pointer
+
+## BlackBerry 9670, cont.
+
+![BlackBerry 9670, closed](assets/images/9670-2.png)
+
+* This phone is sort of absurd (flip phone: really?!)
+* But its hardware keyboard *is* rather easy to type on. Shrug.
+
+## Nexus S
+
+![Android Nexus S](assets/images/nexus.png)
+
+* Samsung Nexus S
+* Android version 4.1.1
+* Native browser
+* **Also** Firefox 14.0.2
+* Touchscreen
+* For no good reason, I've never been a big fan of this phone. But there's nothing wrong with it.
+
+## Motorola Backflip
+
+![Motorola Backflip](assets/images/backflip.png)
+
+* Motorola Backflip
+* Android v1.5 (yes, really)
+* Native Android browser
+* Touchscreen
+* Flip-open hardware keyboard
+
+## Motorola Backflip, cont. 
+
+![Someone thought it was a good idea to put the keyboard on the **back**](assets/images/backflip2.png)
+
+* This is the phone everyone loves to hate
+* "MotoBlur" fork of Android
+* Likes to spontaneously reboot
+* Keyboard is horrible
+* Did I mention the whole Android 1.5 part?
+
+## iPhone 4
+
+* iPhone 4
+* iOS 5.1.1
+* Native (Safari) browser
+* **Also** Opera Mini
+* I don't have a photo of it because it's my phone and I'm embarrassed (the screen has big ol' cracks)
+
+## Nokia N8
+
+![Nokia N8](assets/images/nokia-n8.jpg)
+
+* Nokia N8
+* Windows Phone OS 7.5
+* Native (IE) browser
+* Kind of a pretty device
+
+## Kindle Fire
+
+![Kindle Fire](assets/images/fire.png)
+
+* Kindle Fire tablet
+* OS v6.3
+* Native (Webkit) browser
+* This little guy grew on me over the course of testing
+
+## Supporting cast
+
+Here are some more devices I used for off-and-on testing:
+
+* iPad (1st-generation) OS 5, Safari
+* [Opera Mini simulator](http://www.opera.com/developer/tools/mini/) (not a device, I admit)
+* Several OS 6 BlackBerrys: Two Torches (9800), a 9810
+* Samsung Galaxy S (Android 2.1, native browser)
+* BlackBerry PlayBook tablet
+
+# Part 1. Starting from scratch on the mobile web
+
+-------------------------------------------------------------------------------
+
+## Starting with nothing
+
+To set our stage, our scene, our story today, we are going to start from a fresh slate, as if we are building a web project from scratch.
+
+#### Real world moment
+
+The options for truly starting from scratch, with no legacy or history, are limited. But let's pretend we have that luxury.
+
+## So many options
+
+When we start from scratch, we have so many choices to make.
+
+* Web site
+* Native application
+* Web site that works on mobile devices
+* Web site that works "everywhere"
+* Web site that works on selected devices
+* Web site using development framework or tools
+* Adaptation of existing web site
+
+Mobile web development has a complicated and somewhat mysterious history.
+
+## Preaching to the choir
+
+![](assets/images/mobile-graph.png)
+
+* Mobile devices are omnipresent
+* iPod Touch and iPhone alone [growing faster than the early days of the Internet](http://www.morganstanley.com/institutional/techresearch/mobile_internet_report122009.html)
+* And Android's growth curve was greater than the iPhone's...
+
+## "Dumb" phones are accelerating, too
+
+![](assets/images/dumbphone-graph.png)
+
+#### Beware!
+
+It's not all smartphones out there!
+
+## Soon more mobile phones than humans
+
+* Currently 5.9B mobile subscriptions
+* 7B people
+* Soon more mobile phones than people
+* Then what will we do? *Freak out!*
+
+## It's complicated
+
+![](assets/images/android-fragmentation.jpg)
+
+* [Mobile operating systems still growing](http://radar.oreilly.com/2010/05/mobile-operating-systems-and-b.html)
+* New versions released quickly
+* [There is no Android](http://stephanierieger.com/the-trouble-with-android/)
+
+## And phones are just one symptom
+
+### The Zombie Apocalypse of Devices
+
+* Phones are just one wave—an enormous tsunami, to be sure—in a major onslaught
+* Tablets, TVs, embedded devices...the future is insane
+* We can't just focus on phones, or we'll get left in the dust
+
+### [Zombie Apocalypse](http://designmind.frogdesign.com/blog/the-coming-zombie-apocalypse-small-cheap-devices-will-disrupt-our-old-school-ux-assumptions.htm)?
+
+* Cost of smart chips heading towards zero
+* RFID taking off ahead of near field communications (NFC)
+* More and more of the inanimate things that surround us will become "alive"
+* Challenges our definitions of computers, phones and devices
+
+## New winners will emerge
+
+![](assets/images/new-winners.png)
+
+* For each major technology cycle, the business winners aren't necessarily the winners of the previous cycle
+
+## So how did we get here?
+
+TODO: Image of how we got here
+
+## The evolution of mobile markup and options
+
+### WML, XHTML-MP...
+
+* SGML
+* HDML (OpenWave) -> WML
+* HTML/XHTML
+* cHTML (Compact HTML/iMode)
+* XHTML-MP 1.1
+* XHTML-MP 1.2
+* XHTML-Basic
+
+## XHTML-MP
+
+XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like experience (certainly better than WAP/WML!) tailored to a mobile environment.
+
+### DOCTYPES
+
+~~~
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN"
+"http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+ 
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.1//EN"
+"http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd">
+ 
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN"
+"http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+~~~
+
+-------------------------------------------------------------------------------
+
+## XHTML-MP, cont.
+
+* Modularized XHTML
+* Provided a bridge between simplified (WML) mobile markup and more full-featured support
+* DOCTYPE triggers (some) mobile browsers to use different layout modes
+* Was commonly used
+
+### Not supported
+
+* `<iframe>`
+* `target` attribute in links
+* Certain `<table>` tags (`<tbody>`, etc.)
+* Plugins
+
+
+## More about WML, XHTML-MP, etc.
+
+* Gail Rahn-Frederick and Rajesh Lal's [*Beginning Smartphone Web Development*][rahn-frederick] is a few years old now but has an in-depth look at the history, evolution and specifics of mobile markup and DOCTYPEs.
+* [Jason and my book][hfmw] covers some of this in chapter 3.
+* Lynda.com ["History of Mobile Markup Languages" on YouTube][history-markup] is a great little summary. I think it *might* swap XHTML-MP and XHTML-Basic in the timeline, but, really, these things are pretty complex.
+
+-------------------------------------------------------------------------------
+
+## HTML5 is the way forward
+
+* HTML5 by and large is tolerated by phones, even really old ones.
+* No studies I know of using non-MP XHTML-variant doctypes.
+
+#### Good enough for jazz: HTML5 is usually OK
+
+
+## Informal HTML5 might cause choking
+
+* Mobile browsers are less tolerant of invalid code of any stripe: validate, validate, validate [W3C Validator][w3c-validator]
+* HTML5's inherent less formal spec can get us into trouble with mobile browsers.
+
+### Example
+
+Once I had an HTML5 page. I had validated it using the W3C validator. It passed. I kept getting reports that the page showed up as just a blank screen on certain Androids. Turns out I had an opening `<body>` tag but not a closing one. HTML5 is cool with this. But the Android browser didn't tolerate it.
+
+#### Hold that thought
+
+* Issues with HTML5 support
+
+-------------------------------------------------------------------------------
+
+## There's more than one way to...
+
+* Targeting older or feature phones?
+* Which is more important: bulletproof support in your market or the ability to do more powerful stuff?
+
+#### Pro Tip
+
+HTML5 is acceptable for most things, these days.
+
+-------------------------------------------------------------------------------
+
+## Options in markup and semantics
+
+### Adaptive Content
+
+* Future of content on the Web is complex
+* Adaptability is key
+* CMSes are the evil
+
+* [Karen McGrane][mcgrane] is a leader in adaptive content and adaptive mobile content.
+
+-------------------------------------------------------------------------------
+
+## HTML content: one approach
+
+HTML as result of translation by "robots." Classes and IDs are attached to content and are auto-generated. Limited use of classes and IDs.
+
+~~~{.html}
+<section class="level2" id="we-make-the-web-mobile.">
+<h2>We make the Web <em>mobile</em>.</h2>
+</section>
+<section class="level2" id="what-we-do">
+<h2>What we do</h2>
+<section class="level3" id="mobile-development">
+<h3><a href="services/mobile-development.html" title="Our Mobile Development Process">Mobile Development</a></h3>
+<p>Cloud Four designs and builds mobile-optimized websites and hybrid mobile applications using web technology.</p>
+<p><a href="services/mobile-development.html" title="Our Mobile Development Process">Building the Mobile Web</a></p>
+</section>
+~~~
+
+* I gave a talk about the kind of adaptive content driving this approach at [Mobilism 2012][mobilism]. See my deck [Cutting Through the Crap: The Essence of Content on the Future Web][cut-crap]
+* [Cloud Four's current site](http://cloudfour.com) is built in this way.
+
+-------------------------------------------------------------------------------
+
+## HTML content, approach #2
+
+~~~{.html}
+<section class="scene">
+
+  <header>
+    <h4 class="stage-direction">
+      Enter <strong>Caliban</strong>, <strong>Stephano</strong>, and <strong>Trinculo</strong>
+    </h4>
+  </header>
+
+  <dl>
+    <dt>Stephano</dt>
+    <dd>
+      <em class="stage-direction">(To <strong>Trinculo</strong>)</em>
+      <span class="prose line">Tell not me; when the butt is out, we</span>
+      <span class="prose line">will drink water; not a drop before: therefore bear up, and</span>
+      <span class="prose line">board 'em. Servant-monster, drink to me.</span>
+    </dd>
+~~~
+
+* We'll be using this style of markup in today's examples
+
+-------------------------------------------------------------------------------
+
+## All this boils down to CONTENT
+
+* Content-first design and process
+* Stripping away crap
+* This is a philosophical shift, even if it seems like "duh"
+* We're going to start simple to ease into our work here
+
+> "Simplify before you suppress." —Ethan Marcotte
+
+#### Hold that thought
+
+* Mobile-first design
+
+
+## Learn more about content and the future
+
+* A nice post from [Jeremy Keith][adactio] from last year about [content first][adactio-content-first]
+* Coverage from [Luke Wroblewski][lukew] of Jeffrey Zeldman's ["Content First"][lukew-aea-content-first] presentation at [An Event Apart October 2011][aea-oct-12].
+* Stephen Hay's talk [Structured Content First][stephenhay-structured-content] is another perspective.
+
+-------------------------------------------------------------------------------
+
+## So what are we building today?
+
+I was inspired by my iminent viewing of Shakespeare's *The Tempest* in Stratford-upon-Avon. I thought it might be nice to have a web-based refernce of the text of the play in a handsome, device-friendly, readable way.
+
+Sure, there's lots of places I can find Shakespeare's content online, but none of it quite satisfies me aesthetically or on my different devices. So I thought I'd reinvent the wheel a bit.
+
+Our little project today involves Act III, Scene 2...
+
+## Exercise
+
+![Our starting point: Opera Mini for iPhone 4](exercises/101-explore/images/iphone-opera.png)
+
+Like I said, we're starting from scratch today. With super basic HTML5 markup. I've created a basic HTML page with the content of the 2nd scene of Act III from *The Tempest*.
+
+There is no styling, no nothing on this page so far. And yet, if you explore it on various devices and browsers, you'll find that it starts out, even in its most basic form, feeling quite different in different places.
+
+### [Exercise: Exploring the baseline](exercises/101-explore)
+
+-------------------------------------------------------------------------------
+
+## Workflow: getting into the browser
+
+* Mobile web development demands the revisiting of design and development processes
+* Get into the browser early and often
+* You'll hear this a lot today: tight iterations
+
+#### Hold that Thought
+
+* More to come on process
+
+-------------------------------------------------------------------------------
+
+## Basic support is good
+
+* There is a CSS-MP to go along with XHTML-MP
+* But we're going to move beyond that...
+
+#### Good enough for jazz
+
+* Basic support is good but not infallible
+
+#### Beware!
+
+* As we start thinking about adding some basic CSS, keep in mind these challenging areas in older devices/browsers. They can trip you up:
+    * Background: colors, positioning, images
+    * Positioning
+    * Effects, transitions, gradients
+    * Selectors
+    * Performance!
+
+-------------------------------------------------------------------------------
+
+## What causes such difference?
+
+Why does this simple HTML page look so different in different mobile browsers?
+
+* Different default stylesheets
+* Limitations and differences in default font treatments
+* Viewports
+
+## Viewports are crazytown
+
+### These two screenshots are from the same device, different browser
+
+![Safari on iPhone 4](exercises/101-explore/images/iphone.png)
+
+![Opera Mini on iPhone 4](exercises/101-explore/images/iphone-opera.png)
+
+-------------------------------------------------------------------------------
+
+## Viewports!
+
+![](assets/images/viewports.png)
+
+-------------------------------------------------------------------------------
+
+## Or, why is the zoom all different and funny?
+
+![](assets/images/different-viewports.png)
+
+Viewports are like a keyhole or window into the layout of the entire web page.
+
+-------------------------------------------------------------------------------
+
+## Layout viewport versus visible
+
+![](assets/images/layout-visible.png)
+
+* **Visible Viewport**: The view of visible content (keyhole)
+* **Layout Viewport**: The width of the entire layout
+
+-------------------------------------------------------------------------------
+
+## Anatomy of a `viewport` tag
+
+~~~{.html}
+<meta name="viewport" content="width=device-width,initial-scale=1">
+~~~
+
+* `width=device-width`: Set the viewport width to the width of the device, in CSS pixels.
+    * The actual value of this, as is likely obvious, will vary depending on the device or window width.
+* `initial-scale=1`: Set initial zoom to 1, that is, 100% or normal size.
+
+#### Rule of thumb
+
+This is a pretty decent default `viewport` tag. Like everything on the mobile web, it's not bulletproof, but it's a good template.
+
+* [Page on Mozilla Developer Network (MDN) about viewport tags](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag)
+
+## Viewports are "fun"
+
+* Certain mobile browsers are less...accurate...about viewport tag adherence
+* Known culprits include some Samsung Galaxy phones in the US (Android)
+* There is ongoing angst over disabling user zoom via the `maximum-scale=1` and/or `user-scalable=no` attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.
+* Oh, turns out there is a [Stack Overflow post of someone else running into the viewport fun on the Galaxy Nexus](http://stackoverflow.com/questions/9374611/why-is-the-viewport-tag-on-the-galaxy-nexus-android-4-not-working)
+* Jeremy Keith has [something to say on the topic](http://adactio.com/journal/4470/)
+
+### Ugh moment
+
+-------------------------------------------------------------------------------
+
+## Starting from a slightly more level playing field
+
+* **CSS Reset**: As you saw, the default stylesheets for the different browsers and devices means we're dealing with a lot of diversity. Using a *CSS reset* is one option if we want to try to normalize some of the starting-point styling.
+* **Viewport tag**: By normalizing our viewports with a `viewport` tag (like we just saw), we reduce some of the complexity and diversity we're facing.
+
+### For your consideration
+
+* How do you feel about CSS resets? Can you think of downsides?
+
+#### Pro Tip
+
+By resetting our CSS and normalizing our viewport, we bring disparate browsers more into a common frame of reference.
+
+* [Eric Meyer's Reset CSS](http://meyerweb.com/eric/tools/css/reset/) is industry-standard.
+
+-------------------------------------------------------------------------------
+
+## Font baseline
+
+![](assets/images/baseline.png)
+
+#### Rule of thumb
+
+* font reset
+
+-------------------------------------------------------------------------------
+
+## The variations abound!
+
+![BlackBerry 9670](exercises/101-explore/images/9670.png)
+
+It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like. Recall that user or client default stylesheets can be part of the game you're playing. Another place where CSS resets can help.
+
+
+## Other things to consider with basic CSS
+
+* Font differences: Though we're armed with a CSS font reset, it's important to understand that fonts on devices are challenging:
+    * Not all devices "conform" to the 16px ~= 1em rule of thumb. Example: Kindle Touch.
+    * Devices often have a very limited set of system fonts. e.g. Windows phones have a number of Windows-Phone-specific fonts that are rather decent-looking but different from our familiar Georgia and Helvetica (etc.).
+* DOCTYPES: Somewhat confusingly, different DOCTYPEs can cause some browsers to use different CSS layout algorithms. Example: Opera Mini's box model is slightly different in XHTML-MP vs. HTML5.
+* HTML `title`s. Display of a web page's title differs in different mobile browsers and is usually limited in space. Make sure to put the most information first.
+* I talk a bit about the Kindle Touch's font size differences in [this post on our blog](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/).
+* There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of [our book](http://bit.ly/hf-mw)
+
+
+## Getting our baseline in order
+
+### [Exercise! Getting ur baselines going](exercises/102-baseline)
+
+
+After you're done, you can see the end result I got to in [presenter-exercises/102-baseline/tempest.html](presenter-exercises/102-baseline/tempest.html).
+
+## Baselines
+
+![BlackBerry 8320](exercises/102-baseline/images/8320.png)
+
+* Note the lack of any margins/padding on the `<section>` elements. This older (4.5) BlackBerry doesn't understand the new HTML5 semantic elements and isn't applying any styles to them.
+* My updated `title` means that even though some of it is getting cut off, we still see the most relevant pieces first.
+
+#### Hold that thought
+
+* HTML5 support in older browsers
+
+-------------------------------------------------------------------------------
+
+## Baselines
+
+![Motorola BackFlip](exercises/102-baseline/images/backflip.png)
+
+* This Android 1.5 browser does a decent job of handling HTML5 elements and dealing with basic styling.
+* Its fonts aren't that much fun to look at.
+
+-------------------------------------------------------------------------------
+
+## Baselines
+
+![Kindle Fire](exercises/102-baseline/images/fire.png)
+
+* We've set our `viewport` but the Fire simply has more CSS pixels to work with that our smaller devices.
+
+#### Hold that thought!
+
+* CSS pixels versus hardware pixels WTF?
+
+-------------------------------------------------------------------------------
+
+## Baselines
+
+![iPhone](exercises/102-baseline/images/iphone.png)
+
+![Opera Mini on iPhone](exercises/102-baseline/images/iphone-opera.png)
+
+* Same font, same font size, same device, slightly different results in different browsers.
+* I happen to know why after stumbling upon it during research for sections later in this workshop. Any ideas? I'll disclose it later...
+
+-------------------------------------------------------------------------------
+
+## Baselines
+
+![Nexus S](exercises/102-baseline/images/nexus.png)
+
+![Nexus S: FireFox](exercises/102-baseline/images/nexus-firefox.png)
+
+* Nearly identical.
+
+-------------------------------------------------------------------------------
+
+## Baselines
+
+![Nokia N8](exercises/102-baseline/images/nokia-n8.png)
+
+* Nothing significant to report!
+
+-------------------------------------------------------------------------------
+
+## Now we have our baseline
+
+* By starting simple, we really understand most of what's going on here
+* And yet, there is still so much differentiation!
+* And of course, the real web pages of the world are far more complex...
+
+### For your consideration
+
+* What does the word *device* mean? *Browser*? *Client*? *User agent*? How does our usage of these terms cause confusion?
+* How many of the differences spotted did you anticipate? What surprised you?
+
+# Part II: Towards an Adaptive Web
+
+--------------------------------------------------------------------------
+
+## Is this the best we can do?
+
+![Baseline after last exercise, in a desktop browser](assets/images/desktop-dull.jpg)
+
+### Let me count the ways...
+
+* Dull and bland
+* Lines are too wide
+
+## I want to do more
+
+![](assets/images/desktop-enhance.jpg)
+
+### Adding...
+
+1. Nicer text treatment (`small-caps`) and bigger fonts overall (heading and body)
+2. "Wrapping" the lines correctly
+3. Adding an illustration
+
+I want to maximize this experience. I'm tired of looking at something so boring!
+
+## Enhancing...
+
+![](assets/images/desktop-enhance-2.jpg)
+
+### Text
+
+Emulating more forms of text layout: verse and song elements
+
+Adding styles for
+
+~~~{.css}
+span.line         { } /* every line in the play */
+span.verse        { } /* lines spoken in meter */
+span.prose        { } /* lines not spoken in meter */
+span.verse-end    { } /* verse lines spoken by a speaker 
+                      /* that complete a line 
+                       started by another character */
+span.song         { } /* to format content that is a song */
+.stage-direction  { } /* stage directions */
+~~~
+
+[Let's take a look](presenter-exercises/200-strawman/tempest.html)
+
+## What ickiness
+
+![Nokia N8](presenter-exercises/200-strawman/images/nokia-n8.png)
+
+![iPhone 4](presenter-exercises/200-strawman/images/iphone.png)
+
+## Argh!
+
+![BlackBerry 9670](presenter-exercises/200-strawman/images/9670.png)
+
+![BlackBerry 8320](presenter-exercises/200-strawman/images/8320.png)
+
+
+## Stop the madness!
+
+* Situations like this emphasize the need for us to recalibrate how we think about creating for the Web
+* My attempt to impose some forms of "control" over the layout and styling of the web page created havoc
+
+
+## Let's back up
+
+* Mobile- or content-first design thinking
+* Systematized way of thinking about content and its presentation on the web
+* Very relevant to the mobile evolution...and beyond
+
+## Content-first design
+
+* Emphasis on progressive enhancement as core tenet
+* Really focusing on a *baseline experience*
+* Enhancing based on browser features and/or characteristics
+
+#### But how do we make the same HTML page look good and work well on all those different browsers and devices?
+
+We use techniques to make our websites *adaptive*.
+
+### For your consideration
+
+What do you think? Do you prefer *mobile-first*, *content-first* or *baseline-first* to describe this kind of philosophy?
+
+#### Hold that thought: Separate mobile sites/content differentiation
+
+## Responsive Web Design (RWD)
+
+**Responsive Web Design (RWD)** is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure. *Responsive Web Design* was coined by Ethan Marcotte.
+
+RWD is based upon the notion of creating a fluid, proportional layout. RWD layouts *scale, flex and adapt* to flow comfortably in the user's browser, whatever size or shape it might be at the moment.
+
+## RWD tenets
+
+RWD is a combination of three core tactics:
+
+1. Fluid CSS layouts
+2. Responsive Images and Objects
+3. CSS3 Media Queries
+
+The goal: Insomuch as possible, the same HTML document can be rendered comfortably in as many environments as possible. Instead of imposing an inflexible, single experience, we can create something that adapts to the user.
+
+## Fluidity
+
+#### What can adaptive design via RWD do to help us get our web page in order?
+
+Let's look again at our rather simple set of structural CSS that is getting us in trouble on some of our devices:
+
+~~~{.css}
+body {
+  width: 1060px;
+}
+.scene {
+  float: left;
+}
+.scene dl {
+  width : 600px;
+}
+~~~
+
+Recall that I was working in a hurry, so this isn't exactly masterful CSS, folks.
+
+#### Rule of thumb
+
+Layout elements defined with specific pixel widths tend to be anathema to responsive/adaptive layouts.
+
+## Recall viewports?
+
+![](assets/images/layout-visible.png)
+
+* The visible viewport for our page is set to `device-width`
+* The layout viewport contains the entire layout of the page, which in our case is defined by the `body` CSS rule (`1060px`).
+
+## Technical causes
+
+~~~~{.css}
+body {
+  width: 1060px;
+}
+/* ... */
+h1 {
+  font-size: 4em;
+}
+.scene {
+  float: left;
+}
+.scene dl {
+  width : 600px;
+}
+~~~~
+
+* Issues
+    * Outsized image
+    * Font sizes
+    * Layout widths fixed, in absolute units
+* [Relevant CSS](presenter-exercises/200-strawman/desktop.css)
+
+## Fluid layouts
+
+* Fluid layouts
+    * help bring visible and layout viewports into harmony
+    * use *proportional* layout units instead of *fixed* or *absolute* units
+    * That way, layout can scale to different window and screen sizes
+* Fluid CSS-based layouts are RWD tenet #1
+* *So how do we make layouts fluid?*
+
+## The fluid formula
+
+![](assets/images/fluid-formula.png)
+
+## The fluid formula, annotated
+
+![](assets/images/fluid-formula-explained.png)
+
+## Applying the fluid formula
+
+![](assets/images/fluid-example.png)
+
+`target / context = result`
+
+`720px / 960px = .75`
+
+`75%`
+
+## A more complicated example
+
+### For your consideration
+
+TODO: Graphic of challenging fluid conversion
+
+## In our case, a simple change
+
+* We can change our `body` and `.scene` rules:
+    * `body = 1060px / 1060px = 100%`
+    * `.scene = 600px / 1060px = 56.603774...%` 
+* Well, one more thing
+    * `section.illustrations` doesn't currently have a width set. Let's do this:
+    * `.illustrations = 30%`
+
+#### BLEH
+
+Ugly math:
+
+* My fixed layout wasn't very proportional in the first place, eh?
+* *To round or not to round?* I round.
+
+## So, plug that in:
+
+~~~{.css}
+body {
+  width: 100%;
+}
+.scene {
+  float: left;
+  width: 56.6%;
+}
+.illustrations {
+  float: right;
+  width: 30%;
+}
+~~~
+
+
+## So, what did that get us?
+
+![Sadly, not much. Much wasted space on wider windows](presenter-exercises/201-proportional/images/wide.png)
+
+## And where'd the image go?
+
+![The image has...disappeared](presenter-exercises/201-proportional/images/narrow.png)
+
+* Make the window a bit narrower, and the image disappears.
+
+## Flexible images and objects
+
+* We can solve the mystery of that missing image by using the second tenet of Responsive Web Design: **flexible images and objects**.
+    * While the element containing the image is flexible and proportional, the image itself isn't scaling up and down to flex to its container—the container can never get narrower than the image it contains. 
+    * That causes it to wrap in our layout. Uh oh.
+* We can add a simple rule to our CSS:
+
+~~~{.css}
+img, object {
+  max-width: 100%;
+}
+~~~
+
+#### Pro Tip
+
+It really is this easy to add flexible images and objects to your web layouts. Do it!
+
+#### Beware!
+
+You cannot use `width` or `height` attributes on `img` tags that need to scale flexibly in this manner.
+
+## And...?
+
+![](presenter-exercises/201-proportional/images/narrow2.png)
+
+[You can see it for yourself](presenter-exercises/201-proportional/tempest.html)
+
+## OK, total disaster
+
+![Nokia N8](presenter-exercises/201-proportional/images/nokia-n8.png)
+
+![Nexus S](presenter-exercises/201-proportional/images/nexus.png)
+
+## Yet more complications
+
+* Part of the CSS added for desktop enhancement included:
+
+~~~{.css}
+.scene dl dt, .scene dl em {
+  float        : left;
+  margin-right : .25em;
+}
+
+.scene dd {
+  margin       : .5em 0 .5em 1.25em;
+}
+~~~
+
+* This affects the box model layout widths of our fluid elements and causes the wrap you see on narrow screens.
+* *We need to stop, catch our breath, and think about things a bit differently.*
+
+### Theme: Content
+
+## Letting the content dictate our flow
+
+![](presenter-exercises/201-proportional/images/narrow2.png)
+
+* Did you notice that even on desktop widths, the wrapping on the text of the lines of the play is wonky?
+* We're coming at this backward
+
+## What matters?
+
+1. Making the text of this scene of the play acceptably readable on as many devices as possible
+1. Presenting the text of the play in a way true to dramatic and historical form
+1. Providing font and color differentiation to increase readability and contrast
+1. Providing font and color differentiation to increase visual appeal
+1. Showing relevant, related illustrations for this section of the play
+
+**In that order**
+
+We achieved much of the first goal in our first baseline layout but have since then not kept to the list of priorities...
+
+#### Theme: Content
+
+## Let's get content-first on this thing
+
+1. Rip out desktop-centric CSS and re-think
+1. Build our baseline by enhancing our existing baseline
+1. Take advantage of RWD's third tenet (Media Queries) to apply different layouts to different environments
+
+#### Beware! Proportional layouts on their own can't get us all the way there
+
+## We don't have to start over
+
+* Some of the CSS added to enhance the layout and appearance can stay:
+    * Small-caps treatment on a few selectors
+    * Minor styling on `figure` and `figcaption` (holds the woodcut image in our case)
+    * The flexible images and objects rule we added
+    * A few modular bits of CSS for different line types (more info coming up)
+
+## CSS treatments for different line types
+
+~~~{.css}
+span.verse {
+  clear           : both;
+  display         : block;
+  text-indent     : -1.5em;
+  margin-left     : 1.5em;
+}
+
+span.verse-end {
+  display         : block;
+  float           : right;
+  padding-right   : 2em;
+  clear           : right;
+}
+
+span.song {
+  display         : block;
+  text-align      : center;
+}
+~~~
+
+* This is pursuant to objective #2 in our list
+
+## What the modular CSS does
+
+* `span.verse`
+    * Sets its display to `block` and `clear`s `both`
+    * This assures each verse line gets its own...well, line. 
+    * The negative text indent assures that if the line wraps (i.e. because the container/window is too narrow) it will have an indent on any wrapped lines
+* `span.verse-end`
+    * floats `right`. 
+    * It's for lines that are in meter, spoken by a different character than the first part of the line.
+* `span.song`
+    * centers its content and displays `block`.
+* `span.prose` 
+    * lines retain default inline styling.
+
+## A new baseline
+
+
+![Motorola Backflip](presenter-exercises/202-new-baseline/images/backflip.png)
+
+After ripping out desktop-specific style rules, we have a new baseline.
+
+## Looks decent...
+
+![Nokia N8](presenter-exercises/202-new-baseline/images/nokia-n8.jpg)
+
+![iPhone 4](presenter-exercises/202-new-baseline/images/iphone.png)
+
+## Looks decent...
+
+![Opera Mini on iPhone4](presenter-exercises/202-new-baseline/images/iphone-opera.png)
+
+![Opera Mini on iPhone4: You can see the negative `text-indent` on the `prose.verse` lines that wrap here](presenter-exercises/202-new-baseline/images/iphone-opera2.png)
+
+## NOW we can enhance for wider screens
+
+### PAUSE
+
+* Let's use RWD's third tenet to enhance our scene page for bigger displays.
+* **CSS3 Media Queries** are the third leg of the RWD tripod.
+* Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.
+
+## Media queries explained: Media types
+
+* Media types have been around a while. It's how we make print stylesheets, e.g.
+
+~~~{.html}
+<link rel="stylesheet" media="print" href="print.css">
+~~~
+
+* The most relevant **media types** are:
+    * all
+    * screen
+    * print
+
+## Media queries explained: Media features
+
+* Media types have **media features**.
+    * `width` is a media feature of several media types.
+    * `orientation` is a media feature of various bitmap media types.
+    * `color` and `monochrome` are more examples.
+* Different media features have different types of values. 
+    * `color` and `monochrome` are Boolean (TRUE/FALSE) values.
+    * `width` is an integer.
+
+
+## Logical expressions
+
+* **CSS media queries**
+    * logical expressions
+    * evaluate the current value of *media features* on a given *media type*
+    * If the expression evaluates to `true`, the enclosed CSS is applied
+
+~~~ {.css}
+@media screen and (min-width: 600px) {
+  // In browsers that support media queries,
+  // rules in here will only be applied if the
+  // query expression evaluates as true
+}
+~~~
+
+### Also
+
+~~~ {.html}
+<link rel="stylesheet" media="screen and (min-width:600px)" href="thing.css">
+~~~
+
+* `@import` syntax is also supported.
+
+## Media Queries
+
+![](assets/images/media-query-syntax.png)
+
+## Media Queries
+
+![](assets/images/media-query-example.png)
+
+But before we whip up a media query or two for the scene web page...let's think about what we're doing.
+
+## Breakpoints and media queries
+
+* You may have heard the term **breakpoint** before.
+    * A *breakpoint* is a window/screen width at which layout changes significantly
+    * We can define one or more breakpoints in a layout
+    * For example, we may want to reduce a two- or three-column layout down to a single column when the window is narrower than a certain threshold
+* Generally, media queries and breakpoints have been defined in pixels in the past:
+
+~~~ {.css}
+@media screen and (min-width: 600px) {
+}
+~~~
+
+* But we just talked about how things should be fluid
+* ...and we're trying to design the flow of this page based on its content
+
+## Fluidity across units
+
+* Fluid layout elements
+    * CSS width in percentages
+    * Available space in viewport is always `100%`
+    * Thus, a media query like `all and (min-width: 65%)` is meaningless
+* Text: Size in `em`s
+    * `1em` is a square
+    * Historically, `1em` was the height and width of the uppercase `M` in a given font and point size
+    * In web terms, it's a square whose sides have the length of the size of the font, so:
+        * If your font is set to `14px`, `1em` would be a square with sides of `14px`
+    * `em`s, while scalable (they change as the base font size changes), are also tied to a physical size that can be approximated
+
+## Re-thinking the media query
+
+![](assets/images/baseline.png)
+
+* A visible viewport has a width that is a quantifiable number of `em`s
+* This baseline rule of thumb ties an `em` to an approximate real size
+
+## Thinking of our layout in terms of text and ems
+
+* So, we can use `em`s for media queries
+    * `em`s are also philosophically consistent with a content-first approach
+* The scene lines need on our page need about `28em` to lay out correctly
+    * that's simply a function of the length of iambic pentameter lines in English
+    * Recall our baseline. Doing the math: `28em ~= 448px`
+    * That's more CSS pixels than many mobile browsers have to work with
+
+## That's Okay
+
+![](presenter-exercises/202-new-baseline/images/iphone-opera2.png)
+
+* We're allowing `span.prose` lines to wrap naturally.
+* Verse lines are what matter for layout. We'd ideally like verse lines to fit on one line, but when they wrap, we want to indent them to make it clear that they are part of the previous line:
+
+~~~{.css}
+span.verse {
+  clear           : both;
+  display         : block;
+  text-indent     : -1.5em;
+  margin-left     : 1.5em;
+}
+~~~
+
+## So where does that leave us?
+
+We're pretty good on narrow screens now, but we have some enhancement to do for wider screens.
+
+![Desktop](presenter-exercises/202-new-baseline/images/desktop.png)
+
+## Defining a breakpoint and media query
+
+* We know we need about `28em` or `448px` to display the text of the play
+* We need a few hundred more pixels for the image to feel comfortable floating right
+
+~~~~
+28em or 448px
+     +
+22em or 352px
+-------------
+50em or 800px
+~~~~
+
+* That is, the desktop-y layout feels comfortable >= 50em or 800px
+
+**We want to wrap the CSS for enhancing for wider screens in a media query**. 
+
+* That media query should apply for screens with widths >= 50em.
+* Also, `em`s should dictate the width of our lines, not a simple percentage.
+
+### [Exercise: Responsive layout via media queries](exercises/201-rwd)
+
+
+# Part III: Balancing a differentiated web
+
+-------------------------------------------------------------------------------
+
+## How are we doing?
+
+So, we've got what seems like a solid baseline for narrow screens and a single breakpoint to adapt the layout for wider screens.
+
+![](assets/images/desktop-rwd.png)
+
+![FireFox on Nexus S (Android 4)](presenter-exercises/203-media-queries/images/firefox-nexus.png)
+
+## Hot mess in IE
+
+But it's a hot mess in IE8. What gives?
+
+![](assets/images/ie8-hot-mess.png)
+
+## Understanding media query support
+
+### Tackling the lack of media query support
+
+![BB 8320 doesn't support MQs, but that's expected!](assets/images/8320-no-mq.png)
+
+> "The absence of support for media queries is in fact the first media query."—Bryan Rieger
+
+![](assets/images/media-query-support.png)
+
+## Media query support options
+
+### IE conditional tags
+
+
+~~~~{.css}
+<link rel="stylesheet" type="text/css" href="taps.css" />
+<link rel="stylesheet" type="text/css" href="layout.css" media="all and min-width: 481px)">
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" type="text/css" href="layout.css" media="all" />
+<![endif]-->
+~~~~
+
+* Polyfills for media queries
+    * Respond.js: <https://github.com/scottjehl/Respond>
+    * CSS3MediaQueries.js: <http://code.google.com/p/css3-mediaqueries-js/>
+* Respond is faster, but only contains a subset of CSS support. Start with it.
+
+#### Beware!
+
+* Advanced performance note: [IE conditional tags can block downloads, hampering performance](http://www.phpied.com/conditional-comments-block-downloads/)
+
+## Updating our web page
+
+~~~{.html}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css" />
+  <!--[if (lt IE 9) & (!IEMobile)]>
+  <link rel="stylesheet" type="text/css" href="ie.css" media="all" />
+  <![endif]-->
+  <title>The Tempest: Act 3, Sc. 2 | Shakespeare</title>
+</head>
+~~~
+
+`ie.css` contains the same CSS as is inside the media query.
+
+### Real world moment
+
+Yep, in our reality, we often still have to make special exceptions for IE browsers.
+
+## Um.
+
+![IE: This ain't good](assets/images/ie8-hot-mess2.png)
+
+* Turns out there's another problem here: lack of HTML5 element support.
+* This version IE doesn't "speak HTML5". It doesn't recognize HTML5 elements like `<section>`, `<header>`, etc.
+    * Those elements cannot be selected in CSS for styling
+    * Those elements do not exist properly in the DOM
+
+## It's a question of features
+
+* A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details so that we can develop for a *differentiated, fractured web*.
+* We can help to keep some of our sanity by:
+    * Being good about progressive enhancement
+    * Thinking about things in terms of what **features** the different user agents accessing our site support
+    * Assessing shortcomings and fomenting a strategy about support priorities and tools to broaden support
+
+## Some tools at our disposal
+
+* Industry-standard techniques (e.g. IE conditional tags)
+* Feature-detection code and libraries (e.g. Modernizr)
+* Broadly-adopted core support tools and polyfills for broader concerns (e.g. HTML5 shim, Selectivizr)
+* Libraries and polyfills for more specific concerns (e.g. video.js, placeholder.js)
+
+## Arming ourselves
+
+Let's try to beat IE 8 into submission, shall we?
+
+* HTML5 Shiv via Modernizr
+
+~~~~{.html}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="Modernizr.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <!--[if (lt IE 9) & (!IEMobile)]>
+  <link rel="stylesheet" type="text/css" href="ie.css" media="all" />
+  <![endif]-->
+  <title>The Tempest: Act 3, Sc. 2 | Shakespeare</title>
+</head>
+~~~~
+
+> "Modernizr runs through a little loop in JavaScript to enable the various elements from HTML5 (as well as abbr) for styling in Internet Explorer. Note that this does not mean it suddenly makes IE support the Audio or Video element, it just means that you can use section instead of div and style them in CSS." —Modernizr.com
+
+## Better!
+
+![](presenter-exercises/301-polyfilled/images/ie8.png)
+
+## So, wait, tell me more about Modernizr
+
+![](assets/images/modernizr.jpg)
+
+* Feature detection for common HTML5 things
+* Enhancing content when we have positive test results
+* CSS Classes
+
+## Modernizr
+
+* Many different HTML, CSS and JS feature tests
+* Comes default with HTML5 shim/shiv
+* Comes default with `Modernizr.load()`
+* Tests results are available on the `Modernizr` object
+    * e.g. `if (Modernizr.touch)`
+* Optionally, test results can be added as classes to the `html` element
+    * e.g. `<html class="fontface no-touch cssgradients">`
+* I usually use the full/dev version for development, and then [build a version](http://modernizr.com/download/) that only contains the tests I need
+* Sometimes Modernizr is overkill
+
+
+#### Hold that thought!
+
+We'll come back to `Modernizr.load()`
+
+## Font Squirrel
+
+![](assets/images/font-squirrel.png)
+
+* An example of feature detection and third party tools
+  * Modernizr (for testing `@font-face` support)
+  * Font Squirrel (for reducing the ugh factor of creating web font files and CSS)
+
+
+## Exercise
+
+* You be the enhancer!
+* [Exercise: feature enhancement vis-a-vis @font-face](exercises/301-features)
+
+## TODO: MOAR polyfills and feature tests
+
+* Selectivizr
+* IE scripts (cloudfour.com)
+* Modernizr page of polyfills
+
+# Part IV: On the frontiers of the adaptive web
+
+-------------------------------------------------------------------------------
+
+## Most RWD sites are not mobile First
+
+### Reverse: Mobile RWD?
+
+![](assets/images/mobile-rwd.png)
+
+Jason reviewed over 100 RWD sites in 2011. Found that:
+
+* 38% had a mobile site that was < 10% smaller than the desktop
+* 4% mobile was the same size
+* 25% mobile was LARGER than the desktop
+
+
+## Screen size != bandwidth
+
+* Yes, this is true, but so what?
+* On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users
+
+#### Rule of thumb
+
+Common sense tells us that *overall* mobile users have more likelihood of slower, more expensive connections.
+
+## Why are these sites so big?
+
+* A huge factor is image file sizes and the download of resources that are not used
+    * Hiding a background image by using `display:none` on the element will not prevent it from downloading
+    * Large desktop-size images are delivered to all devices even if they never use the image at that size
+    * Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads
+
+## Let's back up
+
+* Before we get specific about things, let's think about the bigger picture
+* Images and other embedded things have long been a source of consternation with respect to different browsers
+
+### What are the high-level problems here?
+
+* The `img` tag only provides one `src` attribute presently
+* Contrast this with `audio` and `video` HTML5 elements (so, smart folks *are* thinking about things like this)
+* Some of our techniques actually cause multiple (large) images to be downloaded
+
+These issues apply both to CSS background images and inline images. Let's take a look at some ideas for patching the problem over...
+
+## CSS Background images
+
+* Get your media queries in order
+    * First thing to fix media queries is to put them in order
+    * Small screen before large screens; use the cascade
+    * This means the fallback for images will be the small images, not the large ones
+* Prevent extra background image downloads
+    * Use `display:none` on the *parent* element
+    * Use media queries that don’t overlap (that is, are mutually exclusive):
+
+~~~ {.css }
+@media all and (max-width: 500px) {
+    #logo {background-image:url('small.png');}
+}
+@media all and (min-width: 501px) {
+    #logo {background-image:url('large.png');}
+}
+~~~
+
+## CSS background images in different browsers
+
+* As of iOS 4.2, replacing a `background-image` in the cascade will result in only one image being downloaded
+* But, `display:none` on the element itself still downloads images
+* [Tim Kadlec’s comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
+
+## `image-set`
+
+* [Jason's blog post on `image-set` on our blog](http://blog.cloudfour.com/safari-6-and-chrome-21-add-image-set-to-support-retina-images/)
+* Supported presently in Chrome, Safari 6
+* Yep, everyone's very foamy about retina. So, maybe, here you go?
+
+~~~{.css}
+#test {
+    background-image: url(assets/no-image-set.png); 
+    background-image: -webkit-image-set(url(assets/test.png) 1x,
+           url(assets/test-hires.png) 2x);
+    background-image: -moz-image-set(url(assets/test.png) 1x,
+           url(assets/test-hires.png) 2x);
+    background-image: -o-image-set(url(assets/test.png) 1x,
+           url(assets/test-hires.png) 2x);
+    background-image: -ms-image-set(url(assets/test.png) 1x,
+           url(assets/test-hires.png) 2x);
+    width:200px;
+    height:75px;
+}
+~~~
+
+## The inline HTML `img` tag conundrum
+
+* `<img>` can only have one src attribute
+* First load problem: server knows nothing about the client. How do you know what `src` to use?
+* Delivering the right-sized image can mean huge savings (up to 80%) on file size.
+
+Many people are seeking a solution for responsive images.
+
+## Responsive images: Option 1
+
+* JavaScript checks the width of the screen and sets a cookie.
+* Image requests contain that cookie giving the server the information it needs.
+* `.htaccess` file on server checks for cookie and routes requests to the correct file depending on screen size.
+    * Apache rewrite rules or the like can keep HTML `img` `src` pointing at a canonical URL, which is nice.
+
+## Option 1 Problems
+
+* Some fragility
+    * Sometimes the browser requests images before the JavaScript executes which means the cookie isn’t set. Race condition
+    * What is the fallback if cookies aren’t enabled?
+    * Relies on the current way browsers load content which could change. No contract between the browser and the developer
+    * Slightly complex concept
+
+## Responsive images: Option 2
+
+* Put small image inside `<noscript>` tag.
+* Put info for other images in `data-*` on noscript tag.
+* Use javascript to build correct img tag for screen size.
+
+~~~ {.html}
+<noscript data-large="Koala.jpg" data-small="Koala-small.jpg" data-alt="Koala">
+<img src="Koala.jpg" alt="Koala" />
+</noscript>
+~~~
+
+## Option 2 Problems
+
+* Markup has been changed in a way that only makes sense for this solution.
+* No longer semantic.
+
+## Responsive images: Option 3
+
+* Use or build a service like Sencha.io SRC to deliver the correctly sized image:
+
+~~~ {.html}
+<img src="http://src.sencha.io/[ORIGINAL IMAGE URL]" />
+~~~
+
+## Option 3 Problems
+
+* All of your images are being routed through a third-party service.
+* How does Sencha know what size image to use anyways? It relies on device detection which some developers dislike.
+
+## This just in!
+
+* [http://www.resrc.it/](http://www.resrc.it/) Haven't had a chance to vet it
+    * Appears to combine server-side image work with responsive front-end stuff
+    * Has anyone tried it?
+
+
+## What we really need to solve for images
+
+There are two separate issues when it comes to the img tag:
+
+* Ability to authors to provide img art direction based on breakpoints
+* Ensuring that the right image size is downloaded based on a combo of bandwidth, screen size, pixel density and user preference.
+
+The picture element is focused on solving the first issue. There are a lot of different ways to address the second.
+
+
+## Only real solution is new standard
+
+~~~ {.html}
+<picture alt="Giraffe">
+  <source src="giraffe-sml.jpg" media="(max-width:480px)">
+  <source src="giraffe-lrg.jpg" media="(min-width:481px)">
+  <img src="giraffe-sml.jpg" alt="Giraffe" />
+  <p>Long description</p>
+</picture>
+~~~
+
+OR maybe
+
+~~~ {.html}
+<img src="face-600-200 at 1.jpeg" alt=""
+     srcset="face-600-200 at 1.jpeg 600w 200h 1x,
+             face-600-200 at 2.jpeg 600w 200h 2x,
+             face-icon.png          200w 200h">
+~~~
+
+## The challenge is real...hard
+
+### Some (other) things to consider
+
+1. Canonical URL for images: multiple `src` attributes fragment a single resource into multiple URIs
+2. HTTP headers: Should the future hold new HTTP headers that user agents can use to help servers serve the right things?
+3. Semantics: don't box yourself in
+
+## Lyza's crazy-ass idea of the month
+
+I think it would be kind of neat if the CSS Media Query module spec allowed for media query references or classes.
+
+~~~{.css}
+@media narrow-all and (max-width: 30em), all and (max-width: 30em) { }
+~~~
+
+~~~~{.html}
+<picture alt="My Cool Image">
+  <source src="image-small.jpg" media="narrow">
+  <img src="image.jpg" />
+</picture>
+~~~~
+
+1. `src` in `img` tag considered canonical.
+2. Named/classed media queries keep presentational media query syntax out of the markup (and have other benefits, IMHO!).
+
+#### Beware!
+
+This is a product of my imagination and probably represents a syntax that would conflict with older browsers, etc.
+
+
+## Other RWD Challenges
+
+* Delivering the right size video
+* Breakpoint management and zoom levels
+* Progressively enhancing from XHTML-MP to HTML5
+* Content ordering
+* Third-party widgets (particularly ad networks)
+* Integrating with content management systems
+
+### This is all very new
+
+No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.
+
+### For your consideration
+
+* Which approaches to embedded media seem most appealing to you? Do you have any ideas for how to solve the image problem?
+
+## Binary fallacy
+
+Most feature testing is thought of in a yep/nope frame of reference. But real life isn't that simple.
+
+* Just because this older Android device supports CSS transitions...can it really handle them in a performant way?
+* What does it mean if a particular feature-testing tool reports that the `canvas` tag is supported?
+* And even if `@font-face` is supported, should we send (potentially large) font files to mobile users?
+
+#### Beware!
+
+Don't get lulled into a false sense of clarity or confidence about feature testing. 
+
+## Rude awakening, BlackBerry style
+
+![BlackBerry 9670 OS 6](presenter-exercises/302-fonts/images/9670.png)
+
+* `small-caps` sad
+* Hmmm...maybe something is odd about the combination of styles on this page...maybe something's wonky...
+
+## It gets better
+
+![BlackBerry 9670 OS 6](presenter-exercises/400-woes/images/9670.png)
+
+![BlackBerry 9800 Torch OS 6](presenter-exercises/400-woes/images/9800.png)
+
+## The coup de grace
+
+![BlackBerry 9810](presenter-exercises/400-woes/images/9810.png)
+
+* Used Font Squirrel to generate fonts and CSS, including the SVG font BB 6 needs
+* Used Modernizr to test for @font-face support
+* And this is what it looks like on a BB 9810
+
+#### Rule of thumb
+
+* Font support on mobile is very challenging. Be wary.
+
+## Let's back up again
+
+This BlackBerry Torch conundrum highlights some issues:
+
+1. Feature detection is useful but not foolproof
+1. Quirks are more the rule than the exception in mobile browsers
+1. We also need to look at performance and what we're trying to accomplish
+
+
+## What matters?
+
+1. Making the text of this scene of the play acceptably readable on as many devices as possible
+1. Presenting the text of the play in a way true to dramatic and historical form
+1. Providing font and color differentiation to increase readability and contrast
+1. Providing font and color differentiation to increase visual appeal
+1. Showing relevant, related illustrations for this section of the play
+
+Objective #1 trumps objectives #2 and #3.
+
+## But wait...
+
+*Aren't we just flirting with the lowest common denominator again?*
+
+### Our options
+
+1. Leave everything as-is. Screw the buggy BlackBerry Torch.
+1. Worry a lot about `@font-face` on mobile devices. Decide to put the `@font-face` rules inside of the wider-screen media query, but leave the `text-transform` and `small-caps` intact for all devices. 
+1. Decide BlackBerry support is incredibly key. Move @font-face *and* other font rules (`small-caps` and `lowercase`) into the wider-screen media query.
+
+### Things to consider
+
+1. Whom you are supporting with your site or app.
+1. Consistency.
+1. Performance.
+
+## Exercise: You are the decider
+
+* Put @font-face rules wherever you are comfortable
+* Decide on the `small-caps` and `lowercase` stuff
+
+TODO: I think we could make this a discussion-based exercise
+
+## Progressive enhancement: electric boogaloo
+
+* Think through what support is required for your enhancement
+* Think through the dependencies
+* Think through the failure states
+* Consider your tools
+
+## Line number enhancement
+
+![Goal: wider screen with line numbers every 10 lines](assets/images/line-numbers.png)
+
+* On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes
+* Counting lines by:
+    * Incrementing a CSS `counter` on every `span.line`
+    * Using `contetn` on an `:after` pseudo-element to display the value of the CSS counter every 10 lines
+* Problem is:
+    * There isn't a viable CSS selector for that
+    * `nth-of-type()` doesn't suffice because `span.line` elements are in multiple parent (`dd`) elements
+* Need a bit of JS support
+
+## Line number enhancement
+
+All answers must be "yes":
+
+* Can we use JavaScript to select, traverse and manipulate DOM nodes in the way we'd like in this browser?
+* Does this browser support media queries?
+* Is the wider-screen media query applied?
+* Does this browser support generated content/:after?
+* Does this browser support CSS counters?
+
+
+## 2. Dependencies
+
+![caniuse.com](assets/images/generated-support.png)
+
+* `:after` generated content relies on css `counter` support — that is, we don't want to add generated content if it is invalid
+* Fortunately the set of browsers that supports `:before`/`:after` is effectively the same as those who support CSS `counter`
+
+
+## Tools
+
+* Modernizr's integration with `yepnope.js` and the `Modernizr.mq()` method
+    * I'll need a new version of Modernizr that also tests for generated content support
+* Conditionally load the *jQuery* library when:
+    * Wider screen media query is applied
+    * `Modernizr.generatedcontent` is true
+    * Then, use jQuery selection to select and act on the DOM elements in question
+
+## Like this
+
+Here's the full JavaScript we'll need:
+
+~~~{.javascript}
+<script src="Modernizr.js"></script>
+<script>
+Modernizr.load([
+  {
+    test:       Modernizr.mq('only all and (min-width:50em)') && Modernizr.generatedcontent,
+    yep:        '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
+    callback:   function(url, result, key) {
+      $(document).ready(function() { 
+        $('html.generatedcontent span.line').filter(function(index) {
+          return (((index + 1) % 10 == 0) && index > 0);
+        }).addClass('line-number');
+      });
+    }
+  }
+]);
+</script>
+~~~~
+
+## Walking through the script
+
+~~~{.html}
+ <script src="Modernizr.js"></script>
+~~~
+
+This includes our custom Modernizr build with:
+
+* `generatedcontent` testing
+* `mq` (Media Query) testing
+* `yepnope.js` conditional JavaScript loading
+* `fontface` testing (from before!)
+
+## Walking through more
+
+Then: 
+
+~~~{.javascript}
+<script>
+Modernizr.load([
+  {
+    test:       // A test or tests...truthiness is evaluated
+    yep:        // If test is truthy, load this or these scripts
+    callback:   // And then...
+  }
+]);
+</script>
+~~~~
+
+## Fleshing that out...
+
+~~~{.javascript}
+Modernizr.load([
+  {
+    test:       Modernizr.mq('only all and (min-width:50em)') && Modernizr.generatedcontent,
+    yep:        '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
+    callback:   // Once we're here, we know we're ready to go with our jQuery manipulation
+  }
+]);
+</script>
+~~~~
+
+### Ugh moment
+
+Note that we're repeating our media query verbatim. Not great, but...options are limited these days.
+
+## And our jQuery...
+
+~~~{.javascript}
+Modernizr.load([
+  {
+    test:       Modernizr.mq('only all and (min-width:50em)') && Modernizr.generatedcontent,
+    yep:        '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
+    callback:   function(url, result, key) {
+      $(document).ready(function() { 
+        $('html.generatedcontent span.line').filter(function(index) {
+          return (((index + 1) % 10 == 0) && index > 0);
+        }).addClass('line-number');
+      });
+    }
+  }
+]);
+</script>
+~~~~
+
+* When DOM is ready
+    * For all `html.generatedcontent span.line` elements
+        * jQuery `.filter` method lets us reduce the set of elements we have
+        * Filter and only continue for every 10th element (that is also not the 0th element). i.e. remove all but every 10th match
+        * Add the class `line-number` on those filtered (every 10th) elements
+* This callback only gets executed if the `test` passes and after the `yep` items are loaded and ready
+
+## The CSS
+
+All of this within the media query for the wider screen:
+
+~~~{.css}
+/* Set up and increment the line-count counter */
+.scene {
+  float: left;
+  counter-reset: line-count;
+}
+/* ... */
+span.line {
+  counter-increment: line-count;
+}
+/* ... */
+/* And now the .line-number spans...show the counter value */
+html.generatedcontent span.line-number:after {
+  float: right;
+  content: counter(line-count);
+  display: inline-block;
+}
+~~~
+
+* NB: The set of browsers that support `inline-block` display is a superset of those that support `generatedcontent` (roughly)
+
+## Et, voila
+
+![Line numbers in Chrome](assets/images/line-numbers.png)
+
+![No line numbers in narrow widths, even if supported](assets/images/no-line-numbers.png)
+
+
+[adactio]: http://adactio.com/journal
+[adactio-content-first]: http://adactio.com/journal/4523/
+[aea-oct-12]: http://aneventapart.com/2011/dc/
+[cssweekly]: http://css-weekly.com
+[cut-crap]: https://speakerdeck.com/u/lyzadanger/p/cutting-through-the-crap-the-essence-of-content-on-the-future-web
+[hfmw]: http://bit.ly/hf-mw
+[history-markup]: http://www.youtube.com/watch?v=egKQhGLomcQ
+[lukew]: http://www.lukew.com/
+[lukew-aea-content-first]: http://www.lukew.com/ff/entry.asp?1430
+[mcgrane]: http://karenmcgrane.com/
+[mobilism]: http://mobilism.nl
+[opera-mini-simulator]: http://www.opera.com/developer/tools/mini/
+[rahn-frederick]: http://www.amazon.com/Beginning-Smartphone-Web-Development-Applications/dp/143022620X
+[stephenhay-structured-content]: http://www.slideshare.net/stephenhay/structured-content-first
+[w3c-validator]: http://validator.w3c.org

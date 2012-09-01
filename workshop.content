@@ -106,7 +106,8 @@ Here are some more devices I used for off-and-on testing:
 * iPad (1st-generation) OS 5, Safari
 * [Opera Mini simulator](http://www.opera.com/developer/tools/mini/) (not a device, I admit)
 * Several OS 6 BlackBerrys: Two Torches (9800), a 9810
-* BlackBerry PlayBook tablet (TODO: Version?)
+* Samsung Galaxy S (Android 2.1, native browser)
+* BlackBerry PlayBook tablet
 
 # Part 1. Starting from scratch on the mobile web
 
@@ -1160,7 +1161,7 @@ But it's a hot mess in IE8. What gives?
 
 ### Tackling the lack of media query support
 
-TODO: BB 8320 Screen shot
+![BB 8320 doesn't support MQs, but that's expected!](assets/images/8320-no-mq.png)
 
 > "The absence of support for media queries is in fact the first media query."—Bryan Rieger
 
@@ -1210,7 +1211,7 @@ Yep, in our reality, we often still have to make special exceptions for IE brows
 
 ## Um.
 
-![](assets/images/ie8-hot-mess2.png)
+![IE: This ain't good](assets/images/ie8-hot-mess2.png)
 
 * Turns out there's another problem here: lack of HTML5 element support.
 * This version IE doesn't "speak HTML5". It doesn't recognize HTML5 elements like `<section>`, `<header>`, etc.
@@ -1219,13 +1220,11 @@ Yep, in our reality, we often still have to make special exceptions for IE brows
 
 ## It's a question of features
 
-A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details.
-
-We can help to keep some of our sanity by:
-
-* Being good about progressive enhancement
-* Thinking about things in terms of what **features** the different user agents accessing our site support
-* Assessing shortcomings and fomenting a strategy about support priorities and tools to broaden support
+* A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details so that we can develop for a *differentiated, fractured web*.
+* We can help to keep some of our sanity by:
+    * Being good about progressive enhancement
+    * Thinking about things in terms of what **features** the different user agents accessing our site support
+    * Assessing shortcomings and fomenting a strategy about support priorities and tools to broaden support
 
 ## Some tools at our disposal
 
@@ -1267,6 +1266,23 @@ Let's try to beat IE 8 into submission, shall we?
 * Enhancing content when we have positive test results
 * CSS Classes
 
+## Modernizr
+
+* Many different HTML, CSS and JS feature tests
+* Comes default with HTML5 shim/shiv
+* Comes default with `Modernizr.load()`
+* Tests results are available on the `Modernizr` object
+    * e.g. `if (Modernizr.touch)`
+* Optionally, test results can be added as classes to the `html` element
+    * e.g. `<html class="fontface no-touch cssgradients">`
+* I usually use the full/dev version for development, and then [build a version](http://modernizr.com/download/) that only contains the tests I need
+* Sometimes Modernizr is overkill
+
+
+#### Hold that thought!
+
+We'll come back to `Modernizr.load()`
+
 ## Font Squirrel
 
 ![](assets/images/font-squirrel.png)
@@ -1281,6 +1297,11 @@ Let's try to beat IE 8 into submission, shall we?
 * You be the enhancer!
 * [Exercise: feature enhancement vis-a-vis @font-face](exercises/301-features)
 
+## TODO: MOAR polyfills and feature tests
+
+* Selectivizr
+* IE scripts (cloudfour.com)
+* Modernizr page of polyfills
 
 # Part IV: On the frontiers of the adaptive web
 
@@ -1308,11 +1329,12 @@ Jason reviewed over 100 RWD sites in 2011. Found that:
 
 Common sense tells us that *overall* mobile users have more likelihood of slower, more expensive connections.
 
-## Why are they so big?
+## Why are these sites so big?
 
-* Hiding a background image by using `display:none` on the element will not prevent it from downloading
-* Large desktop-size images are delivered to all devices even if they never use the image at that size
-* Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads
+* A huge factor is image file sizes and the download of resources that are not used
+    * Hiding a background image by using `display:none` on the element will not prevent it from downloading
+    * Large desktop-size images are delivered to all devices even if they never use the image at that size
+    * Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads
 
 ## Let's back up
 
@@ -1354,7 +1376,25 @@ These issues apply both to CSS background images and inline images. Let's take a
 
 ## `image-set`
 
-TODO: Image-set coverage
+* [Jason's blog post on `image-set` on our blog](http://blog.cloudfour.com/safari-6-and-chrome-21-add-image-set-to-support-retina-images/)
+* Supported presently in Chrome, Safari 6
+* Yep, everyone's very foamy about retina. So, maybe, here you go?
+
+~~~{.css}
+#test {
+    background-image: url(assets/no-image-set.png); 
+    background-image: -webkit-image-set(url(assets/test.png) 1x,
+           url(assets/test-hires.png) 2x);
+    background-image: -moz-image-set(url(assets/test.png) 1x,
+           url(assets/test-hires.png) 2x);
+    background-image: -o-image-set(url(assets/test.png) 1x,
+           url(assets/test-hires.png) 2x);
+    background-image: -ms-image-set(url(assets/test.png) 1x,
+           url(assets/test-hires.png) 2x);
+    width:200px;
+    height:75px;
+}
+~~~
 
 ## The inline HTML `img` tag conundrum
 
@@ -1369,12 +1409,15 @@ Many people are seeking a solution for responsive images.
 * JavaScript checks the width of the screen and sets a cookie.
 * Image requests contain that cookie giving the server the information it needs.
 * `.htaccess` file on server checks for cookie and routes requests to the correct file depending on screen size.
+    * Apache rewrite rules or the like can keep HTML `img` `src` pointing at a canonical URL, which is nice.
 
 ## Option 1 Problems
 
-* Sometimes the browser requests images before the JavaScript executes which means the cookie isn’t set. Race condition.
-* What is the fallback if cookies aren’t enabled?
-* Relies on the current way browsers load content which could change. No contract between the browser and the developer.
+* Some fragility
+    * Sometimes the browser requests images before the JavaScript executes which means the cookie isn’t set. Race condition
+    * What is the fallback if cookies aren’t enabled?
+    * Relies on the current way browsers load content which could change. No contract between the browser and the developer
+    * Slightly complex concept
 
 ## Responsive images: Option 2
 
@@ -1405,6 +1448,13 @@ Many people are seeking a solution for responsive images.
 
 * All of your images are being routed through a third-party service.
 * How does Sencha know what size image to use anyways? It relies on device detection which some developers dislike.
+
+## This just in!
+
+* [http://www.resrc.it/](http://www.resrc.it/) Haven't had a chance to vet it
+    * Appears to combine server-side image work with responsive front-end stuff
+    * Has anyone tried it?
+
 
 ## What we really need to solve for images
 
@@ -1480,6 +1530,10 @@ This is a product of my imagination and probably represents a syntax that would 
 
 No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.
 
+### For your consideration
+
+* Which approaches to embedded media seem most appealing to you? Do you have any ideas for how to solve the image problem?
+
 ## Binary fallacy
 
 Most feature testing is thought of in a yep/nope frame of reference. But real life isn't that simple.
@@ -1513,7 +1567,9 @@ Don't get lulled into a false sense of clarity or confidence about feature testi
 * Used Modernizr to test for @font-face support
 * And this is what it looks like on a BB 9810
 
-#### Rule of thumb: Font support on mobile is very challenging. Be wary.
+#### Rule of thumb
+
+* Font support on mobile is very challenging. Be wary.
 
 ## Let's back up again
 
@@ -1557,12 +1613,6 @@ Objective #1 trumps objectives #2 and #3.
 
 TODO: I think we could make this a discussion-based exercise
 
-## A diversion about performance
-
-TODO: Performance
-
-## ySlow
-
 ## Progressive enhancement: electric boogaloo
 
 * Think through what support is required for your enhancement
@@ -1572,13 +1622,16 @@ TODO: Performance
 
 ## Line number enhancement
 
-TODO: Screen shot of goal
+![Goal: wider screen with line numbers every 10 lines](assets/images/line-numbers.png)
 
-On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes.
-
-Part of this can be done by incrementing a CSS counter on every `span.line` and using an `:after` pseudo-element to display the value of the CSS counter.
-
-The challenge is that I'd like to do this only every 10 lines, and there isn't a viable CSS selector for that. So I need a bit of JS support here.
+* On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes
+* Counting lines by:
+    * Incrementing a CSS `counter` on every `span.line`
+    * Using `contetn` on an `:after` pseudo-element to display the value of the CSS counter every 10 lines
+* Problem is:
+    * There isn't a viable CSS selector for that
+    * `nth-of-type()` doesn't suffice because `span.line` elements are in multiple parent (`dd`) elements
+* Need a bit of JS support
 
 ## Line number enhancement
 
@@ -1593,18 +1646,19 @@ All answers must be "yes":
 
 ## 2. Dependencies
 
-* :after generated content relies on css counter support — that is, we don't want to add generated content if it is invalid
-* Fortunately the set of browsers that supports :before/:after is effectively the same as those who support CSS counter
+![caniuse.com](assets/images/generated-support.png)
 
-![](assets/images/generated-support.png)
+* `:after` generated content relies on css `counter` support — that is, we don't want to add generated content if it is invalid
+* Fortunately the set of browsers that supports `:before`/`:after` is effectively the same as those who support CSS `counter`
 
 
 ## Tools
 
-* Modernizr's integration with yepnope.js and the Modernizr.mq() test. I'll need a new version of Modernizr that also tests for generated content support.
+* Modernizr's integration with `yepnope.js` and the `Modernizr.mq()` method
+    * I'll need a new version of Modernizr that also tests for generated content support
 * Conditionally load the *jQuery* library when:
     * Wider screen media query is applied
-    * Modernizr.generatedcontent is true
+    * `Modernizr.generatedcontent` is true
     * Then, use jQuery selection to select and act on the DOM elements in question
 
 ## Like this
@@ -1672,6 +1726,8 @@ Modernizr.load([
 </script>
 ~~~~
 
+### Ugh moment
+
 Note that we're repeating our media query verbatim. Not great, but...options are limited these days.
 
 ## And our jQuery...
@@ -1693,8 +1749,12 @@ Modernizr.load([
 </script>
 ~~~~
 
-* When document is ready, filter all `html.generatedcontent span.line` elements against the anonymous function here that returns `true` for every 10th line that isn't the first line (0). For those elements that pass this filter, add the class `line-number`.
-* The non-existent CSS selector I'm emulating here is something like `html.generatedcontent span.line:nth-of-type(10n)` but doesn't reset when its parent element closes.
+* When DOM is ready
+    * For all `html.generatedcontent span.line` elements
+        * jQuery `.filter` method lets us reduce the set of elements we have
+        * Filter and only continue for every 10th element (that is also not the 0th element). i.e. remove all but every 10th match
+        * Add the class `line-number` on those filtered (every 10th) elements
+* This callback only gets executed if the `test` passes and after the `yep` items are loaded and ready
 
 ## The CSS
 
@@ -1719,9 +1779,13 @@ html.generatedcontent span.line-number:after {
 }
 ~~~
 
+* NB: The set of browsers that support `inline-block` display is a superset of those that support `generatedcontent` (roughly)
+
 ## Et, voila
 
-TODO: Screen shots
+![Line numbers in Chrome](assets/images/line-numbers.png)
+
+![No line numbers in narrow widths, even if supported](assets/images/no-line-numbers.png)
 
 -------------------------------------------------------------------------------
 

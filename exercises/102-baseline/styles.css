@@ -1,0 +1,21 @@
+/* Re-usable Modules */
+.scene {
+  line-height: 1.333em;
+}
+.scene dl {
+  width: 100%;
+}
+.scene dl dt {
+  color: #222211;
+  font-size: 1.125em;
+}
+.scene dl dd {
+  margin: 0 0 .5em 0;
+}
+.scene em {
+  font-size: .85em;
+  margin: 0 .25em;
+}
+.stage-direction {
+  font-style: italic;
+}

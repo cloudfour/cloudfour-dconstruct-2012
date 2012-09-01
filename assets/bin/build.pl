@@ -20,8 +20,13 @@ my $exercise_path = $basepath . "/exercises";
 my $pandoc = '/usr/local/bin/pandoc';
 
 my $flags  = '-f markdown -t slidy --standalone --css=assets/css/workshop.css --slide-level=2';
-my $input  = $basepath . "/workshop.content";
-my $output = $basepath . "/workshop.html";
+my $input  = $basepath . "/workshop-part1.content";
+my $output = $basepath . "/part1.html";
+
+system("$pandoc $flags $input > $output");
+
+my $input  = $basepath . "/workshop-part2.content";
+my $output = $basepath . "/part2.html";
 
 system("$pandoc $flags $input > $output");
 

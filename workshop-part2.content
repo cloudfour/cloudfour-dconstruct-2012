@@ -1,0 +1,1013 @@
+% dConstruct 2012: Part II
+% Lyza Gardner
+% September 6, 2012
+
+
+# Part V: Web sites that do things, in the mobile world
+
+
+## The reading web vs. the doing web
+
+It makes a lot of us devs uncomfortable, but we can't help but notice that there is a fundamental difference between the reference-and-reading Web (Wikipedia, news sites, documentation, blogs, etc.) and the doing-stuff Web (Gmail, Flickr, etc.).
+
+When we talk about mobile, often the glory of the app-based world makes us naturally think of the latter. Which is why I started with the former—the heart of the Web is still content.
+
+Now it's time to talk about doing things on the mobile-device Web.
+
+## Making Shakespeare more useful
+
+* Adding a glossary for both unusual words, historical notes, and potentially-confusing turns of phrase
+* I had a bunch of bright ideas at first
+
+## Wouldn't it be cool if...
+
+### An early idea
+
+Users could touch-and-drag to highlight content in the play (a la iBooks or Kindle apps). Custom notes or simple highlights could be saved.
+
+* On desktop it's pretty easy to access selected text using `window.getSelection()` or similar by binding to the `mouseup` and `keyup` events.
+* On other devices, I can get at the selected text using the same approach, but I need to bind to different events. `touchstart` works fairly well for iOS and Androids.
+
+## But...
+
+Things got complicated quickly.
+
+One idea might be to look at the results of `Modernizr.touch` (an available test in Modernizr) and change the way selected text is handled based on that.
+
+### For your consideration
+
+What do you think it means when `Modernizr.touch` is `true`?
+
+## Touch events and touch models are still fractured and disparate
+
+Not to say that touch-rich web apps cannot be successfully developed, but sorting out the nuances of each platform's touch situation was more than I wanted to dive into here. Especially as we want to support a broader set of devices than just the newest Webkit-based phones.
+
+### I should emphasize
+
+Such a web app is definitely possible. It's just beyond the scope of my explorations here! I wanted to demonstrate the kinds of thinking and learning that go into these sorts of exercises.
+
+## Mobile development demands flexible, evolved thinking
+
+Moreso in mobile than perhaps any other time in software development, BDUF (big-development-up-front), waterfalled processes tend to break down.
+
+The unknowns are so numerous, the complications and quirks so widespread and the testing such an investment that an iterative process both in design/spec-ing and implementing sort of forces itself upon us.
+
+Planning mobile web sites and apps seems to demand an open-ended, very flexible approach.
+
+## A slightly more humble plan
+
+1. Add footnotes to glossed terms and phrases and add a glossary to the end of the document.
+1. For browsers and devices that support it, use JavaScript to make glossed items tappable, and pop up the definition or note in a modal dialog or lightbox.
+1. Allow the user to save glossary entries. This is a bit contrived, but, hey, this is an example.
+
+## Step 1: Glossed terms and a glossary
+
+Step 1 is easy enough. Just need to add some HTML markup and some styles for it.
+
+~~~{.html}
+<dt>Stephano</dt>
+<dd>
+  <em class="stage-direction">(To <strong>Trinculo</strong>)</em>
+  <span class="prose line"><span class="gloss" data-gloss="tell-not-me">Tell not me</span>; when the <span class="gloss" data-gloss="gloss-butt">butt</span> is out, we</span>
+  <span class="prose line">will <span class="gloss" data-gloss="drink-water">drink water</span>; not a drop before: therefore <span class="gloss" data-gloss="bear-up">bear up, and</span></span>
+  <span class="prose line"><span class="gloss" data-gloss="bear-up">board 'em</span>. Servant-monster, drink to me.</span>
+</dd>
+~~~
+
+* Note the use of `data-gloss`. This will be used to match up `span.gloss` elements to the ID of their glossary counterparts.
+
+## Step 1: A glossary section
+
+~~~{.html}
+<section class="glossary">
+  <h2>Glossary</h2>
+  <ol>
+    <li id="tell-not-me"><em>i.e.</em> Don't tell me not to drink so much.</li>
+    <li id="gloss-butt">An archaeic unit of wine, and quite a lot of it. A butt of wine around Shakespeare's time was about 126 gallons (104 imperial gallons). Compare the average US beer keg barrel size of about 15.5 gallons.</li>
+~~~
+
+etc.
+
+TODO drawing showing mapping of gloss item to gloss content.
+
+## Step 1: Some styles
+
+~~~{.css}
+ol {
+  list-style-type: decimal;
+  margin : .5em 0;
+  line-height: 1.25em;
+}
+ol li {
+  margin: .5em 2em;
+}
+sup {
+  position : relative;
+  top      : -.5em;
+  font-size: .75em;
+  color    : #888;
+  padding  : .125em;
+}
+.glossary {
+  float : none;
+  clear : both;
+}
+.glossary em {
+  font-style : italic;
+}
+~~~
+
+## As an added bonus...
+
+Threw in some CSS columns:
+
+~~~{.css}
+@media all and (min-width: 50em) {
+  /* ... */
+  .glossary ol {
+    -moz-column-count   : 2;
+    -moz-column-gap     : 1.5em;
+    -webkit-column-count: 2;
+    -webkit-column-gap  : 1.5em;
+    column-count        : 2;
+    column-gap          : 1.5em;
+  }
+}
+~~~
+
+### For your consideration
+
+ Why didn't I use the CSS Columns test in Modernizr before using this style?
+
+## And now we have our baseline
+
+At this point, we stop and test on our supported devices*.
+
+\* I should note that, while developing the markup and styles for this example, I did find a problem in test. I had initially set a `width: 100%` on the `section.glossary` element. My `section` styles already had a padding on them, and this broke the box model and caused horizontal scrolling. C'est la vie. Easily fixed when caught at this stage. Test, iterate, test. Often.
+
+#### Hold that thought!
+
+We're going to have an extravaganza of testing discussion soon.
+
+## An updated baseline
+
+![BlackBerry 9670](presenter-exercises/500-glossed/images/9670.png)
+
+![Nokia N8](presenter-exercises/500-glossed/images/nokia-n8.png)
+
+![Opera Mini on iPhone](presenter-exercises/500-glossed/images/iphone-opera.png)
+
+## Notice tablets
+
+![iPad](presenter-exercises/500-glossed/images/ipad.png)
+
+
+## Both iPad and Fire support CSS Columns
+
+![Kindle Fire](presenter-exercises/500-glossed/images/fire.png)
+
+
+## Step 2: Enhancing the glossed items
+
+1. We'll be needing the jQuery library for everyone now, not just browsers that have the wider-screen media query applied—we need to take the conditional loading via `yepnope` away.
+1. I'm somewhat randomly going to select the ["Messi"](http://marcosesperon.es/apps/messi) jQuery plugin for popups/modals. We'll need to include that JavaScript in our page and its CSS in our CSS.
+1. We'll need to write a bit of jQuery JavaScript to convert our glossary entries into popup modals and make the glossed items tappable.
+
+## Part A: Re-futzing our JavaScript
+
+~~~
+<script src="Modernizr.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="gloss.js"></script>
+<script>
+  $(document).ready(function() {
+    if (Modernizr.generatedcontent && Modernizr.mq('only all and (min-width:50em)')) {
+      $('html.generatedcontent span.line').filter(function(index) {
+        return (((index + 1) % 10 == 0) && index > 0);
+      }).addClass('line-number');
+    }
+  });
+</script>
+~~~
+
+1. Including jQuery for everyone
+1. Creating JavaScript for glossary items (`gloss.js`)
+1. Line-number jQuery still here
+
+## Part B and C: Messi jQuery Plugin, Glossary JavaScript
+
+#### `gloss.js`
+
+~~~{.javascript}
+function Messi(a,b) { ... } /* Minified Messi JS */
+
+$(document).ready(function() {
+  $('.glossary ol li').each(function(index) {
+    $('span[data-gloss="' + $(this).attr('id') + '"]').click(function() {
+      var $content = $('li#' + $(this).attr('data-gloss')).html();
+      new Messi($content, { title: 'Glossary' });
+    });
+  });
+});
+~~~
+
+Finally, added a bunch of styles to the end of `styles.css`: Messi's CSS.
+
+TODO: Drawing of the way these pieces fit together
+
+## Looks OK on my desktop...
+
+![](presenter-exercises/501-popups/images/chrome.png)
+
+* We can [try it out](presenter-exercises/501-popups/tempest.html)
+
+## But...
+
+![Oh, boy](presenter-exercises/501-popups/images/iphone.png)
+
+## Bleh
+
+* As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.
+* Also, we need to add some styles of our own to indicate that the glossed items are tappable.
+
+#### Theme: Performance optimization
+
+The Messi CSS, lifted from Twitter Bootstrap, contains over 500 lines of CSS (more than twice the length of all of the rest of our CSS). There are many rules that aren't getting used, and a lot of pixel dimensions and gradients and animations and whatnot.
+
+## Refactoring the CSS
+
+* I culled the Messi CSS by about 250 lines, removing unused styles and minimizing certain CSS effects.
+* I did leave in some of the button gradients and button transition effects, some opacity things and some text styling and shadows.
+
+## Making the popups somewhat responsive
+
+So, we need to size the popups to fit different window sizes. Messi allows you to define a width for your popups:
+
+* Percentage widths seem appealing, but don't center in the window and look a bit ugly.
+* So we need to determine what the correct width is before launching the popup: getting the width of the screen is not as straightforward as it sounds.
+
+How do we figure out how wide the popup should be?
+
+## Viewports again
+
+Here's some pre-baked code to get a reasonably approximate window width:
+
+~~~{.javascript}
+function viewport() {
+  return { width: window.innerWidth || 
+          (document.documentElement || document.body).clientWidth, 
+         height: window.innerHeight || 
+          (document.documentElement || document.body).clientHeight};
+}
+~~~
+
+## Still more CSS brutalization
+
+![](presenter-exercises/501-popups/images/nokia-n8.jpg)
+
+* The Messi CSS, even shortened, is making some assumptions about CSS layout. It uses `flexbox` or `box` layouts, which this Windows Phone browser doesn't grok.
+* I tend to find it ironic that Twitter Bootstrap gets touted as a "mobile-friendly" and "responsive" CSS framework.
+
+## Updating our gloss.js
+
+This is what we have now:
+
+~~~~{.javascript}
+$(document).ready(function() {
+  $('.glossary ol li').each(function(index) {
+    $('span[data-gloss="' + $(this).attr('id') + '"]').click(function() {
+      var $content = $('li#' + $(this).attr('data-gloss')).html();
+      new Messi($content, { title: 'Glossary' });
+    });
+  });
+});
+~~~~
+
+## Updating our gloss.js
+
+~~~~{.javascript}
+$(document).ready(function() {
+  var popupWidth       = viewport().width - 30;
+  popupWidth           = (popupWidth > 500) ? 500 : popupWidth;
+  $('.glossary ol li').each(function(index) {
+    $('span[data-gloss ="' + $(this).attr('id') + '"]').addClass('gloss-item').click(function() {
+      var $content     = $('li#' + $(this).attr('data-gloss')).html();
+      new Messi($content, { title: 'Glossary', 
+                            modal: true,
+                            width: popupWidth + 'px',
+                            buttons: [ { id: 'close-gloss-' + $(this).attr('data-gloss'),
+                                        label: 'Close' },
+                                       { id: 'save-gloss-' + $(this).attr('data-gloss'),
+                                        label: 'Save',
+                                        val: 'save',
+                                        btnClass: 'btn-success' }]
+                });
+    });
+  });
+  function viewport() { /** ... **/  }
+});
+~~~~
+
+## Nuances in a world of clicks and touches
+
+We need to suggest, visually, that the glossed items are clickable (desktop) or tap-able (touch devices). We can start with:
+
+~~~{.css}
+span.gloss-item {
+  border-bottom: 1px dashed #dcc;
+}
+span.gloss-item:hover,
+span.gloss-item:active {
+  color: #d94343;
+  cursor: pointer;
+}
+~~~
+
+And then update our JavaScript a teensy bit to assign the `.gloss-item` class as part of our initialization process for the glossary popups:
+
+~~~{.javascript}
+$('.glossary ol li').each(function(index) {
+  $('span[data-gloss ="' + $(this).attr('id') + '"]').addClass('gloss-item').click(function() {
+    /* ... */
+  });
+  /* ... */
+});
+~~~
+
+## It's a start
+
+* The `:hover` styling helps emphasize the click-ability of the spans, at least on desktop devices.
+* But tapping on the spans can feel a bit cramped on touch devices. Our fingers need more room!
+
+Let's add one more line to our JavaScript, at the end of the glossary-setup loop:
+
+~~~{.javascript}
+$('html').addClass('glossed');
+~~~
+
+Now we have `html.glossed` as a class indicating that we have a JS-driven glossary going on.
+
+## Adjusting for touch
+
+~~~{.css}
+.glossed .scene {
+  /* More line height for narrow/baseline
+     when glossary items are active. */
+  line-height     : 1.5em;
+}
+/* ... */
+@media all and (min-width: 50em) {
+  /* But we don't really need more room
+     on wider screens, desktops */
+  .scene, .glossed .scene {
+    line-height: 1.3333em;
+    float: left;
+    counter-reset: line-count;
+  }
+}
+~~~
+
+## That's pretty nice
+
+![BlackBerry 9670](presenter-exercises/502-responsive-popups/images/9670.png)
+
+![Kindle Fire](presenter-exercises/502-responsive-popups/images/fire.png)
+
+## More better for touch
+
+![Behaves nicely on the iPhone](presenter-exercises/502-responsive-popups/images/iphone.png)
+
+![Increased line-height and visual cues for tappable items](presenter-exercises/502-responsive-popups/images/iphone2.png)
+
+## It works on Opera Mini...but
+
+![Opera Mini is a proxy browser](presenter-exercises/502-responsive-popups/images/opera-iphone2.png)
+
+![Why is the line-height so scrunched?](presenter-exercises/502-responsive-popups/images/opera-iphone.png)
+
+## Surprise.
+
+![Turns out Opera Mini doesn't support line-height](presenter-exercises/502-responsive-popups/images/opera-line-height.png)
+
+![Same document rendered on an iPhone](presenter-exercises/502-responsive-popups/images/iphone-line-height.png)
+
+## The elephant in everyone's room: performance
+
+* This glossary stuff works swimmingly on newer iOS devices, decent Androids, the Nokia N8, the Kindle Fire, and on the newest BlackBerrys.
+* It's borderline on BlackBerry 6 devices.
+* It's almost frustratingly slow on old Android (<2).
+
+### Why?
+
+* DOM processing
+* JS inefficencies
+* Complex CSS
+* Slower hardware
+* Less sophisticated browsers
+
+## How could one make it better
+
+* Rolling your own JavaScript for the popups instead of relying on a third-party, handsome, but potentially draining library
+* Reducing or eliminating performance-hammering CSS (gradients, box and text shadows, transitions) altogether
+* Profiling the JavaScript
+* Cooking up a combination of feature- or UA-detection that indicates a "lesser" class of devices and disabling this feature on them.
+
+#### Theme: Choice
+
+## Client-side programming from scratch can be hard
+
+It can get tiring if, every time you need to implement something, you have to build it from scratch. Even if you take that route, building up your own library of re-usable components and keeping them maintained as the mobile landscape sways so wildly beneath you can be challenging if not impossible.
+
+Messi is a good example of the pros and cons of a third-party tool.
+
+## Frameworks
+
+## What frameworks do for us
+
+* Often a combination of UI framework and development framework
+* Solve common issues and help with cross-platform support:
+    * "Mobile-like" layout vis-a-vis viewport normalization, responsive breakpoints and the like.
+    * "Mobile-like" UI elements: buttons, nav bars, fixed-position toolbars, form inputs.
+    * Emulation of "native-like" transitions between screens and views.
+    * Navigation and AJAX loading of elements, often using the History API and pushState.
+    * Abstraction layers to simplify coding against device APIs.
+
+## Popular mobile web frameworks
+
+* jQuery Mobile
+* Sencha Touch
+* [The M Project](http://the-m-project.net/)
+* [DHTMLX Touch](http://www.dhtmlx.com/touch/)
+* [SproutCore](http://sproutcore.com/)
+
+## Framework and library pros and cons
+
+### Pros
+
+* Speeds development time, sometimes massively
+* Great for prototyping
+* (Greatly) eases cross-platform gotchas
+* Maintained (often) by communities who are hyper-focused on specific issues (so you don't have to be)
+* Provides UI elements to use as baselines
+
+### Cons
+
+* Often heavy, large, performance-draining
+* Might not support the devices you need to
+* Native UI emulation or consistent UI metaphors can encourage bland or awkward web apps
+* Can be difficult to customize
+
+## A balanced approach
+
+Sometimes, there is a third option between framework and from-scratch. Using third-party *libraries* to solve specific issues in your development can often be a boon.
+
+An example: AJAX-rich navigation, with dynamically-loaded content, using the History API to enable the proper usage of back buttons and refresh.
+
+* Framework options: jQuery Mobile, Sencha Touch, etc.
+* Another way: Lightweight JavaScript library like asfar.js
+
+#### Pro Tip
+
+Try to isolate the issue or issues you really want to solve and find a more focused library or tool to solve that problem. Try to have a good understanding of how the library or tool you end up selecting *works*.
+
+
+
+-------------------------------------------------------------------------------
+
+# Part VI: The web as a platform: HTML5, APIs, oh, my!
+
+## HTML5 is complicated and confusing
+
+* What is HTML5?
+* What is a device API?
+* Is there a difference between an HTML API and a JavaScript API?
+* Who manages all this stuff?
+* What's the difference between the W3C and the WHATWG?
+* What works where?
+
+## What is the web?
+
+* A bunch of HTML stuff
+* A bunch of CSS stuff
+* A bunch of media stuff
+* JavaScript stuff
+* Stuff that interacts with the hardware
+* Sorta random stuff
+* Server and programming stuff
+* Seriously low-level stuff (HTTP, TCP/IP)
+
+## WHATWG? W3C? What *is* HTML5?
+
+* Jeremy Keith's [*HTML for Web Designers*](http://www.abookapart.com/products/html5-for-web-designers) discusses the origins, evolution and relationship between the W3C, the WHATWG and other parties.
+* ["Is this HTML5?" section on WHATWG HTML spec](http://www.whatwg.org/specs/web-apps/current-work/multipage/introduction.html#is-this-html5?) helps to iron out a few things.
+
+
+And all of this is whirling and changing so fast. And *what about mobile?*
+
+## Mobile uptake
+
+Though we tend (maybe?) to assume that mobile browsers are a slightly ...
+TODO: Flesh out this thought
+
+## But not everywhere
+
+### Proxy browsers
+
+* When proxy browsers are involved, we lose the "device" in the equation.
+* Device and platform interaction is by nature very restricted.
+
+### Older devices
+
+* Older browsers are obviously fairly limited.
+* The older the device is, the less likely it is to have a browser that can or is updated frequently or ever (unscientific).
+
+## Device APIs
+
+### What is a device API?
+
+#### [According to the W3C](http://www.w3.org/2009/dap/)
+
+* Battery Status
+* Media Capture (HTML and JS)
+* Network Information
+* Ambient Light, Humidity and Temperature Events
+* Proximity Events
+* Vibration
+* Web, Pick Media, and Pick Contacts Intents
+* Calendar
+* Menu
+
+## Brian LeRoux defines device APIs:
+
+> "Typically headless/chrome[le]ss/without a visual manifestation, truly crossplatform." —[Brian LeRoux](http://brian.io/slides/beyond-html5/#/23), PhoneGap (Adobe)
+
+He goes on to expand that these APIs usually involve:
+
+* sensors
+* data
+* outputs
+
+## Back to that W3C list...
+
+* Battery Status
+* Media Capture (HTML and JS)
+* Network Information
+* Ambient Light, Humidity and Temperature Events
+* Proximity Events
+* Vibration
+* Web, Pick Media, and Pick Contacts Intents
+* Calendar
+* Menu
+
+## For your consideration
+
+* What's missing here?
+* Anything else seem odd to you?
+
+## Device APIs...yeah, it's cloudy
+
+* **[Geolocation](http://www.w3.org/TR/geolocation-API/)**: Its own thing in the W3C
+* **Accelerometer, Device Orientation**: Under the auspices of geolocation
+* **[File API](http://www.w3.org/TR/FileAPI/) and related**: [Web Applications Working Group](http://www.w3.org/2008/webapps/)
+* Everyone's list of device APIs is different
+* Device APIs are one piece of the puzzle of HTML5 and the web
+
+## The web as platform
+
+![Platform.html5.org](assets/images/html5-platform.jpg)
+
+* [platform.html5.org](http://platform.html5.org)
+
+## What we've seen already
+
+![What we've seen today](assets/images/what-weve-seen.png)
+
+## Mobile-relevant device APIs
+
+![These APIs are hot in mobile](assets/images/mobile_relevant_apis.jpg)
+
+* Pink: Device APIs (roughly)
+* Blue: Other APIs and features relevant to mobile (roughly)
+* As more of these APIs get implemented in real-life mobile browsers, the need to go native for certain platform-level things diminishes
+* Until then: Hybrid development
+
+## Geolocation
+
+* Leaps to mind when we think about mobile
+* Find out where the device (on which the browser is running) is
+* One of the more widely-implemented device APIs in-browser
+* W3C specification is pretty easy to get your head around
+* Is a good example of typical device API progression:
+    1. Proprietary, native-only availability
+    2. Proprietary in-browser availability
+    3. Scattered standards-based support in browser
+    4. Broader standards-based support in browsers, with polyfill fallbacks
+    5. (Not yet/the ideal state) Pervasive standards-based support in (nearly) all browsers
+
+## Geolocation
+
+* Modern browsers have near-universal implementation of geolocation of some kind
+* Notable exceptions are no surprise:
+    * IE < 9
+    * Opera Mini (remember what we said about proxy browsers)
+* Blackberry < 7 and some other legacy mobile browsers use different implementations
+
+## The W3C Geolocation spec
+
+* The [W3C's geolocation spec](http://www.w3.org/TR/geolocation-API/) is widely implemented and pretty straightforward.
+* Browsers that implement the API expose the `navigator.geolocation` object.
+* The key method on that object is `getCurrentPosition(successCallback, failCallback)`.
+
+## An example
+
+~~~{.javascript}
+<script>
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+}
+function onGeoSuccess(position) {
+  var coordinates = position.coords;
+  alert(coordinates.latitude + ", " + coordinates.longitude);
+}
+function onGeoError(error) { alert(error.message); }
+</script>
+~~~
+
+* Here's [an example in an HTML page you can try](presenter-exercises/600-geolocation).
+
+## With polyfill
+
+* It's common to use a polyfill with device APIs to reach more browsers that may have disparate implementations.
+* A commonly-used polyfill for geolocation is [geo-location-javascript](http://code.google.com/p/geo-location-javascript/), though it is less useful now that Google Gears has been discontinued.
+* geo-location-javascript, like many/most polyfills, emulates the existing or proposed standard. Thus, though there is a one-line initiation snippet, geo-location-javascript lets you use the same syntax as the W3C standard geolocation API.
+
+
+## I can't really teach you about device APIs
+
+* I can give you a high-level overview
+* Things are changing so fast that it's more of a game of knowing where to look for information
+
+## And where would that be?
+
+### References
+
+* [The Web platform: Browser technologies](http://platform.html5.org/)
+* [HTML5Please](http://html5please.com/)
+* [CanIUse JS APIs](http://caniuse.com/#cats=JS_API)
+* [Device APIS WG at W3C](http://www.w3.org/2009/dap/)
+* [Mozilla Developer Network HTML5 Section](https://developer.mozilla.org/en-US/docs/HTML/HTML5)
+* [HTML5 Polyfills from Modernizr](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills) A list of tons of polyfills
+
+### Other stuff
+
+* [.net Magazine Article](http://www.netmagazine.com/features/developer-s-guide-html5-apis)
+* [Slide deck from Brian LeRoux on Device APIs](http://brian.io/slides/beyond-html5/)
+
+## MediaCapture API
+
+#### Beware! Actually two things
+
+* [HTMLInputElement](http://www.w3.org/TR/html-media-capture/): New form `<input>` type
+* [mediaCapture/Streams](http://www.w3.org/TR/mediacapture-streams/): Somewhat confusing (mostly in that it is ever-changing/hard to pin down) JavaScript/Programmatic API
+
+### MediaCapture
+
+* Lets you get at the device's camera and audio recording for capturing media streams and (slightly confusing) still images
+* Media Capture non-support is one of the chief reasons we still need to go native for a lot of things. That's when we reach for [PhoneGap](http://phonegap.com/).
+
+## HTMLInputElement mediaCapture
+
+* Implemented in Android 4 (Ice Cream Sandwich)
+* Starting to show up in other mobile browsers
+* `<input type="file" accept="image/*" capture="camera">`
+* `capture="camcorder"` makes me giggle
+* Remember, this is the HTML API piece of this, not the programmatic "control the user's camera" piece
+
+## mediaCapture Streams API
+
+* Lots of churn and change here
+* No browser (mobile or otherwise) currently shipping implements this spec
+* It would seem that the Tizen browser *might*
+
+## Yet MOAR Device/Mobile-relevant APIs
+
+* Network Information API
+* Battery Status API
+* Vibration
+* Device Orientation
+* File, Filesystem stuff
+* Offline Applications
+    * My personal nightmare
+    * ApplicationCache (AppCache) sounds straightforward, but it is really terrifying; have lost many days of my life to this beast
+    * I punt you to [Jake Archibald's fantastic AppCache: DoucheBag presentation](http://vimeo.com/43336762) (amusing, informative and thorough—I can't possibly compete)
+
+## DOMStorage/Web Storage
+
+> "DOM Storage is the name given to the set of storage-related features first introduced in the Web Applications 1.0 specification, and now split off into its own W3C Web Storage specification. DOM Storage is designed to provide a larger, more secure, and easier-to-use alternative to storing information in cookies. It was first introduced with Firefox 2 and Safari 4." — [Mozilla Developer Network website](https://developer.mozilla.org/en-US/docs/DOM/Storage)
+
+### [Exercise: Research Web Storage](exercises/601-dom-storage)
+
+## `localStorage` in a nutshell
+
+### What is `localStorage` and how does it relate to `Web Storage` a.k.a. `DOM Storage`?
+
+* `localStorage` is part of the DOM Storage/Web Storage API oeuvre along with `sessionStorage`.
+* Allows for straightforward storage and retrievel of string key-value pairs.
+* Both the key and the value must be strings.
+* Different platforms allot different amounts of space for `localStorage`. Behaviors can differ when `localStorage` gets full.
+
+## Which browsers support it?
+
+![Information from caniuse.com](assets/images/local-storage-support.png)
+
+* Broadly supported
+* No real surprises that the outliers would be IE and Opera Mini. IE 8 even supports it
+
+## Polyfills for `localStorage`
+
+* [Cookie polyfill](https://developer.mozilla.org/en-US/docs/DOM/Storage)
+* [Remy Sharp's polyfill for Web Storage](https://gist.github.com/350433)
+* Several more polyfills are [listed on Modernizr](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills)
+* You can also use [Lawnchair's DOM adapter](http://brian.io/lawnchair/)
+
+#### Beware!
+
+Many `localStorage` polyfills use cookies. The cookie polyfill is limited by one of the very things that `localStorage` was intended to relieve: maximum cookie size. 4kb is the max size for any cookie. The lowest common denominator is IE6, which may allow as few as 20 cookies per domain. Also, cookies are sent with every request—expensive overhead on high-latency connections.
+
+## Other client and device persistence/data/file options
+
+* [IndexedDB](http://dvcs.w3.org/hg/IndexedDB/raw-file/tip/Overview.html)
+* [File API](http://dev.w3.org/2006/webapi/FileAPI/)
+* [Application Cache/Offline](http://dev.w3.org/html5/spec/offline.html#offline)
+* Blob URLs, [Data URLs](http://tools.ietf.org/html/rfc2397)
+
+## HTML5Please has a bit of a different perspective than CanIUse...
+
+![](assets/images/html5please-localstorage.png)
+
+## This area purposely left blank until Saturday
+
+-------------------------------------------------------------------------------
+
+# Part VI: Making sure it works, a.k.a. Testing is Hell
+
+## Testing the mobile web is hard
+
+* Not a lot of methodologies established
+* There are, like, a billion different mobile devices and browsers
+* Hardware required: $$$$ or ££££ or €€€€
+* Remote debugging is still in its relative infancy
+
+### OK, so, what do we do?
+
+## Most of your testing is actually done on the desktop
+
+* Before you get onto device (or even into emulator), most of your work prepping for testing on those devices is done in the "traditional" place of development: the desktop. 
+* An area where we are more familiar and comfortable.
+* Despite their many differences, desktop and mobile browsers do share a common core. You can make *some* assumptions about support before you get on-device.
+
+
+## And you can set yourself up for increased likelihood of success
+
+* Careful adherence to standards
+* Techniques like modularized CSS for easier debug
+* Clarity in your dev-test workflow
+
+### Learning the art of un-testing
+
+* The more mobile web things you build, the more you can anticipate trouble areas
+* Likewise, you can also learn about dependable techniques
+
+## A testing workflow
+
+* A key to successful testing is mapping out the points in your development cycle to insert device-specific testing.
+
+TODO: Drawing
+
+## A testing workflow example
+
+1. Initial foundation work on desktop
+1. First set of testing across collection of test devices (broad)
+1. Iteration + development cycles
+1. Test on core devices
+1. Repeat 3 and 4
+1. Test across test devices (broad) on larger feature releases
+1. Occasionally throw in a random device into test to keep yourself honest
+1. Repeat 3 through 7
+
+TODO: Drawing of loops
+
+## The devices
+
+* A smaller set of core devices: test on each iteration with these
+* A larger set of supported devices: test every nth iteration
+* Use common sense
+* Keep a couple of easy-to-test devices within arm's reach
+
+### Be ready to be caught by surprise
+
+Some issues are hard to anticipate and arise from changes that seem innocuous. Recall:
+
+* Opera Mini `line-height` issue
+* BlackBerry OS 6 `small-caps` issues
+
+## Set your foundation
+
+* Foundational work of core of site or app on desktop
+* After initial foundation is complete, broad test across your collection of supported devices and emulators
+* Use version control and make discrete, incremental commits for easier rollback
+
+## Iteration-and-test loop
+
+* Small steps
+* After each meaningful change (feature, CSS work, etc.) test on a selected subset of your supported devices
+* Use your increasing experience to guide you what changes are most likely to cause on-device issues
+* Whatever you do, do *not* make testing a single, end-of-project event. You will hate your life.
+* At certain points, especially after significant change, test across your full collection of test devices
+* Keep at least one of your older/lesser devices in your core group of test devices, even if it's not the biggest target device
+
+## OK. What are the ways we can test the mobile web?
+
+* Desktop-based testing
+* On-device testing
+* Remote debugging of physical devices
+* Remote testing of remote devices
+* Emulators
+
+## Mobile-relevant desktop testing
+
+* [User agent switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/)
+* [User agent switcher config file](http://techpatterns.com/forums/about304.html)
+* [Resizer](https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh) / [Web Developer Toolkit](http://chrispederick.com/work/web-developer/)
+* [Blaze.io Mobile Test](http://blaze.io/mobile)
+* Automated testing foundations: Web drivers for specs can use headless Mozilla or Webkit, resize the browser, take automated screenshots, etc.
+* [ResponsivePX](http://responsivepx.com/)
+
+## Device testing is tedious and hard
+
+* Fortunately, there are some tools:
+  * Adobe Shadow
+  * weinre
+  * shim
+  * Opera Dragonfly
+  * FireFox mobile remote debug (NEW!)
+
+## Adobe Shadow
+
+TODO: Adobe Shadow demo
+
+## On-device testing tools
+
+* [Mobile Performance Bookmarklets](http://stevesouders.com/mobileperf/mobileperfbkm.php)
+* [jDrop](http://jdrop.org/)
+* Turning on ... in iOS/Android
+
+## Emulators
+
+* Generally available in various platform SDKs
+* Some web-based emulators
+* Try to get hardware when you can
+* Can be useful for testing really legacy devices:
+    * [N70 Emulator](http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70)
+    * Opera Mini older versions can be found in emulators online
+
+## Building a device collection
+
+* A "modern" iOS device. iPads are obviously a different form factor than iPhones, but having just one of the two covers a lot of bases.
+* A "modern" Android device running Ice Cream Sandwich (OS 4) or at least Gingerbread (2.3).
+* A slightly older Android running 2.0-2.2.
+* A modern BlackBerry (OS 6 or newer).
+* An older BlackBerry (OS 5).
+* Are you in Europe? A Symbian Nokia phone.
+* If your organization focuses on a demographic heavy on BlackBerrys, consider an old BlackBerry running OS 4.
+* A "modern" Windows phone. The Nokia N8 and N9 are very nice devices.
+* An old Android running <2.
+* A device (BlackBerry has many) with an unusual aspect ratio.
+* A larger-format Android device that is not a tablet, e.g. Samsung Note
+
+## Tablets
+
+* iPad
+* Kindle Fire
+* Android tablet
+* BlackBerry PlayBook
+* Windows 8 tablet (coming soon)
+
+## Tactics for acquiring devices
+
+* Add your own devices to your testing library as your replace them with newer ones. Having out-of-date devices is actually a huge boon.
+* Factor in the cost of a device or two in projects focusing on those devices.
+* Join developer programs at different device manufacturers. These are generally not free. BlackBerry has a well-established one. Nokia has a developer relations program as well.
+* Buy devices used online (Craiglist is a great source in the U.S.; eBay is decent, too). Some can be quite cheap.
+* Buying devices in the US can save money. But be very aware that the vast majority of these devices are "locked" to carrier.
+* Talk to device manufacturers and mobile companies directly. It's surprising how often they're quite keen to help.
+* Go to events and conferences and hope. Lots of mobile conferences give away (often many) devices as door prizes. Heck, I won a BlackBerry torch that way. If you can go to Google I/O you may well walk away with four or five devices (Cloud Four co-founder Jason did, recently).
+
+## The biggest tips for device libraries
+
+* **TEAM UP**: Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade. 
+* **MAKE IT EASY FOR YOURSELF**: Make it easier to test on device and you'll do it more.
+
+
+
+## Efficiencies
+
+* Define a spot for your devices. A bookshelf, table or desk for them to live on or in.
+* Keep as many devices charged as is reasonably possible.
+* Group devices by charger and platform.
+* Have a plan for system and software updates.
+* Have a work area at or near the testing library.
+* Keep in mind the overhead required for device maintenance when establishing a collection.
+* If you're the organized type, create a spreadsheet or somesuch for tracking the details of your devices.
+* If possible, have folks borrowing your devices do their work on-site. This can be an easier sell if you have a nice work area around your devices.
+* Don't over-stock devices.
+
+## Weird things you might not think of when choosing test devices
+
+When choosing a device within a given plaform, consider:
+
+* Which has the better keyboard (soft or hard)? You'll be entering in URLs willy-nilly, and variations in keyboard layouts and tactile feedback across devices can make a big difference.
+* How easy is it to find and change Wifi settings? Any other Wifi issues?
+* Battery life when idle/hibernating. Phones that don't need to be charged constantly when not in use are a boon to device libraries.
+* Charging interface. Aim for USB mini (becoming more universal these days but there are still outliers, esp. iOS and tablets).
+* How easy is it to update the OS and/or apps? Some of this is carrier/operator dependent.
+
+
+## Resources
+
+* [BagCheck Device Testing Gear](https://bagcheck.com/blog/22-mobile-device-testing-the-gear)
+* [BBC Devices](http://mobiletestingfordummies.tumblr.com/post/20056227958/testing)
+* [jQueryMobile Automated Selenium Testing](http://www.youtube.com/watch?v=51E3FWMKkig&feature=player_embedded#!)
+* Looking for some real old stuff? http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70
+
+## Other tools
+
+* http://responsivepx.com/
+
+## Watch out for
+
+* Fixed breakpoint sizes
+* iOS fixation
+
+
+## Some halfway techniques
+
+Something I've done lately when doing Rails development is use the combination of:
+
+* rSpec/Capybara
+* poltergeist: Phantom.js Web driver for Capybara tests
+* jasmine for JS testing
+
+Within my test specs, I can use Phantom.js as the test driver to launch a headless instance of Webkit and run my tests within it. I can resize the (virtual) window in that Phantom.js instance to various dimensions that emulate possible mobile device widths/heights. I can test for the location and placement of elements, execute JavaScript, and take automated screen shots.
+
+It is theoretically possible—though not on Mac right now—to run the Phantom.js as a remote to an actual device. This would be *awesome*.
+
+This obviously only covers Webkit. Swapping over to the default Selenium web driver for Rails, I get things tested in Mozilla desktop. Though these are tests run on the desktop, they are still incredibly useful as a basis to continue testing.
+
+## Remote testing
+
+## What I hope is the way of the future
+
+I would love to see the continued evolution of remote, on-hardware testing.
+
+Some interesting stuff is happening at the confluence of Selenium and Ruby. iPhone web driver.
+I hope that Shadow will evolve and allow scripting.
+
+## Emulators
+
+
+## Testing and performance tools
+
+* jDrop
+* Blaze.io
+
+## Un-testing
+
+The more mobile web sites you build, the more you will be able to get away with a certain amount of "un-testing." 
+
+## Challenging Zones
+
+* CSS positioning, box model
+* CSS 3 effects, especially anything vendor-prefixed: gradients, shadows, etc.
+* HTML5 elements
+* DOM manipulation
+* Character encoding
+* Embedded media
+
+
+
+[adactio]: http://adactio.com/journal
+[adactio-content-first]: http://adactio.com/journal/4523/
+[aea-oct-12]: http://aneventapart.com/2011/dc/
+[cssweekly]: http://css-weekly.com
+[cut-crap]: https://speakerdeck.com/u/lyzadanger/p/cutting-through-the-crap-the-essence-of-content-on-the-future-web
+[hfmw]: http://bit.ly/hf-mw
+[history-markup]: http://www.youtube.com/watch?v=egKQhGLomcQ
+[lukew]: http://www.lukew.com/
+[lukew-aea-content-first]: http://www.lukew.com/ff/entry.asp?1430
+[mcgrane]: http://karenmcgrane.com/
+[mobilism]: http://mobilism.nl
+[opera-mini-simulator]: http://www.opera.com/developer/tools/mini/
+[rahn-frederick]: http://www.amazon.com/Beginning-Smartphone-Web-Development-Applications/dp/143022620X
+[stephenhay-structured-content]: http://www.slideshare.net/stephenhay/structured-content-first
+[w3c-validator]: http://validator.w3c.org

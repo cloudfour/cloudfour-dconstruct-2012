@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Lyza Gardner" />
+  <title>dConstruct 2012: Part II</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="assets/css/workshop.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">dConstruct 2012: Part II</h1>
+  <p class="author">
+Lyza Gardner
+  </p>
+  <p class="date">September 6, 2012</p>
+</div>
+<div class="section titleslide slide level1" id="part-v-web-sites-that-do-things-in-the-mobile-world"><h1 id="part-v-web-sites-that-do-things-in-the-mobile-world">Part V: Web sites that do things, in the mobile world</h1></div><div class="section slide level2" id="the-reading-web-vs.-the-doing-web">
+<h1 id="the-reading-web-vs.-the-doing-web">The reading web vs. the doing web</h1>
+<p>It makes a lot of us devs uncomfortable, but we can't help but notice that there is a fundamental difference between the reference-and-reading Web (Wikipedia, news sites, documentation, blogs, etc.) and the doing-stuff Web (Gmail, Flickr, etc.).</p>
+<p>When we talk about mobile, often the glory of the app-based world makes us naturally think of the latter. Which is why I started with the former—the heart of the Web is still content.</p>
+<p>Now it's time to talk about doing things on the mobile-device Web.</p>
+</div><div class="section slide level2" id="making-shakespeare-more-useful">
+<h1 id="making-shakespeare-more-useful">Making Shakespeare more useful</h1>
+<ul>
+<li>Adding a glossary for both unusual words, historical notes, and potentially-confusing turns of phrase</li>
+<li>I had a bunch of bright ideas at first</li>
+</ul>
+</div><div class="section slide level2" id="wouldnt-it-be-cool-if...">
+<h1 id="wouldnt-it-be-cool-if...">Wouldn't it be cool if...</h1>
+<h3 id="an-early-idea">An early idea</h3>
+<p>Users could touch-and-drag to highlight content in the play (a la iBooks or Kindle apps). Custom notes or simple highlights could be saved.</p>
+<ul>
+<li>On desktop it's pretty easy to access selected text using <code>window.getSelection()</code> or similar by binding to the <code>mouseup</code> and <code>keyup</code> events.</li>
+<li>On other devices, I can get at the selected text using the same approach, but I need to bind to different events. <code>touchstart</code> works fairly well for iOS and Androids.</li>
+</ul>
+</div><div class="section slide level2" id="but...">
+<h1 id="but...">But...</h1>
+<p>Things got complicated quickly.</p>
+<p>One idea might be to look at the results of <code>Modernizr.touch</code> (an available test in Modernizr) and change the way selected text is handled based on that.</p>
+<h3 id="for-your-consideration">For your consideration</h3>
+<p>What do you think it means when <code>Modernizr.touch</code> is <code>true</code>?</p>
+</div><div class="section slide level2" id="touch-events-and-touch-models-are-still-fractured-and-disparate">
+<h1 id="touch-events-and-touch-models-are-still-fractured-and-disparate">Touch events and touch models are still fractured and disparate</h1>
+<p>Not to say that touch-rich web apps cannot be successfully developed, but sorting out the nuances of each platform's touch situation was more than I wanted to dive into here. Especially as we want to support a broader set of devices than just the newest Webkit-based phones.</p>
+<h3 id="i-should-emphasize">I should emphasize</h3>
+<p>Such a web app is definitely possible. It's just beyond the scope of my explorations here! I wanted to demonstrate the kinds of thinking and learning that go into these sorts of exercises.</p>
+</div><div class="section slide level2" id="mobile-development-demands-flexible-evolved-thinking">
+<h1 id="mobile-development-demands-flexible-evolved-thinking">Mobile development demands flexible, evolved thinking</h1>
+<p>Moreso in mobile than perhaps any other time in software development, BDUF (big-development-up-front), waterfalled processes tend to break down.</p>
+<p>The unknowns are so numerous, the complications and quirks so widespread and the testing such an investment that an iterative process both in design/spec-ing and implementing sort of forces itself upon us.</p>
+<p>Planning mobile web sites and apps seems to demand an open-ended, very flexible approach.</p>
+</div><div class="section slide level2" id="a-slightly-more-humble-plan">
+<h1 id="a-slightly-more-humble-plan">A slightly more humble plan</h1>
+<ol style="list-style-type: decimal">
+<li>Add footnotes to glossed terms and phrases and add a glossary to the end of the document.</li>
+<li>For browsers and devices that support it, use JavaScript to make glossed items tappable, and pop up the definition or note in a modal dialog or lightbox.</li>
+<li>Allow the user to save glossary entries. This is a bit contrived, but, hey, this is an example.</li>
+</ol>
+</div><div class="section slide level2" id="step-1-glossed-terms-and-a-glossary">
+<h1 id="step-1-glossed-terms-and-a-glossary">Step 1: Glossed terms and a glossary</h1>
+<p>Step 1 is easy enough. Just need to add some HTML markup and some styles for it.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;dt&gt;</span>Stephano<span class="kw">&lt;/dt&gt;</span>
+<span class="kw">&lt;dd&gt;</span>
+  <span class="kw">&lt;em</span><span class="ot"> class=</span><span class="st">&quot;stage-direction&quot;</span><span class="kw">&gt;</span>(To <span class="kw">&lt;strong&gt;</span>Trinculo<span class="kw">&lt;/strong&gt;</span>)<span class="kw">&lt;/em&gt;</span>
+  <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;tell-not-me&quot;</span><span class="kw">&gt;</span>Tell not me<span class="kw">&lt;/span&gt;</span>; when the <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;gloss-butt&quot;</span><span class="kw">&gt;</span>butt<span class="kw">&lt;/span&gt;</span> is out, we<span class="kw">&lt;/span&gt;</span>
+  <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;</span>will <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;drink-water&quot;</span><span class="kw">&gt;</span>drink water<span class="kw">&lt;/span&gt;</span>; not a drop before: therefore <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;bear-up&quot;</span><span class="kw">&gt;</span>bear up, and<span class="kw">&lt;/span&gt;&lt;/span&gt;</span>
+  <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;prose line&quot;</span><span class="kw">&gt;&lt;span</span><span class="ot"> class=</span><span class="st">&quot;gloss&quot;</span><span class="ot"> data-gloss=</span><span class="st">&quot;bear-up&quot;</span><span class="kw">&gt;</span>board &#39;em<span class="kw">&lt;/span&gt;</span>. Servant-monster, drink to me.<span class="kw">&lt;/span&gt;</span>
+<span class="kw">&lt;/dd&gt;</span></code></pre>
+<ul>
+<li>Note the use of <code>data-gloss</code>. This will be used to match up <code>span.gloss</code> elements to the ID of their glossary counterparts.</li>
+</ul>
+</div><div class="section slide level2" id="step-1-a-glossary-section">
+<h1 id="step-1-a-glossary-section">Step 1: A glossary section</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;section</span><span class="ot"> class=</span><span class="st">&quot;glossary&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;h2&gt;</span>Glossary<span class="kw">&lt;/h2&gt;</span>
+  <span class="kw">&lt;ol&gt;</span>
+    <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;tell-not-me&quot;</span><span class="kw">&gt;&lt;em&gt;</span>i.e.<span class="kw">&lt;/em&gt;</span> Don&#39;t tell me not to drink so much.<span class="kw">&lt;/li&gt;</span>
+    <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;gloss-butt&quot;</span><span class="kw">&gt;</span>An archaeic unit of wine, and quite a lot of it. A butt of wine around Shakespeare&#39;s time was about 126 gallons (104 imperial gallons). Compare the average US beer keg barrel size of about 15.5 gallons.<span class="kw">&lt;/li&gt;</span></code></pre>
+<p>etc.</p>
+<p>TODO drawing showing mapping of gloss item to gloss content.</p>
+</div><div class="section slide level2" id="step-1-some-styles">
+<h1 id="step-1-some-styles">Step 1: Some styles</h1>
+<pre class="sourceCode css"><code class="sourceCode css">ol <span class="kw">{</span>
+  <span class="kw">list-style-type:</span> <span class="dt">decimal</span><span class="kw">;</span>
+  <span class="kw">margin</span> <span class="kw">:</span> <span class="dt">.5em</span> <span class="dt">0</span><span class="kw">;</span>
+  <span class="kw">line-height:</span> <span class="dt">1.25em</span><span class="kw">;</span>
+<span class="kw">}</span>
+ol li <span class="kw">{</span>
+  <span class="kw">margin:</span> <span class="dt">.5em</span> <span class="dt">2em</span><span class="kw">;</span>
+<span class="kw">}</span>
+sup <span class="kw">{</span>
+  <span class="kw">position</span> <span class="kw">:</span> <span class="dt">relative</span><span class="kw">;</span>
+  <span class="kw">top</span>      <span class="kw">:</span> <span class="dt">-.5em</span><span class="kw">;</span>
+  <span class="kw">font-size:</span> <span class="dt">.75em</span><span class="kw">;</span>
+  <span class="kw">color</span>    <span class="kw">:</span> <span class="dt">#888</span><span class="kw">;</span>
+  <span class="kw">padding</span>  <span class="kw">:</span> <span class="dt">.125em</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.glossary</span> <span class="kw">{</span>
+  <span class="kw">float</span> <span class="kw">:</span> <span class="dt">none</span><span class="kw">;</span>
+  <span class="kw">clear</span> <span class="kw">:</span> <span class="dt">both</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.glossary</span> em <span class="kw">{</span>
+  <span class="kw">font-style</span> <span class="kw">:</span> <span class="dt">italic</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="as-an-added-bonus...">
+<h1 id="as-an-added-bonus...">As an added bonus...</h1>
+<p>Threw in some CSS columns:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">50em)</span> <span class="dv">{</span>
+  <span class="co">/* ... */</span>
+  <span class="fl">.glossary</span> ol <span class="kw">{</span>
+    <span class="kw">-moz-column-count</span>   <span class="kw">:</span> <span class="dt">2</span><span class="kw">;</span>
+    <span class="kw">-moz-column-gap</span>     <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
+    <span class="kw">-webkit-column-count:</span> <span class="dt">2</span><span class="kw">;</span>
+    <span class="kw">-webkit-column-gap</span>  <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
+    <span class="kw">column-count</span>        <span class="kw">:</span> <span class="dt">2</span><span class="kw">;</span>
+    <span class="kw">column-gap</span>          <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
+  <span class="kw">}</span>
+<span class="dv">}</span></code></pre>
+<h3 id="for-your-consideration-1">For your consideration</h3>
+<p>Why didn't I use the CSS Columns test in Modernizr before using this style?</p>
+</div><div class="section slide level2" id="and-now-we-have-our-baseline">
+<h1 id="and-now-we-have-our-baseline">And now we have our baseline</h1>
+<p>At this point, we stop and test on our supported devices*.</p>
+<p>* I should note that, while developing the markup and styles for this example, I did find a problem in test. I had initially set a <code>width: 100%</code> on the <code>section.glossary</code> element. My <code>section</code> styles already had a padding on them, and this broke the box model and caused horizontal scrolling. C'est la vie. Easily fixed when caught at this stage. Test, iterate, test. Often.</p>
+<h4 id="hold-that-thought">Hold that thought!</h4>
+<p>We're going to have an extravaganza of testing discussion soon.</p>
+</div><div class="section slide level2" id="an-updated-baseline">
+<h1 id="an-updated-baseline">An updated baseline</h1>
+<div class="figure">
+<img src="presenter-exercises/500-glossed/images/9670.png" alt="BlackBerry 9670" /><p class="caption">BlackBerry 9670</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/500-glossed/images/nokia-n8.png" alt="Nokia N8" /><p class="caption">Nokia N8</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/500-glossed/images/iphone-opera.png" alt="Opera Mini on iPhone" /><p class="caption">Opera Mini on iPhone</p>
+</div>
+</div><div class="section slide level2" id="notice-tablets">
+<h1 id="notice-tablets">Notice tablets</h1>
+<div class="figure">
+<img src="presenter-exercises/500-glossed/images/ipad.png" alt="iPad" /><p class="caption">iPad</p>
+</div>
+</div><div class="section slide level2" id="both-ipad-and-fire-support-css-columns">
+<h1 id="both-ipad-and-fire-support-css-columns">Both iPad and Fire support CSS Columns</h1>
+<div class="figure">
+<img src="presenter-exercises/500-glossed/images/fire.png" alt="Kindle Fire" /><p class="caption">Kindle Fire</p>
+</div>
+</div><div class="section slide level2" id="step-2-enhancing-the-glossed-items">
+<h1 id="step-2-enhancing-the-glossed-items">Step 2: Enhancing the glossed items</h1>
+<ol style="list-style-type: decimal">
+<li>We'll be needing the jQuery library for everyone now, not just browsers that have the wider-screen media query applied—we need to take the conditional loading via <code>yepnope</code> away.</li>
+<li>I'm somewhat randomly going to select the <a href="http://marcosesperon.es/apps/messi">&quot;Messi&quot;</a> jQuery plugin for popups/modals. We'll need to include that JavaScript in our page and its CSS in our CSS.</li>
+<li>We'll need to write a bit of jQuery JavaScript to convert our glossary entries into popup modals and make the glossed items tappable.</li>
+</ol>
+</div><div class="section slide level2" id="part-a-re-futzing-our-javascript">
+<h1 id="part-a-re-futzing-our-javascript">Part A: Re-futzing our JavaScript</h1>
+<pre><code>&lt;script src=&quot;Modernizr.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;gloss.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  $(document).ready(function() {
+    if (Modernizr.generatedcontent &amp;&amp; Modernizr.mq(&#39;only all and (min-width:50em)&#39;)) {
+      $(&#39;html.generatedcontent span.line&#39;).filter(function(index) {
+        return (((index + 1) % 10 == 0) &amp;&amp; index &gt; 0);
+      }).addClass(&#39;line-number&#39;);
+    }
+  });
+&lt;/script&gt;</code></pre>
+<ol style="list-style-type: decimal">
+<li>Including jQuery for everyone</li>
+<li>Creating JavaScript for glossary items (<code>gloss.js</code>)</li>
+<li>Line-number jQuery still here</li>
+</ol>
+</div><div class="section slide level2" id="part-b-and-c-messi-jquery-plugin-glossary-javascript">
+<h1 id="part-b-and-c-messi-jquery-plugin-glossary-javascript">Part B and C: Messi jQuery Plugin, Glossary JavaScript</h1>
+<h4 id="gloss.js"><code>gloss.js</code></h4>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> Messi(a,b) { ... } <span class="co">/* Minified Messi JS */</span>
+
+$(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
+  $(<span class="ch">&#39;.glossary ol li&#39;</span>).<span class="fu">each</span>(<span class="kw">function</span>(index) {
+    $(<span class="ch">&#39;span[data-gloss=&quot;&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;id&#39;</span>) + <span class="ch">&#39;&quot;]&#39;</span>).<span class="fu">click</span>(<span class="kw">function</span>() {
+      <span class="kw">var</span> $content = $(<span class="ch">&#39;li#&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;data-gloss&#39;</span>)).<span class="fu">html</span>();
+      <span class="kw">new</span> Messi($content, { <span class="dt">title</span>: <span class="ch">&#39;Glossary&#39;</span> });
+    });
+  });
+});</code></pre>
+<p>Finally, added a bunch of styles to the end of <code>styles.css</code>: Messi's CSS.</p>
+<p>TODO: Drawing of the way these pieces fit together</p>
+</div><div class="section slide level2" id="looks-ok-on-my-desktop...">
+<h1 id="looks-ok-on-my-desktop...">Looks OK on my desktop...</h1>
+<div class="figure">
+<img src="presenter-exercises/501-popups/images/chrome.png" /><p class="caption"></p>
+</div>
+<ul>
+<li>We can <a href="presenter-exercises/501-popups/tempest.html">try it out</a></li>
+</ul>
+</div><div class="section slide level2" id="but...-1">
+<h1 id="but...-1">But...</h1>
+<div class="figure">
+<img src="presenter-exercises/501-popups/images/iphone.png" alt="Oh, boy" /><p class="caption">Oh, boy</p>
+</div>
+</div><div class="section slide level2" id="bleh">
+<h1 id="bleh">Bleh</h1>
+<ul>
+<li>As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.</li>
+<li>Also, we need to add some styles of our own to indicate that the glossed items are tappable.</li>
+</ul>
+<h4 id="theme-performance-optimization">Theme: Performance optimization</h4>
+<p>The Messi CSS, lifted from Twitter Bootstrap, contains over 500 lines of CSS (more than twice the length of all of the rest of our CSS). There are many rules that aren't getting used, and a lot of pixel dimensions and gradients and animations and whatnot.</p>
+</div><div class="section slide level2" id="refactoring-the-css">
+<h1 id="refactoring-the-css">Refactoring the CSS</h1>
+<ul>
+<li>I culled the Messi CSS by about 250 lines, removing unused styles and minimizing certain CSS effects.</li>
+<li>I did leave in some of the button gradients and button transition effects, some opacity things and some text styling and shadows.</li>
+</ul>
+</div><div class="section slide level2" id="making-the-popups-somewhat-responsive">
+<h1 id="making-the-popups-somewhat-responsive">Making the popups somewhat responsive</h1>
+<p>So, we need to size the popups to fit different window sizes. Messi allows you to define a width for your popups:</p>
+<ul>
+<li>Percentage widths seem appealing, but don't center in the window and look a bit ugly.</li>
+<li>So we need to determine what the correct width is before launching the popup: getting the width of the screen is not as straightforward as it sounds.</li>
+</ul>
+<p>How do we figure out how wide the popup should be?</p>
+</div><div class="section slide level2" id="viewports-again">
+<h1 id="viewports-again">Viewports again</h1>
+<p>Here's some pre-baked code to get a reasonably approximate window width:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> viewport() {
+  <span class="kw">return</span> { <span class="dt">width</span>: <span class="kw">window</span>.<span class="fu">innerWidth</span> || 
+          (<span class="kw">document</span>.<span class="fu">documentElement</span> || <span class="kw">document</span>.<span class="fu">body</span>).<span class="fu">clientWidth</span>, 
+         <span class="dt">height</span>: <span class="kw">window</span>.<span class="fu">innerHeight</span> || 
+          (<span class="kw">document</span>.<span class="fu">documentElement</span> || <span class="kw">document</span>.<span class="fu">body</span>).<span class="fu">clientHeight</span>};
+}</code></pre>
+</div><div class="section slide level2" id="still-more-css-brutalization">
+<h1 id="still-more-css-brutalization">Still more CSS brutalization</h1>
+<div class="figure">
+<img src="presenter-exercises/501-popups/images/nokia-n8.jpg" /><p class="caption"></p>
+</div>
+<ul>
+<li>The Messi CSS, even shortened, is making some assumptions about CSS layout. It uses <code>flexbox</code> or <code>box</code> layouts, which this Windows Phone browser doesn't grok.</li>
+<li>I tend to find it ironic that Twitter Bootstrap gets touted as a &quot;mobile-friendly&quot; and &quot;responsive&quot; CSS framework.</li>
+</ul>
+</div><div class="section slide level2" id="updating-our-gloss.js">
+<h1 id="updating-our-gloss.js">Updating our gloss.js</h1>
+<p>This is what we have now:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">$(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
+  $(<span class="ch">&#39;.glossary ol li&#39;</span>).<span class="fu">each</span>(<span class="kw">function</span>(index) {
+    $(<span class="ch">&#39;span[data-gloss=&quot;&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;id&#39;</span>) + <span class="ch">&#39;&quot;]&#39;</span>).<span class="fu">click</span>(<span class="kw">function</span>() {
+      <span class="kw">var</span> $content = $(<span class="ch">&#39;li#&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;data-gloss&#39;</span>)).<span class="fu">html</span>();
+      <span class="kw">new</span> Messi($content, { <span class="dt">title</span>: <span class="ch">&#39;Glossary&#39;</span> });
+    });
+  });
+});</code></pre>
+</div><div class="section slide level2" id="updating-our-gloss.js-1">
+<h1 id="updating-our-gloss.js-1">Updating our gloss.js</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">$(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
+  <span class="kw">var</span> popupWidth       = viewport().<span class="fu">width</span> - <span class="dv">30</span>;
+  popupWidth           = (popupWidth &gt; <span class="dv">500</span>) ? <span class="dv">500</span> : popupWidth;
+  $(<span class="ch">&#39;.glossary ol li&#39;</span>).<span class="fu">each</span>(<span class="kw">function</span>(index) {
+    $(<span class="ch">&#39;span[data-gloss =&quot;&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;id&#39;</span>) + <span class="ch">&#39;&quot;]&#39;</span>).<span class="fu">addClass</span>(<span class="ch">&#39;gloss-item&#39;</span>).<span class="fu">click</span>(<span class="kw">function</span>() {
+      <span class="kw">var</span> $content     = $(<span class="ch">&#39;li#&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;data-gloss&#39;</span>)).<span class="fu">html</span>();
+      <span class="kw">new</span> Messi($content, { <span class="dt">title</span>: <span class="ch">&#39;Glossary&#39;</span>, 
+                            <span class="dt">modal</span>: <span class="kw">true</span>,
+                            <span class="dt">width</span>: popupWidth + <span class="ch">&#39;px&#39;</span>,
+                            <span class="dt">buttons</span>: [ { <span class="dt">id</span>: <span class="ch">&#39;close-gloss-&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;data-gloss&#39;</span>),
+                                        <span class="dt">label</span>: <span class="ch">&#39;Close&#39;</span> },
+                                       { <span class="dt">id</span>: <span class="ch">&#39;save-gloss-&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;data-gloss&#39;</span>),
+                                        <span class="dt">label</span>: <span class="ch">&#39;Save&#39;</span>,
+                                        <span class="dt">val</span>: <span class="ch">&#39;save&#39;</span>,
+                                        <span class="dt">btnClass</span>: <span class="ch">&#39;btn-success&#39;</span> }]
+                });
+    });
+  });
+  <span class="kw">function</span> viewport() { <span class="co">/** ... **/</span>  }
+});</code></pre>
+</div><div class="section slide level2" id="nuances-in-a-world-of-clicks-and-touches">
+<h1 id="nuances-in-a-world-of-clicks-and-touches">Nuances in a world of clicks and touches</h1>
+<p>We need to suggest, visually, that the glossed items are clickable (desktop) or tap-able (touch devices). We can start with:</p>
+<pre class="sourceCode css"><code class="sourceCode css">span<span class="fl">.gloss-item</span> <span class="kw">{</span>
+  <span class="kw">border-bottom:</span> <span class="dt">1px</span> <span class="dt">dashed</span> <span class="dt">#dcc</span><span class="kw">;</span>
+<span class="kw">}</span>
+span<span class="fl">.gloss-item</span><span class="dv">:hover</span>,
+span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span class="kw">{</span>
+  <span class="kw">color:</span> <span class="dt">#d94343</span><span class="kw">;</span>
+  <span class="kw">cursor:</span> <span class="dt">pointer</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<p>And then update our JavaScript a teensy bit to assign the <code>.gloss-item</code> class as part of our initialization process for the glossary popups:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">$(<span class="ch">&#39;.glossary ol li&#39;</span>).<span class="fu">each</span>(<span class="kw">function</span>(index) {
+  $(<span class="ch">&#39;span[data-gloss =&quot;&#39;</span> + $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;id&#39;</span>) + <span class="ch">&#39;&quot;]&#39;</span>).<span class="fu">addClass</span>(<span class="ch">&#39;gloss-item&#39;</span>).<span class="fu">click</span>(<span class="kw">function</span>() {
+    <span class="co">/* ... */</span>
+  });
+  <span class="co">/* ... */</span>
+});</code></pre>
+</div><div class="section slide level2" id="its-a-start">
+<h1 id="its-a-start">It's a start</h1>
+<ul>
+<li>The <code>:hover</code> styling helps emphasize the click-ability of the spans, at least on desktop devices.</li>
+<li>But tapping on the spans can feel a bit cramped on touch devices. Our fingers need more room!</li>
+</ul>
+<p>Let's add one more line to our JavaScript, at the end of the glossary-setup loop:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">$(<span class="ch">&#39;html&#39;</span>).<span class="fu">addClass</span>(<span class="ch">&#39;glossed&#39;</span>);</code></pre>
+<p>Now we have <code>html.glossed</code> as a class indicating that we have a JS-driven glossary going on.</p>
+</div><div class="section slide level2" id="adjusting-for-touch">
+<h1 id="adjusting-for-touch">Adjusting for touch</h1>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.glossed</span> <span class="fl">.scene</span> <span class="kw">{</span>
+  <span class="co">/* More line height for narrow/baseline</span>
+<span class="co">     when glossary items are active. */</span>
+  <span class="kw">line-height</span>     <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="co">/* ... */</span>
+<span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">50em)</span> <span class="dv">{</span>
+  <span class="co">/* But we don&#39;t really need more room</span>
+<span class="co">     on wider screens, desktops */</span>
+  <span class="fl">.scene</span>, <span class="fl">.glossed</span> <span class="fl">.scene</span> <span class="kw">{</span>
+    <span class="kw">line-height:</span> <span class="dt">1.3333em</span><span class="kw">;</span>
+    <span class="kw">float:</span> <span class="dt">left</span><span class="kw">;</span>
+    <span class="kw">counter-reset:</span> line-count<span class="kw">;</span>
+  <span class="kw">}</span>
+<span class="dv">}</span></code></pre>
+</div><div class="section slide level2" id="thats-pretty-nice">
+<h1 id="thats-pretty-nice">That's pretty nice</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/9670.png" alt="BlackBerry 9670" /><p class="caption">BlackBerry 9670</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/fire.png" alt="Kindle Fire" /><p class="caption">Kindle Fire</p>
+</div>
+</div><div class="section slide level2" id="more-better-for-touch">
+<h1 id="more-better-for-touch">More better for touch</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/iphone.png" alt="Behaves nicely on the iPhone" /><p class="caption">Behaves nicely on the iPhone</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/iphone2.png" alt="Increased line-height and visual cues for tappable items" /><p class="caption">Increased line-height and visual cues for tappable items</p>
+</div>
+</div><div class="section slide level2" id="it-works-on-opera-mini...but">
+<h1 id="it-works-on-opera-mini...but">It works on Opera Mini...but</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/opera-iphone2.png" alt="Opera Mini is a proxy browser" /><p class="caption">Opera Mini is a proxy browser</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/opera-iphone.png" alt="Why is the line-height so scrunched?" /><p class="caption">Why is the line-height so scrunched?</p>
+</div>
+</div><div class="section slide level2" id="surprise.">
+<h1 id="surprise.">Surprise.</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/opera-line-height.png" alt="Turns out Opera Mini doesn&#39;t support line-height" /><p class="caption">Turns out Opera Mini doesn't support line-height</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/iphone-line-height.png" alt="Same document rendered on an iPhone" /><p class="caption">Same document rendered on an iPhone</p>
+</div>
+</div><div class="section slide level2" id="the-elephant-in-everyones-room-performance">
+<h1 id="the-elephant-in-everyones-room-performance">The elephant in everyone's room: performance</h1>
+<ul>
+<li>This glossary stuff works swimmingly on newer iOS devices, decent Androids, the Nokia N8, the Kindle Fire, and on the newest BlackBerrys.</li>
+<li>It's borderline on BlackBerry 6 devices.</li>
+<li>It's almost frustratingly slow on old Android (&lt;2).</li>
+</ul>
+<h3 id="why">Why?</h3>
+<ul>
+<li>DOM processing</li>
+<li>JS inefficencies</li>
+<li>Complex CSS</li>
+<li>Slower hardware</li>
+<li>Less sophisticated browsers</li>
+</ul>
+</div><div class="section slide level2" id="how-could-one-make-it-better">
+<h1 id="how-could-one-make-it-better">How could one make it better</h1>
+<ul>
+<li>Rolling your own JavaScript for the popups instead of relying on a third-party, handsome, but potentially draining library</li>
+<li>Reducing or eliminating performance-hammering CSS (gradients, box and text shadows, transitions) altogether</li>
+<li>Profiling the JavaScript</li>
+<li>Cooking up a combination of feature- or UA-detection that indicates a &quot;lesser&quot; class of devices and disabling this feature on them.</li>
+</ul>
+<h4 id="theme-choice">Theme: Choice</h4>
+</div><div class="section slide level2" id="client-side-programming-from-scratch-can-be-hard">
+<h1 id="client-side-programming-from-scratch-can-be-hard">Client-side programming from scratch can be hard</h1>
+<p>It can get tiring if, every time you need to implement something, you have to build it from scratch. Even if you take that route, building up your own library of re-usable components and keeping them maintained as the mobile landscape sways so wildly beneath you can be challenging if not impossible.</p>
+<p>Messi is a good example of the pros and cons of a third-party tool.</p>
+</div><div class="section slide level2" id="frameworks">
+<h1 id="frameworks">Frameworks</h1>
+</div><div class="section slide level2" id="what-frameworks-do-for-us">
+<h1 id="what-frameworks-do-for-us">What frameworks do for us</h1>
+<ul>
+<li>Often a combination of UI framework and development framework</li>
+<li>Solve common issues and help with cross-platform support:
+<ul>
+<li>&quot;Mobile-like&quot; layout vis-a-vis viewport normalization, responsive breakpoints and the like.</li>
+<li>&quot;Mobile-like&quot; UI elements: buttons, nav bars, fixed-position toolbars, form inputs.</li>
+<li>Emulation of &quot;native-like&quot; transitions between screens and views.</li>
+<li>Navigation and AJAX loading of elements, often using the History API and pushState.</li>
+<li>Abstraction layers to simplify coding against device APIs.</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="popular-mobile-web-frameworks">
+<h1 id="popular-mobile-web-frameworks">Popular mobile web frameworks</h1>
+<ul>
+<li>jQuery Mobile</li>
+<li>Sencha Touch</li>
+<li><a href="http://the-m-project.net/">The M Project</a></li>
+<li><a href="http://www.dhtmlx.com/touch/">DHTMLX Touch</a></li>
+<li><a href="http://sproutcore.com/">SproutCore</a></li>
+</ul>
+</div><div class="section slide level2" id="framework-and-library-pros-and-cons">
+<h1 id="framework-and-library-pros-and-cons">Framework and library pros and cons</h1>
+<h3 id="pros">Pros</h3>
+<ul>
+<li>Speeds development time, sometimes massively</li>
+<li>Great for prototyping</li>
+<li>(Greatly) eases cross-platform gotchas</li>
+<li>Maintained (often) by communities who are hyper-focused on specific issues (so you don't have to be)</li>
+<li>Provides UI elements to use as baselines</li>
+</ul>
+<h3 id="cons">Cons</h3>
+<ul>
+<li>Often heavy, large, performance-draining</li>
+<li>Might not support the devices you need to</li>
+<li>Native UI emulation or consistent UI metaphors can encourage bland or awkward web apps</li>
+<li>Can be difficult to customize</li>
+</ul>
+</div><div class="section slide level2" id="a-balanced-approach">
+<h1 id="a-balanced-approach">A balanced approach</h1>
+<p>Sometimes, there is a third option between framework and from-scratch. Using third-party <em>libraries</em> to solve specific issues in your development can often be a boon.</p>
+<p>An example: AJAX-rich navigation, with dynamically-loaded content, using the History API to enable the proper usage of back buttons and refresh.</p>
+<ul>
+<li>Framework options: jQuery Mobile, Sencha Touch, etc.</li>
+<li>Another way: Lightweight JavaScript library like asfar.js</li>
+</ul>
+<h4 id="pro-tip">Pro Tip</h4>
+<p>Try to isolate the issue or issues you really want to solve and find a more focused library or tool to solve that problem. Try to have a good understanding of how the library or tool you end up selecting <em>works</em>.</p>
+</div><div class="section slide level2" id="section">
+<h1 id="section"></h1>
+</div>
+<div class="section titleslide slide level1" id="part-vi-the-web-as-a-platform-html5-apis-oh-my"><h1 id="part-vi-the-web-as-a-platform-html5-apis-oh-my">Part VI: The web as a platform: HTML5, APIs, oh, my!</h1></div><div class="section slide level2" id="html5-is-complicated-and-confusing">
+<h1 id="html5-is-complicated-and-confusing">HTML5 is complicated and confusing</h1>
+<ul>
+<li>What is HTML5?</li>
+<li>What is a device API?</li>
+<li>Is there a difference between an HTML API and a JavaScript API?</li>
+<li>Who manages all this stuff?</li>
+<li>What's the difference between the W3C and the WHATWG?</li>
+<li>What works where?</li>
+</ul>
+</div><div class="section slide level2" id="what-is-the-web">
+<h1 id="what-is-the-web">What is the web?</h1>
+<ul>
+<li>A bunch of HTML stuff</li>
+<li>A bunch of CSS stuff</li>
+<li>A bunch of media stuff</li>
+<li>JavaScript stuff</li>
+<li>Stuff that interacts with the hardware</li>
+<li>Sorta random stuff</li>
+<li>Server and programming stuff</li>
+<li>Seriously low-level stuff (HTTP, TCP/IP)</li>
+</ul>
+</div><div class="section slide level2" id="whatwg-w3c-what-is-html5">
+<h1 id="whatwg-w3c-what-is-html5">WHATWG? W3C? What <em>is</em> HTML5?</h1>
+<ul>
+<li>Jeremy Keith's <a href="http://www.abookapart.com/products/html5-for-web-designers"><em>HTML for Web Designers</em></a> discusses the origins, evolution and relationship between the W3C, the WHATWG and other parties.</li>
+<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/introduction.html#is-this-html5?">&quot;Is this HTML5?&quot; section on WHATWG HTML spec</a> helps to iron out a few things.</li>
+</ul>
+<p>And all of this is whirling and changing so fast. And <em>what about mobile?</em></p>
+</div><div class="section slide level2" id="mobile-uptake">
+<h1 id="mobile-uptake">Mobile uptake</h1>
+<p>Though we tend (maybe?) to assume that mobile browsers are a slightly ... TODO: Flesh out this thought</p>
+</div><div class="section slide level2" id="but-not-everywhere">
+<h1 id="but-not-everywhere">But not everywhere</h1>
+<h3 id="proxy-browsers">Proxy browsers</h3>
+<ul>
+<li>When proxy browsers are involved, we lose the &quot;device&quot; in the equation.</li>
+<li>Device and platform interaction is by nature very restricted.</li>
+</ul>
+<h3 id="older-devices">Older devices</h3>
+<ul>
+<li>Older browsers are obviously fairly limited.</li>
+<li>The older the device is, the less likely it is to have a browser that can or is updated frequently or ever (unscientific).</li>
+</ul>
+</div><div class="section slide level2" id="device-apis">
+<h1 id="device-apis">Device APIs</h1>
+<h3 id="what-is-a-device-api">What is a device API?</h3>
+<h4 id="according-to-the-w3c"><a href="http://www.w3.org/2009/dap/">According to the W3C</a></h4>
+<ul>
+<li>Battery Status</li>
+<li>Media Capture (HTML and JS)</li>
+<li>Network Information</li>
+<li>Ambient Light, Humidity and Temperature Events</li>
+<li>Proximity Events</li>
+<li>Vibration</li>
+<li>Web, Pick Media, and Pick Contacts Intents</li>
+<li>Calendar</li>
+<li>Menu</li>
+</ul>
+</div><div class="section slide level2" id="brian-leroux-defines-device-apis">
+<h1 id="brian-leroux-defines-device-apis">Brian LeRoux defines device APIs:</h1>
+<blockquote>
+<p>&quot;Typically headless/chrome[le]ss/without a visual manifestation, truly crossplatform.&quot; —<a href="http://brian.io/slides/beyond-html5/#/23">Brian LeRoux</a>, PhoneGap (Adobe)</p>
+</blockquote>
+<p>He goes on to expand that these APIs usually involve:</p>
+<ul>
+<li>sensors</li>
+<li>data</li>
+<li>outputs</li>
+</ul>
+</div><div class="section slide level2" id="back-to-that-w3c-list...">
+<h1 id="back-to-that-w3c-list...">Back to that W3C list...</h1>
+<ul>
+<li>Battery Status</li>
+<li>Media Capture (HTML and JS)</li>
+<li>Network Information</li>
+<li>Ambient Light, Humidity and Temperature Events</li>
+<li>Proximity Events</li>
+<li>Vibration</li>
+<li>Web, Pick Media, and Pick Contacts Intents</li>
+<li>Calendar</li>
+<li>Menu</li>
+</ul>
+</div><div class="section slide level2" id="for-your-consideration-2">
+<h1 id="for-your-consideration-2">For your consideration</h1>
+<ul>
+<li>What's missing here?</li>
+<li>Anything else seem odd to you?</li>
+</ul>
+</div><div class="section slide level2" id="device-apis...yeah-its-cloudy">
+<h1 id="device-apis...yeah-its-cloudy">Device APIs...yeah, it's cloudy</h1>
+<ul>
+<li><strong><a href="http://www.w3.org/TR/geolocation-API/">Geolocation</a></strong>: Its own thing in the W3C</li>
+<li><strong>Accelerometer, Device Orientation</strong>: Under the auspices of geolocation</li>
+<li><strong><a href="http://www.w3.org/TR/FileAPI/">File API</a> and related</strong>: <a href="http://www.w3.org/2008/webapps/">Web Applications Working Group</a></li>
+<li>Everyone's list of device APIs is different</li>
+<li>Device APIs are one piece of the puzzle of HTML5 and the web</li>
+</ul>
+</div><div class="section slide level2" id="the-web-as-platform">
+<h1 id="the-web-as-platform">The web as platform</h1>
+<div class="figure">
+<img src="assets/images/html5-platform.jpg" alt="Platform.html5.org" /><p class="caption">Platform.html5.org</p>
+</div>
+<ul>
+<li><a href="http://platform.html5.org">platform.html5.org</a></li>
+</ul>
+</div><div class="section slide level2" id="what-weve-seen-already">
+<h1 id="what-weve-seen-already">What we've seen already</h1>
+<div class="figure">
+<img src="assets/images/what-weve-seen.png" alt="What we&#39;ve seen today" /><p class="caption">What we've seen today</p>
+</div>
+</div><div class="section slide level2" id="mobile-relevant-device-apis">
+<h1 id="mobile-relevant-device-apis">Mobile-relevant device APIs</h1>
+<div class="figure">
+<img src="assets/images/mobile_relevant_apis.jpg" alt="These APIs are hot in mobile" /><p class="caption">These APIs are hot in mobile</p>
+</div>
+<ul>
+<li>Pink: Device APIs (roughly)</li>
+<li>Blue: Other APIs and features relevant to mobile (roughly)</li>
+<li>As more of these APIs get implemented in real-life mobile browsers, the need to go native for certain platform-level things diminishes</li>
+<li>Until then: Hybrid development</li>
+</ul>
+</div><div class="section slide level2" id="geolocation">
+<h1 id="geolocation">Geolocation</h1>
+<ul>
+<li>Leaps to mind when we think about mobile</li>
+<li>Find out where the device (on which the browser is running) is</li>
+<li>One of the more widely-implemented device APIs in-browser</li>
+<li>W3C specification is pretty easy to get your head around</li>
+<li>Is a good example of typical device API progression:
+<ol style="list-style-type: decimal">
+<li>Proprietary, native-only availability</li>
+<li>Proprietary in-browser availability</li>
+<li>Scattered standards-based support in browser</li>
+<li>Broader standards-based support in browsers, with polyfill fallbacks</li>
+<li>(Not yet/the ideal state) Pervasive standards-based support in (nearly) all browsers</li>
+</ol></li>
+</ul>
+</div><div class="section slide level2" id="geolocation-1">
+<h1 id="geolocation-1">Geolocation</h1>
+<ul>
+<li>Modern browsers have near-universal implementation of geolocation of some kind</li>
+<li>Notable exceptions are no surprise:
+<ul>
+<li>IE &lt; 9</li>
+<li>Opera Mini (remember what we said about proxy browsers)</li>
+</ul></li>
+<li>Blackberry &lt; 7 and some other legacy mobile browsers use different implementations</li>
+</ul>
+</div><div class="section slide level2" id="the-w3c-geolocation-spec">
+<h1 id="the-w3c-geolocation-spec">The W3C Geolocation spec</h1>
+<ul>
+<li>The <a href="http://www.w3.org/TR/geolocation-API/">W3C's geolocation spec</a> is widely implemented and pretty straightforward.</li>
+<li>Browsers that implement the API expose the <code>navigator.geolocation</code> object.</li>
+<li>The key method on that object is <code>getCurrentPosition(successCallback, failCallback)</code>.</li>
+</ul>
+</div><div class="section slide level2" id="an-example">
+<h1 id="an-example">An example</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;script&gt;
+<span class="kw">if</span> (<span class="kw">navigator</span>.<span class="fu">geolocation</span>) {
+  <span class="kw">navigator</span>.<span class="fu">geolocation</span>.<span class="fu">getCurrentPosition</span>(onGeoSuccess, onGeoError);
+}
+<span class="kw">function</span> onGeoSuccess(position) {
+  <span class="kw">var</span> coordinates = <span class="kw">position</span>.<span class="fu">coords</span>;
+  alert(<span class="kw">coordinates</span>.<span class="fu">latitude</span> + <span class="st">&quot;, &quot;</span> + <span class="kw">coordinates</span>.<span class="fu">longitude</span>);
+}
+<span class="kw">function</span> onGeoError(error) { alert(<span class="kw">error</span>.<span class="fu">message</span>); }
+&lt;/script&gt;</code></pre>
+<ul>
+<li>Here's <a href="presenter-exercises/600-geolocation">an example in an HTML page you can try</a>.</li>
+</ul>
+</div><div class="section slide level2" id="with-polyfill">
+<h1 id="with-polyfill">With polyfill</h1>
+<ul>
+<li>It's common to use a polyfill with device APIs to reach more browsers that may have disparate implementations.</li>
+<li>A commonly-used polyfill for geolocation is <a href="http://code.google.com/p/geo-location-javascript/">geo-location-javascript</a>, though it is less useful now that Google Gears has been discontinued.</li>
+<li>geo-location-javascript, like many/most polyfills, emulates the existing or proposed standard. Thus, though there is a one-line initiation snippet, geo-location-javascript lets you use the same syntax as the W3C standard geolocation API.</li>
+</ul>
+</div><div class="section slide level2" id="i-cant-really-teach-you-about-device-apis">
+<h1 id="i-cant-really-teach-you-about-device-apis">I can't really teach you about device APIs</h1>
+<ul>
+<li>I can give you a high-level overview</li>
+<li>Things are changing so fast that it's more of a game of knowing where to look for information</li>
+</ul>
+</div><div class="section slide level2" id="and-where-would-that-be">
+<h1 id="and-where-would-that-be">And where would that be?</h1>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="http://platform.html5.org/">The Web platform: Browser technologies</a></li>
+<li><a href="http://html5please.com/">HTML5Please</a></li>
+<li><a href="http://caniuse.com/#cats=JS_API">CanIUse JS APIs</a></li>
+<li><a href="http://www.w3.org/2009/dap/">Device APIS WG at W3C</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/HTML/HTML5">Mozilla Developer Network HTML5 Section</a></li>
+<li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">HTML5 Polyfills from Modernizr</a> A list of tons of polyfills</li>
+</ul>
+<h3 id="other-stuff">Other stuff</h3>
+<ul>
+<li><a href="http://www.netmagazine.com/features/developer-s-guide-html5-apis">.net Magazine Article</a></li>
+<li><a href="http://brian.io/slides/beyond-html5/">Slide deck from Brian LeRoux on Device APIs</a></li>
+</ul>
+</div><div class="section slide level2" id="mediacapture-api">
+<h1 id="mediacapture-api">MediaCapture API</h1>
+<h4 id="beware-actually-two-things">Beware! Actually two things</h4>
+<ul>
+<li><a href="http://www.w3.org/TR/html-media-capture/">HTMLInputElement</a>: New form <code>&lt;input&gt;</code> type</li>
+<li><a href="http://www.w3.org/TR/mediacapture-streams/">mediaCapture/Streams</a>: Somewhat confusing (mostly in that it is ever-changing/hard to pin down) JavaScript/Programmatic API</li>
+</ul>
+<h3 id="mediacapture">MediaCapture</h3>
+<ul>
+<li>Lets you get at the device's camera and audio recording for capturing media streams and (slightly confusing) still images</li>
+<li>Media Capture non-support is one of the chief reasons we still need to go native for a lot of things. That's when we reach for <a href="http://phonegap.com/">PhoneGap</a>.</li>
+</ul>
+</div><div class="section slide level2" id="htmlinputelement-mediacapture">
+<h1 id="htmlinputelement-mediacapture">HTMLInputElement mediaCapture</h1>
+<ul>
+<li>Implemented in Android 4 (Ice Cream Sandwich)</li>
+<li>Starting to show up in other mobile browsers</li>
+<li><code>&lt;input type=&quot;file&quot; accept=&quot;image/*&quot; capture=&quot;camera&quot;&gt;</code></li>
+<li><code>capture=&quot;camcorder&quot;</code> makes me giggle</li>
+<li>Remember, this is the HTML API piece of this, not the programmatic &quot;control the user's camera&quot; piece</li>
+</ul>
+</div><div class="section slide level2" id="mediacapture-streams-api">
+<h1 id="mediacapture-streams-api">mediaCapture Streams API</h1>
+<ul>
+<li>Lots of churn and change here</li>
+<li>No browser (mobile or otherwise) currently shipping implements this spec</li>
+<li>It would seem that the Tizen browser <em>might</em></li>
+</ul>
+</div><div class="section slide level2" id="yet-moar-devicemobile-relevant-apis">
+<h1 id="yet-moar-devicemobile-relevant-apis">Yet MOAR Device/Mobile-relevant APIs</h1>
+<ul>
+<li>Network Information API</li>
+<li>Battery Status API</li>
+<li>Vibration</li>
+<li>Device Orientation</li>
+<li>File, Filesystem stuff</li>
+<li>Offline Applications
+<ul>
+<li>My personal nightmare</li>
+<li>ApplicationCache (AppCache) sounds straightforward, but it is really terrifying; have lost many days of my life to this beast</li>
+<li>I punt you to <a href="http://vimeo.com/43336762">Jake Archibald's fantastic AppCache: DoucheBag presentation</a> (amusing, informative and thorough—I can't possibly compete)</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="domstorageweb-storage">
+<h1 id="domstorageweb-storage">DOMStorage/Web Storage</h1>
+<blockquote>
+<p>&quot;DOM Storage is the name given to the set of storage-related features first introduced in the Web Applications 1.0 specification, and now split off into its own W3C Web Storage specification. DOM Storage is designed to provide a larger, more secure, and easier-to-use alternative to storing information in cookies. It was first introduced with Firefox 2 and Safari 4.&quot; — <a href="https://developer.mozilla.org/en-US/docs/DOM/Storage">Mozilla Developer Network website</a></p>
+</blockquote>
+<h3 id="exercise-research-web-storage"><a href="exercises/601-dom-storage">Exercise: Research Web Storage</a></h3>
+</div><div class="section slide level2" id="localstorage-in-a-nutshell">
+<h1 id="localstorage-in-a-nutshell"><code>localStorage</code> in a nutshell</h1>
+<h3 id="what-is-localstorage-and-how-does-it-relate-to-web-storage-a.k.a.-dom-storage">What is <code>localStorage</code> and how does it relate to <code>Web Storage</code> a.k.a. <code>DOM Storage</code>?</h3>
+<ul>
+<li><code>localStorage</code> is part of the DOM Storage/Web Storage API oeuvre along with <code>sessionStorage</code>.</li>
+<li>Allows for straightforward storage and retrievel of string key-value pairs.</li>
+<li>Both the key and the value must be strings.</li>
+<li>Different platforms allot different amounts of space for <code>localStorage</code>. Behaviors can differ when <code>localStorage</code> gets full.</li>
+</ul>
+</div><div class="section slide level2" id="which-browsers-support-it">
+<h1 id="which-browsers-support-it">Which browsers support it?</h1>
+<div class="figure">
+<img src="assets/images/local-storage-support.png" alt="Information from caniuse.com" /><p class="caption">Information from caniuse.com</p>
+</div>
+<ul>
+<li>Broadly supported</li>
+<li>No real surprises that the outliers would be IE and Opera Mini. IE 8 even supports it</li>
+</ul>
+</div><div class="section slide level2" id="polyfills-for-localstorage">
+<h1 id="polyfills-for-localstorage">Polyfills for <code>localStorage</code></h1>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/DOM/Storage">Cookie polyfill</a></li>
+<li><a href="https://gist.github.com/350433">Remy Sharp's polyfill for Web Storage</a></li>
+<li>Several more polyfills are <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">listed on Modernizr</a></li>
+<li>You can also use <a href="http://brian.io/lawnchair/">Lawnchair's DOM adapter</a></li>
+</ul>
+<h4 id="beware">Beware!</h4>
+<p>Many <code>localStorage</code> polyfills use cookies. The cookie polyfill is limited by one of the very things that <code>localStorage</code> was intended to relieve: maximum cookie size. 4kb is the max size for any cookie. The lowest common denominator is IE6, which may allow as few as 20 cookies per domain. Also, cookies are sent with every request—expensive overhead on high-latency connections.</p>
+</div><div class="section slide level2" id="other-client-and-device-persistencedatafile-options">
+<h1 id="other-client-and-device-persistencedatafile-options">Other client and device persistence/data/file options</h1>
+<ul>
+<li><a href="http://dvcs.w3.org/hg/IndexedDB/raw-file/tip/Overview.html">IndexedDB</a></li>
+<li><a href="http://dev.w3.org/2006/webapi/FileAPI/">File API</a></li>
+<li><a href="http://dev.w3.org/html5/spec/offline.html#offline">Application Cache/Offline</a></li>
+<li>Blob URLs, <a href="http://tools.ietf.org/html/rfc2397">Data URLs</a></li>
+</ul>
+</div><div class="section slide level2" id="html5please-has-a-bit-of-a-different-perspective-than-caniuse...">
+<h1 id="html5please-has-a-bit-of-a-different-perspective-than-caniuse...">HTML5Please has a bit of a different perspective than CanIUse...</h1>
+<div class="figure">
+<img src="assets/images/html5please-localstorage.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="this-area-purposely-left-blank-until-saturday">
+<h1 id="this-area-purposely-left-blank-until-saturday">This area purposely left blank until Saturday</h1>
+</div><div class="section slide level2" id="section-1">
+<h1 id="section-1"></h1>
+</div>
+<div class="section titleslide slide level1" id="part-vi-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-vi-making-sure-it-works-a.k.a.-testing-is-hell">Part VI: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="testing-the-mobile-web-is-hard">
+<h1 id="testing-the-mobile-web-is-hard">Testing the mobile web is hard</h1>
+<ul>
+<li>Not a lot of methodologies established</li>
+<li>There are, like, a billion different mobile devices and browsers</li>
+<li>Hardware required: $$$$ or ££££ or €€€€</li>
+<li>Remote debugging is still in its relative infancy</li>
+</ul>
+<h3 id="ok-so-what-do-we-do">OK, so, what do we do?</h3>
+</div><div class="section slide level2" id="most-of-your-testing-is-actually-done-on-the-desktop">
+<h1 id="most-of-your-testing-is-actually-done-on-the-desktop">Most of your testing is actually done on the desktop</h1>
+<ul>
+<li>Before you get onto device (or even into emulator), most of your work prepping for testing on those devices is done in the &quot;traditional&quot; place of development: the desktop.</li>
+<li>An area where we are more familiar and comfortable.</li>
+<li>Despite their many differences, desktop and mobile browsers do share a common core. You can make <em>some</em> assumptions about support before you get on-device.</li>
+</ul>
+</div><div class="section slide level2" id="and-you-can-set-yourself-up-for-increased-likelihood-of-success">
+<h1 id="and-you-can-set-yourself-up-for-increased-likelihood-of-success">And you can set yourself up for increased likelihood of success</h1>
+<ul>
+<li>Careful adherence to standards</li>
+<li>Techniques like modularized CSS for easier debug</li>
+<li>Clarity in your dev-test workflow</li>
+</ul>
+<h3 id="learning-the-art-of-un-testing">Learning the art of un-testing</h3>
+<ul>
+<li>The more mobile web things you build, the more you can anticipate trouble areas</li>
+<li>Likewise, you can also learn about dependable techniques</li>
+</ul>
+</div><div class="section slide level2" id="a-testing-workflow">
+<h1 id="a-testing-workflow">A testing workflow</h1>
+<ul>
+<li>A key to successful testing is mapping out the points in your development cycle to insert device-specific testing.</li>
+</ul>
+<p>TODO: Drawing</p>
+</div><div class="section slide level2" id="a-testing-workflow-example">
+<h1 id="a-testing-workflow-example">A testing workflow example</h1>
+<ol style="list-style-type: decimal">
+<li>Initial foundation work on desktop</li>
+<li>First set of testing across collection of test devices (broad)</li>
+<li>Iteration + development cycles</li>
+<li>Test on core devices</li>
+<li>Repeat 3 and 4</li>
+<li>Test across test devices (broad) on larger feature releases</li>
+<li>Occasionally throw in a random device into test to keep yourself honest</li>
+<li>Repeat 3 through 7</li>
+</ol>
+<p>TODO: Drawing of loops</p>
+</div><div class="section slide level2" id="the-devices">
+<h1 id="the-devices">The devices</h1>
+<ul>
+<li>A smaller set of core devices: test on each iteration with these</li>
+<li>A larger set of supported devices: test every nth iteration</li>
+<li>Use common sense</li>
+<li>Keep a couple of easy-to-test devices within arm's reach</li>
+</ul>
+<h3 id="be-ready-to-be-caught-by-surprise">Be ready to be caught by surprise</h3>
+<p>Some issues are hard to anticipate and arise from changes that seem innocuous. Recall:</p>
+<ul>
+<li>Opera Mini <code>line-height</code> issue</li>
+<li>BlackBerry OS 6 <code>small-caps</code> issues</li>
+</ul>
+</div><div class="section slide level2" id="set-your-foundation">
+<h1 id="set-your-foundation">Set your foundation</h1>
+<ul>
+<li>Foundational work of core of site or app on desktop</li>
+<li>After initial foundation is complete, broad test across your collection of supported devices and emulators</li>
+<li>Use version control and make discrete, incremental commits for easier rollback</li>
+</ul>
+</div><div class="section slide level2" id="iteration-and-test-loop">
+<h1 id="iteration-and-test-loop">Iteration-and-test loop</h1>
+<ul>
+<li>Small steps</li>
+<li>After each meaningful change (feature, CSS work, etc.) test on a selected subset of your supported devices</li>
+<li>Use your increasing experience to guide you what changes are most likely to cause on-device issues</li>
+<li>Whatever you do, do <em>not</em> make testing a single, end-of-project event. You will hate your life.</li>
+<li>At certain points, especially after significant change, test across your full collection of test devices</li>
+<li>Keep at least one of your older/lesser devices in your core group of test devices, even if it's not the biggest target device</li>
+</ul>
+</div><div class="section slide level2" id="ok.-what-are-the-ways-we-can-test-the-mobile-web">
+<h1 id="ok.-what-are-the-ways-we-can-test-the-mobile-web">OK. What are the ways we can test the mobile web?</h1>
+<ul>
+<li>Desktop-based testing</li>
+<li>On-device testing</li>
+<li>Remote debugging of physical devices</li>
+<li>Remote testing of remote devices</li>
+<li>Emulators</li>
+</ul>
+</div><div class="section slide level2" id="mobile-relevant-desktop-testing">
+<h1 id="mobile-relevant-desktop-testing">Mobile-relevant desktop testing</h1>
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/">User agent switcher</a></li>
+<li><a href="http://techpatterns.com/forums/about304.html">User agent switcher config file</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh">Resizer</a> / <a href="http://chrispederick.com/work/web-developer/">Web Developer Toolkit</a></li>
+<li><a href="http://blaze.io/mobile">Blaze.io Mobile Test</a></li>
+<li>Automated testing foundations: Web drivers for specs can use headless Mozilla or Webkit, resize the browser, take automated screenshots, etc.</li>
+<li><a href="http://responsivepx.com/">ResponsivePX</a></li>
+</ul>
+</div><div class="section slide level2" id="device-testing-is-tedious-and-hard">
+<h1 id="device-testing-is-tedious-and-hard">Device testing is tedious and hard</h1>
+<ul>
+<li>Fortunately, there are some tools:</li>
+<li>Adobe Shadow</li>
+<li>weinre</li>
+<li>shim</li>
+<li>Opera Dragonfly</li>
+<li>FireFox mobile remote debug (NEW!)</li>
+</ul>
+</div><div class="section slide level2" id="adobe-shadow">
+<h1 id="adobe-shadow">Adobe Shadow</h1>
+<p>TODO: Adobe Shadow demo</p>
+</div><div class="section slide level2" id="on-device-testing-tools">
+<h1 id="on-device-testing-tools">On-device testing tools</h1>
+<ul>
+<li><a href="http://stevesouders.com/mobileperf/mobileperfbkm.php">Mobile Performance Bookmarklets</a></li>
+<li><a href="http://jdrop.org/">jDrop</a></li>
+<li>Turning on ... in iOS/Android</li>
+</ul>
+</div><div class="section slide level2" id="emulators">
+<h1 id="emulators">Emulators</h1>
+<ul>
+<li>Generally available in various platform SDKs</li>
+<li>Some web-based emulators</li>
+<li>Try to get hardware when you can</li>
+<li>Can be useful for testing really legacy devices:
+<ul>
+<li><a href="http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70">N70 Emulator</a></li>
+<li>Opera Mini older versions can be found in emulators online</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="building-a-device-collection">
+<h1 id="building-a-device-collection">Building a device collection</h1>
+<ul>
+<li>A &quot;modern&quot; iOS device. iPads are obviously a different form factor than iPhones, but having just one of the two covers a lot of bases.</li>
+<li>A &quot;modern&quot; Android device running Ice Cream Sandwich (OS 4) or at least Gingerbread (2.3).</li>
+<li>A slightly older Android running 2.0-2.2.</li>
+<li>A modern BlackBerry (OS 6 or newer).</li>
+<li>An older BlackBerry (OS 5).</li>
+<li>Are you in Europe? A Symbian Nokia phone.</li>
+<li>If your organization focuses on a demographic heavy on BlackBerrys, consider an old BlackBerry running OS 4.</li>
+<li>A &quot;modern&quot; Windows phone. The Nokia N8 and N9 are very nice devices.</li>
+<li>An old Android running &lt;2.</li>
+<li>A device (BlackBerry has many) with an unusual aspect ratio.</li>
+<li>A larger-format Android device that is not a tablet, e.g. Samsung Note</li>
+</ul>
+</div><div class="section slide level2" id="tablets">
+<h1 id="tablets">Tablets</h1>
+<ul>
+<li>iPad</li>
+<li>Kindle Fire</li>
+<li>Android tablet</li>
+<li>BlackBerry PlayBook</li>
+<li>Windows 8 tablet (coming soon)</li>
+</ul>
+</div><div class="section slide level2" id="tactics-for-acquiring-devices">
+<h1 id="tactics-for-acquiring-devices">Tactics for acquiring devices</h1>
+<ul>
+<li>Add your own devices to your testing library as your replace them with newer ones. Having out-of-date devices is actually a huge boon.</li>
+<li>Factor in the cost of a device or two in projects focusing on those devices.</li>
+<li>Join developer programs at different device manufacturers. These are generally not free. BlackBerry has a well-established one. Nokia has a developer relations program as well.</li>
+<li>Buy devices used online (Craiglist is a great source in the U.S.; eBay is decent, too). Some can be quite cheap.</li>
+<li>Buying devices in the US can save money. But be very aware that the vast majority of these devices are &quot;locked&quot; to carrier.</li>
+<li>Talk to device manufacturers and mobile companies directly. It's surprising how often they're quite keen to help.</li>
+<li>Go to events and conferences and hope. Lots of mobile conferences give away (often many) devices as door prizes. Heck, I won a BlackBerry torch that way. If you can go to Google I/O you may well walk away with four or five devices (Cloud Four co-founder Jason did, recently).</li>
+</ul>
+</div><div class="section slide level2" id="the-biggest-tips-for-device-libraries">
+<h1 id="the-biggest-tips-for-device-libraries">The biggest tips for device libraries</h1>
+<ul>
+<li><strong>TEAM UP</strong>: Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade.</li>
+<li><strong>MAKE IT EASY FOR YOURSELF</strong>: Make it easier to test on device and you'll do it more.</li>
+</ul>
+</div><div class="section slide level2" id="efficiencies">
+<h1 id="efficiencies">Efficiencies</h1>
+<ul>
+<li>Define a spot for your devices. A bookshelf, table or desk for them to live on or in.</li>
+<li>Keep as many devices charged as is reasonably possible.</li>
+<li>Group devices by charger and platform.</li>
+<li>Have a plan for system and software updates.</li>
+<li>Have a work area at or near the testing library.</li>
+<li>Keep in mind the overhead required for device maintenance when establishing a collection.</li>
+<li>If you're the organized type, create a spreadsheet or somesuch for tracking the details of your devices.</li>
+<li>If possible, have folks borrowing your devices do their work on-site. This can be an easier sell if you have a nice work area around your devices.</li>
+<li>Don't over-stock devices.</li>
+</ul>
+</div><div class="section slide level2" id="weird-things-you-might-not-think-of-when-choosing-test-devices">
+<h1 id="weird-things-you-might-not-think-of-when-choosing-test-devices">Weird things you might not think of when choosing test devices</h1>
+<p>When choosing a device within a given plaform, consider:</p>
+<ul>
+<li>Which has the better keyboard (soft or hard)? You'll be entering in URLs willy-nilly, and variations in keyboard layouts and tactile feedback across devices can make a big difference.</li>
+<li>How easy is it to find and change Wifi settings? Any other Wifi issues?</li>
+<li>Battery life when idle/hibernating. Phones that don't need to be charged constantly when not in use are a boon to device libraries.</li>
+<li>Charging interface. Aim for USB mini (becoming more universal these days but there are still outliers, esp. iOS and tablets).</li>
+<li>How easy is it to update the OS and/or apps? Some of this is carrier/operator dependent.</li>
+</ul>
+</div><div class="section slide level2" id="resources">
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="https://bagcheck.com/blog/22-mobile-device-testing-the-gear">BagCheck Device Testing Gear</a></li>
+<li><a href="http://mobiletestingfordummies.tumblr.com/post/20056227958/testing">BBC Devices</a></li>
+<li><a href="http://www.youtube.com/watch?v=51E3FWMKkig&amp;feature=player_embedded#!">jQueryMobile Automated Selenium Testing</a></li>
+<li>Looking for some real old stuff? http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70</li>
+</ul>
+</div><div class="section slide level2" id="other-tools">
+<h1 id="other-tools">Other tools</h1>
+<ul>
+<li>http://responsivepx.com/</li>
+</ul>
+</div><div class="section slide level2" id="watch-out-for">
+<h1 id="watch-out-for">Watch out for</h1>
+<ul>
+<li>Fixed breakpoint sizes</li>
+<li>iOS fixation</li>
+</ul>
+</div><div class="section slide level2" id="some-halfway-techniques">
+<h1 id="some-halfway-techniques">Some halfway techniques</h1>
+<p>Something I've done lately when doing Rails development is use the combination of:</p>
+<ul>
+<li>rSpec/Capybara</li>
+<li>poltergeist: Phantom.js Web driver for Capybara tests</li>
+<li>jasmine for JS testing</li>
+</ul>
+<p>Within my test specs, I can use Phantom.js as the test driver to launch a headless instance of Webkit and run my tests within it. I can resize the (virtual) window in that Phantom.js instance to various dimensions that emulate possible mobile device widths/heights. I can test for the location and placement of elements, execute JavaScript, and take automated screen shots.</p>
+<p>It is theoretically possible—though not on Mac right now—to run the Phantom.js as a remote to an actual device. This would be <em>awesome</em>.</p>
+<p>This obviously only covers Webkit. Swapping over to the default Selenium web driver for Rails, I get things tested in Mozilla desktop. Though these are tests run on the desktop, they are still incredibly useful as a basis to continue testing.</p>
+</div><div class="section slide level2" id="remote-testing">
+<h1 id="remote-testing">Remote testing</h1>
+</div><div class="section slide level2" id="what-i-hope-is-the-way-of-the-future">
+<h1 id="what-i-hope-is-the-way-of-the-future">What I hope is the way of the future</h1>
+<p>I would love to see the continued evolution of remote, on-hardware testing.</p>
+<p>Some interesting stuff is happening at the confluence of Selenium and Ruby. iPhone web driver. I hope that Shadow will evolve and allow scripting.</p>
+</div><div class="section slide level2" id="emulators-1">
+<h1 id="emulators-1">Emulators</h1>
+</div><div class="section slide level2" id="testing-and-performance-tools">
+<h1 id="testing-and-performance-tools">Testing and performance tools</h1>
+<ul>
+<li>jDrop</li>
+<li>Blaze.io</li>
+</ul>
+</div><div class="section slide level2" id="un-testing">
+<h1 id="un-testing">Un-testing</h1>
+<p>The more mobile web sites you build, the more you will be able to get away with a certain amount of &quot;un-testing.&quot;</p>
+</div><div class="section slide level2" id="challenging-zones">
+<h1 id="challenging-zones">Challenging Zones</h1>
+<ul>
+<li>CSS positioning, box model</li>
+<li>CSS 3 effects, especially anything vendor-prefixed: gradients, shadows, etc.</li>
+<li>HTML5 elements</li>
+<li>DOM manipulation</li>
+<li>Character encoding</li>
+<li>Embedded media</li>
+</ul>
+</div>
+</body>
+</html>
