@@ -31,6 +31,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
    href="assets/css/workshop.css" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="assets/js/workshop.js"></script>
   <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
     charset="utf-8" type="text/javascript"></script>
 </head>
@@ -971,13 +973,27 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>You can find the full working example of this first prototyped version in <a href="presenter-exercises/601-prototype">presenter-exercises/601-prototype/</a></li>
 <li>Let's <a href="presenter-exercises/601-prototype/tempest.html">try it out</a></li>
 </ul>
-</div><div class="section slide level2" id="good-but-not-good-enough">
+</div><div class="section slide level2" id="progressive-enhancement-is-holding">
+<h1 id="progressive-enhancement-is-holding">Progressive enhancement is holding</h1>
+<div class="figure">
+<img src="presenter-exercises/601-prototype/images/8320.png" alt="Our page still works on a series-4 BlackBerry" /><p class="caption">Our page still works on a series-4 BlackBerry</p>
+</div>
+</div>
+<div class="section titleslide slide level1" id="part-vii-an-interlude-it-has-to-be-faster"><h1 id="part-vii-an-interlude-it-has-to-be-faster">Part VII: An interlude: It has to be faster</h1></div><div class="section slide level2" id="good-but-not-good-enough">
 <h1 id="good-but-not-good-enough">Good, but not good enough</h1>
 <ul>
 <li>Remember how I mentioned when we first implemented the Messi popups that they felt poky on older hardware?</li>
 <li>Let's watch a video of just how <a href="assets/videos/backflip-slow.MOV">poky this is on a Motorola Backflip (Android 1.5)</a></li>
 </ul>
-<h3 id="refactoring">Refactoring</h3>
+</div><div class="section slide level2" id="refactoring">
+<h1 id="refactoring">Refactoring</h1>
+<ul>
+<li>Problems
+<ul>
+<li>A lot of DOM elements being manipulated by JavaScript</li>
+<li>A lot of complex CSS styling—opacity, gradients, transitions are all performance-costly</li>
+</ul></li>
+<li>Refactoring
 <ul>
 <li>I removed the Messi jQuery plugin and its styles</li>
 <li>I updated my jQuery plugin so it didn't have dependencies on Messi</li>
@@ -986,6 +1002,7 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>Didn't include code I wasn't using</li>
 <li>Styling avoided use of too many processor-intensive CSS effects</li>
 <li><em>Did</em> retain a couple of gradients and a single <code>box-shadow</code></li>
+</ul></li>
 </ul></li>
 </ul>
 <h3 id="video-after-the-refactor"><a href="assets/videos/backflip-better.MOV">Video: After the refactor</a></h3>
@@ -996,22 +1013,54 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li><a href="assets/videos/9670-slow.MOV">Video: Before</a></li>
 <li><a href="assets/videos/9670-better.MOV">Video: After improvement</a></li>
 </ul>
-</div><div class="section slide level2" id="buttttt...">
-<h1 id="buttttt...">Buttttt...</h1>
-<h3 id="todo-video">TODO video</h3>
+<h3 id="buttttt...">Buttttt...</h3>
+<ul>
+<li>The page still <a href="assets/videos/9670-loading.MOV">loads and renders <em>incredibly slowly</em> on the 9670</a>
+<ul>
+<li>This is not about downloading the page assets; it is about the client-side rendering of the bits</li>
+</ul></li>
+</ul>
 </div><div class="section slide level2" id="some-numbers">
 <h1 id="some-numbers">Some numbers</h1>
 <ul>
 <li>Here's how long it took from resources received to an HTML page showing up at all (that is, the blank screen time between getting the resources and showing anything)</li>
-<li>On the BlackBerry 9670 (<em>after</em> resources have downloaded)
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Resource(s)</th>
+<th align="left">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">HTML page alone (DOM)</td>
+<td align="left">2 - 3.5sec</td>
+</tr>
+<tr class="even">
+<td align="left">Stylesheet</td>
+<td align="left">.1sec</td>
+</tr>
+<tr class="odd">
+<td align="left">Modernizr.js</td>
+<td align="left">.5sec</td>
+</tr>
+<tr class="even">
+<td align="left">jQuery</td>
+<td align="left">1 - 2sec</td>
+</tr>
+<tr class="odd">
+<td align="left">Evaluation of Modernizr.mq()</td>
+<td align="left">2.5sec</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>TOTAL</strong></td>
+<td align="left">~9sec</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>HTML page alone with no stylesheets or JavaScript: 2-3.5 seconds</li>
-<li>Stylesheet: negligible, maybe an additional .1 second</li>
-<li>Modernizr.js inclusion: An additional .5 seconds</li>
-<li>jQuery inclusion: An additional 1-1.5 seconds</li>
-<li>Evaluation of Modernizr.mq() test: An additional 2.5 seconds (!)</li>
-</ul></li>
-<li>Cf: A test page with a very simple DOM, jQuery and Modernizr, with the same <code>Modernizr.mq</code> query took about 2-3 seconds</li>
+<li>A test page with a very simple DOM, jQuery and Modernizr, with the same <code>Modernizr.mq</code> query took about 2-3 seconds</li>
 </ul>
 </div><div class="section slide level2" id="what-is-making-this-load-so-slowly-on-that-blackberry">
 <h1 id="what-is-making-this-load-so-slowly-on-that-blackberry">What is making this load so slowly on that BlackBerry?</h1>
@@ -1027,12 +1076,56 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>Large image to display</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="performance-is-a-many-headed-beast">
-<h1 id="performance-is-a-many-headed-beast">Performance is a many-headed beast</h1>
+</div><div class="section slide level2" id="performance-and-the-mobile-web">
+<h1 id="performance-and-the-mobile-web">Performance and the mobile web</h1>
 <ul>
-<li>Server delivery of assets over network</li>
-<li>Browser rendering and JavaScript issues (blocking, slowness)</li>
-<li>Interactive client performance after page is ready</li>
+<li>Minding your performance is step one on the mobile web</li>
+<li>Basic performance 101 is key, but often gets overlooked</li>
+</ul>
+</div><div class="section slide level2" id="top-performance-must-dos-payload-size">
+<h1 id="top-performance-must-dos-payload-size">Top performance must-dos: Payload size</h1>
+<ul>
+<li>Constrain payloads: reduce the number of bytes going over the network
+<ul>
+<li><strong>Turn on GZIP</strong></li>
+<li><strong>I repeat, turn on GZIP</strong></li>
+<li>Compress/minify scripts and CSS</li>
+<li>Compress images</li>
+<li>Serve optimized images from the server</li>
+<li>Obsessively check your resource size using Web Inspector, <a href="http://developer.yahoo.com/yslow/">ySlow</a> or similar tools</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="top-performance-must-dos-minimize-requests">
+<h1 id="top-performance-must-dos-minimize-requests">Top performance must-dos: Minimize requests</h1>
+<ul>
+<li>Keep HTTP requests to a minimum
+<ul>
+<li>Latency and round-trip time for requests over mobile networks is <em>higher</em> than terrestrial networks</li>
+<li>Concurrent connections on mobile browsers are sometimes lower than desktop browsers</li>
+<li>Concatenate scripts and JS files</li>
+<li>Related: reduce DNS lookups</li>
+<li>Fix yer 404s: Every request for something that doesn't exist is still a (useless) request</li>
+</ul></li>
+<li>Use, with caution:
+<ul>
+<li>CSS sprites</li>
+<li>Data-URIs</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="top-performance-must-dos-cache-the-hell-out-of-it">
+<h1 id="top-performance-must-dos-cache-the-hell-out-of-it">Top performance must-dos: Cache the hell out of it</h1>
+<ul>
+<li>Good caching strategies help with both payload reduction and request reduction—the assets are already on the client
+<ul>
+<li>Set up far-future expires headers on the server</li>
+<li>Be aware of caching size limits in older mobile browsers</li>
+<li>Keep an eye on external resources (you don't control their caching)</li>
+<li>Use, with caution
+<ul>
+<li>Assets can be stuffed in localStorage (CSS, JS, images as data-URIs)</li>
+<li>ApplicationCache</li>
+</ul></li>
+</ul></li>
 </ul>
 </div><div class="section slide level2" id="lets-tune-this-thing">
 <h1 id="lets-tune-this-thing">Let's tune this thing</h1>
@@ -1046,8 +1139,10 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 </ul></li>
 <li>Reduction of number of external resources</li>
 <li>Minification of JS and CSS; putting JS at the bottom of the page</li>
+<li>A great resource: <a href="http://developer.yahoo.com/performance/">Yahoo! Exceptional Performance Team</a></li>
 </ul>
-<h3 id="tools">Tools</h3>
+</div><div class="section slide level2" id="performance-tools">
+<h1 id="performance-tools">Performance tools</h1>
 <ul>
 <li><a href="http://developer.yahoo.com/yslow/">ySlow</a></li>
 <li><a href="http://smush.it">smush.it</a></li>
@@ -1073,7 +1168,7 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 </div><div class="section slide level2" id="section-1">
 <h1 id="section-1"></h1>
 </div>
-<div class="section titleslide slide level1" id="part-vii-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-vii-making-sure-it-works-a.k.a.-testing-is-hell">Part VII: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="testing-the-mobile-web-is-hard">
+<div class="section titleslide slide level1" id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell">Part VIII: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="testing-the-mobile-web-is-hard">
 <h1 id="testing-the-mobile-web-is-hard">Testing the mobile web is hard</h1>
 <ul>
 <li>Not a lot of methodologies established</li>
@@ -1163,25 +1258,15 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>Remote testing of remote devices</li>
 <li>Emulators</li>
 </ul>
-</div><div class="section slide level2" id="mobile-relevant-desktop-testing">
-<h1 id="mobile-relevant-desktop-testing">Mobile-relevant desktop testing</h1>
-<ul>
-<li><a href="https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/">User agent switcher</a></li>
-<li><a href="http://techpatterns.com/forums/about304.html">User agent switcher config file</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh">Resizer</a> / <a href="http://chrispederick.com/work/web-developer/">Web Developer Toolkit</a></li>
-<li><a href="http://blaze.io/mobile">Blaze.io Mobile Test</a></li>
-<li>Automated testing foundations: Web drivers for specs can use headless Mozilla or Webkit, resize the browser, take automated screenshots, etc.</li>
-<li><a href="http://responsivepx.com/">ResponsivePX</a></li>
-</ul>
 </div><div class="section slide level2" id="device-testing-is-tedious-and-hard">
 <h1 id="device-testing-is-tedious-and-hard">Device testing is tedious and hard</h1>
 <ul>
 <li>Fortunately, there are some tools:</li>
-<li>Adobe Shadow</li>
-<li>weinre</li>
-<li>shim</li>
-<li>Opera Dragonfly</li>
-<li>FireFox mobile remote debug (NEW!)</li>
+<li><strong><a href="http://labs.adobe.com/technologies/shadow/">Adobe Shadow</a></strong> (iOS, Android): Remote webkit debug with weinre and shim features, made a lot more user friendly (free)</li>
+<li><strong><a href="http://people.apache.org/~pmuellr/weinre/docs/1.x/1.5.0/">weinre</a></strong>: Patrick Mueller's original remote debug for webkit on mobile</li>
+<li><strong><a href="https://github.com/marstall/shim">shim</a></strong>: Synced web surfing across connected browsers (node.js)</li>
+<li><strong><a href="http://www.opera.com/dragonfly/">Opera Dragonfly</a></strong>: Remote testing (and more) for Opera</li>
+<li><strong><a href="http://starkravingfinkle.org/blog/2012/08/firefox-for-android-remote-debugging-is-here/">FireFox mobile remote debug (NEW!)</a></strong>: Several-step setup; I can't get it to work just yet.</li>
 </ul>
 </div><div class="section slide level2" id="adobe-shadow">
 <h1 id="adobe-shadow">Adobe Shadow</h1>
@@ -1189,23 +1274,36 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <img src="assets/images/shadow.jpg" alt="Devices being tested with Adobe Shadow" /><p class="caption">Devices being tested with Adobe Shadow</p>
 </div>
 <p>TODO: Adobe Shadow demo</p>
-</div><div class="section slide level2" id="on-device-testing-tools">
-<h1 id="on-device-testing-tools">On-device testing tools</h1>
+</div><div class="section slide level2" id="moar-testing-tools">
+<h1 id="moar-testing-tools">MOAR testing tools</h1>
 <ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/">User agent switcher</a></li>
+<li><a href="http://techpatterns.com/forums/about304.html">User agent switcher config file</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh">Resizer</a> / <a href="http://chrispederick.com/work/web-developer/">Web Developer Toolkit</a></li>
+<li><a href="http://blaze.io/mobile">Blaze.io Mobile Test</a></li>
+<li>Automated testing foundations: Web drivers for specs can use headless Mozilla or Webkit, resize the browser, take automated screenshots, etc.</li>
+<li><a href="http://responsivepx.com/">ResponsivePX</a></li>
 <li><a href="http://stevesouders.com/mobileperf/mobileperfbkm.php">Mobile Performance Bookmarklets</a></li>
 <li><a href="http://jdrop.org/">jDrop</a></li>
-<li>Turning on ... in iOS/Android</li>
 </ul>
-</div><div class="section slide level2" id="emulators">
-<h1 id="emulators">Emulators</h1>
+</div><div class="section slide level2" id="other-things">
+<h1 id="other-things">Other things</h1>
+<ul>
+<li>Emulators
 <ul>
 <li>Generally available in various platform SDKs</li>
 <li>Some web-based emulators</li>
 <li>Try to get hardware when you can</li>
-<li>Can be useful for testing really legacy devices:
+<li>Can be useful for testing really legacy devices, e.g.
 <ul>
 <li><a href="http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70">N70 Emulator</a></li>
+</ul></li>
 <li>Opera Mini older versions can be found in emulators online</li>
+</ul></li>
+<li>Misc.
+<ul>
+<li><a href="http://debug.phonegap.com">debug.phonegap.com</a>: Free, online weinre</li>
+<li>(Truly) remote device testing: <a href="http://www.keynotedeviceanywhere.com/">Device Anywhere</a> and <a href="http://www.perfectomobile.com/">Perfecto Mobile</a></li>
 </ul></li>
 </ul>
 </div><div class="section slide level2" id="building-a-device-collection">
@@ -1217,10 +1315,17 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <h1 id="what-devices-to-get">What devices to get</h1>
 <ul>
 <li>A &quot;modern&quot; iOS device. iPads are obviously a different form factor than iPhones, but having just one of the two covers a lot of bases.</li>
-<li>A &quot;modern&quot; Android device running Ice Cream Sandwich (OS 4) or at least Gingerbread (2.3).</li>
+<li>A &quot;modern&quot; Android device running Ice Cream Sandwich (OS 4) or at least Gingerbread (2.3).
+<ul>
+<li>Preferably a &quot;commodity&quot; device—that is, not the fastest, greatest, but the most likely to be given away free at operator/carrier stores.</li>
+</ul></li>
 <li>A slightly older Android running 2.0-2.2.</li>
-<li>A modern BlackBerry (OS 6 or newer).</li>
+<li>A modern BlackBerry (OS 6, 7 or newer).</li>
 <li>An older BlackBerry (OS 5).</li>
+</ul>
+</div><div class="section slide level2" id="what-devices-to-get-contd.">
+<h1 id="what-devices-to-get-contd.">What devices to get, cont'd.</h1>
+<ul>
 <li>Are you in Europe? A Symbian Nokia phone.</li>
 <li>If your organization focuses on a demographic heavy on BlackBerrys, consider an old BlackBerry running OS 4.</li>
 <li>A &quot;modern&quot; Windows phone. The Nokia N8 and N9 are very nice devices.</li>
@@ -1254,6 +1359,11 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li><strong>TEAM UP</strong>: Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade.</li>
 <li><strong>MAKE IT EASY FOR YOURSELF</strong>: Make it easier to test on device and you'll do it more.</li>
 </ul>
+<h3 id="a-few-resources">A few resources</h3>
+<ul>
+<li><a href="https://bagcheck.com/blog/22-mobile-device-testing-the-gear">BagCheck Device Testing Gear</a></li>
+<li><a href="http://mobiletestingfordummies.tumblr.com/post/20056227958/testing">BBC Devices</a></li>
+</ul>
 </div><div class="section slide level2" id="efficiencies">
 <h1 id="efficiencies">Efficiencies</h1>
 <ul>
@@ -1264,12 +1374,11 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>Have a work area at or near the testing library.</li>
 <li>Keep in mind the overhead required for device maintenance when establishing a collection.</li>
 <li>If you're the organized type, create a spreadsheet or somesuch for tracking the details of your devices.</li>
-<li>If possible, have folks borrowing your devices do their work on-site. This can be an easier sell if you have a nice work area around your devices.</li>
-<li>Don't over-stock devices.</li>
+<li>Don't collect <em>too</em> many devices.</li>
 </ul>
 </div><div class="section slide level2" id="weird-things-you-might-not-think-of-when-choosing-test-devices">
 <h1 id="weird-things-you-might-not-think-of-when-choosing-test-devices">Weird things you might not think of when choosing test devices</h1>
-<p>When choosing a device within a given plaform, consider:</p>
+<p>When choosing a device within a given platform, consider:</p>
 <ul>
 <li>Which has the better keyboard (soft or hard)? You'll be entering in URLs willy-nilly, and variations in keyboard layouts and tactile feedback across devices can make a big difference.</li>
 <li>How easy is it to find and change Wifi settings? Any other Wifi issues?</li>
@@ -1277,62 +1386,136 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>Charging interface. Aim for USB mini (becoming more universal these days but there are still outliers, esp. iOS and tablets).</li>
 <li>How easy is it to update the OS and/or apps? Some of this is carrier/operator dependent.</li>
 </ul>
-</div><div class="section slide level2" id="resources">
-<h1 id="resources">Resources</h1>
+</div><div class="section slide level2" id="some-emerging-techniques">
+<h1 id="some-emerging-techniques">Some emerging techniques</h1>
 <ul>
-<li><a href="https://bagcheck.com/blog/22-mobile-device-testing-the-gear">BagCheck Device Testing Gear</a></li>
-<li><a href="http://mobiletestingfordummies.tumblr.com/post/20056227958/testing">BBC Devices</a></li>
-<li><a href="http://www.youtube.com/watch?v=51E3FWMKkig&amp;feature=player_embedded#!">jQueryMobile Automated Selenium Testing</a></li>
-<li>Looking for some real old stuff? http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70</li>
-</ul>
-</div><div class="section slide level2" id="other-tools">
-<h1 id="other-tools">Other tools</h1>
-<ul>
-<li>http://responsivepx.com/</li>
-</ul>
-</div><div class="section slide level2" id="watch-out-for">
-<h1 id="watch-out-for">Watch out for</h1>
-<ul>
-<li>Fixed breakpoint sizes</li>
-<li>iOS fixation</li>
-</ul>
-</div><div class="section slide level2" id="some-halfway-techniques">
-<h1 id="some-halfway-techniques">Some halfway techniques</h1>
-<p>Something I've done lately when doing Rails development is use the combination of:</p>
+<li>Something I've done lately when doing Rails development is use the combination of:
 <ul>
 <li>rSpec/Capybara</li>
 <li>poltergeist: Phantom.js Web driver for Capybara tests</li>
 <li>jasmine for JS testing</li>
+</ul></li>
+<li><a href="http://www.youtube.com/watch?v=51E3FWMKkig&amp;feature=player_embedded#!">jQueryMobile Automated Selenium Testing</a></li>
+<li>The emergence of automated remote testing</li>
 </ul>
-<p>Within my test specs, I can use Phantom.js as the test driver to launch a headless instance of Webkit and run my tests within it. I can resize the (virtual) window in that Phantom.js instance to various dimensions that emulate possible mobile device widths/heights. I can test for the location and placement of elements, execute JavaScript, and take automated screen shots.</p>
-<p>It is theoretically possible—though not on Mac right now—to run the Phantom.js as a remote to an actual device. This would be <em>awesome</em>.</p>
-<p>This obviously only covers Webkit. Swapping over to the default Selenium web driver for Rails, I get things tested in Mozilla desktop. Though these are tests run on the desktop, they are still incredibly useful as a basis to continue testing.</p>
-</div><div class="section slide level2" id="remote-testing">
-<h1 id="remote-testing">Remote testing</h1>
-</div><div class="section slide level2" id="what-i-hope-is-the-way-of-the-future">
-<h1 id="what-i-hope-is-the-way-of-the-future">What I hope is the way of the future</h1>
-<p>I would love to see the continued evolution of remote, on-hardware testing.</p>
-<p>Some interesting stuff is happening at the confluence of Selenium and Ruby. iPhone web driver. I hope that Shadow will evolve and allow scripting.</p>
-</div><div class="section slide level2" id="emulators-1">
-<h1 id="emulators-1">Emulators</h1>
-</div><div class="section slide level2" id="testing-and-performance-tools">
-<h1 id="testing-and-performance-tools">Testing and performance tools</h1>
+</div><div class="section slide level2" id="case-study-testing-the-tempest-project">
+<h1 id="case-study-testing-the-tempest-project">Case study: testing the Tempest project</h1>
 <ul>
-<li>jDrop</li>
-<li>Blaze.io</li>
+<li>Full test suite
+<ul>
+<li>iPhone iOS 5 Safari</li>
+<li>iPhone iOS 5 Opera Mini</li>
+<li>Android Nexus S 4.0</li>
+<li>Android Nexus S 4.0 Firefox 15</li>
+<li>BlackBerry 9670 (OS 6)</li>
+<li>BlackBerry 8230 (OS 4.5)</li>
+<li>Motorola Backflip Android 1.5</li>
+<li>Kindle Fire</li>
+<li>Nokia N8 Windows Phone 7.5</li>
+</ul></li>
 </ul>
-</div><div class="section slide level2" id="un-testing">
-<h1 id="un-testing">Un-testing</h1>
-<p>The more mobile web sites you build, the more you will be able to get away with a certain amount of &quot;un-testing.&quot;</p>
-</div><div class="section slide level2" id="challenging-zones">
-<h1 id="challenging-zones">Challenging Zones</h1>
+</div><div class="section slide level2" id="case-study-testing-the-tempest">
+<h1 id="case-study-testing-the-tempest">Case study: testing the Tempest</h1>
 <ul>
-<li>CSS positioning, box model</li>
-<li>CSS 3 effects, especially anything vendor-prefixed: gradients, shadows, etc.</li>
-<li>HTML5 elements</li>
-<li>DOM manipulation</li>
-<li>Character encoding</li>
-<li>Embedded media</li>
+<li>Extended test suite
+<ul>
+<li>iPhone Nexus 1 Android 2.3</li>
+<li>BlackBerry PlayBook</li>
+<li>iPad iOS5 (first-generation)</li>
+<li>Samsung Galaxy S (Android 2.2)</li>
+<li>Google G1 (Android 1.6)</li>
+<li>BlackBerry 9800 Torch (OS 6)</li>
+<li>BlackBerry 9810 Torch (OS 6)</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="case-study-testing-the-tempest-scene">
+<h1 id="case-study-testing-the-tempest-scene">Case study: testing the Tempest scene</h1>
+<ul>
+<li>Foundational HTML only
+<ul>
+<li>Test across full suite</li>
+<li>Take note of title adjustment needs</li>
+</ul></li>
+<li>Baseline CSS
+<ul>
+<li>Full suite test</li>
+<li>Noted a bug in my CSS (font stack)</li>
+</ul></li>
+<li>Fluid baseline CSS
+<ul>
+<li>Full suite test</li>
+<li>Found box-model bug in my CSS</li>
+<li>Found <code>small-caps</code> issue on multiple BlackBerrys
+<ul>
+<li>Testing on extended set of BlackBerrys</li>
+</ul></li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="case-study-testing-the-tempest-scene-cont.">
+<h1 id="case-study-testing-the-tempest-scene-cont.">Case study: testing the Tempest scene, cont.</h1>
+<ul>
+<li>Media queries
+<ul>
+<li>Restricted suite testing (fairly confident/un-testing)</li>
+<li>IE desktop testing (based on knowledge of fail)</li>
+<li>Shimmed HTML5</li>
+</ul></li>
+<li><code>@font-face</code> enhancement
+<ul>
+<li>Restricted suite testing</li>
+<li>Additional BlackBerry testing (wary after <code>small-caps</code>)</li>
+<li>Found BlackBerry hell
+<ul>
+<li>Decided to put <code>@font-face</code> in media query</li>
+</ul></li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="case-study-testing-the-tempest-scene-cont.-1">
+<h1 id="case-study-testing-the-tempest-scene-cont.-1">Case study: testing the Tempest scene, cont.</h1>
+<ul>
+<li>Line-number enhancement
+<ul>
+<li>Restricted suite testing</li>
+</ul></li>
+<li>HTML markup for glossary
+<ul>
+<li>Restricted suite testing</li>
+<li>Extended testing on tablets for <code>css-column</code></li>
+</ul></li>
+<li>Messi jQuery plugin
+<ul>
+<li>Immediate fail on mobile</li>
+</ul></li>
+<li>Messi CSS refactor/prototype save button
+<ul>
+<li>Full suite test</li>
+<li>Found Opera Mini <code>line-height</code> issue</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="case-study-testing-the-tempest-scene-cont.-2">
+<h1 id="case-study-testing-the-tempest-scene-cont.-2">Case study: testing the Tempest scene, cont.</h1>
+<ul>
+<li>Prototyped functionality of gloss-save feature
+<ul>
+<li>Not covered in slides (proof of concept stage)</li>
+<li>Multiple full-suite tests</li>
+</ul></li>
+<li>Revised, first version gloss-save feature (CSS and JS)
+<ul>
+<li>Full suite test</li>
+</ul></li>
+<li>Non-Messi popup version for performance
+<ul>
+<li>Full suite test with emphasis on older devices</li>
+</ul></li>
+<li>Performance enhancements
+<ul>
+<li>Restricted suite testing</li>
+</ul></li>
+<li>Complete
+<ul>
+<li>Extended suite testing</li>
+</ul></li>
 </ul>
 </div>
 </body>

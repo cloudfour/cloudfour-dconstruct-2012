@@ -964,19 +964,29 @@ div.saved-glosses dd {
 * You can find the full working example of this first prototyped version in [presenter-exercises/601-prototype/](presenter-exercises/601-prototype)
 * Let's [try it out](presenter-exercises/601-prototype/tempest.html)
 
+## Progressive enhancement is holding
+
+![Our page still works on a series-4 BlackBerry](presenter-exercises/601-prototype/images/8320.png)
+
+# Part VII: An interlude: It has to be faster
+
 ## Good, but not good enough
 
 * Remember how I mentioned when we first implemented the Messi popups that they felt poky on older hardware?
 * Let's watch a video of just how [poky this is on a Motorola Backflip (Android 1.5)](assets/videos/backflip-slow.MOV)
 
-### Refactoring
+## Refactoring
 
-* I removed the Messi jQuery plugin and its styles
-* I updated my jQuery plugin so it didn't have dependencies on Messi
-* I created and styled my own popups
-    * Didn't include code I wasn't using
-    * Styling avoided use of too many processor-intensive CSS effects
-    * *Did* retain a couple of gradients and a single `box-shadow`
+* Problems
+    * A lot of DOM elements being manipulated by JavaScript
+    * A lot of complex CSS styling—opacity, gradients, transitions are all performance-costly
+* Refactoring
+    * I removed the Messi jQuery plugin and its styles
+    * I updated my jQuery plugin so it didn't have dependencies on Messi
+    * I created and styled my own popups
+        * Didn't include code I wasn't using
+        * Styling avoided use of too many processor-intensive CSS effects
+        * *Did* retain a couple of gradients and a single `box-shadow`
 
 ### [Video: After the refactor](assets/videos/backflip-better.MOV)
 
@@ -986,20 +996,25 @@ div.saved-glosses dd {
 * [Video: Before](assets/videos/9670-slow.MOV)
 * [Video: After improvement](assets/videos/9670-better.MOV)
 
-## Buttttt...
+### Buttttt...
 
-### TODO video
+* The page still [loads and renders *incredibly slowly* on the 9670](assets/videos/9670-loading.MOV)
+    * This is not about downloading the page assets; it is about the client-side rendering of the bits
 
 ## Some numbers
 
 * Here's how long it took from resources received to an HTML page showing up at all (that is, the blank screen time between getting the resources and showing anything)
-* On the BlackBerry 9670 (*after* resources have downloaded)
-    * HTML page alone with no stylesheets or JavaScript: 2-3.5 seconds
-    * Stylesheet: negligible, maybe an additional .1 second
-    * Modernizr.js inclusion: An additional .5 seconds
-    * jQuery inclusion: An additional 1-1.5 seconds
-    * Evaluation of Modernizr.mq() test: An additional 2.5 seconds (!)
-* Cf: A test page with a very simple DOM, jQuery and Modernizr, with the same `Modernizr.mq` query took about 2-3 seconds
+
+Resource(s)                                             Time
+----------------                                        ---------
+HTML page alone (DOM)                                   2 - 3.5sec
+Stylesheet                                              .1sec
+Modernizr.js                                            .5sec
+jQuery                                                  1 - 2sec
+Evaluation of Modernizr.mq()                            2.5sec
+**TOTAL**                                               ~9sec
+
+* A test page with a very simple DOM, jQuery and Modernizr, with the same `Modernizr.mq` query took about 2-3 seconds
 
 
 ## What is making this load so slowly on that BlackBerry?
@@ -1013,11 +1028,44 @@ div.saved-glosses dd {
     * Number of HTTP requests
     * Large image to display
 
-## Performance is a many-headed beast
+## Performance and the mobile web
 
-* Server delivery of assets over network
-* Browser rendering and JavaScript issues (blocking, slowness)
-* Interactive client performance after page is ready
+* Minding your performance is step one on the mobile web
+* Basic performance 101 is key, but often gets overlooked
+
+## Top performance must-dos: Payload size
+
+* Constrain payloads: reduce the number of bytes going over the network
+    * **Turn on GZIP**
+    * **I repeat, turn on GZIP**
+    * Compress/minify scripts and CSS
+    * Compress images
+    * Serve optimized images from the server
+    * Obsessively check your resource size using Web Inspector, [ySlow](http://developer.yahoo.com/yslow/) or similar tools
+
+## Top performance must-dos: Minimize requests
+
+* Keep HTTP requests to a minimum
+    * Latency and round-trip time for requests over mobile networks is *higher* than terrestrial networks
+    * Concurrent connections on mobile browsers are sometimes lower than desktop browsers
+    * Concatenate scripts and JS files
+    * Related: reduce DNS lookups
+    * Fix yer 404s: Every request for something that doesn't exist is still a (useless) request
+* Use, with caution:
+    * CSS sprites
+    * Data-URIs
+
+## Top performance must-dos: Cache the hell out of it
+
+* Good caching strategies help with both payload reduction and request reduction—the assets are already on the client
+    * Set up far-future expires headers on the server
+    * Be aware of caching size limits in older mobile browsers
+    * Keep an eye on external resources (you don't control their caching)
+    * Use, with caution
+        * Assets can be stuffed in localStorage (CSS, JS, images as data-URIs)
+        * ApplicationCache
+
+
 
 ## Let's tune this thing
 
@@ -1028,8 +1076,9 @@ div.saved-glosses dd {
     * Setting up far-future expires headers (for caching)
 * Reduction of number of external resources
 * Minification of JS and CSS; putting JS at the bottom of the page
+* A great resource: [Yahoo! Exceptional Performance Team](http://developer.yahoo.com/performance/)
 
-### Tools
+## Performance tools
 
 * [ySlow](http://developer.yahoo.com/yslow/)
 * [smush.it](http://smush.it)
@@ -1052,7 +1101,7 @@ div.saved-glosses dd {
 
 -------------------------------------------------------------------------------
 
-# Part VII: Making sure it works, a.k.a. Testing is Hell
+# Part VIII: Making sure it works, a.k.a. Testing is Hell
 
 ## Testing the mobile web is hard
 
@@ -1139,23 +1188,14 @@ Some issues are hard to anticipate and arise from changes that seem innocuous. R
 * Remote testing of remote devices
 * Emulators
 
-## Mobile-relevant desktop testing
-
-* [User agent switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/)
-* [User agent switcher config file](http://techpatterns.com/forums/about304.html)
-* [Resizer](https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh) / [Web Developer Toolkit](http://chrispederick.com/work/web-developer/)
-* [Blaze.io Mobile Test](http://blaze.io/mobile)
-* Automated testing foundations: Web drivers for specs can use headless Mozilla or Webkit, resize the browser, take automated screenshots, etc.
-* [ResponsivePX](http://responsivepx.com/)
-
 ## Device testing is tedious and hard
 
 * Fortunately, there are some tools:
-  * Adobe Shadow
-  * weinre
-  * shim
-  * Opera Dragonfly
-  * FireFox mobile remote debug (NEW!)
+  * **[Adobe Shadow](http://labs.adobe.com/technologies/shadow/)** (iOS, Android): Remote webkit debug with weinre and shim features, made a lot more user friendly (free)
+  * **[weinre](http://people.apache.org/~pmuellr/weinre/docs/1.x/1.5.0/)**: Patrick Mueller's original remote debug for webkit on mobile
+  * **[shim](https://github.com/marstall/shim)**: Synced web surfing across connected browsers (node.js)
+  * **[Opera Dragonfly](http://www.opera.com/dragonfly/)**: Remote testing (and more) for Opera
+  * **[FireFox mobile remote debug (NEW!)](http://starkravingfinkle.org/blog/2012/08/firefox-for-android-remote-debugging-is-here/)**: Several-step setup; I can't get it to work just yet.
 
 ## Adobe Shadow
 
@@ -1163,20 +1203,29 @@ Some issues are hard to anticipate and arise from changes that seem innocuous. R
 
 TODO: Adobe Shadow demo
 
-## On-device testing tools
+## MOAR testing tools
 
+* [User agent switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/)
+* [User agent switcher config file](http://techpatterns.com/forums/about304.html)
+* [Resizer](https://chrome.google.com/webstore/detail/kkelicaakdanhinjdeammmilcgefonfh) / [Web Developer Toolkit](http://chrispederick.com/work/web-developer/)
+* [Blaze.io Mobile Test](http://blaze.io/mobile)
+* Automated testing foundations: Web drivers for specs can use headless Mozilla or Webkit, resize the browser, take automated screenshots, etc.
+* [ResponsivePX](http://responsivepx.com/)
 * [Mobile Performance Bookmarklets](http://stevesouders.com/mobileperf/mobileperfbkm.php)
 * [jDrop](http://jdrop.org/)
-* Turning on ... in iOS/Android
 
-## Emulators
+## Other things
 
-* Generally available in various platform SDKs
-* Some web-based emulators
-* Try to get hardware when you can
-* Can be useful for testing really legacy devices:
-    * [N70 Emulator](http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70)
+* Emulators
+    * Generally available in various platform SDKs
+    * Some web-based emulators
+    * Try to get hardware when you can
+    * Can be useful for testing really legacy devices, e.g.
+        * [N70 Emulator](http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70)
     * Opera Mini older versions can be found in emulators online
+* Misc.
+    * [debug.phonegap.com](http://debug.phonegap.com): Free, online weinre
+    * (Truly) remote device testing: [Device Anywhere](http://www.keynotedeviceanywhere.com/) and [Perfecto Mobile](http://www.perfectomobile.com/)
 
 ## Building a device collection
 
@@ -1186,9 +1235,13 @@ TODO: Adobe Shadow demo
 
 * A "modern" iOS device. iPads are obviously a different form factor than iPhones, but having just one of the two covers a lot of bases.
 * A "modern" Android device running Ice Cream Sandwich (OS 4) or at least Gingerbread (2.3).
+    * Preferably a "commodity" device—that is, not the fastest, greatest, but the most likely to be given away free at operator/carrier stores.
 * A slightly older Android running 2.0-2.2.
-* A modern BlackBerry (OS 6 or newer).
+* A modern BlackBerry (OS 6, 7 or newer).
 * An older BlackBerry (OS 5).
+
+## What devices to get, cont'd.
+
 * Are you in Europe? A Symbian Nokia phone.
 * If your organization focuses on a demographic heavy on BlackBerrys, consider an old BlackBerry running OS 4.
 * A "modern" Windows phone. The Nokia N8 and N9 are very nice devices.
@@ -1219,6 +1272,10 @@ TODO: Adobe Shadow demo
 * **TEAM UP**: Connect with other developers and organizations through local user groups and the like. Chat. Swap. Trade. 
 * **MAKE IT EASY FOR YOURSELF**: Make it easier to test on device and you'll do it more.
 
+### A few resources
+
+* [BagCheck Device Testing Gear](https://bagcheck.com/blog/22-mobile-device-testing-the-gear)
+* [BBC Devices](http://mobiletestingfordummies.tumblr.com/post/20056227958/testing)
 
 
 ## Efficiencies
@@ -1230,12 +1287,11 @@ TODO: Adobe Shadow demo
 * Have a work area at or near the testing library.
 * Keep in mind the overhead required for device maintenance when establishing a collection.
 * If you're the organized type, create a spreadsheet or somesuch for tracking the details of your devices.
-* If possible, have folks borrowing your devices do their work on-site. This can be an easier sell if you have a nice work area around your devices.
-* Don't over-stock devices.
+* Don't collect *too* many devices.
 
 ## Weird things you might not think of when choosing test devices
 
-When choosing a device within a given plaform, consider:
+When choosing a device within a given platform, consider:
 
 * Which has the better keyboard (soft or hard)? You'll be entering in URLs willy-nilly, and variations in keyboard layouts and tactile feedback across devices can make a big difference.
 * How easy is it to find and change Wifi settings? Any other Wifi issues?
@@ -1243,67 +1299,94 @@ When choosing a device within a given plaform, consider:
 * Charging interface. Aim for USB mini (becoming more universal these days but there are still outliers, esp. iOS and tablets).
 * How easy is it to update the OS and/or apps? Some of this is carrier/operator dependent.
 
+## Some emerging techniques
 
-## Resources
-
-* [BagCheck Device Testing Gear](https://bagcheck.com/blog/22-mobile-device-testing-the-gear)
-* [BBC Devices](http://mobiletestingfordummies.tumblr.com/post/20056227958/testing)
+* Something I've done lately when doing Rails development is use the combination of:
+    * rSpec/Capybara
+    * poltergeist: Phantom.js Web driver for Capybara tests
+    * jasmine for JS testing
 * [jQueryMobile Automated Selenium Testing](http://www.youtube.com/watch?v=51E3FWMKkig&feature=player_embedded#!)
-* Looking for some real old stuff? http://emulator.mtld.mobi/emulator.php?emulator=nokiaN70
+* The emergence of automated remote testing
 
-## Other tools
+## Case study: testing the Tempest project
 
-* http://responsivepx.com/
+* Full test suite
+    * iPhone iOS 5 Safari
+    * iPhone iOS 5 Opera Mini
+    * Android Nexus S 4.0
+    * Android Nexus S 4.0 Firefox 15
+    * BlackBerry 9670 (OS 6)
+    * BlackBerry 8230 (OS 4.5)
+    * Motorola Backflip Android 1.5
+    * Kindle Fire
+    * Nokia N8 Windows Phone 7.5
 
-## Watch out for
+## Case study: testing the Tempest
 
-* Fixed breakpoint sizes
-* iOS fixation
-
-
-## Some halfway techniques
-
-Something I've done lately when doing Rails development is use the combination of:
-
-* rSpec/Capybara
-* poltergeist: Phantom.js Web driver for Capybara tests
-* jasmine for JS testing
-
-Within my test specs, I can use Phantom.js as the test driver to launch a headless instance of Webkit and run my tests within it. I can resize the (virtual) window in that Phantom.js instance to various dimensions that emulate possible mobile device widths/heights. I can test for the location and placement of elements, execute JavaScript, and take automated screen shots.
-
-It is theoretically possible—though not on Mac right now—to run the Phantom.js as a remote to an actual device. This would be *awesome*.
-
-This obviously only covers Webkit. Swapping over to the default Selenium web driver for Rails, I get things tested in Mozilla desktop. Though these are tests run on the desktop, they are still incredibly useful as a basis to continue testing.
-
-## Remote testing
-
-## What I hope is the way of the future
-
-I would love to see the continued evolution of remote, on-hardware testing.
-
-Some interesting stuff is happening at the confluence of Selenium and Ruby. iPhone web driver.
-I hope that Shadow will evolve and allow scripting.
-
-## Emulators
+* Extended test suite
+    * iPhone Nexus 1 Android 2.3
+    * BlackBerry PlayBook
+    * iPad iOS5 (first-generation)
+    * Samsung Galaxy S (Android 2.2)
+    * Google G1 (Android 1.6)
+    * BlackBerry 9800 Torch (OS 6)
+    * BlackBerry 9810 Torch (OS 6)
 
 
-## Testing and performance tools
+## Case study: testing the Tempest scene
 
-* jDrop
-* Blaze.io
+* Foundational HTML only
+    * Test across full suite
+    * Take note of title adjustment needs
+* Baseline CSS
+    * Full suite test
+    * Noted a bug in my CSS (font stack)
+* Fluid baseline CSS
+    * Full suite test
+    * Found box-model bug in my CSS
+    * Found `small-caps` issue on multiple BlackBerrys
+        * Testing on extended set of BlackBerrys
 
-## Un-testing
+## Case study: testing the Tempest scene, cont.
 
-The more mobile web sites you build, the more you will be able to get away with a certain amount of "un-testing." 
+* Media queries
+    * Restricted suite testing (fairly confident/un-testing)
+    * IE desktop testing (based on knowledge of fail)
+    * Shimmed HTML5
+* `@font-face` enhancement
+    * Restricted suite testing
+    * Additional BlackBerry testing (wary after `small-caps`)
+    * Found BlackBerry hell
+        * Decided to put `@font-face` in media query
 
-## Challenging Zones
+## Case study: testing the Tempest scene, cont.
 
-* CSS positioning, box model
-* CSS 3 effects, especially anything vendor-prefixed: gradients, shadows, etc.
-* HTML5 elements
-* DOM manipulation
-* Character encoding
-* Embedded media
+* Line-number enhancement
+    * Restricted suite testing
+* HTML markup for glossary
+    * Restricted suite testing
+    * Extended testing on tablets for `css-column`
+* Messi jQuery plugin
+    * Immediate fail on mobile
+* Messi CSS refactor/prototype save button
+    * Full suite test
+    * Found Opera Mini `line-height` issue
+
+## Case study: testing the Tempest scene, cont.
+
+* Prototyped functionality of gloss-save feature
+    * Not covered in slides (proof of concept stage)
+    * Multiple full-suite tests
+* Revised, first version gloss-save feature (CSS and JS)
+    * Full suite test
+* Non-Messi popup version for performance
+    * Full suite test with emphasis on older devices
+* Performance enhancements
+    * Restricted suite testing
+* Complete
+    * Extended suite testing
+
+
 
 
 

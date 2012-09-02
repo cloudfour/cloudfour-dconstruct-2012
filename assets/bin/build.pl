@@ -18,8 +18,8 @@ my $exercise_path = $basepath . "/exercises";
 
 ## Settings for this project
 my $pandoc = '/usr/local/bin/pandoc';
-
-my $flags  = '-f markdown -t slidy --standalone --css=assets/css/workshop.css --slide-level=2';
+my $header_file = $basepath . '/assets/header.html';
+my $flags  = "-f markdown -t slidy --standalone --css=assets/css/workshop.css --include-in-header=" . $header_file . " --slide-level=2";
 my $input  = $basepath . "/workshop-part1.content";
 my $output = $basepath . "/part1.html";
 
