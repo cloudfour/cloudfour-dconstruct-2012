@@ -44,11 +44,16 @@ Lyza Gardner
 </div>
 <div class="section titleslide slide level1" id="part-v-web-sites-that-do-things-in-the-mobile-world"><h1 id="part-v-web-sites-that-do-things-in-the-mobile-world">Part V: Web sites that do things, in the mobile world</h1></div><div class="section slide level2" id="the-reading-web-vs.-the-doing-web">
 <h1 id="the-reading-web-vs.-the-doing-web">The reading web vs. the doing web</h1>
-<p>It makes a lot of us devs uncomfortable, but we can't help but notice that there is a fundamental difference between the reference-and-reading Web (Wikipedia, news sites, documentation, blogs, etc.) and the doing-stuff Web (Gmail, Flickr, etc.).</p>
-<p>When we talk about mobile, often the glory of the app-based world makes us naturally think of the latter. Which is why I started with the former—the heart of the Web is still content.</p>
-<p>Now it's time to talk about doing things on the mobile-device Web.</p>
+<ul>
+<li>It makes a lot of us devs uncomfortable, but we can't help but notice that there is a fundamental difference between the reference-and-reading Web (Wikipedia, news sites, documentation, blogs, etc.) and the doing-stuff Web (Gmail, Flickr, etc.).</li>
+<li>When we talk about mobile, often the glory of the app-based world makes us naturally think of the latter. Which is why I started with the former—the heart of the Web is still content.</li>
+<li>Now it's time to talk about doing things on the mobile-device Web.</li>
+</ul>
 </div><div class="section slide level2" id="making-shakespeare-more-useful">
 <h1 id="making-shakespeare-more-useful">Making Shakespeare more useful</h1>
+<div class="figure">
+<img src="presenter-exercises/401-enhanced/images/nexus.png" alt="Our Shakespeare: How to take it to the next level?" /><p class="caption">Our Shakespeare: How to take it to the next level?</p>
+</div>
 <ul>
 <li>Adding a glossary for both unusual words, historical notes, and potentially-confusing turns of phrase</li>
 <li>I had a bunch of bright ideas at first</li>
@@ -72,11 +77,15 @@ Lyza Gardner
 <p>Not to say that touch-rich web apps cannot be successfully developed, but sorting out the nuances of each platform's touch situation was more than I wanted to dive into here. Especially as we want to support a broader set of devices than just the newest Webkit-based phones.</p>
 <h3 id="i-should-emphasize">I should emphasize</h3>
 <p>Such a web app is definitely possible. It's just beyond the scope of my explorations here! I wanted to demonstrate the kinds of thinking and learning that go into these sorts of exercises.</p>
+<h3 id="real-world-moment">Real world moment</h3>
+<p>Feasibility is a function of many things. In my case, I decided to do something simpler.</p>
 </div><div class="section slide level2" id="mobile-development-demands-flexible-evolved-thinking">
 <h1 id="mobile-development-demands-flexible-evolved-thinking">Mobile development demands flexible, evolved thinking</h1>
-<p>Moreso in mobile than perhaps any other time in software development, BDUF (big-development-up-front), waterfalled processes tend to break down.</p>
-<p>The unknowns are so numerous, the complications and quirks so widespread and the testing such an investment that an iterative process both in design/spec-ing and implementing sort of forces itself upon us.</p>
-<p>Planning mobile web sites and apps seems to demand an open-ended, very flexible approach.</p>
+<ul>
+<li>Moreso in mobile than perhaps any other time in software development, BDUF (big-development-up-front), waterfalled processes tend to break down.</li>
+<li>The unknowns are so numerous, the complications and quirks so widespread and the testing such an investment that an iterative process both in design/spec-ing and implementing sort of forces itself upon us.</li>
+<li>Planning mobile web sites and apps seems to demand an open-ended, very flexible approach.</li>
+</ul>
 </div><div class="section slide level2" id="a-slightly-more-humble-plan">
 <h1 id="a-slightly-more-humble-plan">A slightly more humble plan</h1>
 <ol style="list-style-type: decimal">
@@ -108,6 +117,10 @@ Lyza Gardner
 <p>TODO drawing showing mapping of gloss item to gloss content.</p>
 </div><div class="section slide level2" id="step-1-some-styles">
 <h1 id="step-1-some-styles">Step 1: Some styles</h1>
+<ul>
+<li>Our CSS reset wiped out any margins, etc. for <code>&lt;ol&gt;</code>, <code>&lt;sup&gt;</code> and <code>&lt;li&gt;</code> elements</li>
+<li>Positioning on <code>sup</code> rule is to avoid <code>sup</code> text making line-spacing weird</li>
+</ul>
 <pre class="sourceCode css"><code class="sourceCode css">ol <span class="kw">{</span>
   <span class="kw">list-style-type:</span> <span class="dt">decimal</span><span class="kw">;</span>
   <span class="kw">margin</span> <span class="kw">:</span> <span class="dt">.5em</span> <span class="dt">0</span><span class="kw">;</span>
@@ -145,7 +158,10 @@ sup <span class="kw">{</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
 <h3 id="for-your-consideration-1">For your consideration</h3>
-<p>Why didn't I use the CSS Columns test in Modernizr before using this style?</p>
+<ul>
+<li>Why didn't I use the CSS Columns test in Modernizr before using this style?</li>
+<li>Do you know of any other CSS modules or new features I could have used to do the layout for this section?</li>
+</ul>
 </div><div class="section slide level2" id="and-now-we-have-our-baseline">
 <h1 id="and-now-we-have-our-baseline">And now we have our baseline</h1>
 <p>At this point, we stop and test on our supported devices*.</p>
@@ -173,6 +189,10 @@ sup <span class="kw">{</span>
 <div class="figure">
 <img src="presenter-exercises/500-glossed/images/fire.png" alt="Kindle Fire" /><p class="caption">Kindle Fire</p>
 </div>
+<ul>
+<li>It is likely your <a href="presenter-exercises/500-glossed/tempest.html">desktop browser might, too</a></li>
+<li>Step 1 complete!</li>
+</ul>
 </div><div class="section slide level2" id="step-2-enhancing-the-glossed-items">
 <h1 id="step-2-enhancing-the-glossed-items">Step 2: Enhancing the glossed items</h1>
 <ol style="list-style-type: decimal">
@@ -180,20 +200,26 @@ sup <span class="kw">{</span>
 <li>I'm somewhat randomly going to select the <a href="http://marcosesperon.es/apps/messi">&quot;Messi&quot;</a> jQuery plugin for popups/modals. We'll need to include that JavaScript in our page and its CSS in our CSS.</li>
 <li>We'll need to write a bit of jQuery JavaScript to convert our glossary entries into popup modals and make the glossed items tappable.</li>
 </ol>
+<h3 id="real-world-moment-1">Real world moment</h3>
+<p>The many iterations in developing and enhancing for the mobile web often means refactoring what you already have.</p>
+<h3 id="exercise">Exercise</h3>
+<ul>
+<li>Exercise: Evaluating a typical jQuery plugin TODO</li>
+</ul>
 </div><div class="section slide level2" id="part-a-re-futzing-our-javascript">
 <h1 id="part-a-re-futzing-our-javascript">Part A: Re-futzing our JavaScript</h1>
-<pre><code>&lt;script src=&quot;Modernizr.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;gloss.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-  $(document).ready(function() {
-    if (Modernizr.generatedcontent &amp;&amp; Modernizr.mq(&#39;only all and (min-width:50em)&#39;)) {
-      $(&#39;html.generatedcontent span.line&#39;).filter(function(index) {
-        return (((index + 1) % 10 == 0) &amp;&amp; index &gt; 0);
-      }).addClass(&#39;line-number&#39;);
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Modernizr.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;gloss.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script&gt;</span>
+  $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
+    <span class="kw">if</span> (<span class="kw">Modernizr</span>.<span class="fu">generatedcontent</span> &amp;&amp; <span class="kw">Modernizr</span>.<span class="fu">mq</span>(<span class="ch">&#39;only</span> <span class="ch">all</span> <span class="ch">and</span> (<span class="ch">min</span>-<span class="ch">width</span>:50<span class="ch">em</span>)<span class="ch">&#39;</span>)) {
+      $(<span class="ch">&#39;html</span>.<span class="ch">generatedcontent</span> <span class="ch">span</span>.<span class="ch">line&#39;</span>).<span class="fu">filter</span>(<span class="kw">function</span>(index) {
+        <span class="kw">return</span> (((index + <span class="dv">1</span>) % <span class="dv">10</span> == <span class="dv">0</span>) &amp;&amp; index &gt; <span class="dv">0</span>);
+      }).<span class="fu">addClass</span>(<span class="ch">&#39;line</span>-<span class="ch">number&#39;</span>);
     }
   });
-&lt;/script&gt;</code></pre>
+<span class="kw">&lt;/script&gt;</span></code></pre>
 <ol style="list-style-type: decimal">
 <li>Including jQuery for everyone</li>
 <li>Creating JavaScript for glossary items (<code>gloss.js</code>)</li>
@@ -233,7 +259,6 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
 <li>As typical, the jQuery plugin Messi is made for desktop browsers. Its CSS is pixel-based. And there's an awful lot of it. Let's see if we can tame it.</li>
 <li>Also, we need to add some styles of our own to indicate that the glossed items are tappable.</li>
 </ul>
-<h4 id="theme-performance-optimization">Theme: Performance optimization</h4>
 <p>The Messi CSS, lifted from Twitter Bootstrap, contains over 500 lines of CSS (more than twice the length of all of the rest of our CSS). There are many rules that aren't getting used, and a lot of pixel dimensions and gradients and animations and whatnot.</p>
 </div><div class="section slide level2" id="refactoring-the-css">
 <h1 id="refactoring-the-css">Refactoring the CSS</h1>
@@ -241,6 +266,8 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
 <li>I culled the Messi CSS by about 250 lines, removing unused styles and minimizing certain CSS effects.</li>
 <li>I did leave in some of the button gradients and button transition effects, some opacity things and some text styling and shadows.</li>
 </ul>
+<h3 id="hold-that-thought-1">Hold that thought!</h3>
+<p>This could still be better-optimized</p>
 </div><div class="section slide level2" id="making-the-popups-somewhat-responsive">
 <h1 id="making-the-popups-somewhat-responsive">Making the popups somewhat responsive</h1>
 <p>So, we need to size the popups to fit different window sizes. Messi allows you to define a width for your popups:</p>
@@ -248,6 +275,7 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
 <li>Percentage widths seem appealing, but don't center in the window and look a bit ugly.</li>
 <li>So we need to determine what the correct width is before launching the popup: getting the width of the screen is not as straightforward as it sounds.</li>
 </ul>
+<h3 id="for-your-consideration-2">For your consideration</h3>
 <p>How do we figure out how wide the popup should be?</p>
 </div><div class="section slide level2" id="viewports-again">
 <h1 id="viewports-again">Viewports again</h1>
@@ -258,6 +286,9 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
          <span class="dt">height</span>: <span class="kw">window</span>.<span class="fu">innerHeight</span> || 
           (<span class="kw">document</span>.<span class="fu">documentElement</span> || <span class="kw">document</span>.<span class="fu">body</span>).<span class="fu">clientHeight</span>};
 }</code></pre>
+<ul>
+<li><a href="http://www.quirksmode.org/blog/archives/2010/08/combining_media.html">Relevant post on Quirskmode</a></li>
+</ul>
 </div><div class="section slide level2" id="still-more-css-brutalization">
 <h1 id="still-more-css-brutalization">Still more CSS brutalization</h1>
 <div class="figure">
@@ -300,6 +331,10 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
   });
   <span class="kw">function</span> viewport() { <span class="co">/** ... **/</span>  }
 });</code></pre>
+<h3 id="hold-that-thought-2">Hold that thought!</h3>
+<ul>
+<li>This is prototyped jQuery code. It gets cleaned up and organized later...</li>
+</ul>
 </div><div class="section slide level2" id="nuances-in-a-world-of-clicks-and-touches">
 <h1 id="nuances-in-a-world-of-clicks-and-touches">Nuances in a world of clicks and touches</h1>
 <p>We need to suggest, visually, that the glossed items are clickable (desktop) or tap-able (touch devices). We can start with:</p>
@@ -344,6 +379,10 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
     <span class="kw">counter-reset:</span> line-count<span class="kw">;</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
+<h3 id="good-enough-for-jazz">Good enough for jazz</h3>
+<ul>
+<li>Technically, this is not adjusting for touch. It's adjusting for screen size. But there is a lot of correlation between narrow screen sizes and touch screens.</li>
+</ul>
 </div><div class="section slide level2" id="thats-pretty-nice">
 <h1 id="thats-pretty-nice">That's pretty nice</h1>
 <div class="figure">
@@ -391,6 +430,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Slower hardware</li>
 <li>Less sophisticated browsers</li>
 </ul>
+<h3 id="ugh-moment">Ugh moment</h3>
 </div><div class="section slide level2" id="how-could-one-make-it-better">
 <h1 id="how-could-one-make-it-better">How could one make it better</h1>
 <ul>
@@ -399,7 +439,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Profiling the JavaScript</li>
 <li>Cooking up a combination of feature- or UA-detection that indicates a &quot;lesser&quot; class of devices and disabling this feature on them.</li>
 </ul>
-<h4 id="theme-choice">Theme: Choice</h4>
+<h3 id="hold-that-thought-3">Hold that thought!</h3>
+<p>We'll come back to optimization and performance</p>
 </div><div class="section slide level2" id="client-side-programming-from-scratch-can-be-hard">
 <h1 id="client-side-programming-from-scratch-can-be-hard">Client-side programming from scratch can be hard</h1>
 <p>It can get tiring if, every time you need to implement something, you have to build it from scratch. Even if you take that route, building up your own library of re-usable components and keeping them maintained as the mobile landscape sways so wildly beneath you can be challenging if not impossible.</p>
@@ -422,8 +463,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </div><div class="section slide level2" id="popular-mobile-web-frameworks">
 <h1 id="popular-mobile-web-frameworks">Popular mobile web frameworks</h1>
 <ul>
-<li>jQuery Mobile</li>
-<li>Sencha Touch</li>
+<li>[jQuery Mobile](http://jquerymobile.com</li>
+<li><a href="http://www.sencha.com/products/touch">Sencha Touch</a></li>
 <li><a href="http://the-m-project.net/">The M Project</a></li>
 <li><a href="http://www.dhtmlx.com/touch/">DHTMLX Touch</a></li>
 <li><a href="http://sproutcore.com/">SproutCore</a></li>
@@ -448,7 +489,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </div><div class="section slide level2" id="a-balanced-approach">
 <h1 id="a-balanced-approach">A balanced approach</h1>
 <p>Sometimes, there is a third option between framework and from-scratch. Using third-party <em>libraries</em> to solve specific issues in your development can often be a boon.</p>
-<p>An example: AJAX-rich navigation, with dynamically-loaded content, using the History API to enable the proper usage of back buttons and refresh.</p>
+<p>An example: AJAX-rich navigation, with dynamically-loaded content, using the History API, pushstate/popstate to enable the proper usage of back buttons and refresh.</p>
 <ul>
 <li>Framework options: jQuery Mobile, Sencha Touch, etc.</li>
 <li>Another way: Lightweight JavaScript library like asfar.js</li>
@@ -487,11 +528,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/introduction.html#is-this-html5?">&quot;Is this HTML5?&quot; section on WHATWG HTML spec</a> helps to iron out a few things.</li>
 </ul>
 <p>And all of this is whirling and changing so fast. And <em>what about mobile?</em></p>
-</div><div class="section slide level2" id="mobile-uptake">
-<h1 id="mobile-uptake">Mobile uptake</h1>
-<p>Though we tend (maybe?) to assume that mobile browsers are a slightly ... TODO: Flesh out this thought</p>
-</div><div class="section slide level2" id="but-not-everywhere">
-<h1 id="but-not-everywhere">But not everywhere</h1>
+</div><div class="section slide level2" id="mobile-browser-support-of-html5-things-actually-quite-good-but-not-everywhere">
+<h1 id="mobile-browser-support-of-html5-things-actually-quite-good-but-not-everywhere">Mobile browser support of HTML5 things actually quite good, But not everywhere</h1>
 <h3 id="proxy-browsers">Proxy browsers</h3>
 <ul>
 <li>When proxy browsers are involved, we lose the &quot;device&quot; in the equation.</li>
@@ -541,8 +579,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Calendar</li>
 <li>Menu</li>
 </ul>
-</div><div class="section slide level2" id="for-your-consideration-2">
-<h1 id="for-your-consideration-2">For your consideration</h1>
+</div><div class="section slide level2" id="for-your-consideration-3">
+<h1 id="for-your-consideration-3">For your consideration</h1>
 <ul>
 <li>What's missing here?</li>
 <li>Anything else seem odd to you?</li>
@@ -748,12 +786,294 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <div class="figure">
 <img src="assets/images/html5please-localstorage.png" /><p class="caption"></p>
 </div>
-</div><div class="section slide level2" id="this-area-purposely-left-blank-until-saturday">
-<h1 id="this-area-purposely-left-blank-until-saturday">This area purposely left blank until Saturday</h1>
+</div><div class="section slide level2" id="in-which-i-prototype-a-save-gloss-feature">
+<h1 id="in-which-i-prototype-a-save-gloss-feature">In which I prototype a save-gloss feature</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/iphone.png" alt="When a user taps on the Save Button" /><p class="caption">When a user taps on the Save Button</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/601-prototype/images/nokia-n8.png" alt="The glossed item should be saved" /><p class="caption">The glossed item should be saved</p>
+</div>
+</div><div class="section slide level2" id="hacking-it-together">
+<h1 id="hacking-it-together">Hacking it together</h1>
+<h3 id="beware-1">Beware!</h3>
+<p>Here comes some JavaScript!</p>
+<ol style="list-style-type: decimal">
+<li>I'm going to gloss over some of the finer details of the implementation here</li>
+<li>I don't want you to gloss over too hard</li>
+<li>I'll provide links to more details for the curious</li>
+</ol>
+</div><div class="section slide level2" id="structure">
+<h1 id="structure">Structure</h1>
+<ol style="list-style-type: decimal">
+<li>Re-organizing the JavaScript
+<ul>
+<li><code>GlossStorage</code> class to handle interacting with <code>localStorage</code></li>
+<li>jQuery extension that relies on Messi</li>
+</ul></li>
+<li>Adding some CSS to display saved glossary items</li>
+<li>Unobtrusive JS: No changes to HTML markup</li>
+</ol>
+</div><div class="section slide level2" id="enhancement-plan">
+<h1 id="enhancement-plan">Enhancement plan</h1>
+<ul>
+<li>Line-number display and popup enhancements stay as they are</li>
+<li>Additional test within <code>GlossStorage</code> to determine <code>localStorage</code> support</li>
+<li>Enhancement to save glossed items and show glossed items based on that test</li>
+</ul>
+<h3 id="the-next-few-slides">The next few slides</h3>
+<ol style="list-style-type: decimal">
+<li>Structure of <code>GlossStorage</code> class</li>
+<li>Detail of <code>localStorage</code> feature test</li>
+<li>Structure of jQuery plugin</li>
+<li>Additional baseline CSS</li>
+<li>Additional wider-screen CSS</li>
+</ol>
+</div><div class="section slide level2" id="glossstorage">
+<h1 id="glossstorage">GlossStorage</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>($) {
+  <span class="kw">function</span> GlossStorage() {
+    <span class="kw">var</span> savedGlosses  = [],
+        glossKey      = <span class="ch">&#39;glosses&#39;</span>;
+
+    <span class="kw">this</span>.<span class="fu">supported</span> = <span class="kw">function</span>() {
+      <span class="kw">return</span> (<span class="kw">typeof</span> JSON != <span class="ch">&#39;undefined&#39;</span>
+                &amp;&amp; <span class="kw">typeof</span> <span class="kw">JSON</span>.<span class="fu">stringify</span>      != <span class="ch">&#39;undefined&#39;</span> 
+                &amp;&amp; <span class="kw">typeof</span> <span class="kw">window</span>.<span class="fu">localStorage</span> != <span class="ch">&#39;undefined&#39;</span>);
+    };
+    <span class="kw">this</span>.<span class="fu">save</span>   = <span class="kw">function</span>(gloss) { };
+    <span class="kw">this</span>.<span class="fu">has</span>    = <span class="kw">function</span>(gloss)  { };
+    <span class="kw">this</span>.<span class="fu">all</span>    = <span class="kw">function</span>() {  };
+    <span class="kw">this</span>.<span class="fu">clear</span>  = <span class="kw">function</span>() {  }; 
+    <span class="kw">if</span> (<span class="kw">this</span>.<span class="fu">supported</span>()) {
+      savedGlosses = [];
+      <span class="kw">if</span> (<span class="kw">localStorage</span>.<span class="fu">getItem</span>(glossKey)) {
+        savedGlosses = <span class="kw">JSON</span>.<span class="fu">parse</span>(<span class="kw">localStorage</span>.<span class="fu">getItem</span>(glossKey));
+      }
+    }
+  };
+
+  <span class="co">/** jQuery plugin after this ...*/</span>
+})( jQuery );</code></pre>
+</div><div class="section slide level2" id="test-for-localstorage">
+<h1 id="test-for-localstorage">Test for <code>localStorage</code></h1>
+<ul>
+<li>I decided to roll my own and not use a polyfill</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">this</span>.<span class="fu">supported</span> = <span class="kw">function</span>() {
+  <span class="kw">return</span> (<span class="kw">typeof</span> JSON != <span class="ch">&#39;undefined&#39;</span>
+            &amp;&amp; <span class="kw">typeof</span> <span class="kw">JSON</span>.<span class="fu">stringify</span>      != <span class="ch">&#39;undefined&#39;</span> 
+            &amp;&amp; <span class="kw">typeof</span> <span class="kw">window</span>.<span class="fu">localStorage</span> != <span class="ch">&#39;undefined&#39;</span>);
+};</code></pre>
+<ul>
+<li>The rest of the <code>GlossStorage</code> class interacts with <code>localStorage</code> using its API:
+<ul>
+<li><code>getItem</code></li>
+<li><code>setItem</code></li>
+<li><code>removeItem</code></li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="jquery-plugin">
+<h1 id="jquery-plugin">jQuery Plugin</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">$.<span class="fu">fn</span>.<span class="fu">gloss</span> = <span class="kw">function</span>() {
+    <span class="kw">var</span> showGloss        = <span class="kw">function</span>($glossItem, glossId) { }; <span class="co">// Pop up definition</span>
+    <span class="kw">var</span> saveGloss        = <span class="kw">function</span>(val) {    }; <span class="co">// Save gloss in GlossStorage and update display</span>
+    <span class="kw">var</span> showSavedGlosses = <span class="kw">function</span>() {    }; <span class="co">// Add some elements to hold and display saved glosses</span>
+    <span class="kw">var</span> buildSavedList   = <span class="kw">function</span>(glosses) {  }; <span class="co">// Generate/update a &lt;dl&gt; with all saved glosses</span>
+    <span class="kw">var</span> clearGlosses     = <span class="kw">function</span>() {   }; <span class="co">// Clear glosses out of GlossStorage and update display</span>
+    <span class="kw">var</span> viewportSize     = <span class="kw">function</span>() {   }; <span class="co">// From our previous Messi implementation</span>
+    <span class="kw">var</span> init             = <span class="kw">function</span>() {
+      <span class="kw">var</span> glosses;
+      storage           = <span class="kw">new</span> GlossStorage();
+      showSavedGlosses();
+      <span class="co">// Slightly more formalized way of finding all the glossary definitions</span>
+      <span class="co">// And making references to them clickable and styled and ready to</span>
+      <span class="co">// pop up definitions</span>
+      $(glossarySelector).<span class="fu">find</span>(glossDefinitionSelector).<span class="fu">each</span>(<span class="kw">function</span>() {
+        <span class="kw">var</span> glossId     = $(<span class="kw">this</span>).<span class="fu">attr</span>(<span class="ch">&#39;id&#39;</span>),
+            $glossItems = $(<span class="ch">&#39;[data-gloss =&quot;&#39;</span> + glossId + <span class="ch">&#39;&quot;]&#39;</span>);
+        $<span class="kw">glossItems</span>.<span class="fu">addClass</span>(glossClass).<span class="fu">toggleClass</span>(savedGlossClass, <span class="kw">storage</span>.<span class="fu">has</span>(glossId));
+        $<span class="kw">glossItems</span>.<span class="fu">click</span>(<span class="kw">function</span>(event) { showGloss($(<span class="kw">this</span>), glossId); });
+      });
+    }();
+  }</code></pre>
+</div><div class="section slide level2" id="css">
+<h1 id="css">CSS</h1>
+<pre class="sourceCode css"><code class="sourceCode css">div<span class="fl">.saved-glosses</span> <span class="kw">{</span>
+  <span class="kw">background-color</span>       <span class="kw">:</span> <span class="dt">#e8e9de</span><span class="kw">;</span>
+<span class="kw">}</span>
+div<span class="fl">.saved-glosses</span> h3 <span class="kw">{</span>
+  <span class="kw">padding</span>                <span class="kw">:</span> <span class="dt">.5em</span><span class="kw">;</span>
+  <span class="kw">cursor</span>                 <span class="kw">:</span> <span class="dt">pointer</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.remove-glosses</span> <span class="kw">{</span>
+  <span class="kw">cursor</span>                 <span class="kw">:</span> <span class="dt">pointer</span><span class="kw">;</span>
+  <span class="kw">font-size</span>              <span class="kw">:</span> <span class="dt">1.25em</span><span class="kw">;</span>
+  <span class="kw">padding</span>                <span class="kw">:</span> <span class="dt">.25em</span> <span class="dt">0</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.remove-glosses</span><span class="dv">:before</span> <span class="kw">{</span>
+  <span class="kw">content</span>                <span class="kw">:</span> <span class="st">&#39;x&#39;</span><span class="kw">;</span>
+  <span class="kw">font-size</span>              <span class="kw">:</span> <span class="dt">.75em</span><span class="kw">;</span>
+  <span class="kw">margin-right</span>           <span class="kw">:</span> <span class="dt">.5em</span><span class="kw">;</span>
+  <span class="kw">color</span>                  <span class="kw">:</span> <span class="dt">#d94343</span><span class="kw">;</span>
+<span class="kw">}</span>
+div<span class="fl">.saved-glosses</span> h3<span class="dv">:before</span> <span class="kw">{</span>
+  <span class="kw">display</span>                <span class="kw">:</span> <span class="dt">inline-block</span><span class="kw">;</span>
+  <span class="kw">width</span>                  <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
+  <span class="kw">margin-right</span>           <span class="kw">:</span> <span class="dt">.5em</span><span class="kw">;</span>
+  <span class="kw">content</span>                <span class="kw">:</span> <span class="st">&quot;\25B6&quot;</span><span class="kw">;</span>
+  <span class="kw">font-size</span>              <span class="kw">:</span> <span class="dt">.5em</span><span class="kw">;</span>
+<span class="kw">}</span>
+div<span class="fl">.saved-glosses.open</span> h3<span class="dv">:before</span> <span class="kw">{</span>
+  <span class="kw">content:</span> <span class="st">&quot;\25BC&quot;</span><span class="kw">;</span>
+<span class="kw">}</span>
+div<span class="fl">.saved-glosses</span> dl <span class="kw">{</span>
+  <span class="kw">display</span>                <span class="kw">:</span> <span class="dt">none</span><span class="kw">;</span>
+<span class="kw">}</span>
+div<span class="fl">.saved-glosses</span> dt <span class="kw">{</span>
+  <span class="kw">text-transform</span>         <span class="kw">:</span> <span class="dt">lowercase</span><span class="kw">;</span>
+  <span class="kw">font-variant</span>           <span class="kw">:</span> <span class="dt">small-caps</span><span class="kw">;</span>
+  <span class="kw">text-indent</span>            <span class="kw">:</span> <span class="dt">.25em</span><span class="kw">;</span>
+  <span class="kw">padding</span>                <span class="kw">:</span> <span class="dt">.25em</span> <span class="dt">0</span><span class="kw">;</span>
+  <span class="kw">background-color</span>       <span class="kw">:</span> <span class="dt">#d7d8cd</span><span class="kw">;</span>
+<span class="kw">}</span>
+div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
+  <span class="kw">background-color</span>       <span class="kw">:</span> <span class="dt">#e8e9de</span><span class="kw">;</span>
+  <span class="kw">width</span>                  <span class="kw">:</span> <span class="dt">96%</span><span class="kw">;</span>
+  <span class="kw">padding</span>                <span class="kw">:</span> <span class="dt">2%</span><span class="kw">;</span>
+  <span class="kw">font-style</span>             <span class="kw">:</span> <span class="dt">italic</span><span class="kw">;</span>
+  <span class="kw">margin</span>                 <span class="kw">:</span> <span class="dt">0</span><span class="kw">;</span>
+  <span class="kw">font-size</span>              <span class="kw">:</span> <span class="dt">.875em</span><span class="kw">;</span>
+  <span class="kw">line-height</span>            <span class="kw">:</span> <span class="dt">1.25em</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="differentiated-css-in-media-query">
+<h1 id="differentiated-css-in-media-query">Differentiated CSS in media query</h1>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">50em)</span> <span class="dv">{</span>
+  <span class="co">/* ... */</span>
+  <span class="fl">.saved-glosses</span> <span class="kw">{</span>
+    <span class="kw">position</span>  <span class="kw">:</span> <span class="dt">relative</span><span class="kw">;</span>
+  <span class="kw">}</span>
+  <span class="fl">.saved-glosses</span> h3 <span class="kw">{</span>
+    <span class="kw">box-shadow:</span> <span class="dt">0px</span> <span class="dt">3px</span> <span class="dt">3px</span> <span class="dt">#999</span><span class="kw">;</span>
+  <span class="kw">}</span>
+  <span class="fl">.saved-glosses</span> dl <span class="kw">{</span>
+    <span class="kw">width</span>     <span class="kw">:</span> <span class="dt">28em</span><span class="kw">;</span>
+    <span class="kw">position</span>  <span class="kw">:</span> <span class="dt">absolute</span><span class="kw">;</span>
+    <span class="kw">top</span>       <span class="kw">:</span> <span class="dt">auto</span><span class="kw">;</span>
+    <span class="kw">box-shadow:</span> <span class="dt">0px</span> <span class="dt">3px</span> <span class="dt">3px</span> <span class="dt">#999</span><span class="kw">;</span>
+    <span class="kw">z-index</span>   <span class="kw">:</span> <span class="dt">500</span><span class="kw">;</span>
+    <span class="kw">left</span>      <span class="kw">:</span> <span class="dt">0</span><span class="kw">;</span>
+    <span class="kw">border</span>    <span class="kw">:</span> <span class="dt">1px</span> <span class="dt">solid</span> <span class="dt">#999</span><span class="kw">;</span>
+    <span class="kw">border-top:</span> <span class="dt">0px</span><span class="kw">;</span>
+  <span class="kw">}</span>
+<span class="dv">}</span></code></pre>
+<ul>
+<li>You can find the full working example of this first prototyped version in <a href="presenter-exercises/601-prototype">presenter-exercises/601-prototype/</a></li>
+<li>Let's <a href="presenter-exercises/601-prototype/tempest.html">try it out</a></li>
+</ul>
+</div><div class="section slide level2" id="good-but-not-good-enough">
+<h1 id="good-but-not-good-enough">Good, but not good enough</h1>
+<ul>
+<li>Remember how I mentioned when we first implemented the Messi popups that they felt poky on older hardware?</li>
+<li>Let's watch a video of just how <a href="assets/videos/backflip-slow.MOV">poky this is on a Motorola Backflip (Android 1.5)</a></li>
+</ul>
+<h3 id="refactoring">Refactoring</h3>
+<ul>
+<li>I removed the Messi jQuery plugin and its styles</li>
+<li>I updated my jQuery plugin so it didn't have dependencies on Messi</li>
+<li>I created and styled my own popups
+<ul>
+<li>Didn't include code I wasn't using</li>
+<li>Styling avoided use of too many processor-intensive CSS effects</li>
+<li><em>Did</em> retain a couple of gradients and a single <code>box-shadow</code></li>
+</ul></li>
+</ul>
+<h3 id="video-after-the-refactor"><a href="assets/videos/backflip-better.MOV">Video: After the refactor</a></h3>
+</div><div class="section slide level2" id="also-striking-blackberry-9670">
+<h1 id="also-striking-blackberry-9670">Also striking: BlackBerry 9670</h1>
+<ul>
+<li>The BlackBerry 9670, despite being a new piece of hardware and a newer browser, is also super slow</li>
+<li><a href="assets/videos/9670-slow.MOV">Video: Before</a></li>
+<li><a href="assets/videos/9670-better.MOV">Video: After improvement</a></li>
+</ul>
+</div><div class="section slide level2" id="buttttt...">
+<h1 id="buttttt...">Buttttt...</h1>
+<h3 id="todo-video">TODO video</h3>
+</div><div class="section slide level2" id="some-numbers">
+<h1 id="some-numbers">Some numbers</h1>
+<ul>
+<li>Here's how long it took from resources received to an HTML page showing up at all (that is, the blank screen time between getting the resources and showing anything)</li>
+<li>On the BlackBerry 9670 (<em>after</em> resources have downloaded)
+<ul>
+<li>HTML page alone with no stylesheets or JavaScript: 2-3.5 seconds</li>
+<li>Stylesheet: negligible, maybe an additional .1 second</li>
+<li>Modernizr.js inclusion: An additional .5 seconds</li>
+<li>jQuery inclusion: An additional 1-1.5 seconds</li>
+<li>Evaluation of Modernizr.mq() test: An additional 2.5 seconds (!)</li>
+</ul></li>
+<li>Cf: A test page with a very simple DOM, jQuery and Modernizr, with the same <code>Modernizr.mq</code> query took about 2-3 seconds</li>
+</ul>
+</div><div class="section slide level2" id="what-is-making-this-load-so-slowly-on-that-blackberry">
+<h1 id="what-is-making-this-load-so-slowly-on-that-blackberry">What is making this load so slowly on that BlackBerry?</h1>
+<ul>
+<li>As you might expect, a combination of a bunch of key things:
+<ul>
+<li>Hardware</li>
+<li>Browser</li>
+<li>JavaScript handling in the browser</li>
+<li>Overall page DOM complexity</li>
+<li>Lack of caching</li>
+<li>Number of HTTP requests</li>
+<li>Large image to display</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="performance-is-a-many-headed-beast">
+<h1 id="performance-is-a-many-headed-beast">Performance is a many-headed beast</h1>
+<ul>
+<li>Server delivery of assets over network</li>
+<li>Browser rendering and JavaScript issues (blocking, slowness)</li>
+<li>Interactive client performance after page is ready</li>
+</ul>
+</div><div class="section slide level2" id="lets-tune-this-thing">
+<h1 id="lets-tune-this-thing">Let's tune this thing</h1>
+<ul>
+<li>Compressing the big image</li>
+<li>Doing some quick, big-hit items on the server via an <code>.htaccess</code> file
+<ul>
+<li>Turning on gzip</li>
+<li>Turning off eTags</li>
+<li>Setting up far-future expires headers (for caching)</li>
+</ul></li>
+<li>Reduction of number of external resources</li>
+<li>Minification of JS and CSS; putting JS at the bottom of the page</li>
+</ul>
+<h3 id="tools">Tools</h3>
+<ul>
+<li><a href="http://developer.yahoo.com/yslow/">ySlow</a></li>
+<li><a href="http://smush.it">smush.it</a></li>
+<li><a href="http://refresh-sf.com/yui/">Online YUI Compressor for JS and CSS</a></li>
+<li><a href="presenter-exercises/603-performance/.htaccess">Sample .htaccess file</a></li>
+</ul>
+</div><div class="section slide level2" id="before...">
+<h1 id="before...">Before...</h1>
+<div class="figure">
+<img src="assets/images/performance-start.png" alt="Before tuning" /><p class="caption">Before tuning</p>
+</div>
+</div><div class="section slide level2" id="after...">
+<h1 id="after...">After...</h1>
+<div class="figure">
+<img src="assets/images/performance-end.png" alt="After tuning" /><p class="caption">After tuning</p>
+</div>
+</div><div class="section slide level2" id="todo">
+<h1 id="todo">TODO</h1>
+<ul>
+<li>Recap slide</li>
+<li>All that we've accomplished</li>
+</ul>
 </div><div class="section slide level2" id="section-1">
 <h1 id="section-1"></h1>
 </div>
-<div class="section titleslide slide level1" id="part-vi-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-vi-making-sure-it-works-a.k.a.-testing-is-hell">Part VI: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="testing-the-mobile-web-is-hard">
+<div class="section titleslide slide level1" id="part-vii-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-vii-making-sure-it-works-a.k.a.-testing-is-hell">Part VII: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="testing-the-mobile-web-is-hard">
 <h1 id="testing-the-mobile-web-is-hard">Testing the mobile web is hard</h1>
 <ul>
 <li>Not a lot of methodologies established</li>
@@ -802,6 +1122,9 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <p>TODO: Drawing of loops</p>
 </div><div class="section slide level2" id="the-devices">
 <h1 id="the-devices">The devices</h1>
+<div class="figure">
+<img src="assets/images/testing-devices.jpg" alt="Devices..." /><p class="caption">Devices...</p>
+</div>
 <ul>
 <li>A smaller set of core devices: test on each iteration with these</li>
 <li>A larger set of supported devices: test every nth iteration</li>
@@ -862,6 +1185,9 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </ul>
 </div><div class="section slide level2" id="adobe-shadow">
 <h1 id="adobe-shadow">Adobe Shadow</h1>
+<div class="figure">
+<img src="assets/images/shadow.jpg" alt="Devices being tested with Adobe Shadow" /><p class="caption">Devices being tested with Adobe Shadow</p>
+</div>
 <p>TODO: Adobe Shadow demo</p>
 </div><div class="section slide level2" id="on-device-testing-tools">
 <h1 id="on-device-testing-tools">On-device testing tools</h1>
@@ -884,6 +1210,11 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </ul>
 </div><div class="section slide level2" id="building-a-device-collection">
 <h1 id="building-a-device-collection">Building a device collection</h1>
+<div class="figure">
+<img src="assets/images/cloudfour-testing.jpg" alt="Cloud Four&#39;s device library" /><p class="caption">Cloud Four's device library</p>
+</div>
+</div><div class="section slide level2" id="what-devices-to-get">
+<h1 id="what-devices-to-get">What devices to get</h1>
 <ul>
 <li>A &quot;modern&quot; iOS device. iPads are obviously a different form factor than iPhones, but having just one of the two covers a lot of bases.</li>
 <li>A &quot;modern&quot; Android device running Ice Cream Sandwich (OS 4) or at least Gingerbread (2.3).</li>

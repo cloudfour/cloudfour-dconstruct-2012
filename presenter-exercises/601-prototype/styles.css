@@ -87,6 +87,7 @@ h3 {
   font-variant    : small-caps;
   font-size       : 1.25em;
 }
+
 h2, h4 {
   display         : inline;
 }
@@ -175,62 +176,58 @@ span.gloss-item:active {
   cursor: pointer;
 }
 
+/* Saved gloss item */
 span.gloss-item-saved {
-  background-color: #e8e9de;
+  background-color       : #e8e9de;
 }
 
+/* Saved glosses holder */
+div.saved-glosses {
+  background-color       : #e8e9de;
+}
 div.saved-glosses h3 {
-  padding: .5em;
-  cursor: pointer;
+  padding                : .5em;
+  cursor                 : pointer;
 }
-div.saved-glosses .remove-glosses {
-  cursor: pointer;
-  font-size: 1.25em;
-  padding: .25em 0;
+.remove-glosses {
+  cursor                 : pointer;
+  font-size              : 1.25em;
+  padding                : .25em 0;
 }
-
-div.saved-glosses .remove-glosses:before {
-  content: 'x';
-  font-size: .75em;
-  margin-right: .5em;
-  color: #d94343;
+.remove-glosses:before {
+  content                : 'x';
+  font-size              : .75em;
+  margin-right           : .5em;
+  color                  : #d94343;
 }
 div.saved-glosses h3:before {
-  display: inline-block;
-  width: 1.5em;
-  margin-right: .5em;
-  content: "\25B6";
-  font-size: .5em;
+  display                : inline-block;
+  width                  : 1.5em;
+  margin-right           : .5em;
+  content                : "\25B6";
+  font-size              : .5em;
 }
-
 div.saved-glosses.open h3:before {
   content: "\25BC";
 }
-
-div.saved-glosses {
-  background-color: #e8e9de;
-}
-
 div.saved-glosses dl {
-  display: none;
+  display                : none;
 }
-
 div.saved-glosses dt {
-  text-transform: lowercase;
-  font-variant: small-caps;
-  text-indent: .25em;
-  padding: .25em 0;
-  background-color: #d7d8cd;
+  text-transform         : lowercase;
+  font-variant           : small-caps;
+  text-indent            : .25em;
+  padding                : .25em 0;
+  background-color       : #d7d8cd;
 }
-
 div.saved-glosses dd {
-  background-color: #e8e9de;
-  width: 96%;
-  padding: 2%;
-  font-style: italic;
-  margin: 0;
-  font-size: .875em;
-  line-height: 1.25em;
+  background-color       : #e8e9de;
+  width                  : 96%;
+  padding                : 2%;
+  font-style             : italic;
+  margin                 : 0;
+  font-size              : .875em;
+  line-height            : 1.25em;
 }
 
 /** Different kinds of lines **/
@@ -310,26 +307,28 @@ span.song {
     column-gap          : 1.5em;
   }
 
+  html.generatedcontent span.line-number:after {
+    float  : right;
+    content: counter(line-count);
+    display: inline-block;
+  }
+
+  /* Wider-screen saved glosses */
   .saved-glosses {
-    position: relative;
+    position  : relative;
   }
   .saved-glosses h3 {
     box-shadow: 0px 3px 3px #999;
   }
   .saved-glosses dl {
-    width: 28em;
-    position: absolute;
-    top: auto;
+    width     : 28em;
+    position  : absolute;
+    top       : auto;
     box-shadow: 0px 3px 3px #999;
-    z-index: 500;
-    left: 0;
-    border: 1px solid #999;
+    z-index   : 500;
+    left      : 0;
+    border    : 1px solid #999;
     border-top: 0px;
-  }
-  html.generatedcontent span.line-number:after {
-    float: right;
-    content: counter(line-count);
-    display: inline-block;
   }
 }
 /* Messi CSS */

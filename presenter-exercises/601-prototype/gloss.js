@@ -42,7 +42,10 @@ function Messi(a,b){var c=this;c.options=jQuery.extend({},Messi.prototype.option
       return savedGlosses;
     }; 
     if (this.supported()) {
-      savedGlosses = JSON.parse(localStorage.getItem(glossKey)) || [];
+      savedGlosses = [];
+      if (localStorage.getItem(glossKey)) {
+        savedGlosses = JSON.parse(localStorage.getItem(glossKey));
+      }
     }
   };
 
