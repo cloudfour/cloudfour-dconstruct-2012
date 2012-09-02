@@ -286,7 +286,6 @@ HTML5 is acceptable for most things, these days.
 * Future of content on the Web is complex
 * Adaptability is key
 * CMSes are the evil
-
 * [Karen McGrane][mcgrane] is a leader in adaptive content and adaptive mobile content.
 
 -------------------------------------------------------------------------------
@@ -422,11 +421,11 @@ Why does this simple HTML page look so different in different mobile browsers?
 
 ## Viewports are crazytown
 
-### These two screenshots are from the same device, different browser
-
 ![Safari on iPhone 4](exercises/101-explore/images/iphone.png)
 
 ![Opera Mini on iPhone 4](exercises/101-explore/images/iphone-opera.png)
+
+* These two screenshots are from the same device, different browser
 
 -------------------------------------------------------------------------------
 
@@ -440,7 +439,7 @@ Why does this simple HTML page look so different in different mobile browsers?
 
 ![](assets/images/different-viewports.png)
 
-Viewports are like a keyhole or window into the layout of the entire web page.
+* Viewports are like a keyhole or window into the layout of the entire web page.
 
 -------------------------------------------------------------------------------
 
@@ -1119,9 +1118,9 @@ span.verse {
 
 ## So where does that leave us?
 
-We're pretty good on narrow screens now, but we have some enhancement to do for wider screens.
-
 ![Desktop](presenter-exercises/202-new-baseline/images/desktop.png)
+
+* We're pretty good on narrow screens now, but we have some enhancement to do for wider screens.
 
 ## Defining a breakpoint and media query
 
@@ -1160,9 +1159,7 @@ So, we've got what seems like a solid baseline for narrow screens and a single b
 
 ## Hot mess in IE
 
-But it's a hot mess in IE8. What gives?
-
-![](assets/images/ie8-hot-mess.png)
+![But it's a hot mess in IE8. What gives?](assets/images/ie8-hot-mess.png)
 
 ## Understanding media query support
 
@@ -1315,8 +1312,6 @@ We'll come back to `Modernizr.load()`
 -------------------------------------------------------------------------------
 
 ## Most RWD sites are not mobile First
-
-### Reverse: Mobile RWD?
 
 ![](assets/images/mobile-rwd.png)
 

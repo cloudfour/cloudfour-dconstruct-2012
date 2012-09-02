@@ -16,6 +16,10 @@
 
 ![Our Shakespeare: How to take it to the next level?](presenter-exercises/401-enhanced/images/nexus.png)
 
+## Making Shakespeare more useful
+
+![Our Shakespeare: How to take it to the next level?](presenter-exercises/401-enhanced/images/nexus.png)
+
 * Adding a glossary for both unusual words, historical notes, and potentially-confusing turns of phrase
 * I had a bunch of bright ideas at first
 
@@ -454,7 +458,7 @@ It can get tiring if, every time you need to implement something, you have to bu
 
 Messi is a good example of the pros and cons of a third-party tool.
 
-## Frameworks
+# Frameworks
 
 ## What frameworks do for us
 
@@ -505,10 +509,9 @@ An example: AJAX-rich navigation, with dynamically-loaded content, using the His
 Try to isolate the issue or issues you really want to solve and find a more focused library or tool to solve that problem. Try to have a good understanding of how the library or tool you end up selecting *works*.
 
 
+# Part VI: The web as a platform: HTML5, APIs, oh, my!
 
 -------------------------------------------------------------------------------
-
-# Part VI: The web as a platform: HTML5, APIs, oh, my!
 
 ## HTML5 is complicated and confusing
 
@@ -604,8 +607,6 @@ He goes on to expand that these APIs usually involve:
 ## The web as platform
 
 ![Platform.html5.org](assets/images/html5-platform.jpg)
-
-* [platform.html5.org](http://platform.html5.org)
 
 ## What we've seen already
 
