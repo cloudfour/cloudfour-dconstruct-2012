@@ -62,9 +62,23 @@ Feasibility is a function of many things. In my case, I decided to do something 
 
 ## A slightly more humble plan
 
-1. Add footnotes to glossed terms and phrases and add a glossary to the end of the document.
-1. For browsers and devices that support it, use JavaScript to make glossed items tappable, and pop up the definition or note in a modal dialog or lightbox.
-1. Allow the user to save glossary entries. This is a bit contrived, but, hey, this is an example.
+![Add footnotes to glossed terms and phrases](assets/images/footnotes.png)
+
+![...and add a glossary to the end of the document](assets/images/glossary.png)
+
+## A slightly more humble plan
+
+![For browsers that support it, use JavaScript to make glossed items tappable](assets/images/tappable.png)
+
+![...and pop up definitions in a modal or lightbox-y thing](assets/images/popup.png)
+
+## A slightly more humble plan
+
+![Allow the user to save glossary entries. This is a bit contrived, but, hey, this is an example](assets/images/saved-items.png)
+
+### Hold that thought!
+
+We'll implement saved items in a little bit. First, to gloss!
 
 ## Step 1: Glossed terms and a glossary
 
@@ -81,6 +95,7 @@ Step 1 is easy enough. Just need to add some HTML markup and some styles for it.
 ~~~
 
 * Note the use of `data-gloss`. This will be used to match up `span.gloss` elements to the ID of their glossary counterparts.
+* You can see the end result in the `index.html` file in [presenter-exercises/500-glossed/index.html](presenter-exercises/500-glossed/index.html)
 
 ## Step 1: A glossary section
 
@@ -189,9 +204,7 @@ We're going to have an extravaganza of testing discussion soon.
 
 The many iterations in developing and enhancing for the mobile web often means refactoring what you already have.
 
-### Exercise
-
-* Exercise: Evaluating a typical jQuery plugin TODO
+### [Exercise: Getting to know our jQuery plugin, Messi](exercises/501-messi)
 
 ## Part A: Re-futzing our JavaScript
 
@@ -263,6 +276,8 @@ This could still be better-optimized
 
 ## Making the popups somewhat responsive
 
+![Popup windows need to be flexible in size](presenter-exercises/501-popups/images/iphone.png)
+
 So, we need to size the popups to fit different window sizes. Messi allows you to define a width for your popups:
 
 * Percentage widths seem appealing, but don't center in the window and look a bit ugly.
@@ -285,6 +300,8 @@ function viewport() {
 }
 ~~~
 
+### Further reading
+
 * [Relevant post on Quirskmode](http://www.quirksmode.org/blog/archives/2010/08/combining_media.html)
 
 ## Still more CSS brutalization
@@ -293,6 +310,10 @@ function viewport() {
 
 * The Messi CSS, even shortened, is making some assumptions about CSS layout. It uses `flexbox` or `box` layouts, which this Windows Phone browser doesn't grok.
 * I tend to find it ironic that Twitter Bootstrap gets touted as a "mobile-friendly" and "responsive" CSS framework.
+
+### Beware!
+
+* There is no international committee monitoring the fair usage of "responsive." It means...different things to different people.
 
 ## Updating our gloss.js
 
@@ -308,6 +329,8 @@ $(document).ready(function() {
   });
 });
 ~~~~
+
+`gloss.js`
 
 ## Updating our gloss.js
 
@@ -353,16 +376,18 @@ span.gloss-item:active {
 }
 ~~~
 
+`styles.css`
+
 And then update our JavaScript a teensy bit to assign the `.gloss-item` class as part of our initialization process for the glossary popups:
 
 ~~~{.javascript}
 $('.glossary ol li').each(function(index) {
-  $('span[data-gloss ="' + $(this).attr('id') + '"]').addClass('gloss-item').click(function() {
-    /* ... */
-  });
+  $('span[data-gloss ="' + $(this).attr('id') + '"]').addClass('gloss-item').click(function() { /* ... */ });
   /* ... */
 });
 ~~~
+
+`gloss.js`
 
 ## It's a start
 
@@ -842,6 +867,8 @@ Here comes some JavaScript!
 })( jQuery );
 ~~~
 
+`gloss.js`
+
 ## Test for `localStorage`
 
 * I decided to roll my own and not use a polyfill
@@ -885,6 +912,8 @@ $.fn.gloss = function() {
     }();
   }
 ~~~
+
+`gloss.js`
 
 ## CSS
 
@@ -1308,6 +1337,12 @@ When choosing a device within a given platform, consider:
     * jasmine for JS testing
 * [jQueryMobile Automated Selenium Testing](http://www.youtube.com/watch?v=51E3FWMKkig&feature=player_embedded#!)
 * The emergence of automated remote testing
+
+## More new stuff
+
+![AppThwack (Closed Beta) automated Android web screen shots](assets/images/appthwack.png)
+
+* [Screen grab of entire page of Android results](assets/images/appthwack-full.png)
 
 ## Case study: testing the Tempest project
 

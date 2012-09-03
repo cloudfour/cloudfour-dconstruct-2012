@@ -1,11 +1,11 @@
-% Exercise 3: Media queries and RWD
+% Exercise: Media queries and RWD
 
-* Add a media query to the end of `styles.css` that should apply to screens at least `50em` or wider.
-* Inside of this media query, cook up some CSS to effect the following differences for wider screens:
+1. Add a media query to the end of `styles.css` (in this directory) that should apply to screens at least `50em` or wider.
+1. Inside of this media query, cook up some CSS to effect the following differences for wider screens:
     1. Font sizes: `body` font should be `1.125em`. `h1` should be `4em`.
     1. The `.scene` layout element should `float:left`
     1. `section` elements should have a margin of `.5em 1em`
-* Add the following class-specific CSS inside of the media query:
+1. Add the following class-specific CSS inside of the media query:
 
 ~~~~{.css}
 /* Float the names of the characters speaking left

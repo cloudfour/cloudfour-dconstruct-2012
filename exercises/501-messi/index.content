@@ -1,0 +1,11 @@
+## Exercise: Take a look at Messi
+
+Messi is a jQuery plugin that creates modals and popups styled using parts of the Twitter Bootstrap CSS framework.
+
+1. Find information about the Messi jQuery plugin at <http://marcosesperon.es/apps/messi/> (he github repository is at <https://github.com/marcosesperon/Messi>)
+1. Note especially <https://github.com/marcosesperon/Messi/blob/master/messi.css> (the CSS for Messi)
+
+### For your consideration
+
+1. Do you see anything in the CSS or (slightly more advanced) JS code that might cause issues with using Messi on mobile devices?
+1. Are there other things you can think of that we might want to evaluate before using a third-party tool like Messi on mobile devices?
