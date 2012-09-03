@@ -46,12 +46,63 @@ Lyza Gardner
 </div>
 <div class="section titleslide slide level1" id="part-0-setting-the-scene"><h1 id="part-0-setting-the-scene">Part 0: Setting the scene</h1></div><div class="section slide level2" id="this-magical-web-world">
 <h1 id="this-magical-web-world">This magical web world</h1>
+<div class="figure">
+<img src="assets/images/tempest.jpg" /><p class="caption"></p>
+</div>
 <blockquote>
 <p>&quot;Be not afeard; the isle is full of noises.&quot; —<em>The Tempest</em>, Act III, Scene 2, Wm. Shakespeare</p>
 </blockquote>
-</div><div class="section slide level2" id="meet-the-devices">
+</div><div class="section slide level2" id="our-adventure-today">
+<h1 id="our-adventure-today">Our adventure today</h1>
+<ul>
+<li>Narrative adventure through an applied set of exercises</li>
+<li>Exercises involve
+<ul>
+<li>Implementation of technical details (HTML, CSS)</li>
+<li>Discussion of common motifs and paradoxes</li>
+<li>Research and learning how to research mobile web issues</li>
+<li>A bit of Shakespeare</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="based-on-the-survey...">
+<h1 id="based-on-the-survey...">Based on the survey...</h1>
+<ul>
+<li>Lots of interest
+<ul>
+<li>Content- and mobile-first thinking</li>
+<li>Testing</li>
+<li>Real-world details and examples</li>
+<li>Optimization of sites and images</li>
+</ul></li>
+<li>Moderate interest
+<ul>
+<li>Device APIs</li>
+<li>Responsive Web Design specifics</li>
+</ul></li>
+<li>Less interest
+<ul>
+<li>Frameworks</li>
+<li>Hybrid development</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="following-along-and-participating">
+<h1 id="following-along-and-participating">Following along and participating</h1>
+<ul>
+<li>You can look at your own copy of the presentation at the same time I'm giving it</li>
+<li>For exercises, you'll want:
+<ul>
+<li>A text editor</li>
+<li>A web browser or browsers</li>
+<li>A local web server (totally optional; makes <code>index.html</code> behave better and some examples work better)</li>
+</ul></li>
+<li>Team up: Some exercises are more technical, others more conceptual</li>
+</ul>
+</div>
+<div class="section titleslide slide level1" id="the-stuff-well-build"><h1 id="the-stuff-well-build">The stuff we'll build</h1></div><div class="section slide level2" id="meet-the-devices">
 <h1 id="meet-the-devices">Meet the devices!</h1>
-<p>From Cloud Four's device collection I pulled about 7 or 8 core devices that I used for testing most of the examples in today's content. Let's meet them!</p>
+<ul>
+<li>From Cloud Four's device collection I pulled about 7 or 8 core devices that I used for testing most of the examples in today's content. Let's meet them!</li>
+</ul>
 </div><div class="section slide level2" id="blackberry-8320">
 <h1 id="blackberry-8320">BlackBerry 8320</h1>
 <div class="figure">
@@ -214,9 +265,12 @@ Lyza Gardner
 <img src="assets/images/android-fragmentation.jpg" /><p class="caption"></p>
 </div>
 <ul>
-<li><a href="http://radar.oreilly.com/2010/05/mobile-operating-systems-and-b.html">Mobile operating systems still growing</a></li>
 <li>New versions released quickly</li>
+</ul>
+<h3 id="further-reading">Further reading</h3>
+<ul>
 <li><a href="http://stephanierieger.com/the-trouble-with-android/">There is no Android</a></li>
+<li><a href="http://radar.oreilly.com/2010/05/mobile-operating-systems-and-b.html">Mobile operating systems still growing</a></li>
 </ul>
 </div><div class="section slide level2" id="and-phones-are-just-one-symptom">
 <h1 id="and-phones-are-just-one-symptom">And phones are just one symptom</h1>
@@ -243,10 +297,13 @@ Lyza Gardner
 </ul>
 </div><div class="section slide level2" id="so-how-did-we-get-here">
 <h1 id="so-how-did-we-get-here">So how did we get here?</h1>
-<p>TODO: Image of how we got here</p>
+<div class="figure">
+<img src="assets/images/how-get-here.jpg" alt="A long journey" /><p class="caption">A long journey</p>
+</div>
 </div><div class="section slide level2" id="the-evolution-of-mobile-markup-and-options">
 <h1 id="the-evolution-of-mobile-markup-and-options">The evolution of mobile markup and options</h1>
-<h3 id="wml-xhtml-mp...">WML, XHTML-MP...</h3>
+<ul>
+<li>WML, XHTML-MP...the long, confusion of mobile-oriented markup
 <ul>
 <li>SGML</li>
 <li>HDML (OpenWave) -&gt; WML</li>
@@ -255,7 +312,10 @@ Lyza Gardner
 <li>XHTML-MP 1.1</li>
 <li>XHTML-MP 1.2</li>
 <li>XHTML-Basic</li>
+</ul></li>
 </ul>
+<h3 id="good-enough-for-jazz">Good enough for jazz</h3>
+<p>With the possible exception of XHTML-MP1.2 and XHTML-Basic (which are, basically, the same thing), most of these markup languages and flavors are on the way out. Don't worry too hard about them.</p>
 </div><div class="section slide level2" id="xhtml-mp">
 <h1 id="xhtml-mp">XHTML-MP</h1>
 <p>XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like experience (certainly better than WAP/WML!) tailored to a mobile environment.</p>
@@ -268,6 +328,8 @@ Lyza Gardner
 
 &lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.2//EN&quot;
 &quot;http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd&quot;&gt;</code></pre>
+<h3 id="beware-1">Beware!</h3>
+<p>You probably don't want to use any of these <code>DOCTYPE</code>s for your projects. If anything, consider the <code>DOCTYPE</code> for <a href="http://www.w3.org/TR/xhtml-basic/">XHTML-Basic</a>, which superceded XHTML-MP 1.2.</p>
 </div><div class="section slide level2" id="xhtml-mp-cont.">
 <h1 id="xhtml-mp-cont.">XHTML-MP, cont.</h1>
 <ul>
@@ -285,6 +347,7 @@ Lyza Gardner
 </ul>
 </div><div class="section slide level2" id="more-about-wml-xhtml-mp-etc.">
 <h1 id="more-about-wml-xhtml-mp-etc.">More about WML, XHTML-MP, etc.</h1>
+<h3 id="further-reading-1">Further reading</h3>
 <ul>
 <li>Gail Rahn-Frederick and Rajesh Lal's <a href="http://www.amazon.com/Beginning-Smartphone-Web-Development-Applications/dp/143022620X"><em>Beginning Smartphone Web Development</em></a> is a few years old now but has an in-depth look at the history, evolution and specifics of mobile markup and DOCTYPEs.</li>
 <li><a href="http://bit.ly/hf-mw">Jason and my book</a> covers some of this in chapter 3.</li>
@@ -296,7 +359,10 @@ Lyza Gardner
 <li>HTML5 by and large is tolerated by phones, even really old ones.</li>
 <li>No studies I know of using non-MP XHTML-variant doctypes.</li>
 </ul>
-<h4 id="good-enough-for-jazz-html5-is-usually-ok">Good enough for jazz: HTML5 is usually OK</h4>
+<h4 id="good-enough-for-jazz-1">Good enough for jazz</h4>
+<ul>
+<li>HTML5 is usually OK</li>
+</ul>
 </div><div class="section slide level2" id="informal-html5-might-cause-choking">
 <h1 id="informal-html5-might-cause-choking">Informal HTML5 might cause choking</h1>
 <ul>
@@ -324,6 +390,9 @@ Lyza Gardner
 <li>Future of content on the Web is complex</li>
 <li>Adaptability is key</li>
 <li>CMSes are the evil</li>
+</ul>
+<h3 id="further-reading-2">Further reading</h3>
+<ul>
 <li><a href="http://karenmcgrane.com/">Karen McGrane</a> is a leader in adaptive content and adaptive mobile content.</li>
 </ul>
 </div><div class="section slide level2" id="html-content-one-approach">
@@ -339,6 +408,7 @@ Lyza Gardner
 <span class="kw">&lt;p&gt;</span>Cloud Four designs and builds mobile-optimized websites and hybrid mobile applications using web technology.<span class="kw">&lt;/p&gt;</span>
 <span class="kw">&lt;p&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;services/mobile-development.html&quot;</span><span class="ot"> title=</span><span class="st">&quot;Our Mobile Development Process&quot;</span><span class="kw">&gt;</span>Building the Mobile Web<span class="kw">&lt;/a&gt;&lt;/p&gt;</span>
 <span class="kw">&lt;/section&gt;</span></code></pre>
+<h3 id="further-reading-3">Further reading</h3>
 <ul>
 <li>I gave a talk about the kind of adaptive content driving this approach at <a href="http://mobilism.nl">Mobilism 2012</a>. See my deck <a href="https://speakerdeck.com/u/lyzadanger/p/cutting-through-the-crap-the-essence-of-content-on-the-future-web">Cutting Through the Crap: The Essence of Content on the Future Web</a></li>
 <li><a href="http://cloudfour.com">Cloud Four's current site</a> is built in this way.</li>
@@ -381,6 +451,7 @@ Lyza Gardner
 </ul>
 </div><div class="section slide level2" id="learn-more-about-content-and-the-future">
 <h1 id="learn-more-about-content-and-the-future">Learn more about content and the future</h1>
+<h3 id="further-reading-4">Further reading</h3>
 <ul>
 <li>A nice post from <a href="http://adactio.com/journal">Jeremy Keith</a> from last year about <a href="http://adactio.com/journal/4523/">content first</a></li>
 <li>Coverage from <a href="http://www.lukew.com/">Luke Wroblewski</a> of Jeffrey Zeldman's <a href="http://www.lukew.com/ff/entry.asp?1430">&quot;Content First&quot;</a> presentation at <a href="http://aneventapart.com/2011/dc/">An Event Apart October 2011</a>.</li>
@@ -412,15 +483,15 @@ Lyza Gardner
 </ul>
 </div><div class="section slide level2" id="basic-support-is-good">
 <h1 id="basic-support-is-good">Basic support is good</h1>
+<h3 id="further-reading-5">Further reading</h3>
 <ul>
-<li>There is a CSS-MP to go along with XHTML-MP</li>
-<li>But we're going to move beyond that...</li>
+<li>There is a <a href="http://www.w3.org/TR/css-mobile/">CSS-MP</a> to go along with XHTML-MP...But we're going to move beyond that...</li>
 </ul>
-<h4 id="good-enough-for-jazz">Good enough for jazz</h4>
+<h4 id="good-enough-for-jazz-2">Good enough for jazz</h4>
 <ul>
 <li>Basic support is good but not infallible</li>
 </ul>
-<h4 id="beware-1">Beware!</h4>
+<h4 id="beware-2">Beware!</h4>
 <ul>
 <li>As we start thinking about adding some basic CSS, keep in mind these challenging areas in older devices/browsers. They can trip you up:
 <ul>
@@ -484,19 +555,25 @@ Lyza Gardner
 </ul>
 <h4 id="rule-of-thumb">Rule of thumb</h4>
 <p>This is a pretty decent default <code>viewport</code> tag. Like everything on the mobile web, it's not bulletproof, but it's a good template.</p>
+<h3 id="further-reading-6">Further reading</h3>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag">Page on Mozilla Developer Network (MDN) about viewport tags</a></li>
 </ul>
 </div><div class="section slide level2" id="viewports-are-fun">
 <h1 id="viewports-are-fun">Viewports are &quot;fun&quot;</h1>
 <ul>
-<li>Certain mobile browsers are less...accurate...about viewport tag adherence</li>
+<li>Certain mobile browsers are less...accurate...about viewport tag adherence
+<ul>
 <li>Known culprits include some Samsung Galaxy phones in the US (Android)</li>
+</ul></li>
 <li>There is ongoing angst over disabling user zoom via the <code>maximum-scale=1</code> and/or <code>user-scalable=no</code> attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.</li>
+</ul>
+<h3 id="further-reading-7">Further reading</h3>
+<ul>
 <li>Oh, turns out there is a <a href="http://stackoverflow.com/questions/9374611/why-is-the-viewport-tag-on-the-galaxy-nexus-android-4-not-working">Stack Overflow post of someone else running into the viewport fun on the Galaxy Nexus</a></li>
 <li>Jeremy Keith has <a href="http://adactio.com/journal/4470/">something to say on the topic</a></li>
 </ul>
-<h3 id="ugh-moment">Ugh moment</h3>
+<h3 id="real-world-moment-1">Real world moment</h3>
 </div><div class="section slide level2" id="starting-from-a-slightly-more-level-playing-field">
 <h1 id="starting-from-a-slightly-more-level-playing-field">Starting from a slightly more level playing field</h1>
 <ul>
@@ -517,10 +594,6 @@ Lyza Gardner
 <div class="figure">
 <img src="assets/images/baseline.png" /><p class="caption"></p>
 </div>
-<h4 id="rule-of-thumb-1">Rule of thumb</h4>
-<ul>
-<li>font reset</li>
-</ul>
 </div><div class="section slide level2" id="the-variations-abound">
 <h1 id="the-variations-abound">The variations abound!</h1>
 <div class="figure">
@@ -537,12 +610,16 @@ Lyza Gardner
 </ul></li>
 <li>DOCTYPES: Somewhat confusingly, different DOCTYPEs can cause some browsers to use different CSS layout algorithms. Example: Opera Mini's box model is slightly different in XHTML-MP vs. HTML5.</li>
 <li>HTML <code>title</code>s. Display of a web page's title differs in different mobile browsers and is usually limited in space. Make sure to put the most information first.</li>
+</ul>
+</div><div class="section slide level2" id="baseline-differences">
+<h1 id="baseline-differences">Baseline differences</h1>
+<h3 id="further-reading-8">Further reading</h3>
+<ul>
 <li>I talk a bit about the Kindle Touch's font size differences in <a href="http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/">this post on our blog</a>.</li>
 <li>There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of <a href="http://bit.ly/hf-mw">our book</a></li>
 </ul>
-</div><div class="section slide level2" id="getting-our-baseline-in-order">
-<h1 id="getting-our-baseline-in-order">Getting our baseline in order</h1>
-<h3 id="exercise-getting-ur-baselines-going"><a href="exercises/102-baseline">Exercise! Getting ur baselines going</a></h3>
+<h3 id="getting-our-baseline-in-order">Getting our baseline in order</h3>
+<h4 id="exercise-getting-ur-baselines-going"><a href="exercises/102-baseline">Exercise! Getting ur baselines going</a></h4>
 <p>After you're done, you can see the end result I got to in <a href="presenter-exercises/102-baseline/tempest.html">presenter-exercises/102-baseline/tempest.html</a>.</p>
 </div><div class="section slide level2" id="baselines">
 <h1 id="baselines">Baselines</h1>
@@ -553,10 +630,8 @@ Lyza Gardner
 <li>Note the lack of any margins/padding on the <code>&lt;section&gt;</code> elements. This older (4.5) BlackBerry doesn't understand the new HTML5 semantic elements and isn't applying any styles to them.</li>
 <li>My updated <code>title</code> means that even though some of it is getting cut off, we still see the most relevant pieces first.</li>
 </ul>
-<h4 id="hold-that-thought-3">Hold that thought</h4>
-<ul>
-<li>HTML5 support in older browsers</li>
-</ul>
+<h3 id="hold-that-thought-3">Hold that thought</h3>
+<p>HTML5 support in legacy browsers</p>
 </div><div class="section slide level2" id="baselines-1">
 <h1 id="baselines-1">Baselines</h1>
 <div class="figure">
@@ -632,6 +707,8 @@ Lyza Gardner
 <li>Dull and bland</li>
 <li>Lines are too wide</li>
 </ul>
+<h3 id="real-world-moment-2">Real world moment</h3>
+<p>A single-size, lowest-common-denominator approach to the web can be sad.</p>
 </div><div class="section slide level2" id="i-want-to-do-more">
 <h1 id="i-want-to-do-more">I want to do more</h1>
 <div class="figure">
@@ -644,7 +721,8 @@ Lyza Gardner
 <li>Adding an illustration</li>
 </ol>
 <p>I want to maximize this experience. I'm tired of looking at something so boring!</p>
-</div><div class="section slide level2" id="enhancing...">
+</div>
+<div class="section titleslide slide level1" id="so-i-run-off-and-whip-up-a-bunch-of-css-and-stuff"><h1 id="so-i-run-off-and-whip-up-a-bunch-of-css-and-stuff">So I run off and whip up a bunch of CSS and stuff</h1></div><div class="section slide level2" id="enhancing...">
 <h1 id="enhancing...">Enhancing...</h1>
 <div class="figure">
 <img src="assets/images/desktop-enhance-2.jpg" /><p class="caption"></p>
@@ -701,7 +779,10 @@ span<span class="fl">.song</span>         <span class="kw">{</span> <span class=
 <p>We use techniques to make our websites <em>adaptive</em>.</p>
 <h3 id="for-your-consideration-2">For your consideration</h3>
 <p>What do you think? Do you prefer <em>mobile-first</em>, <em>content-first</em> or <em>baseline-first</em> to describe this kind of philosophy?</p>
-<h4 id="hold-that-thought-separate-mobile-sitescontent-differentiation">Hold that thought: Separate mobile sites/content differentiation</h4>
+<h4 id="hold-that-thought-5">Hold that thought</h4>
+<ul>
+<li>Separate mobile sites/content differentiation</li>
+</ul>
 </div><div class="section slide level2" id="responsive-web-design-rwd">
 <h1 id="responsive-web-design-rwd">Responsive Web Design (RWD)</h1>
 <p><strong>Responsive Web Design (RWD)</strong> is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure. <em>Responsive Web Design</em> was coined by Ethan Marcotte.</p>
@@ -729,7 +810,7 @@ span<span class="fl">.song</span>         <span class="kw">{</span> <span class=
   <span class="kw">width</span> <span class="kw">:</span> <span class="dt">600px</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p>Recall that I was working in a hurry, so this isn't exactly masterful CSS, folks.</p>
-<h4 id="rule-of-thumb-2">Rule of thumb</h4>
+<h4 id="rule-of-thumb-1">Rule of thumb</h4>
 <p>Layout elements defined with specific pixel widths tend to be anathema to responsive/adaptive layouts.</p>
 </div><div class="section slide level2" id="recall-viewports">
 <h1 id="recall-viewports">Recall viewports?</h1>
@@ -797,7 +878,9 @@ h1 <span class="kw">{</span>
 </div><div class="section slide level2" id="a-more-complicated-example">
 <h1 id="a-more-complicated-example">A more complicated example</h1>
 <h3 id="for-your-consideration-3">For your consideration</h3>
-<p>TODO: Graphic of challenging fluid conversion</p>
+<div class="figure">
+<img src="assets/images/complex-fluid.jpg" /><p class="caption"></p>
+</div>
 </div><div class="section slide level2" id="in-our-case-a-simple-change">
 <h1 id="in-our-case-a-simple-change">In our case, a simple change</h1>
 <ul>
@@ -812,8 +895,7 @@ h1 <span class="kw">{</span>
 <li><code>.illustrations = 30%</code></li>
 </ul></li>
 </ul>
-<h4 id="bleh">BLEH</h4>
-<p>Ugly math:</p>
+<h3 id="real-world-moment-3">Real world moment</h3>
 <ul>
 <li>My fixed layout wasn't very proportional in the first place, eh?</li>
 <li><em>To round or not to round?</em> I round.</li>
@@ -859,7 +941,7 @@ h1 <span class="kw">{</span>
 <span class="kw">}</span></code></pre>
 <h4 id="pro-tip-2">Pro Tip</h4>
 <p>It really is this easy to add flexible images and objects to your web layouts. Do it!</p>
-<h4 id="beware-2">Beware!</h4>
+<h4 id="beware-3">Beware!</h4>
 <p>You cannot use <code>width</code> or <code>height</code> attributes on <code>img</code> tags that need to scale flexibly in this manner.</p>
 </div><div class="section slide level2" id="and...">
 <h1 id="and...">And...?</h1>
@@ -892,7 +974,6 @@ h1 <span class="kw">{</span>
 <li>This affects the box model layout widths of our fluid elements and causes the wrap you see on narrow screens.</li>
 <li><em>We need to stop, catch our breath, and think about things a bit differently.</em></li>
 </ul>
-<h3 id="theme-content">Theme: Content</h3>
 </div><div class="section slide level2" id="letting-the-content-dictate-our-flow">
 <h1 id="letting-the-content-dictate-our-flow">Letting the content dictate our flow</h1>
 <div class="figure">
@@ -913,7 +994,6 @@ h1 <span class="kw">{</span>
 </ol>
 <p><strong>In that order</strong></p>
 <p>We achieved much of the first goal in our first baseline layout but have since then not kept to the list of priorities...</p>
-<h4 id="theme-content-1">Theme: Content</h4>
 </div><div class="section slide level2" id="lets-get-content-first-on-this-thing">
 <h1 id="lets-get-content-first-on-this-thing">Let's get content-first on this thing</h1>
 <ol style="list-style-type: decimal">
@@ -921,7 +1001,10 @@ h1 <span class="kw">{</span>
 <li>Build our baseline by enhancing our existing baseline</li>
 <li>Take advantage of RWD's third tenet (Media Queries) to apply different layouts to different environments</li>
 </ol>
-<h4 id="beware-proportional-layouts-on-their-own-cant-get-us-all-the-way-there">Beware! Proportional layouts on their own can't get us all the way there</h4>
+<h4 id="beware-4">Beware!</h4>
+<ul>
+<li>Proportional layouts on their own can't get us all the way there</li>
+</ul>
 </div><div class="section slide level2" id="we-dont-have-to-start-over">
 <h1 id="we-dont-have-to-start-over">We don't have to start over</h1>
 <ul>
@@ -1215,7 +1298,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul></li>
 <li>Respond is faster, but only contains a subset of CSS support. Start with it.</li>
 </ul>
-<h4 id="beware-3">Beware!</h4>
+<h4 id="beware-5">Beware!</h4>
 <ul>
 <li>Advanced performance note: <a href="http://www.phpied.com/conditional-comments-block-downloads/">IE conditional tags can block downloads, hampering performance</a></li>
 </ul>
@@ -1231,7 +1314,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   <span class="kw">&lt;title&gt;</span>The Tempest: Act 3, Sc. 2 | Shakespeare<span class="kw">&lt;/title&gt;</span>
 <span class="kw">&lt;/head&gt;</span></code></pre>
 <p><code>ie.css</code> contains the same CSS as is inside the media query.</p>
-<h3 id="real-world-moment-1">Real world moment</h3>
+<h3 id="real-world-moment-4">Real world moment</h3>
 <p>Yep, in our reality, we often still have to make special exceptions for IE browsers.</p>
 </div><div class="section slide level2" id="um.">
 <h1 id="um.">Um.</h1>
@@ -1316,7 +1399,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>I usually use the full/dev version for development, and then <a href="http://modernizr.com/download/">build a version</a> that only contains the tests I need</li>
 <li>Sometimes Modernizr is overkill</li>
 </ul>
-<h4 id="hold-that-thought-5">Hold that thought!</h4>
+<h4 id="hold-that-thought-6">Hold that thought!</h4>
 <p>We'll come back to <code>Modernizr.load()</code></p>
 </div><div class="section slide level2" id="font-squirrel">
 <h1 id="font-squirrel">Font Squirrel</h1>
@@ -1359,7 +1442,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Yes, this is true, but so what?</li>
 <li>On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users</li>
 </ul>
-<h4 id="rule-of-thumb-3">Rule of thumb</h4>
+<h4 id="rule-of-thumb-2">Rule of thumb</h4>
 <p>Common sense tells us that <em>overall</em> mobile users have more likelihood of slower, more expensive connections.</p>
 </div><div class="section slide level2" id="why-are-these-sites-so-big">
 <h1 id="why-are-these-sites-so-big">Why are these sites so big?</h1>
@@ -1539,7 +1622,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li><code>src</code> in <code>img</code> tag considered canonical.</li>
 <li>Named/classed media queries keep presentational media query syntax out of the markup (and have other benefits, IMHO!).</li>
 </ol>
-<h4 id="beware-4">Beware!</h4>
+<h4 id="beware-6">Beware!</h4>
 <p>This is a product of my imagination and probably represents a syntax that would conflict with older browsers, etc.</p>
 </div><div class="section slide level2" id="other-rwd-challenges">
 <h1 id="other-rwd-challenges">Other RWD Challenges</h1>
@@ -1565,7 +1648,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>What does it mean if a particular feature-testing tool reports that the <code>canvas</code> tag is supported?</li>
 <li>And even if <code>@font-face</code> is supported, should we send (potentially large) font files to mobile users?</li>
 </ul>
-<h4 id="beware-5">Beware!</h4>
+<h4 id="beware-7">Beware!</h4>
 <p>Don't get lulled into a false sense of clarity or confidence about feature testing.</p>
 </div><div class="section slide level2" id="rude-awakening-blackberry-style">
 <h1 id="rude-awakening-blackberry-style">Rude awakening, BlackBerry style</h1>
@@ -1594,7 +1677,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Used Modernizr to test for @font-face support</li>
 <li>And this is what it looks like on a BB 9810</li>
 </ul>
-<h4 id="rule-of-thumb-4">Rule of thumb</h4>
+<h4 id="rule-of-thumb-3">Rule of thumb</h4>
 <ul>
 <li>Font support on mobile is very challenging. Be wary.</li>
 </ul>
@@ -1754,7 +1837,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   }
 ]);
 &lt;/script&gt;</code></pre>
-<h3 id="ugh-moment-1">Ugh moment</h3>
+<h3 id="real-world-moment-5">Real world moment</h3>
 <p>Note that we're repeating our media query verbatim. Not great, but...options are limited these days.</p>
 </div><div class="section slide level2" id="and-our-jquery...">
 <h1 id="and-our-jquery...">And our jQuery...</h1>

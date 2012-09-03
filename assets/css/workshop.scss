@@ -1,5 +1,6 @@
 @import 'common';
 
+.slide {
 ol {
   counter-reset: orderedlist; }
   ol li {
@@ -13,7 +14,7 @@ ol {
       padding: .5em .8em;
       border-radius: 1.75em;
       margin: 1em 1em 1em -1em; }
-
+}
 div.slide ul li ol li, ul li ol li {
   background-image: none;
 }
@@ -103,11 +104,11 @@ div.figure {
   }
   p.caption {
     height: 20%;
+    font-weight: 100;
   }
 }
 
 div.slide.figures {
-
 }
 
 div.slide.figures-1 {
@@ -153,4 +154,45 @@ div.slide.figures-3 {
     width: 30%;
     float: left;
   }
+}
+
+h3[id^='real-world-moment'], h4[id^='real-world-moment'], h5[id^='real-world-moment'],
+h3[id^='good-enough-for'], h4[id^='good-enough-for'], h5[id^='good-enough-for'],
+h3[id^='hold-that-thought'], h4[id^='hold-that-thought'],  h5[id^='hold-that-thought'],
+h3[id^='pro-tip'], h4[id^='pro-tip'], h5[id^='pro-tip'],
+h3[id^='beware'], h4[id^='beware'], h5[id^='beware'],
+h3[id^='rule-of-thumb'], h4[id^='rule-of-thumb'], h5[id^='rule-of-thumb'],
+h3[id^='further-reading'], h34[id^='further-reading'], h5[id^='further-reading'] {
+  display: inline-block;
+  width: 30%;
+  margin-left: -3%;
+  color: $color-background-pale;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  padding: .25em .25em .25em 2em;
+  clear: left;
+}
+h3[id^='real-world-moment'], h4[id^='real-world-moment'], h5[id^='real-world-moment'] {
+  background-color: $color-green;
+}
+h3[id^='good-enough-for'], h4[id^='good-enough-for'], h5[id^='good-enough-for'] {
+  background-color: $color-purple;
+}
+h3[id^='hold-that-thought'], h4[id^='hold-that-thought'],  h5[id^='hold-that-thought'] {
+  background-color: $color-blue;
+}
+h3[id^='pro-tip'], h4[id^='pro-tip'], h5[id^='pro-tip'] {
+  background-color: $color-brown;
+}
+h3[id^='beware'], h4[id^='beware'], h5[id^='beware'] {
+  background-color: $color-red;
+}
+h3[id^='rule-of-thumb'], h4[id^='rule-of-thumb'], h5[id^='rule-of-thumb'] {
+  background-color: $color-yellow;
+  color: $color-text;
+}
+
+h3[id^='further-reading'], h34[id^='further-reading'], h5[id^='further-reading'] {
+  background-color: $color-text;
+  color: $color-background-pale;
 }

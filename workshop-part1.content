@@ -8,11 +8,47 @@
 
 ## This magical web world
 
+![](assets/images/tempest.jpg)
+
 > "Be not afeard; the isle is full of noises." —*The Tempest*, Act III, Scene 2, Wm. Shakespeare
+
+## Our adventure today
+
+* Narrative adventure through an applied set of exercises
+* Exercises involve
+    * Implementation of technical details (HTML, CSS)
+    * Discussion of common motifs and paradoxes
+    * Research and learning how to research mobile web issues
+    * A bit of Shakespeare
+
+## Based on the survey...
+
+* Lots of interest
+    * Content- and mobile-first thinking
+    * Testing
+    * Real-world details and examples
+    * Optimization of sites and images
+* Moderate interest
+    * Device APIs
+    * Responsive Web Design specifics
+* Less interest
+    * Frameworks
+    * Hybrid development
+
+## Following along and participating
+
+* You can look at your own copy of the presentation at the same time I'm giving it
+* For exercises, you'll want:
+    * A text editor
+    * A web browser or browsers
+    * A local web server (totally optional; makes `index.html` behave better and some examples work better)
+* Team up: Some exercises are more technical, others more conceptual
+
+# The stuff we'll build
 
 ## Meet the devices!
 
-From Cloud Four's device collection I pulled about 7 or 8 core devices that I used for testing most of the examples in today's content. Let's meet them!
+* From Cloud Four's device collection I pulled about 7 or 8 core devices that I used for testing most of the examples in today's content. Let's meet them!
 
 ## BlackBerry 8320
 
@@ -162,9 +198,12 @@ It's not all smartphones out there!
 
 ![](assets/images/android-fragmentation.jpg)
 
-* [Mobile operating systems still growing](http://radar.oreilly.com/2010/05/mobile-operating-systems-and-b.html)
 * New versions released quickly
+
+### Further reading
+
 * [There is no Android](http://stephanierieger.com/the-trouble-with-android/)
+* [Mobile operating systems still growing](http://radar.oreilly.com/2010/05/mobile-operating-systems-and-b.html)
 
 ## And phones are just one symptom
 
@@ -189,19 +228,22 @@ It's not all smartphones out there!
 
 ## So how did we get here?
 
-TODO: Image of how we got here
+![A long journey](assets/images/how-get-here.jpg)
 
 ## The evolution of mobile markup and options
 
-### WML, XHTML-MP...
+* WML, XHTML-MP...the long, confusion of mobile-oriented markup
+    * SGML
+    * HDML (OpenWave) -> WML
+    * HTML/XHTML
+    * cHTML (Compact HTML/iMode)
+    * XHTML-MP 1.1
+    * XHTML-MP 1.2
+    * XHTML-Basic
 
-* SGML
-* HDML (OpenWave) -> WML
-* HTML/XHTML
-* cHTML (Compact HTML/iMode)
-* XHTML-MP 1.1
-* XHTML-MP 1.2
-* XHTML-Basic
+### Good enough for jazz
+
+With the possible exception of XHTML-MP1.2 and XHTML-Basic (which are, basically, the same thing), most of these markup languages and flavors are on the way out. Don't worry too hard about them.
 
 ## XHTML-MP
 
@@ -219,6 +261,11 @@ XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN"
 "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
 ~~~
+
+### Beware!
+
+You probably don't want to use any of these `DOCTYPE`s for your projects. If anything, consider the `DOCTYPE` for [XHTML-Basic](http://www.w3.org/TR/xhtml-basic/), which superceded XHTML-MP 1.2.
+
 
 -------------------------------------------------------------------------------
 
@@ -239,6 +286,8 @@ XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like
 
 ## More about WML, XHTML-MP, etc.
 
+### Further reading
+
 * Gail Rahn-Frederick and Rajesh Lal's [*Beginning Smartphone Web Development*][rahn-frederick] is a few years old now but has an in-depth look at the history, evolution and specifics of mobile markup and DOCTYPEs.
 * [Jason and my book][hfmw] covers some of this in chapter 3.
 * Lynda.com ["History of Mobile Markup Languages" on YouTube][history-markup] is a great little summary. I think it *might* swap XHTML-MP and XHTML-Basic in the timeline, but, really, these things are pretty complex.
@@ -250,7 +299,9 @@ XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like
 * HTML5 by and large is tolerated by phones, even really old ones.
 * No studies I know of using non-MP XHTML-variant doctypes.
 
-#### Good enough for jazz: HTML5 is usually OK
+#### Good enough for jazz
+
+* HTML5 is usually OK
 
 
 ## Informal HTML5 might cause choking
@@ -286,6 +337,9 @@ HTML5 is acceptable for most things, these days.
 * Future of content on the Web is complex
 * Adaptability is key
 * CMSes are the evil
+
+### Further reading
+
 * [Karen McGrane][mcgrane] is a leader in adaptive content and adaptive mobile content.
 
 -------------------------------------------------------------------------------
@@ -306,6 +360,8 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 <p><a href="services/mobile-development.html" title="Our Mobile Development Process">Building the Mobile Web</a></p>
 </section>
 ~~~
+
+### Further reading
 
 * I gave a talk about the kind of adaptive content driving this approach at [Mobilism 2012][mobilism]. See my deck [Cutting Through the Crap: The Essence of Content on the Future Web][cut-crap]
 * [Cloud Four's current site](http://cloudfour.com) is built in this way.
@@ -353,6 +409,8 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 
 ## Learn more about content and the future
 
+### Further reading
+
 * A nice post from [Jeremy Keith][adactio] from last year about [content first][adactio-content-first]
 * Coverage from [Luke Wroblewski][lukew] of Jeffrey Zeldman's ["Content First"][lukew-aea-content-first] presentation at [An Event Apart October 2011][aea-oct-12].
 * Stephen Hay's talk [Structured Content First][stephenhay-structured-content] is another perspective.
@@ -393,8 +451,9 @@ There is no styling, no nothing on this page so far. And yet, if you explore it 
 
 ## Basic support is good
 
-* There is a CSS-MP to go along with XHTML-MP
-* But we're going to move beyond that...
+### Further reading
+
+* There is a [CSS-MP](http://www.w3.org/TR/css-mobile/) to go along with XHTML-MP...But we're going to move beyond that...
 
 #### Good enough for jazz
 
@@ -466,17 +525,22 @@ Why does this simple HTML page look so different in different mobile browsers?
 
 This is a pretty decent default `viewport` tag. Like everything on the mobile web, it's not bulletproof, but it's a good template.
 
+### Further reading
+
 * [Page on Mozilla Developer Network (MDN) about viewport tags](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag)
 
 ## Viewports are "fun"
 
 * Certain mobile browsers are less...accurate...about viewport tag adherence
-* Known culprits include some Samsung Galaxy phones in the US (Android)
+    * Known culprits include some Samsung Galaxy phones in the US (Android)
 * There is ongoing angst over disabling user zoom via the `maximum-scale=1` and/or `user-scalable=no` attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.
+
+### Further reading
+
 * Oh, turns out there is a [Stack Overflow post of someone else running into the viewport fun on the Galaxy Nexus](http://stackoverflow.com/questions/9374611/why-is-the-viewport-tag-on-the-galaxy-nexus-android-4-not-working)
 * Jeremy Keith has [something to say on the topic](http://adactio.com/journal/4470/)
 
-### Ugh moment
+### Real world moment
 
 -------------------------------------------------------------------------------
 
@@ -501,10 +565,6 @@ By resetting our CSS and normalizing our viewport, we bring disparate browsers m
 
 ![](assets/images/baseline.png)
 
-#### Rule of thumb
-
-* font reset
-
 -------------------------------------------------------------------------------
 
 ## The variations abound!
@@ -521,13 +581,18 @@ It's a bit difficult to tell from this not-so-great photo, but the background co
     * Devices often have a very limited set of system fonts. e.g. Windows phones have a number of Windows-Phone-specific fonts that are rather decent-looking but different from our familiar Georgia and Helvetica (etc.).
 * DOCTYPES: Somewhat confusingly, different DOCTYPEs can cause some browsers to use different CSS layout algorithms. Example: Opera Mini's box model is slightly different in XHTML-MP vs. HTML5.
 * HTML `title`s. Display of a web page's title differs in different mobile browsers and is usually limited in space. Make sure to put the most information first.
+
+## Baseline differences
+
+### Further reading
+
 * I talk a bit about the Kindle Touch's font size differences in [this post on our blog](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/).
 * There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of [our book](http://bit.ly/hf-mw)
 
 
-## Getting our baseline in order
+### Getting our baseline in order
 
-### [Exercise! Getting ur baselines going](exercises/102-baseline)
+#### [Exercise! Getting ur baselines going](exercises/102-baseline)
 
 
 After you're done, you can see the end result I got to in [presenter-exercises/102-baseline/tempest.html](presenter-exercises/102-baseline/tempest.html).
@@ -539,9 +604,9 @@ After you're done, you can see the end result I got to in [presenter-exercises/1
 * Note the lack of any margins/padding on the `<section>` elements. This older (4.5) BlackBerry doesn't understand the new HTML5 semantic elements and isn't applying any styles to them.
 * My updated `title` means that even though some of it is getting cut off, we still see the most relevant pieces first.
 
-#### Hold that thought
+### Hold that thought
 
-* HTML5 support in older browsers
+HTML5 support in legacy browsers
 
 -------------------------------------------------------------------------------
 
@@ -606,6 +671,7 @@ After you're done, you can see the end result I got to in [presenter-exercises/1
 * What does the word *device* mean? *Browser*? *Client*? *User agent*? How does our usage of these terms cause confusion?
 * How many of the differences spotted did you anticipate? What surprised you?
 
+
 # Part II: Towards an Adaptive Web
 
 --------------------------------------------------------------------------
@@ -619,6 +685,10 @@ After you're done, you can see the end result I got to in [presenter-exercises/1
 * Dull and bland
 * Lines are too wide
 
+### Real world moment
+
+A single-size, lowest-common-denominator approach to the web can be sad.
+
 ## I want to do more
 
 ![](assets/images/desktop-enhance.jpg)
@@ -630,6 +700,8 @@ After you're done, you can see the end result I got to in [presenter-exercises/1
 3. Adding an illustration
 
 I want to maximize this experience. I'm tired of looking at something so boring!
+
+# So I run off and whip up a bunch of CSS and stuff
 
 ## Enhancing...
 
@@ -693,7 +765,9 @@ We use techniques to make our websites *adaptive*.
 
 What do you think? Do you prefer *mobile-first*, *content-first* or *baseline-first* to describe this kind of philosophy?
 
-#### Hold that thought: Separate mobile sites/content differentiation
+#### Hold that thought
+
+* Separate mobile sites/content differentiation
 
 ## Responsive Web Design (RWD)
 
@@ -797,7 +871,7 @@ h1 {
 
 ### For your consideration
 
-TODO: Graphic of challenging fluid conversion
+![](assets/images/complex-fluid.jpg)
 
 ## In our case, a simple change
 
@@ -808,9 +882,7 @@ TODO: Graphic of challenging fluid conversion
     * `section.illustrations` doesn't currently have a width set. Let's do this:
     * `.illustrations = 30%`
 
-#### BLEH
-
-Ugly math:
+### Real world moment
 
 * My fixed layout wasn't very proportional in the first place, eh?
 * *To round or not to round?* I round.
@@ -893,8 +965,6 @@ You cannot use `width` or `height` attributes on `img` tags that need to scale f
 * This affects the box model layout widths of our fluid elements and causes the wrap you see on narrow screens.
 * *We need to stop, catch our breath, and think about things a bit differently.*
 
-### Theme: Content
-
 ## Letting the content dictate our flow
 
 ![](presenter-exercises/201-proportional/images/narrow2.png)
@@ -914,7 +984,6 @@ You cannot use `width` or `height` attributes on `img` tags that need to scale f
 
 We achieved much of the first goal in our first baseline layout but have since then not kept to the list of priorities...
 
-#### Theme: Content
 
 ## Let's get content-first on this thing
 
@@ -922,7 +991,9 @@ We achieved much of the first goal in our first baseline layout but have since t
 1. Build our baseline by enhancing our existing baseline
 1. Take advantage of RWD's third tenet (Media Queries) to apply different layouts to different environments
 
-#### Beware! Proportional layouts on their own can't get us all the way there
+#### Beware!
+
+* Proportional layouts on their own can't get us all the way there
 
 ## We don't have to start over
 
@@ -1734,7 +1805,7 @@ Modernizr.load([
 </script>
 ~~~~
 
-### Ugh moment
+### Real world moment
 
 Note that we're repeating our media query verbatim. Not great, but...options are limited these days.
 
