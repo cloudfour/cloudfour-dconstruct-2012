@@ -109,7 +109,7 @@ div.slide ul ul li {
   padding-left: 0;
 }
 
-div.slide.titleslide {
+body.singleslide div.slide.titleslide {
   position: absolute;
 }
 

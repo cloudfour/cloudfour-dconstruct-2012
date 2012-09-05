@@ -116,6 +116,14 @@ Lyza Gardner
 </div>
 <h3 id="hold-that-thought">Hold that thought!</h3>
 <p>We'll implement saved items in a little bit. First, to gloss!</p>
+</div><div class="section slide level2" id="building-our-do-something-web-thing">
+<h1 id="building-our-do-something-web-thing">Building our do-something web thing</h1>
+<p>There are three steps to making our enhanced Shakespeare:</p>
+<ol style="list-style-type: decimal">
+<li>Add HTML markup and basic styling (this section)</li>
+<li>Enhance with pop-up definitions and a prototype of the save-glosses process (this section)</li>
+<li>Implement the saving of glossary items (next section)</li>
+</ol>
 </div><div class="section slide level2" id="step-1-glossed-terms-and-a-glossary">
 <h1 id="step-1-glossed-terms-and-a-glossary">Step 1: Glossed terms and a glossary</h1>
 <p>Step 1 is easy enough. Just need to add some HTML markup and some styles for it.</p>
@@ -185,13 +193,20 @@ sup <span class="kw">{</span>
     <span class="kw">column-gap</span>          <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
+</div><div class="section slide level2" id="css-columns">
+<h1 id="css-columns">CSS-Columns</h1>
 <h3 id="for-your-consideration-1">For your consideration</h3>
 <ul>
 <li>Why didn't I use the CSS Columns test in Modernizr before using this style?</li>
 <li>Do you know of any other CSS modules or new features I could have used to do the layout for this section?</li>
 </ul>
-</div><div class="section slide level2" id="and-now-we-have-our-baseline">
-<h1 id="and-now-we-have-our-baseline">And now we have our baseline</h1>
+<h3 id="further-reading">Further reading</h3>
+<ul>
+<li><a href="http://www.quirksmode.org/css/multicolumn.html">CSS3-Columns post on quirksmode</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/CSS/columns">Columns page on Mozilla Developer Network</a></li>
+</ul>
+</div><div class="section slide level2" id="and-now-we-have-our-baseline-step-1-is-complete">
+<h1 id="and-now-we-have-our-baseline-step-1-is-complete">And now we have our baseline (Step 1 is complete!)</h1>
 <p>At this point, we stop and test on our supported devices*.</p>
 <p>* I should note that, while developing the markup and styles for this example, I did find a problem in test. I had initially set a <code>width: 100%</code> on the <code>section.glossary</code> element. My <code>section</code> styles already had a padding on them, and this broke the box model and caused horizontal scrolling. C'est la vie. Easily fixed when caught at this stage. Test, iterate, test. Often.</p>
 <p><a href="presenter-exercises/500-glossed/tempest.html">Our glossed items, baseline markup</a></p>
@@ -248,14 +263,10 @@ sup <span class="kw">{</span>
     }
   });
 <span class="kw">&lt;/script&gt;</span></code></pre>
-<ol style="list-style-type: decimal">
-<li>Including jQuery for everyone</li>
-<li>Creating JavaScript for glossary items (<code>gloss.js</code>)</li>
-<li>Line-number jQuery still here</li>
-</ol>
+<p><code>tempest.html</code></p>
+<p><em>. Including jQuery for everyone</em>. Creating JavaScript for glossary items (<code>gloss.js</code>) *. Line-number jQuery still here</p>
 </div><div class="section slide level2" id="part-b-and-c-messi-jquery-plugin-glossary-javascript">
 <h1 id="part-b-and-c-messi-jquery-plugin-glossary-javascript">Part B and C: Messi jQuery Plugin, Glossary JavaScript</h1>
-<h4 id="gloss.js"><code>gloss.js</code></h4>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> Messi(a,b) { ... } <span class="co">/* Minified Messi JS */</span>
 
 $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
@@ -266,6 +277,7 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
     });
   });
 });</code></pre>
+<p><code>gloss.js</code></p>
 <p>Finally, added a bunch of styles to the end of <code>styles.css</code>: Messi's CSS.</p>
 </div><div class="section slide level2" id="putting-this-stuff-together">
 <h1 id="putting-this-stuff-together">Putting this stuff together</h1>
@@ -323,7 +335,7 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
          <span class="dt">height</span>: <span class="kw">window</span>.<span class="fu">innerHeight</span> || 
           (<span class="kw">document</span>.<span class="fu">documentElement</span> || <span class="kw">document</span>.<span class="fu">body</span>).<span class="fu">clientHeight</span>};
 }</code></pre>
-<h3 id="further-reading">Further reading</h3>
+<h3 id="further-reading-1">Further reading</h3>
 <ul>
 <li><a href="http://www.quirksmode.org/blog/archives/2010/08/combining_media.html">Relevant post on Quirskmode</a></li>
 </ul>
@@ -435,6 +447,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>We used a small JS function to determine viewport width to help us decide how wide to make the Messi popup modal</li>
 <li>We adjusted styling for wider screens</li>
 </ol>
+<h3 id="good-enough-for-jazz-1">Good enough for jazz</h3>
+<p>Sure, at the end of step 2 here, we're not done implementing the saved-gloss feature, and some of our edges are rough. But prototype steps like this are important in the process of developing for the mobile—or any—web.</p>
 </div><div class="section slide level2" id="thats-pretty-nice">
 <h1 id="thats-pretty-nice">That's pretty nice</h1>
 <div class="figure">
@@ -591,9 +605,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Older browsers are obviously fairly limited.</li>
 <li>The older the device is, the less likely it is to have a browser that can or is updated frequently or ever (unscientific).</li>
 </ul>
-</div><div class="section slide level2" id="device-apis">
-<h1 id="device-apis">Device APIs</h1>
-<h3 id="what-is-a-device-api">What is a device API?</h3>
+</div><div class="section slide level2" id="what-is-a-device-api">
+<h1 id="what-is-a-device-api">What is a device API?</h1>
 <h4 id="according-to-the-w3c"><a href="http://www.w3.org/2009/dap/">According to the W3C</a></h4>
 <ul>
 <li>Battery Status</li>
@@ -738,7 +751,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li><a href="https://developer.mozilla.org/en-US/docs/HTML/HTML5">Mozilla Developer Network HTML5 Section</a></li>
 <li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">HTML5 Polyfills from Modernizr</a> A list of tons of polyfills</li>
 </ul>
-<h3 id="further-reading-1">Further reading</h3>
+<h3 id="further-reading-2">Further reading</h3>
 <ul>
 <li><a href="http://www.netmagazine.com/features/developer-s-guide-html5-apis">.net Magazine Article</a></li>
 <li><a href="http://brian.io/slides/beyond-html5/">Slide deck from Brian LeRoux on Device APIs</a></li>
@@ -1188,7 +1201,10 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 </ul></li>
 <li>Reduction of number of external resources</li>
 <li>Minification of JS and CSS; putting JS at the bottom of the page</li>
-<li>A great resource: <a href="http://developer.yahoo.com/performance/">Yahoo! Exceptional Performance Team</a></li>
+</ul>
+<h3 id="further-reading-3">Further reading</h3>
+<ul>
+<li><a href="http://developer.yahoo.com/performance/">Yahoo! Exceptional Performance Team</a></li>
 </ul>
 </div><div class="section slide level2" id="performance-tools">
 <h1 id="performance-tools">Performance tools</h1>
@@ -1208,14 +1224,11 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <div class="figure">
 <img src="assets/images/performance-end.png" alt="After tuning" /><p class="caption">After tuning</p>
 </div>
-</div><div class="section slide level2" id="todo">
-<h1 id="todo">TODO</h1>
+</div><div class="section slide level2" id="for-your-consideration-4">
+<h1 id="for-your-consideration-4">For your consideration</h1>
 <ul>
-<li>Recap slide</li>
-<li>All that we've accomplished</li>
+<li>How could the saved-glosses page be made even faster on mobile devices?</li>
 </ul>
-</div><div class="section slide level2" id="section">
-<h1 id="section"></h1>
 </div>
 <div class="section titleslide slide level1" id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell">Part VIII: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="but-what-about-testing-all-of-this-stuff">
 <h1 id="but-what-about-testing-all-of-this-stuff">But what about testing all of this stuff?</h1>
@@ -1270,10 +1283,12 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 </ul>
 </div><div class="section slide level2" id="a-testing-workflow">
 <h1 id="a-testing-workflow">A testing workflow</h1>
+<div class="figure">
+<img src="assets/images/testing-loops.png" alt="Testing loops" /><p class="caption">Testing loops</p>
+</div>
 <ul>
 <li>A key to successful testing is mapping out the points in your development cycle to insert device-specific testing.</li>
 </ul>
-<p>TODO: Drawing</p>
 </div><div class="section slide level2" id="a-testing-workflow-example">
 <h1 id="a-testing-workflow-example">A testing workflow example</h1>
 <ol style="list-style-type: decimal">
@@ -1286,7 +1301,6 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>Occasionally throw in a random device into test to keep yourself honest</li>
 <li>Repeat 3 through 7</li>
 </ol>
-<p>TODO: Drawing of loops</p>
 </div><div class="section slide level2" id="the-devices">
 <h1 id="the-devices">The devices</h1>
 <div class="figure">
@@ -1345,7 +1359,6 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <div class="figure">
 <img src="assets/images/shadow.jpg" alt="Devices being tested with Adobe Shadow" /><p class="caption">Devices being tested with Adobe Shadow</p>
 </div>
-<p>TODO: Adobe Shadow demo</p>
 </div><div class="section slide level2" id="moar-testing-tools">
 <h1 id="moar-testing-tools">MOAR testing tools</h1>
 <ul>

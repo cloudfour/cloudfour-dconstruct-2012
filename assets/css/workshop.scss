@@ -40,11 +40,12 @@ div.slide ul ul li  {
   padding-left: 0;
 }
 
-div.slide.titleslide {
+body.singleslide div.slide.titleslide {
   position: absolute; }
   div.slide.titleslide h1 {
     padding-top: 10%;
     margin-right: 0; }
+
 
 div.slide pre, pre {
   overflow: scroll;

@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Lyza Gardner" />
-  <title>dConstruct 2012</title>
+  <title>dConstruct 2012: The pragmatist's guide to the mobile web</title>
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -38,7 +38,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">dConstruct 2012</h1>
+  <h1 class="title">dConstruct 2012: The pragmatist's guide to the mobile web</h1>
   <p class="author">
 Lyza Gardner
   </p>
@@ -52,8 +52,8 @@ Lyza Gardner
 <blockquote>
 <p>&quot;Be not afeard; the isle is full of noises.&quot; —<em>The Tempest</em>, Act III, Scene 2, Wm. Shakespeare</p>
 </blockquote>
-</div><div class="section slide level2" id="our-adventure-today">
-<h1 id="our-adventure-today">Our adventure today</h1>
+</div><div class="section slide level2" id="what-kinds-of-things-well-do-today">
+<h1 id="what-kinds-of-things-well-do-today">What kinds of things we'll do today</h1>
 <ul>
 <li>Narrative adventure through an applied set of exercises</li>
 <li>Exercises involve
@@ -88,7 +88,10 @@ Lyza Gardner
 </div><div class="section slide level2" id="following-along-and-participating">
 <h1 id="following-along-and-participating">Following along and participating</h1>
 <ul>
-<li>You can look at your own copy of the presentation at the same time I'm giving it</li>
+<li>You can look at your own copy of the presentation at the same time I'm giving it
+<ul>
+<li>The workshop is split into two parts: <a href="part1.html">part1.html</a> and <a href="part2.html">part2.html</a></li>
+</ul></li>
 <li>For exercises, you'll want:
 <ul>
 <li>A text editor</li>
@@ -97,8 +100,64 @@ Lyza Gardner
 </ul></li>
 <li>Team up: Some exercises are more technical, others more conceptual</li>
 </ul>
-</div>
-<div class="section titleslide slide level1" id="the-stuff-well-build"><h1 id="the-stuff-well-build">The stuff we'll build</h1></div><div class="section slide level2" id="meet-the-devices">
+</div><div class="section slide level2" id="using-the-presentation">
+<h1 id="using-the-presentation">Using the presentation</h1>
+<ul>
+<li>After much demand for such, I've decided to make the (Slidy) HTML5 slideshow presentation available to attendees as we go along</li>
+<li>You can navigate with the left and right keys in your browser, or click a slide to proceed</li>
+<li>There is a table of contents at lower left</li>
+<li>Keyboard shortcuts:
+<ul>
+<li>'A' Toggle between one-page-per-slide and all slides visible at once</li>
+<li>'F' Show/hide bottom controls</li>
+<li>'B' Make text bigger</li>
+<li>'S' Make text smaller</li>
+</ul></li>
+</ul>
+<h3 id="beware">Beware!</h3>
+<ul>
+<li>The HTML5 presentation takes advantage of features in newer browsers. It may not play well on older browsers or IE.</li>
+</ul>
+</div><div class="section slide level2" id="todays-agenda-part-i">
+<h1 id="todays-agenda-part-i">Today's agenda, Part I</h1>
+<ul>
+<li>10:00 - 11:00
+<ul>
+<li>Part 0: Hi, there</li>
+<li>Part 1: Starting from scratch on the mobile web</li>
+</ul></li>
+<li>11 - 11:30 coffee break
+<ul>
+<li>Interlude:</li>
+</ul></li>
+<li>11:30-13:00
+<ul>
+<li>Part 2: Towards an adaptive web</li>
+<li>Part 3: Balancing a differentiated web</li>
+<li>Part 4: On the frontiers of the adaptive web</li>
+</ul></li>
+<li>13:00 - 14:00 Lunch
+<ul>
+<li>Interlude: Separate mobile sites and device detection</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="todays-agenda-part-ii">
+<h1 id="todays-agenda-part-ii">Today's agenda, Part II</h1>
+<ul>
+<li>14:00 - 15:00
+<ul>
+<li>Section 5: (Mobile) web sites that do things</li>
+<li>Section 6: The web as platform</li>
+</ul></li>
+<li>15:00 - 15:30 Break</li>
+<li>15:30 - 17:00
+<ul>
+<li>Section 6: The web as platform (finish)</li>
+<li>Section 7: It has to go faster (performance)</li>
+<li>Section 8: Testing is hell</li>
+</ul></li>
+</ul>
+</div><div class="section slide level2" id="meet-the-devices">
 <h1 id="meet-the-devices">Meet the devices!</h1>
 <ul>
 <li>From Cloud Four's device collection I pulled about 7 or 8 core devices that I used for testing most of the examples in today's content. Let's meet them!</li>
@@ -249,7 +308,7 @@ Lyza Gardner
 <div class="figure">
 <img src="assets/images/dumbphone-graph.png" /><p class="caption"></p>
 </div>
-<h4 id="beware">Beware!</h4>
+<h4 id="beware-1">Beware!</h4>
 <p>It's not all smartphones out there!</p>
 </div><div class="section slide level2" id="soon-more-mobile-phones-than-humans">
 <h1 id="soon-more-mobile-phones-than-humans">Soon more mobile phones than humans</h1>
@@ -327,7 +386,7 @@ Lyza Gardner
 
 &lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.2//EN&quot;
 &quot;http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd&quot;&gt;</code></pre>
-<h3 id="beware-1">Beware!</h3>
+<h3 id="beware-2">Beware!</h3>
 <p>You probably don't want to use any of these <code>DOCTYPE</code>s for your projects. If anything, consider the <code>DOCTYPE</code> for <a href="http://www.w3.org/TR/xhtml-basic/">XHTML-Basic</a>, which superceded XHTML-MP 1.2.</p>
 </div><div class="section slide level2" id="xhtml-mp-cont.">
 <h1 id="xhtml-mp-cont.">XHTML-MP, cont.</h1>
@@ -493,7 +552,7 @@ Lyza Gardner
 <ul>
 <li>Basic support is good but not infallible</li>
 </ul>
-<h4 id="beware-2">Beware!</h4>
+<h4 id="beware-3">Beware!</h4>
 <ul>
 <li>As we start thinking about adding some basic CSS, keep in mind these challenging areas in older devices/browsers. They can trip you up:
 <ul>
@@ -969,7 +1028,7 @@ h1 <span class="kw">{</span>
 <span class="kw">}</span></code></pre>
 <h4 id="pro-tip-2">Pro Tip</h4>
 <p>It really is this easy to add flexible images and objects to your web layouts. Do it!</p>
-<h4 id="beware-3">Beware!</h4>
+<h4 id="beware-4">Beware!</h4>
 <p>You cannot use <code>width</code> or <code>height</code> attributes on <code>img</code> tags that need to scale flexibly in this manner.</p>
 </div><div class="section slide level2" id="and...">
 <h1 id="and...">And...?</h1>
@@ -1031,7 +1090,7 @@ h1 <span class="kw">{</span>
 <li>Build our baseline by enhancing our existing baseline</li>
 <li>Take advantage of RWD's third tenet (Media Queries) to apply different layouts to different environments</li>
 </ol>
-<h4 id="beware-4">Beware!</h4>
+<h4 id="beware-5">Beware!</h4>
 <ul>
 <li>Proportional layouts on their own can't get us all the way there</li>
 </ul>
@@ -1328,7 +1387,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul></li>
 <li>Respond is faster, but only contains a subset of CSS support. Start with it.</li>
 </ul>
-<h4 id="beware-5">Beware!</h4>
+<h4 id="beware-6">Beware!</h4>
 <ul>
 <li>Advanced performance note: <a href="http://www.phpied.com/conditional-comments-block-downloads/">IE conditional tags can block downloads, hampering performance</a></li>
 </ul>
@@ -1657,7 +1716,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li><code>src</code> in <code>img</code> tag considered canonical.</li>
 <li>Named/classed media queries keep presentational media query syntax out of the markup (and have other benefits, IMHO!).</li>
 </ol>
-<h4 id="beware-6">Beware!</h4>
+<h4 id="beware-7">Beware!</h4>
 <p>This is a product of my imagination and probably represents a syntax that would conflict with older browsers, etc.</p>
 </div><div class="section slide level2" id="other-rwd-challenges">
 <h1 id="other-rwd-challenges">Other RWD Challenges</h1>
@@ -1681,7 +1740,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>What does it mean if a particular feature-testing tool reports that the <code>canvas</code> tag is supported?</li>
 <li>And even if <code>@font-face</code> is supported, should we send (potentially large) font files to mobile users?</li>
 </ul>
-<h4 id="beware-7">Beware!</h4>
+<h4 id="beware-8">Beware!</h4>
 <p>Don't get lulled into a false sense of clarity or confidence about feature testing.</p>
 </div><div class="section slide level2" id="rude-awakening-blackberry-style">
 <h1 id="rude-awakening-blackberry-style">Rude awakening, BlackBerry style</h1>
@@ -2028,7 +2087,7 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 </ul>
 </div><div class="section slide level2" id="a-brief-example-using-wurfl">
 <h1 id="a-brief-example-using-wurfl">A brief example using WURFL</h1>
-<h3 id="beware-8">Beware!</h3>
+<h3 id="beware-9">Beware!</h3>
 <p>To be able to run the following example, you'll need:</p>
 <ul>
 <li>A server (local or otherwise) that can execute PHP</li>

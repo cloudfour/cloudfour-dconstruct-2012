@@ -1,4 +1,4 @@
-% dConstruct 2012
+% dConstruct 2012: The pragmatist's guide to the mobile web
 % Lyza Gardner
 % September 6, 2012
 
@@ -12,7 +12,7 @@
 
 > "Be not afeard; the isle is full of noises." —*The Tempest*, Act III, Scene 2, Wm. Shakespeare
 
-## Our adventure today
+## What kinds of things we'll do today
 
 * Narrative adventure through an applied set of exercises
 * Exercises involve
@@ -38,13 +38,52 @@
 ## Following along and participating
 
 * You can look at your own copy of the presentation at the same time I'm giving it
+    * The workshop is split into two parts: [part1.html](part1.html) and [part2.html](part2.html)
 * For exercises, you'll want:
     * A text editor
     * A web browser or browsers
     * A local web server (totally optional; makes `index.html` behave better and some examples work better)
 * Team up: Some exercises are more technical, others more conceptual
 
-# The stuff we'll build
+## Using the presentation
+
+* After much demand for such, I've decided to make the (Slidy) HTML5 slideshow presentation available to attendees as we go along
+* You can navigate with the left and right keys in your browser, or click a slide to proceed
+* There is a table of contents at lower left
+* Keyboard shortcuts:
+    * 'A' Toggle between one-page-per-slide and all slides visible at once
+    * 'F' Show/hide bottom controls
+    * 'B' Make text bigger
+    * 'S' Make text smaller
+
+### Beware!
+
+* The HTML5 presentation takes advantage of features in newer browsers. It may not play well on older browsers or IE.
+
+## Today's agenda, Part I
+
+* 10:00 - 11:00
+    * Part 0: Hi, there
+    * Part 1: Starting from scratch on the mobile web
+* 11 - 11:30 coffee break
+    * Interlude:
+* 11:30-13:00
+    * Part 2: Towards an adaptive web
+    * Part 3: Balancing a differentiated web
+    * Part 4: On the frontiers of the adaptive web
+* 13:00 - 14:00 Lunch
+    * Interlude: Separate mobile sites and device detection
+
+## Today's agenda, Part II
+
+* 14:00 - 15:00
+    * Section 5: (Mobile) web sites that do things
+    * Section 6: The web as platform
+* 15:00 - 15:30 Break
+* 15:30 - 17:00
+    * Section 6: The web as platform (finish)
+    * Section 7: It has to go faster (performance)
+    * Section 8: Testing is hell
 
 ## Meet the devices!
 

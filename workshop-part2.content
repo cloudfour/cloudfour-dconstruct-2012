@@ -80,6 +80,14 @@ Feasibility is a function of many things. In my case, I decided to do something 
 
 We'll implement saved items in a little bit. First, to gloss!
 
+## Building our do-something web thing
+
+There are three steps to making our enhanced Shakespeare:
+
+1. Add HTML markup and basic styling (this section)
+2. Enhance with pop-up definitions and a prototype of the save-glosses process (this section)
+3. Implement the saving of glossary items (next section)
+
 ## Step 1: Glossed terms and a glossary
 
 Step 1 is easy enough. Just need to add some HTML markup and some styles for it.
@@ -161,12 +169,19 @@ Threw in some CSS columns:
 }
 ~~~
 
+## CSS-Columns
+
 ### For your consideration
 
 * Why didn't I use the CSS Columns test in Modernizr before using this style?
 * Do you know of any other CSS modules or new features I could have used to do the layout for this section?
 
-## And now we have our baseline
+### Further reading
+
+* [CSS3-Columns post on quirksmode](http://www.quirksmode.org/css/multicolumn.html)
+* [Columns page on Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/CSS/columns)
+
+## And now we have our baseline (Step 1 is complete!)
 
 At this point, we stop and test on our supported devices*.
 
@@ -230,13 +245,13 @@ The many iterations in developing and enhancing for the mobile web often means r
 </script>
 ~~~
 
-1. Including jQuery for everyone
-1. Creating JavaScript for glossary items (`gloss.js`)
-1. Line-number jQuery still here
+`tempest.html`
+
+*. Including jQuery for everyone
+*. Creating JavaScript for glossary items (`gloss.js`)
+*. Line-number jQuery still here
 
 ## Part B and C: Messi jQuery Plugin, Glossary JavaScript
-
-#### `gloss.js`
 
 ~~~{.javascript}
 function Messi(a,b) { ... } /* Minified Messi JS */
@@ -250,6 +265,8 @@ $(document).ready(function() {
   });
 });
 ~~~
+
+`gloss.js`
 
 Finally, added a bunch of styles to the end of `styles.css`: Messi's CSS.
 
@@ -448,6 +465,9 @@ A lot of stuff just happened. In a nutshell:
 1. We used a small JS function to determine viewport width to help us decide how wide to make the Messi popup modal
 1. We adjusted styling for wider screens
 
+### Good enough for jazz
+
+Sure, at the end of step 2 here, we're not done implementing the saved-gloss feature, and some of our edges are rough. But prototype steps like this are important in the process of developing for the mobile—or any—web.
 
 ## That's pretty nice
 
@@ -605,9 +625,7 @@ And all of this is whirling and changing so fast. And *what about mobile?*
 * Older browsers are obviously fairly limited.
 * The older the device is, the less likely it is to have a browser that can or is updated frequently or ever (unscientific).
 
-## Device APIs
-
-### What is a device API?
+## What is a device API?
 
 #### [According to the W3C](http://www.w3.org/2009/dap/)
 
@@ -1135,7 +1153,10 @@ Evaluation of Modernizr.mq()                            2.5sec
     * Setting up far-future expires headers (for caching)
 * Reduction of number of external resources
 * Minification of JS and CSS; putting JS at the bottom of the page
-* A great resource: [Yahoo! Exceptional Performance Team](http://developer.yahoo.com/performance/)
+
+### Further reading
+
+* [Yahoo! Exceptional Performance Team](http://developer.yahoo.com/performance/)
 
 ## Performance tools
 
@@ -1153,12 +1174,11 @@ Evaluation of Modernizr.mq()                            2.5sec
 
 ![After tuning](assets/images/performance-end.png)
 
-## TODO
+## For your consideration
 
-* Recap slide
-* All that we've accomplished
+* How could the saved-glosses page be made even faster on mobile devices?
 
--------------------------------------------------------------------------------
+
 
 # Part VIII: Making sure it works, a.k.a. Testing is Hell
 
@@ -1212,9 +1232,9 @@ Evaluation of Modernizr.mq()                            2.5sec
 
 ## A testing workflow
 
-* A key to successful testing is mapping out the points in your development cycle to insert device-specific testing.
+![Testing loops](assets/images/testing-loops.png)
 
-TODO: Drawing
+* A key to successful testing is mapping out the points in your development cycle to insert device-specific testing.
 
 ## A testing workflow example
 
@@ -1227,7 +1247,6 @@ TODO: Drawing
 1. Occasionally throw in a random device into test to keep yourself honest
 1. Repeat 3 through 7
 
-TODO: Drawing of loops
 
 ## The devices
 
@@ -1281,7 +1300,6 @@ Some issues are hard to anticipate and arise from changes that seem innocuous. R
 
 ![Devices being tested with Adobe Shadow](assets/images/shadow.jpg)
 
-TODO: Adobe Shadow demo
 
 ## MOAR testing tools
 
