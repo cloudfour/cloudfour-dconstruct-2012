@@ -5,10 +5,10 @@
     1. Build a Modernizr version that contains the following:
         1. `@font-face` CSS3 test
         1. Leave the other options as default (but do make sure the `html5shiv` and `Add CSS Classes` are selected)
-    1. Download this build and save in this directory as `Modernizr.js`.
+    1. Download this build and save in **this directory as `Modernizr.js`**.
 * Include the script
     1. Edit `tempest.html` and add a `<script>` tag to include the `Modernizr.js` script you just created.
-* Add the CSS. Edit `styles.css`
+* Edit `styles.css`
     1. Add the CSS below (all of the referenced font files are already in the `fonts` directory for you).
     1. **Make sure to** add this CSS *after* the CSS reset rules, but near the top of the baseline CSS.
 * View the results ([tempest.html](tempest.html)) in any browser (mobile or otherwise).

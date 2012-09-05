@@ -310,8 +310,7 @@ Lyza Gardner
 <li>HTML/XHTML</li>
 <li>cHTML (Compact HTML/iMode)</li>
 <li>XHTML-MP 1.1</li>
-<li>XHTML-MP 1.2</li>
-<li>XHTML-Basic</li>
+<li>XHTML-MP 1.2 and XHTML-Basic</li>
 </ul></li>
 </ul>
 <h3 id="good-enough-for-jazz">Good enough for jazz</h3>
@@ -552,35 +551,32 @@ Lyza Gardner
 <li>The actual value of this, as is likely obvious, will vary depending on the device or window width.</li>
 </ul></li>
 <li><code>initial-scale=1</code>: Set initial zoom to 1, that is, 100% or normal size.</li>
+<li>There is ongoing angst over disabling user zoom via the <code>maximum-scale=1</code> and/or <code>user-scalable=no</code> attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.</li>
 </ul>
-<h4 id="rule-of-thumb">Rule of thumb</h4>
-<p>This is a pretty decent default <code>viewport</code> tag. Like everything on the mobile web, it's not bulletproof, but it's a good template.</p>
-<h3 id="further-reading-6">Further reading</h3>
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag">Page on Mozilla Developer Network (MDN) about viewport tags</a></li>
-</ul>
+<h3 id="for-your-consideration">For your consideration?</h3>
+<p>Do you have any experience with or opinions about disallowing user zooming on web pages or apps?</p>
 </div><div class="section slide level2" id="viewports-are-fun">
 <h1 id="viewports-are-fun">Viewports are &quot;fun&quot;</h1>
+<h3 id="real-world-moment-1">Real world moment</h3>
 <ul>
 <li>Certain mobile browsers are less...accurate...about viewport tag adherence
 <ul>
 <li>Known culprits include some Samsung Galaxy phones in the US (Android)</li>
 </ul></li>
-<li>There is ongoing angst over disabling user zoom via the <code>maximum-scale=1</code> and/or <code>user-scalable=no</code> attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.</li>
 </ul>
-<h3 id="further-reading-7">Further reading</h3>
+<h3 id="further-reading-6">Further reading</h3>
 <ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag">Page on Mozilla Developer Network (MDN) about viewport tags</a></li>
 <li>Oh, turns out there is a <a href="http://stackoverflow.com/questions/9374611/why-is-the-viewport-tag-on-the-galaxy-nexus-android-4-not-working">Stack Overflow post of someone else running into the viewport fun on the Galaxy Nexus</a></li>
 <li>Jeremy Keith has <a href="http://adactio.com/journal/4470/">something to say on the topic</a></li>
 </ul>
-<h3 id="real-world-moment-1">Real world moment</h3>
 </div><div class="section slide level2" id="starting-from-a-slightly-more-level-playing-field">
 <h1 id="starting-from-a-slightly-more-level-playing-field">Starting from a slightly more level playing field</h1>
 <ul>
 <li><strong>CSS Reset</strong>: As you saw, the default stylesheets for the different browsers and devices means we're dealing with a lot of diversity. Using a <em>CSS reset</em> is one option if we want to try to normalize some of the starting-point styling.</li>
 <li><strong>Viewport tag</strong>: By normalizing our viewports with a <code>viewport</code> tag (like we just saw), we reduce some of the complexity and diversity we're facing.</li>
 </ul>
-<h3 id="for-your-consideration">For your consideration</h3>
+<h3 id="for-your-consideration-1">For your consideration</h3>
 <ul>
 <li>How do you feel about CSS resets? Can you think of downsides?</li>
 </ul>
@@ -613,14 +609,14 @@ Lyza Gardner
 </ul>
 </div><div class="section slide level2" id="baseline-differences">
 <h1 id="baseline-differences">Baseline differences</h1>
-<h3 id="further-reading-8">Further reading</h3>
+<h3 id="getting-our-baseline-in-order">Getting our baseline in order</h3>
+<h4 id="exercise-getting-ur-baselines-going"><a href="exercises/102-baseline">Exercise! Getting ur baselines going</a></h4>
+<p>After you're done, you can see the end result I got to in <a href="presenter-exercises/102-baseline/tempest.html">presenter-exercises/102-baseline/tempest.html</a>.</p>
+<h3 id="further-reading-7">Further reading</h3>
 <ul>
 <li>I talk a bit about the Kindle Touch's font size differences in <a href="http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/">this post on our blog</a>.</li>
 <li>There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of <a href="http://bit.ly/hf-mw">our book</a></li>
 </ul>
-<h3 id="getting-our-baseline-in-order">Getting our baseline in order</h3>
-<h4 id="exercise-getting-ur-baselines-going"><a href="exercises/102-baseline">Exercise! Getting ur baselines going</a></h4>
-<p>After you're done, you can see the end result I got to in <a href="presenter-exercises/102-baseline/tempest.html">presenter-exercises/102-baseline/tempest.html</a>.</p>
 </div><div class="section slide level2" id="baselines">
 <h1 id="baselines">Baselines</h1>
 <div class="figure">
@@ -691,10 +687,32 @@ Lyza Gardner
 <li>And yet, there is still so much differentiation!</li>
 <li>And of course, the real web pages of the world are far more complex...</li>
 </ul>
-<h3 id="for-your-consideration-1">For your consideration</h3>
+<h3 id="for-your-consideration-2">For your consideration</h3>
 <ul>
 <li>What does the word <em>device</em> mean? <em>Browser</em>? <em>Client</em>? <em>User agent</em>? How does our usage of these terms cause confusion?</li>
 <li>How many of the differences spotted did you anticipate? What surprised you?</li>
+</ul>
+</div><div class="section slide level2" id="wait-a-minute-though">
+<h1 id="wait-a-minute-though">Wait a minute, though</h1>
+<div class="figure">
+<img src="exercises/101-explore/images/iphone.png" alt="Safari on iPhone 4 before viewport tag" /><p class="caption">Safari on iPhone 4 before viewport tag</p>
+</div>
+<div class="figure">
+<img src="exercises/102-baseline/images/iphone.png" alt="with a viewport tag" /><p class="caption">with a viewport tag</p>
+</div>
+</div><div class="section slide level2" id="im-all-confused">
+<h1 id="im-all-confused">I'm all confused</h1>
+<ul>
+<li>Our viewport tag: <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</code></li>
+<li>With a viewport tag, the iPhone shows 320px of content</li>
+<li>But this is an iPhone 4, with Retina display. It's actual horizontal resolution is twice that (640px).</li>
+<li>What gives? And why was it all zoomed out before?</li>
+</ul>
+<h3 id="real-world-moment-2">Real world moment</h3>
+<p>Viewports are made even more complex by the difference between device/hardware pixels and CSS pixels.</p>
+<h3 id="further-reading-8">Further Reading</h3>
+<ul>
+<li><a href="http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html">A pixel is not a pixel is not a pixel (Quirksmode)</a></li>
 </ul>
 </div>
 <div class="section titleslide slide level1" id="part-ii-towards-an-adaptive-web"><h1 id="part-ii-towards-an-adaptive-web">Part II: Towards an Adaptive Web</h1></div><div class="section slide level2" id="is-this-the-best-we-can-do">
@@ -707,7 +725,7 @@ Lyza Gardner
 <li>Dull and bland</li>
 <li>Lines are too wide</li>
 </ul>
-<h3 id="real-world-moment-2">Real world moment</h3>
+<h3 id="real-world-moment-3">Real world moment</h3>
 <p>A single-size, lowest-common-denominator approach to the web can be sad.</p>
 </div><div class="section slide level2" id="i-want-to-do-more">
 <h1 id="i-want-to-do-more">I want to do more</h1>
@@ -777,7 +795,7 @@ span<span class="fl">.song</span>         <span class="kw">{</span> <span class=
 </ul>
 <h4 id="but-how-do-we-make-the-same-html-page-look-good-and-work-well-on-all-those-different-browsers-and-devices">But how do we make the same HTML page look good and work well on all those different browsers and devices?</h4>
 <p>We use techniques to make our websites <em>adaptive</em>.</p>
-<h3 id="for-your-consideration-2">For your consideration</h3>
+<h3 id="for-your-consideration-3">For your consideration</h3>
 <p>What do you think? Do you prefer <em>mobile-first</em>, <em>content-first</em> or <em>baseline-first</em> to describe this kind of philosophy?</p>
 <h4 id="hold-that-thought-5">Hold that thought</h4>
 <ul>
@@ -810,7 +828,7 @@ span<span class="fl">.song</span>         <span class="kw">{</span> <span class=
   <span class="kw">width</span> <span class="kw">:</span> <span class="dt">600px</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p>Recall that I was working in a hurry, so this isn't exactly masterful CSS, folks.</p>
-<h4 id="rule-of-thumb-1">Rule of thumb</h4>
+<h4 id="rule-of-thumb">Rule of thumb</h4>
 <p>Layout elements defined with specific pixel widths tend to be anathema to responsive/adaptive layouts.</p>
 </div><div class="section slide level2" id="recall-viewports">
 <h1 id="recall-viewports">Recall viewports?</h1>
@@ -877,10 +895,13 @@ h1 <span class="kw">{</span>
 <p><code>75%</code></p>
 </div><div class="section slide level2" id="a-more-complicated-example">
 <h1 id="a-more-complicated-example">A more complicated example</h1>
-<h3 id="for-your-consideration-3">For your consideration</h3>
 <div class="figure">
 <img src="assets/images/complex-fluid.jpg" /><p class="caption"></p>
 </div>
+<h3 id="for-your-consideration-4">For your consideration</h3>
+<ul>
+<li>What would the <code>100px</code> rule convert to, fluidly, as a percentage?</li>
+</ul>
 </div><div class="section slide level2" id="in-our-case-a-simple-change">
 <h1 id="in-our-case-a-simple-change">In our case, a simple change</h1>
 <ul>
@@ -895,7 +916,7 @@ h1 <span class="kw">{</span>
 <li><code>.illustrations = 30%</code></li>
 </ul></li>
 </ul>
-<h3 id="real-world-moment-3">Real world moment</h3>
+<h3 id="real-world-moment-4">Real world moment</h3>
 <ul>
 <li>My fixed layout wasn't very proportional in the first place, eh?</li>
 <li><em>To round or not to round?</em> I round.</li>
@@ -913,6 +934,7 @@ h1 <span class="kw">{</span>
   <span class="kw">float:</span> <span class="dt">right</span><span class="kw">;</span>
   <span class="kw">width:</span> <span class="dt">30%</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
+<p><code>styles.css</code></p>
 </div><div class="section slide level2" id="so-what-did-that-get-us">
 <h1 id="so-what-did-that-get-us">So, what did that get us?</h1>
 <div class="figure">
@@ -926,14 +948,17 @@ h1 <span class="kw">{</span>
 <ul>
 <li>Make the window a bit narrower, and the image disappears.</li>
 </ul>
-</div><div class="section slide level2" id="flexible-images-and-objects">
-<h1 id="flexible-images-and-objects">Flexible images and objects</h1>
+<h3 id="flexible-images-and-objects">Flexible images and objects</h3>
 <ul>
 <li>We can solve the mystery of that missing image by using the second tenet of Responsive Web Design: <strong>flexible images and objects</strong>.
 <ul>
 <li>While the element containing the image is flexible and proportional, the image itself isn't scaling up and down to flex to its container—the container can never get narrower than the image it contains.</li>
 <li>That causes it to wrap in our layout. Uh oh.</li>
 </ul></li>
+</ul>
+</div><div class="section slide level2" id="flexible-images-and-objects-1">
+<h1 id="flexible-images-and-objects-1">Flexible images and objects</h1>
+<ul>
 <li>We can add a simple rule to our CSS:</li>
 </ul>
 <pre class="sourceCode css"><code class="sourceCode css">img, object <span class="kw">{</span>
@@ -974,6 +999,8 @@ h1 <span class="kw">{</span>
 <li>This affects the box model layout widths of our fluid elements and causes the wrap you see on narrow screens.</li>
 <li><em>We need to stop, catch our breath, and think about things a bit differently.</em></li>
 </ul>
+<h3 id="real-world-moment-5">Real world moment</h3>
+<p>Introducing box model issues when trying to sort out other ones is oh-so-typical.</p>
 </div><div class="section slide level2" id="letting-the-content-dictate-our-flow">
 <h1 id="letting-the-content-dictate-our-flow">Letting the content dictate our flow</h1>
 <div class="figure">
@@ -1036,6 +1063,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   <span class="kw">display</span>         <span class="kw">:</span> <span class="dt">block</span><span class="kw">;</span>
   <span class="kw">text-align</span>      <span class="kw">:</span> <span class="dt">center</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
+<p><code>styles.css</code></p>
 <ul>
 <li>This is pursuant to objective #2 in our list</li>
 </ul>
@@ -1086,7 +1114,6 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </div>
 </div><div class="section slide level2" id="now-we-can-enhance-for-wider-screens">
 <h1 id="now-we-can-enhance-for-wider-screens">NOW we can enhance for wider screens</h1>
-<h3 id="pause">PAUSE</h3>
 <ul>
 <li>Let's use RWD's third tenet to enhance our scene page for bigger displays.</li>
 <li><strong>CSS3 Media Queries</strong> are the third leg of the RWD tripod.</li>
@@ -1314,7 +1341,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   <span class="kw">&lt;title&gt;</span>The Tempest: Act 3, Sc. 2 | Shakespeare<span class="kw">&lt;/title&gt;</span>
 <span class="kw">&lt;/head&gt;</span></code></pre>
 <p><code>ie.css</code> contains the same CSS as is inside the media query.</p>
-<h3 id="real-world-moment-4">Real world moment</h3>
+<h3 id="real-world-moment-6">Real world moment</h3>
 <p>Yep, in our reality, we often still have to make special exceptions for IE browsers.</p>
 </div><div class="section slide level2" id="um.">
 <h1 id="um.">Um.</h1>
@@ -1386,9 +1413,8 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <h1 id="modernizr">Modernizr</h1>
 <ul>
 <li>Many different HTML, CSS and JS feature tests</li>
-<li>Comes default with HTML5 shim/shiv</li>
-<li>Comes default with <code>Modernizr.load()</code></li>
-<li>Tests results are available on the <code>Modernizr</code> object
+<li>Comes default with HTML5 shim/shiv and <code>Modernizr.load()</code></li>
+<li>Test results are available on the <code>Modernizr</code> object
 <ul>
 <li>e.g. <code>if (Modernizr.touch)</code></li>
 </ul></li>
@@ -1397,7 +1423,6 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>e.g. <code>&lt;html class=&quot;fontface no-touch cssgradients&quot;&gt;</code></li>
 </ul></li>
 <li>I usually use the full/dev version for development, and then <a href="http://modernizr.com/download/">build a version</a> that only contains the tests I need</li>
-<li>Sometimes Modernizr is overkill</li>
 </ul>
 <h4 id="hold-that-thought-6">Hold that thought!</h4>
 <p>We'll come back to <code>Modernizr.load()</code></p>
@@ -1409,7 +1434,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>An example of feature detection and third party tools</li>
 <li>Modernizr (for testing <code>@font-face</code> support)</li>
-<li>Font Squirrel (for reducing the ugh factor of creating web font files and CSS)</li>
+<li><a href="http://www.fontsquirrel.com/fontface/generator">Font Squirrel</a> (for reducing the ugh factor of creating web font files and CSS)</li>
 </ul>
 </div><div class="section slide level2" id="exercise-1">
 <h1 id="exercise-1">Exercise</h1>
@@ -1417,12 +1442,13 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>You be the enhancer!</li>
 <li><a href="exercises/301-features">Exercise: feature enhancement vis-a-vis @font-face</a></li>
 </ul>
-</div><div class="section slide level2" id="todo-moar-polyfills-and-feature-tests">
-<h1 id="todo-moar-polyfills-and-feature-tests">TODO: MOAR polyfills and feature tests</h1>
+</div><div class="section slide level2" id="moar-polyfills-and-feature-tests">
+<h1 id="moar-polyfills-and-feature-tests">MOAR polyfills and feature tests</h1>
+<h3 id="further-reading-9">Further Reading</h3>
 <ul>
-<li>Selectivizr</li>
-<li>IE scripts (cloudfour.com)</li>
-<li>Modernizr page of polyfills</li>
+<li><a href="http://selectivizr.com/">Selectivizr</a> CSS selectors for IE</li>
+<li><a href="http://code.google.com/p/ie7-js/">IE7 JS</a> &quot;A JavaScript library to make MSIE behave like a standards-compliant browser</li>
+<li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">Long list of polyfills on Modernizr</a></li>
 </ul>
 </div>
 <div class="section titleslide slide level1" id="part-iv-on-the-frontiers-of-the-adaptive-web"><h1 id="part-iv-on-the-frontiers-of-the-adaptive-web">Part IV: On the frontiers of the adaptive web</h1></div><div class="section slide level2" id="most-rwd-sites-are-not-mobile-first">
@@ -1442,7 +1468,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Yes, this is true, but so what?</li>
 <li>On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users</li>
 </ul>
-<h4 id="rule-of-thumb-2">Rule of thumb</h4>
+<h4 id="rule-of-thumb-1">Rule of thumb</h4>
 <p>Common sense tells us that <em>overall</em> mobile users have more likelihood of slower, more expensive connections.</p>
 </div><div class="section slide level2" id="why-are-these-sites-so-big">
 <h1 id="why-are-these-sites-so-big">Why are these sites so big?</h1>
@@ -1493,12 +1519,14 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>As of iOS 4.2, replacing a <code>background-image</code> in the cascade will result in only one image being downloaded</li>
 <li>But, <code>display:none</code> on the element itself still downloads images</li>
+</ul>
+<h3 id="further-reading-10">Further reading</h3>
+<ul>
 <li><a href="http://timkadlec.com/2012/04/media-query-asset-downloading-results/">Tim Kadlec’s comprehensive test results for background images</a></li>
 </ul>
 </div><div class="section slide level2" id="image-set">
 <h1 id="image-set"><code>image-set</code></h1>
 <ul>
-<li><a href="http://blog.cloudfour.com/safari-6-and-chrome-21-add-image-set-to-support-retina-images/">Jason's blog post on <code>image-set</code> on our blog</a></li>
 <li>Supported presently in Chrome, Safari 6</li>
 <li>Yep, everyone's very foamy about retina. So, maybe, here you go?</li>
 </ul>
@@ -1515,6 +1543,10 @@ span<span class="fl">.song</span> <span class="kw">{</span>
     <span class="kw">width:</span><span class="dt">200px</span><span class="kw">;</span>
     <span class="kw">height:</span><span class="dt">75px</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
+<h3 id="further-reading-11">Further reading</h3>
+<ul>
+<li><a href="http://blog.cloudfour.com/safari-6-and-chrome-21-add-image-set-to-support-retina-images/">Jason's blog post on <code>image-set</code> on our blog</a></li>
+</ul>
 </div><div class="section slide level2" id="the-inline-html-img-tag-conundrum">
 <h1 id="the-inline-html-img-tag-conundrum">The inline HTML <code>img</code> tag conundrum</h1>
 <ul>
@@ -1634,9 +1666,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Third-party widgets (particularly ad networks)</li>
 <li>Integrating with content management systems</li>
 </ul>
-<h3 id="this-is-all-very-new">This is all very new</h3>
-<p>No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.</p>
-<h3 id="for-your-consideration-4">For your consideration</h3>
+<h3 id="for-your-consideration-5">For your consideration</h3>
 <ul>
 <li>Which approaches to embedded media seem most appealing to you? Do you have any ideas for how to solve the image problem?</li>
 </ul>
@@ -1677,7 +1707,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Used Modernizr to test for @font-face support</li>
 <li>And this is what it looks like on a BB 9810</li>
 </ul>
-<h4 id="rule-of-thumb-3">Rule of thumb</h4>
+<h4 id="rule-of-thumb-2">Rule of thumb</h4>
 <ul>
 <li>Font support on mobile is very challenging. Be wary.</li>
 </ul>
@@ -1720,7 +1750,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Put @font-face rules wherever you are comfortable</li>
 <li>Decide on the <code>small-caps</code> and <code>lowercase</code> stuff</li>
 </ul>
-<h3 id="for-your-consideration-5">For your consideration</h3>
+<h3 id="for-your-consideration-6">For your consideration</h3>
 <ul>
 <li>What would you do?</li>
 </ul>
@@ -1837,7 +1867,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   }
 ]);
 &lt;/script&gt;</code></pre>
-<h3 id="real-world-moment-5">Real world moment</h3>
+<h3 id="real-world-moment-7">Real world moment</h3>
 <p>Note that we're repeating our media query verbatim. Not great, but...options are limited these days.</p>
 </div><div class="section slide level2" id="and-our-jquery...">
 <h1 id="and-our-jquery...">And our jQuery...</h1>

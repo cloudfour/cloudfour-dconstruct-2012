@@ -176,11 +176,12 @@ h3[id^='rule-of-thumb'], h4[id^='rule-of-thumb'], h5[id^='rule-of-thumb'],
 h3[id^='further-reading'], h34[id^='further-reading'], h5[id^='further-reading'] {
   display: inline-block;
   width: 30%;
+  margin: .325em;
   margin-left: -3%;
   color: $color-background-pale;
   text-transform: lowercase;
   font-variant: small-caps;
-  padding: .25em .25em .25em 2em;
+  padding: .175em .175em .175em 2em;
   clear: left;
 }
 h3[id^='real-world-moment'], h4[id^='real-world-moment'], h5[id^='real-world-moment'] {

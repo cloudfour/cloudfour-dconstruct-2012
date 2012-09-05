@@ -35,20 +35,20 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section class="level2" id="add-some-common-common-denominator-css-and-viewport-normalization">
 <h2>Add some common, common denominator CSS and viewport normalization</h2>
 <ul>
-<li>Edit <code>tempest.html</code> (in this directory)
+<li>Edit <code>tempest.html</code> (in this directory). In the <code>&lt;head&gt;</code> element of the document:
 <ol type="1">
 <li>Add a <code>viewport</code> tag (refer to the syntax in the slides).</li>
 <li>Add a <code>&lt;link&gt;</code> tag to reference <code>styles.css</code>.</li>
 <li>Update the <code>&lt;title&gt;</code> tag. Re-prioritize it to have the most specific/important information first.</li>
 </ol></li>
-<li>Edit <code>styles.css</code>
+<li>Edit <code>styles.css</code> (also in this directory)
 <ol type="1">
 <li>Leave the existing CSS rules in the file at the end of the file intact; add the following items <em>before</em> the existing content.</li>
 <li>Add CSS reset rules from <a href="http://meyerweb.com/eric/tools/css/reset/"><code class="url">http://meyerweb.com/eric/tools/css/reset/</code></a> to the top of the file</li>
 <li>After the reset, add a rule for the <code>html</code> element and add a font reset.</li>
 <li>Add a <code>font-family</code> property to the <code>html</code> rule, as well. Might I suggest <code>font-family: Georgia, serif;</code>?</li>
 </ol></li>
-<li>Continue editing <code>styles.css</code>. Add the following:</li>
+<li>Continue editing <code>styles.css</code>. Add the following (after the reset but before the pre-existing rules already in the file):</li>
 </ul>
 <pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
   <span class="kw">background-color:</span> <span class="dt">#f9faef</span><span class="kw">;</span>

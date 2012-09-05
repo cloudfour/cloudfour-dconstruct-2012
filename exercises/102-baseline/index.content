@@ -2,16 +2,16 @@
 
 ## Add some common, common denominator CSS and viewport normalization
 
-* Edit `tempest.html` (in this directory)
+* Edit `tempest.html` (in this directory). In the `<head>` element of the document:
     1. Add a `viewport` tag (refer to the syntax in the slides).
     2. Add a `<link>` tag to reference `styles.css`.
     3. Update the `<title>` tag. Re-prioritize it to have the most specific/important information first.
-* Edit `styles.css`
+* Edit `styles.css` (also in this directory)
     1. Leave the existing CSS rules in the file at the end of the file intact; add the following items *before* the existing content.
     1. Add CSS reset rules from <http://meyerweb.com/eric/tools/css/reset/> to the top of the file
     1. After the reset, add a rule for the `html` element and add a font reset. 
     1. Add a `font-family` property to the `html` rule, as well. Might I suggest `font-family: Georgia, serif;`?
-* Continue editing `styles.css`. Add the following:
+* Continue editing `styles.css`. Add the following (after the reset but before the pre-existing rules already in the file):
 
 ~~~~{.css}
 body {

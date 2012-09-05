@@ -238,8 +238,7 @@ It's not all smartphones out there!
     * HTML/XHTML
     * cHTML (Compact HTML/iMode)
     * XHTML-MP 1.1
-    * XHTML-MP 1.2
-    * XHTML-Basic
+    * XHTML-MP 1.2 and XHTML-Basic
 
 ### Good enough for jazz
 
@@ -520,27 +519,24 @@ Why does this simple HTML page look so different in different mobile browsers?
 * `width=device-width`: Set the viewport width to the width of the device, in CSS pixels.
     * The actual value of this, as is likely obvious, will vary depending on the device or window width.
 * `initial-scale=1`: Set initial zoom to 1, that is, 100% or normal size.
+* There is ongoing angst over disabling user zoom via the `maximum-scale=1` and/or `user-scalable=no` attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.
 
-#### Rule of thumb
+### For your consideration?
 
-This is a pretty decent default `viewport` tag. Like everything on the mobile web, it's not bulletproof, but it's a good template.
+Do you have any experience with or opinions about disallowing user zooming on web pages or apps?
+
+## Viewports are "fun"
+
+### Real world moment
+
+* Certain mobile browsers are less...accurate...about viewport tag adherence
+    * Known culprits include some Samsung Galaxy phones in the US (Android)
 
 ### Further reading
 
 * [Page on Mozilla Developer Network (MDN) about viewport tags](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag)
-
-## Viewports are "fun"
-
-* Certain mobile browsers are less...accurate...about viewport tag adherence
-    * Known culprits include some Samsung Galaxy phones in the US (Android)
-* There is ongoing angst over disabling user zoom via the `maximum-scale=1` and/or `user-scalable=no` attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.
-
-### Further reading
-
 * Oh, turns out there is a [Stack Overflow post of someone else running into the viewport fun on the Galaxy Nexus](http://stackoverflow.com/questions/9374611/why-is-the-viewport-tag-on-the-galaxy-nexus-android-4-not-working)
 * Jeremy Keith has [something to say on the topic](http://adactio.com/journal/4470/)
-
-### Real world moment
 
 -------------------------------------------------------------------------------
 
@@ -584,18 +580,17 @@ It's a bit difficult to tell from this not-so-great photo, but the background co
 
 ## Baseline differences
 
+### Getting our baseline in order
+
+#### [Exercise! Getting ur baselines going](exercises/102-baseline)
+
+After you're done, you can see the end result I got to in [presenter-exercises/102-baseline/tempest.html](presenter-exercises/102-baseline/tempest.html).
+
 ### Further reading
 
 * I talk a bit about the Kindle Touch's font size differences in [this post on our blog](http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/).
 * There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of [our book](http://bit.ly/hf-mw)
 
-
-### Getting our baseline in order
-
-#### [Exercise! Getting ur baselines going](exercises/102-baseline)
-
-
-After you're done, you can see the end result I got to in [presenter-exercises/102-baseline/tempest.html](presenter-exercises/102-baseline/tempest.html).
 
 ## Baselines
 
@@ -671,6 +666,27 @@ HTML5 support in legacy browsers
 * What does the word *device* mean? *Browser*? *Client*? *User agent*? How does our usage of these terms cause confusion?
 * How many of the differences spotted did you anticipate? What surprised you?
 
+
+## Wait a minute, though
+
+![Safari on iPhone 4 before viewport tag](exercises/101-explore/images/iphone.png)
+
+![with a viewport tag](exercises/102-baseline/images/iphone.png)
+
+## I'm all confused
+
+* Our viewport tag: `<meta name="viewport" content="width=device-width,initial-scale=1">`
+* With a viewport tag, the iPhone shows 320px of content
+* But this is an iPhone 4, with Retina display. It's actual horizontal resolution is twice that (640px).
+* What gives? And why was it all zoomed out before?
+
+### Real world moment
+
+Viewports are made even more complex by the difference between device/hardware pixels and CSS pixels.
+
+### Further Reading
+
+* [A pixel is not a pixel is not a pixel (Quirksmode)](http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html)
 
 # Part II: Towards an Adaptive Web
 
@@ -869,9 +885,11 @@ h1 {
 
 ## A more complicated example
 
+![](assets/images/complex-fluid.jpg)
+
 ### For your consideration
 
-![](assets/images/complex-fluid.jpg)
+* What would the `100px` rule convert to, fluidly, as a percentage?
 
 ## In our case, a simple change
 
@@ -903,6 +921,10 @@ body {
 }
 ~~~
 
+`styles.css`
+
+
+
 
 ## So, what did that get us?
 
@@ -914,11 +936,14 @@ body {
 
 * Make the window a bit narrower, and the image disappears.
 
-## Flexible images and objects
+### Flexible images and objects
 
 * We can solve the mystery of that missing image by using the second tenet of Responsive Web Design: **flexible images and objects**.
     * While the element containing the image is flexible and proportional, the image itself isn't scaling up and down to flex to its container—the container can never get narrower than the image it contains. 
     * That causes it to wrap in our layout. Uh oh.
+
+## Flexible images and objects
+
 * We can add a simple rule to our CSS:
 
 ~~~{.css}
@@ -964,6 +989,10 @@ You cannot use `width` or `height` attributes on `img` tags that need to scale f
 
 * This affects the box model layout widths of our fluid elements and causes the wrap you see on narrow screens.
 * *We need to stop, catch our breath, and think about things a bit differently.*
+
+### Real world moment
+
+Introducing box model issues when trying to sort out other ones is oh-so-typical.
 
 ## Letting the content dictate our flow
 
@@ -1026,6 +1055,8 @@ span.song {
 }
 ~~~
 
+`styles.css`
+
 * This is pursuant to objective #2 in our list
 
 ## What the modular CSS does
@@ -1062,8 +1093,6 @@ After ripping out desktop-specific style rules, we have a new baseline.
 ![Opera Mini on iPhone4: You can see the negative `text-indent` on the `prose.verse` lines that wrap here](presenter-exercises/202-new-baseline/images/iphone-opera2.png)
 
 ## NOW we can enhance for wider screens
-
-### PAUSE
 
 * Let's use RWD's third tenet to enhance our scene page for bigger displays.
 * **CSS3 Media Queries** are the third leg of the RWD tripod.
@@ -1344,15 +1373,12 @@ Let's try to beat IE 8 into submission, shall we?
 ## Modernizr
 
 * Many different HTML, CSS and JS feature tests
-* Comes default with HTML5 shim/shiv
-* Comes default with `Modernizr.load()`
-* Tests results are available on the `Modernizr` object
+* Comes default with HTML5 shim/shiv and `Modernizr.load()`
+* Test results are available on the `Modernizr` object
     * e.g. `if (Modernizr.touch)`
 * Optionally, test results can be added as classes to the `html` element
     * e.g. `<html class="fontface no-touch cssgradients">`
 * I usually use the full/dev version for development, and then [build a version](http://modernizr.com/download/) that only contains the tests I need
-* Sometimes Modernizr is overkill
-
 
 #### Hold that thought!
 
@@ -1364,7 +1390,7 @@ We'll come back to `Modernizr.load()`
 
 * An example of feature detection and third party tools
   * Modernizr (for testing `@font-face` support)
-  * Font Squirrel (for reducing the ugh factor of creating web font files and CSS)
+  * [Font Squirrel](http://www.fontsquirrel.com/fontface/generator) (for reducing the ugh factor of creating web font files and CSS)
 
 
 ## Exercise
@@ -1372,11 +1398,13 @@ We'll come back to `Modernizr.load()`
 * You be the enhancer!
 * [Exercise: feature enhancement vis-a-vis @font-face](exercises/301-features)
 
-## TODO: MOAR polyfills and feature tests
+## MOAR polyfills and feature tests
 
-* Selectivizr
-* IE scripts (cloudfour.com)
-* Modernizr page of polyfills
+### Further Reading
+
+* [Selectivizr](http://selectivizr.com/) CSS selectors for IE
+* [IE7 JS](http://code.google.com/p/ie7-js/) "A JavaScript library to make MSIE behave like a standards-compliant browser
+* [Long list of polyfills on Modernizr](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills)
 
 # Part IV: On the frontiers of the adaptive web
 
@@ -1445,11 +1473,13 @@ These issues apply both to CSS background images and inline images. Let's take a
 
 * As of iOS 4.2, replacing a `background-image` in the cascade will result in only one image being downloaded
 * But, `display:none` on the element itself still downloads images
+
+### Further reading
+
 * [Tim Kadlec’s comprehensive test results for background images](http://timkadlec.com/2012/04/media-query-asset-downloading-results/)
 
 ## `image-set`
 
-* [Jason's blog post on `image-set` on our blog](http://blog.cloudfour.com/safari-6-and-chrome-21-add-image-set-to-support-retina-images/)
 * Supported presently in Chrome, Safari 6
 * Yep, everyone's very foamy about retina. So, maybe, here you go?
 
@@ -1468,6 +1498,10 @@ These issues apply both to CSS background images and inline images. Let's take a
     height:75px;
 }
 ~~~
+
+### Further reading
+
+* [Jason's blog post on `image-set` on our blog](http://blog.cloudfour.com/safari-6-and-chrome-21-add-image-set-to-support-retina-images/)
 
 ## The inline HTML `img` tag conundrum
 
@@ -1598,10 +1632,6 @@ This is a product of my imagination and probably represents a syntax that would 
 * Content ordering
 * Third-party widgets (particularly ad networks)
 * Integrating with content management systems
-
-### This is all very new
-
-No one has built a site that goes from a feature phone all the way to a television with an optimized experience for each form factor.
 
 ### For your consideration
 
