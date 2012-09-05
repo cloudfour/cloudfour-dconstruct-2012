@@ -416,7 +416,9 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 
 -------------------------------------------------------------------------------
 
-## So what are we building today?
+# So what are we building today?
+
+## Inspired by Shakespeare
 
 I was inspired by my iminent viewing of Shakespeare's *The Tempest* in Stratford-upon-Avon. I thought it might be nice to have a web-based refernce of the text of the play in a handsome, device-friendly, readable way.
 
@@ -578,9 +580,7 @@ It's a bit difficult to tell from this not-so-great photo, but the background co
 * DOCTYPES: Somewhat confusingly, different DOCTYPEs can cause some browsers to use different CSS layout algorithms. Example: Opera Mini's box model is slightly different in XHTML-MP vs. HTML5.
 * HTML `title`s. Display of a web page's title differs in different mobile browsers and is usually limited in space. Make sure to put the most information first.
 
-## Baseline differences
-
-### Getting our baseline in order
+## Exercise: A new baseline
 
 #### [Exercise! Getting ur baselines going](exercises/102-baseline)
 
@@ -784,6 +784,8 @@ What do you think? Do you prefer *mobile-first*, *content-first* or *baseline-fi
 #### Hold that thought
 
 * Separate mobile sites/content differentiation
+
+# Responsive Web Design
 
 ## Responsive Web Design (RWD)
 
@@ -1898,6 +1900,200 @@ html.generatedcontent span.line-number:after {
 
 ## TODO: Wrap Slide
 
+-------------------------------------------------------------------------------
+
+# An interlude: separate mobile sites and device detection
+
+## We've been making some assumptions this morning...
+
+* Starting from scratch and making a kick-ass responsive web site that works great almost everywhere is a great goal...
+* ...but sometimes reality kicks in
+* Other business requirements sometimes mean that a separate mobile web site is necessary
+
+### Real world moment
+
+## Detection Databases
+
+* Sometimes you may need to know information about your device and browser before you serve content. Maybe you want to redirect mobile devices entirely. Maybe you want to know details about the device's support.
+* Mobile device databases contain detailed information about the browser, platform, and hardware features of mobile devices. All a device detection database needs is a user agent string and it can tell you a lot about the device.
+
+## Unique DNA string
+
+Every browser in the world has a user agent string. This string tells us a lot about the browser.
+
+~~~
+Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) 
+Chrome/14.0.792.0 Safari/535.1
+~~~
+
+That’s the user agent string for Chrome 14 running on Windows Vista. Obvious, right?
+
+## User agent sniffing is evil, right?
+
+* You’ve heard the propaganda that says user agent switching is a bad practice. And who can forget the many web sites left behind during the "runs best on IE6" era.
+* But you're fighting zombies here! Religion takes a back seat to survival.
+* Plus, 25 of Alexa’s Top 30 sites use device detection. The five that don’t? They don’t have mobile sites at all.
+
+## Many device detection database options
+
+* [WURFL][wurfl] (Wireless Universal Resource FiLe) by [ScientiaMobile][scientiamobile]
+* [DeviceAtlas][deviceatlas] by [dotMobi][dotmobi]
+* New Apache [DeviceMap][devicemap] Project
+* [51degrees][51]
+
+Pay special attention to the licenses.
+
+## Get an ID on those zombies
+
+Let’s do a test run using a device detection database.
+
+1. Go to the [ScientiaMobile WURFL Explorer][explorer] on your mobile phone
+2. Check out the various attributes. What do you see that would be useful?
+3. Can you find the screen resolution of your phone?
+4. Go to the [ScientiaMobile WURFL Explorer][explorer] on your laptop
+
+## Testing capabilities
+
+Device databases are most useful for testing capabilities. Once you have a user agent string, you can things like:
+
+### Is this a mobile device?
+
+~~~{.php}
+$value = $device->getCapability('is_wireless_device');
+~~~
+
+OR
+
+### Does this browser-device combo support cookies?
+
+~~~{.php}
+$value = $device->getCapability('cookie_support');
+~~~
+
+## Mobile UAs are like snowflakes
+
+* Each one is unique, but for the most part, you don’t care. You can’t build a specific tool for each one, even if a specialized weapon would be most effective.
+* Instead, you need to group them into categories that are similar enough that you can treat them similarly.
+
+## Herd them into device classes
+
+![](assets/images/device-herds.jpg)
+
+A *device class* is an abstract collection of common characteristics that define a group of devices and their browsers.
+
+## As few device classes as possible
+
+### Figure: Typical device classes
+
+![](assets/images/device-classes.jpg)
+
+## Tips for device detection
+
+* Responsive web design still makes sense within device classes
+* Overlap as much as you can between templates. No need to maintain wholly separate templates.
+* Think about what you fallback to if the device isn’t found in the database.
+
+## Best practices
+
+* Support every URL regardless of device
+* Don’t dumb it down just because the screen is smaller
+* Allow people to select a different experience
+* Use JavaScript to verify the detection and correct errors
+* Feed the corrections back into your database
+
+### Further reading
+
+* [RESS: Responsive Design + Server Side Components][ress]
+
+## A brief example using WURFL
+
+### Beware!
+
+To be able to run the following example, you'll need:
+
+* A server (local or otherwise) that can execute PHP
+* A free account on the [WURFL Cloud service](http://scientiamobile.com/cloud)
+    * A free account gives you access to a maximum of two capabilities
+    * You'll want to select `has_cellular_radio` and `is_touchscreen`
+* This will give you the **API KEY** you'll need to drop into the first line of the `zombie-detect.php` script
+* You can find all of the elements of this example in `exercises/interlude-wurfl`
+
+## Writing some code to interact with the WURFL data
+
+~~~{.php}
+<?php
+// Include the WURFL Cloud Client 
+require_once 'WurflCloudClient-PHP-1.0.2-Simple/Client/Client.php';
+$api_key        = 'YOUR API KEY HERE';
+$is_phone_like  = NULL;
+$is_touch       = NULL;
+
+// Create a configuration object  
+$config = new WurflCloud_Client_Config();  
+ 
+// Set your WURFL Cloud API Key  
+$config->api_key = $api_key;   
+ 
+if ($api_key) {
+  // Create the WURFL Cloud Client  
+  $client = new WurflCloud_Client_Client($config);  
+  
+  // Detect your device  
+  $client->detectDevice();
+  
+  $is_phone_like = ($client->getDeviceCapability('has_cellular_radio')) ? "Has a cellular radio" : "Does NOT have a cellular radio";
+  $is_touch = ($client->getDeviceCapability('is_touchscreen')) ? "Touchscreen" : "NOT touchscreen";
+}
+?>
+~~~
+
+`zombie-detect.php`
+
+##### zombie-detect.php (`examples/08/04-wurfl`)
+
+## Displaying the information gathered
+
+~~~{.php}
+<?php require_once('zombie-detect.php'); ?>
+<!doctype html>
+<html>
+<head>
+<!-- ... -->
+  <title>Device Detection!</title>
+</head>
+<body>
+<h1><strike>Device</strike> Zombie Detection</h1>
+
+<h2 id="wurfl">Current User Agent/Device/Browser: WURFL</h2>
+
+<ul>
+<li><?php print $is_phone_like; ?></li>
+<li><?php print $is_touch; ?></li>
+</ul>
+
+</body>
+</html>
+~~~
+
+##### index.html
+
+## [And](../presenter-examples/08/04-wurfl)
+
+![Desktop browser](images/08-wurfl-data.png)
+
+![iPhone](images/08-wurfl-data-iphone.png)
+
+## Why would this help me?
+
+* Sometimes finding out data about the device accessing your service *before* serving out content is key
+* Another tactic for handling optimized images
+* For certain features—e.g. whether a device has a cellular radio—there is no other way to know
+* Can be useful for server-side detection and then redirection to a mobile-specific site
+
+### Further reading
+
+* [Detect Mobile Browsers script](http://detectmobilebrowsers.com/): Lightweight, open-source script for detecting major mobile platforms, available in many different formats and languages.
+
 [adactio]: http://adactio.com/journal
 [adactio-content-first]: http://adactio.com/journal/4523/
 [aea-oct-12]: http://aneventapart.com/2011/dc/
@@ -1913,3 +2109,13 @@ html.generatedcontent span.line-number:after {
 [rahn-frederick]: http://www.amazon.com/Beginning-Smartphone-Web-Development-Applications/dp/143022620X
 [stephenhay-structured-content]: http://www.slideshare.net/stephenhay/structured-content-first
 [w3c-validator]: http://validator.w3c.org
+[zombie-types]: http://uncyclopedia.wikia.com/wiki/Zombie_Types
+[wurfl]: http://wurfl.sourceforge.net/
+[scientiamobile]: http://www.scientiamobile.com/
+[deviceatlas]: http://deviceatlas.com/
+[dotmobi]: http://mtld.mobi/
+[51]: http://51degrees.mobi/Products/DeviceData.aspx
+[devicemap]: http://wiki.apache.org/incubator/DeviceMapProposal
+[explorer]: http://www.tera-wurfl.com/explore/
+[ress]: http://www.lukew.com/ff/entry.asp?1392
+[openddr]: http://openddr.org

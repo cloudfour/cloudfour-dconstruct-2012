@@ -138,7 +138,11 @@ Lyza Gardner
     <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;tell-not-me&quot;</span><span class="kw">&gt;&lt;em&gt;</span>i.e.<span class="kw">&lt;/em&gt;</span> Don&#39;t tell me not to drink so much.<span class="kw">&lt;/li&gt;</span>
     <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;gloss-butt&quot;</span><span class="kw">&gt;</span>An archaeic unit of wine, and quite a lot of it. A butt of wine around Shakespeare&#39;s time was about 126 gallons (104 imperial gallons). Compare the average US beer keg barrel size of about 15.5 gallons.<span class="kw">&lt;/li&gt;</span></code></pre>
 <p>etc.</p>
-<p>TODO drawing showing mapping of gloss item to gloss content.</p>
+</div><div class="section slide level2" id="glossary-markup">
+<h1 id="glossary-markup">Glossary markup</h1>
+<div class="figure">
+<img src="assets/images/glossary-structure.jpg" /><p class="caption"></p>
+</div>
 </div><div class="section slide level2" id="step-1-some-styles">
 <h1 id="step-1-some-styles">Step 1: Some styles</h1>
 <ul>
@@ -190,6 +194,7 @@ sup <span class="kw">{</span>
 <h1 id="and-now-we-have-our-baseline">And now we have our baseline</h1>
 <p>At this point, we stop and test on our supported devices*.</p>
 <p>* I should note that, while developing the markup and styles for this example, I did find a problem in test. I had initially set a <code>width: 100%</code> on the <code>section.glossary</code> element. My <code>section</code> styles already had a padding on them, and this broke the box model and caused horizontal scrolling. C'est la vie. Easily fixed when caught at this stage. Test, iterate, test. Often.</p>
+<p><a href="presenter-exercises/500-glossed/tempest.html">Our glossed items, baseline markup</a></p>
 <h4 id="hold-that-thought-1">Hold that thought!</h4>
 <p>We're going to have an extravaganza of testing discussion soon.</p>
 </div><div class="section slide level2" id="an-updated-baseline">
@@ -208,6 +213,8 @@ sup <span class="kw">{</span>
 <div class="figure">
 <img src="presenter-exercises/500-glossed/images/ipad.png" alt="iPad" /><p class="caption">iPad</p>
 </div>
+<h3 id="pro-tip">Pro tip</h3>
+<p>I did some testing on tablets here because of the CSS columns change. More on testing later!</p>
 </div><div class="section slide level2" id="both-ipad-and-fire-support-css-columns">
 <h1 id="both-ipad-and-fire-support-css-columns">Both iPad and Fire support CSS Columns</h1>
 <div class="figure">
@@ -260,7 +267,11 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
   });
 });</code></pre>
 <p>Finally, added a bunch of styles to the end of <code>styles.css</code>: Messi's CSS.</p>
-<p>TODO: Drawing of the way these pieces fit together</p>
+</div><div class="section slide level2" id="putting-this-stuff-together">
+<h1 id="putting-this-stuff-together">Putting this stuff together</h1>
+<div class="figure">
+<img src="assets/images/messi-structure.jpg" /><p class="caption"></p>
+</div>
 </div><div class="section slide level2" id="looks-ok-on-my-desktop...">
 <h1 id="looks-ok-on-my-desktop...">Looks OK on my desktop...</h1>
 <div class="figure">
@@ -281,6 +292,8 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
 <li>Also, we need to add some styles of our own to indicate that the glossed items are tappable.</li>
 </ul>
 <p>The Messi CSS, lifted from Twitter Bootstrap, contains over 500 lines of CSS (more than twice the length of all of the rest of our CSS). There are many rules that aren't getting used, and a lot of pixel dimensions and gradients and animations and whatnot.</p>
+<h3 id="beware">Beware!</h3>
+<p>Most things in the web world still aren't ready to be dropped, wholesale, into a mobile-friendly context. We have to pay strict attention!</p>
 </div><div class="section slide level2" id="refactoring-the-css">
 <h1 id="refactoring-the-css">Refactoring the CSS</h1>
 <ul>
@@ -323,7 +336,7 @@ $(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="k
 <li>The Messi CSS, even shortened, is making some assumptions about CSS layout. It uses <code>flexbox</code> or <code>box</code> layouts, which this Windows Phone browser doesn't grok.</li>
 <li>I tend to find it ironic that Twitter Bootstrap gets touted as a &quot;mobile-friendly&quot; and &quot;responsive&quot; CSS framework.</li>
 </ul>
-<h3 id="beware">Beware!</h3>
+<h3 id="beware-1">Beware!</h3>
 <ul>
 <li>There is no international committee monitoring the fair usage of &quot;responsive.&quot; It means...different things to different people.</li>
 </ul>
@@ -413,6 +426,15 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <ul>
 <li>Technically, this is not adjusting for touch. It's adjusting for screen size. But there is a lot of correlation between narrow screen sizes and touch screens.</li>
 </ul>
+</div><div class="section slide level2" id="recap">
+<h1 id="recap">Recap</h1>
+<p>A lot of stuff just happened. In a nutshell:</p>
+<ol style="list-style-type: decimal">
+<li>Messi CSS was culled, twice, to get rid of unused styles and make remaining one works OK on mobile devices</li>
+<li>We added some styles to our own CSS to make tap-able, glossed items indicated as such. We then added these styles as needed via JS</li>
+<li>We used a small JS function to determine viewport width to help us decide how wide to make the Messi popup modal</li>
+<li>We adjusted styling for wider screens</li>
+</ol>
 </div><div class="section slide level2" id="thats-pretty-nice">
 <h1 id="thats-pretty-nice">That's pretty nice</h1>
 <div class="figure">
@@ -475,6 +497,8 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <h1 id="client-side-programming-from-scratch-can-be-hard">Client-side programming from scratch can be hard</h1>
 <p>It can get tiring if, every time you need to implement something, you have to build it from scratch. Even if you take that route, building up your own library of re-usable components and keeping them maintained as the mobile landscape sways so wildly beneath you can be challenging if not impossible.</p>
 <p>Messi is a good example of the pros and cons of a third-party tool.</p>
+<h3 id="pro-tip-1">Pro Tip</h3>
+<p>You can find all of the code for the examples in this section in the <code>presenter-exercises</code> directory inside of <code>500-glossed</code> (markup/baseline CSS only), <code>501-popups</code> (popups that work on desktop only) and <code>502-reponsive-popups</code> (popups sized appropriately for mobile) subdirectories.</p>
 </div>
 <div class="section titleslide slide level1" id="frameworks"><h1 id="frameworks">Frameworks</h1></div><div class="section slide level2" id="what-frameworks-do-for-us">
 <h1 id="what-frameworks-do-for-us">What frameworks do for us</h1>
@@ -492,7 +516,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </div><div class="section slide level2" id="popular-mobile-web-frameworks">
 <h1 id="popular-mobile-web-frameworks">Popular mobile web frameworks</h1>
 <ul>
-<li>[jQuery Mobile](http://jquerymobile.com</li>
+<li><a href="http://jquerymobile.com">jQuery Mobile</a></li>
 <li><a href="http://www.sencha.com/products/touch">Sencha Touch</a></li>
 <li><a href="http://the-m-project.net/">The M Project</a></li>
 <li><a href="http://www.dhtmlx.com/touch/">DHTMLX Touch</a></li>
@@ -523,7 +547,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Framework options: jQuery Mobile, Sencha Touch, etc.</li>
 <li>Another way: Lightweight JavaScript library like asfar.js</li>
 </ul>
-<h4 id="pro-tip">Pro Tip</h4>
+<h4 id="pro-tip-2">Pro Tip</h4>
 <p>Try to isolate the issue or issues you really want to solve and find a more focused library or tool to solve that problem. Try to have a good understanding of how the library or tool you end up selecting <em>works</em>.</p>
 </div>
 <div class="section titleslide slide level1" id="part-vi-the-web-as-a-platform-html5-apis-oh-my"><h1 id="part-vi-the-web-as-a-platform-html5-apis-oh-my">Part VI: The web as a platform: HTML5, APIs, oh, my!</h1></div><div class="section slide level2" id="html5-is-complicated-and-confusing">
@@ -706,7 +730,6 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </ul>
 </div><div class="section slide level2" id="and-where-would-that-be">
 <h1 id="and-where-would-that-be">And where would that be?</h1>
-<h3 id="references">References</h3>
 <ul>
 <li><a href="http://platform.html5.org/">The Web platform: Browser technologies</a></li>
 <li><a href="http://html5please.com/">HTML5Please</a></li>
@@ -715,7 +738,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li><a href="https://developer.mozilla.org/en-US/docs/HTML/HTML5">Mozilla Developer Network HTML5 Section</a></li>
 <li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">HTML5 Polyfills from Modernizr</a> A list of tons of polyfills</li>
 </ul>
-<h3 id="other-stuff">Other stuff</h3>
+<h3 id="further-reading-1">Further reading</h3>
 <ul>
 <li><a href="http://www.netmagazine.com/features/developer-s-guide-html5-apis">.net Magazine Article</a></li>
 <li><a href="http://brian.io/slides/beyond-html5/">Slide deck from Brian LeRoux on Device APIs</a></li>
@@ -795,7 +818,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Several more polyfills are <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">listed on Modernizr</a></li>
 <li>You can also use <a href="http://brian.io/lawnchair/">Lawnchair's DOM adapter</a></li>
 </ul>
-<h4 id="beware-1">Beware!</h4>
+<h4 id="beware-2">Beware!</h4>
 <p>Many <code>localStorage</code> polyfills use cookies. The cookie polyfill is limited by one of the very things that <code>localStorage</code> was intended to relieve: maximum cookie size. 4kb is the max size for any cookie. The lowest common denominator is IE6, which may allow as few as 20 cookies per domain. Also, cookies are sent with every request—expensive overhead on high-latency connections.</p>
 </div><div class="section slide level2" id="other-client-and-device-persistencedatafile-options">
 <h1 id="other-client-and-device-persistencedatafile-options">Other client and device persistence/data/file options</h1>
@@ -820,7 +843,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </div>
 </div><div class="section slide level2" id="hacking-it-together">
 <h1 id="hacking-it-together">Hacking it together</h1>
-<h3 id="beware-2">Beware!</h3>
+<h3 id="beware-3">Beware!</h3>
 <p>Here comes some JavaScript!</p>
 <ol style="list-style-type: decimal">
 <li>I'm going to gloss over some of the finer details of the implementation here</li>
@@ -1044,6 +1067,8 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>This is not about downloading the page assets; it is about the client-side rendering of the bits</li>
 </ul></li>
 </ul>
+<h3 id="beware-4">Beware!</h3>
+<p>Mobile optimization isn't all about page size and bandwidth. Parsing the DOM, renderig complex CSS-styled stuff, executing JS...all of this stuff can really add up on older phones.</p>
 </div><div class="section slide level2" id="some-numbers">
 <h1 id="some-numbers">Some numbers</h1>
 <ul>
@@ -1192,7 +1217,30 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 </div><div class="section slide level2" id="section">
 <h1 id="section"></h1>
 </div>
-<div class="section titleslide slide level1" id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell">Part VIII: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="testing-the-mobile-web-is-hard">
+<div class="section titleslide slide level1" id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell">Part VIII: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="but-what-about-testing-all-of-this-stuff">
+<h1 id="but-what-about-testing-all-of-this-stuff">But what about testing all of this stuff?</h1>
+<h3 id="some-perspective">Some perspective</h3>
+<blockquote>
+<p>If you think your web site works, you just haven’t tested enough. It is broken somewhere. —Lyza Gardner</p>
+</blockquote>
+<h3 id="we-cant-test-everything">We can’t test everything</h3>
+<ul>
+<li>No one tests every possible device and browser combination.</li>
+<li>Even on desktop, we don’t test every possible combination.</li>
+<li>So we have to make practical decisions about what we can reasonably test and develop sites in a way that minimizes potential issues.</li>
+</ul>
+</div><div class="section slide level2" id="what-does-it-mean-to-support-a-device">
+<h1 id="what-does-it-mean-to-support-a-device">What does it mean to “support” a device?</h1>
+<ul>
+<li>We think of support as coming in three tiers:
+<ul>
+<li>Devices and browsers that we explicitly support.</li>
+<li>Devices and browsers that we don’t explicitly support, but that we expect to work in some fashion because we’ve built the site with best practices.</li>
+<li>Devices and browsers we cannot support because they don’t meet a minimum bar for the application or site.</li>
+</ul></li>
+<li>The devices and browsers that we explicitly support are the ones we need to test on.</li>
+</ul>
+</div><div class="section slide level2" id="testing-the-mobile-web-is-hard">
 <h1 id="testing-the-mobile-web-is-hard">Testing the mobile web is hard</h1>
 <ul>
 <li>Not a lot of methodologies established</li>

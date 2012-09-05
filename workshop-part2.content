@@ -109,7 +109,9 @@ Step 1 is easy enough. Just need to add some HTML markup and some styles for it.
 
 etc.
 
-TODO drawing showing mapping of gloss item to gloss content.
+## Glossary markup
+
+![](assets/images/glossary-structure.jpg)
 
 ## Step 1: Some styles
 
@@ -170,6 +172,8 @@ At this point, we stop and test on our supported devices*.
 
 \* I should note that, while developing the markup and styles for this example, I did find a problem in test. I had initially set a `width: 100%` on the `section.glossary` element. My `section` styles already had a padding on them, and this broke the box model and caused horizontal scrolling. C'est la vie. Easily fixed when caught at this stage. Test, iterate, test. Often.
 
+[Our glossed items, baseline markup](presenter-exercises/500-glossed/tempest.html)
+
 #### Hold that thought!
 
 We're going to have an extravaganza of testing discussion soon.
@@ -186,6 +190,9 @@ We're going to have an extravaganza of testing discussion soon.
 
 ![iPad](presenter-exercises/500-glossed/images/ipad.png)
 
+### Pro tip
+
+I did some testing on tablets here because of the CSS columns change. More on testing later!
 
 ## Both iPad and Fire support CSS Columns
 
@@ -246,7 +253,9 @@ $(document).ready(function() {
 
 Finally, added a bunch of styles to the end of `styles.css`: Messi's CSS.
 
-TODO: Drawing of the way these pieces fit together
+## Putting this stuff together
+
+![](assets/images/messi-structure.jpg)
 
 ## Looks OK on my desktop...
 
@@ -264,6 +273,10 @@ TODO: Drawing of the way these pieces fit together
 * Also, we need to add some styles of our own to indicate that the glossed items are tappable.
 
 The Messi CSS, lifted from Twitter Bootstrap, contains over 500 lines of CSS (more than twice the length of all of the rest of our CSS). There are many rules that aren't getting used, and a lot of pixel dimensions and gradients and animations and whatnot.
+
+### Beware!
+
+Most things in the web world still aren't ready to be dropped, wholesale, into a mobile-friendly context. We have to pay strict attention!
 
 ## Refactoring the CSS
 
@@ -426,6 +439,16 @@ Now we have `html.glossed` as a class indicating that we have a JS-driven glossa
 
 * Technically, this is not adjusting for touch. It's adjusting for screen size. But there is a lot of correlation between narrow screen sizes and touch screens.
 
+## Recap
+
+A lot of stuff just happened. In a nutshell:
+
+1. Messi CSS was culled, twice, to get rid of unused styles and make remaining one works OK on mobile devices
+1. We added some styles to our own CSS to make tap-able, glossed items indicated as such. We then added these styles as needed via JS
+1. We used a small JS function to determine viewport width to help us decide how wide to make the Messi popup modal
+1. We adjusted styling for wider screens
+
+
 ## That's pretty nice
 
 ![BlackBerry 9670](presenter-exercises/502-responsive-popups/images/9670.png)
@@ -483,6 +506,10 @@ It can get tiring if, every time you need to implement something, you have to bu
 
 Messi is a good example of the pros and cons of a third-party tool.
 
+### Pro Tip
+
+You can find all of the code for the examples in this section in the `presenter-exercises` directory inside of `500-glossed` (markup/baseline CSS only), `501-popups` (popups that work on desktop only) and `502-reponsive-popups` (popups sized appropriately for mobile) subdirectories.
+
 # Frameworks
 
 ## What frameworks do for us
@@ -497,7 +524,7 @@ Messi is a good example of the pros and cons of a third-party tool.
 
 ## Popular mobile web frameworks
 
-* [jQuery Mobile](http://jquerymobile.com
+* [jQuery Mobile](http://jquerymobile.com)
 * [Sencha Touch](http://www.sencha.com/products/touch)
 * [The M Project](http://the-m-project.net/)
 * [DHTMLX Touch](http://www.dhtmlx.com/touch/)
@@ -704,8 +731,6 @@ function onGeoError(error) { alert(error.message); }
 
 ## And where would that be?
 
-### References
-
 * [The Web platform: Browser technologies](http://platform.html5.org/)
 * [HTML5Please](http://html5please.com/)
 * [CanIUse JS APIs](http://caniuse.com/#cats=JS_API)
@@ -713,7 +738,7 @@ function onGeoError(error) { alert(error.message); }
 * [Mozilla Developer Network HTML5 Section](https://developer.mozilla.org/en-US/docs/HTML/HTML5)
 * [HTML5 Polyfills from Modernizr](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills) A list of tons of polyfills
 
-### Other stuff
+### Further reading
 
 * [.net Magazine Article](http://www.netmagazine.com/features/developer-s-guide-html5-apis)
 * [Slide deck from Brian LeRoux on Device APIs](http://brian.io/slides/beyond-html5/)
@@ -1031,6 +1056,10 @@ div.saved-glosses dd {
 * The page still [loads and renders *incredibly slowly* on the 9670](assets/videos/9670-loading.MOV)
     * This is not about downloading the page assets; it is about the client-side rendering of the bits
 
+### Beware!
+
+Mobile optimization isn't all about page size and bandwidth. Parsing the DOM, renderig complex CSS-styled stuff, executing JS...all of this stuff can really add up on older phones.
+
 ## Some numbers
 
 * Here's how long it took from resources received to an HTML page showing up at all (that is, the blank screen time between getting the resources and showing anything)
@@ -1132,6 +1161,27 @@ Evaluation of Modernizr.mq()                            2.5sec
 -------------------------------------------------------------------------------
 
 # Part VIII: Making sure it works, a.k.a. Testing is Hell
+
+## But what about testing all of this stuff?
+
+### Some perspective
+
+> If you think your web site works, you just haven’t tested enough. It is broken somewhere.
+> —Lyza Gardner
+
+### We can’t test everything
+
+* No one tests every possible device and browser combination.
+* Even on desktop, we don’t test every possible combination.
+* So we have to make practical decisions about what we can reasonably test and develop sites in a way that minimizes potential issues.
+
+## What does it mean to “support” a device?
+
+* We think of support as coming in three tiers:
+    * Devices and browsers that we explicitly support.
+    * Devices and browsers that we don’t explicitly support, but that we expect to work in some fashion because we’ve built the site with best practices.
+    * Devices and browsers we cannot support because they don’t meet a minimum bar for the application or site.
+* The devices and browsers that we explicitly support are the ones we need to test on.
 
 ## Testing the mobile web is hard
 
