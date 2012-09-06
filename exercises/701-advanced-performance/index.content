@@ -1,0 +1,13 @@
+## Exercise: Advanced performance sleuthing!
+
+* Review `tempest.html` in this directory and note its structure, especially concerning JavaScript and CSS resources
+* If you have the ySlow extension (or similar) installed in your browser, run a test on the version of `tempest.html` in this directory
+    * You can also reference the image of the ySlow results in the slides
+* Reference the [Yahoo! Exceptional Performance Recommendations](http://developer.yahoo.com/performance/) documentation as needed
+
+### For your consideration
+
+* How many items can you spot that could still be tweaked to improve the performance of the page?
+* Are all of the items you spotted feasible to correct? 
+    * Are there some performance enhancements that are more complex than they are worth? 
+    * What criteria can you foresee using to make performance decisions like these?

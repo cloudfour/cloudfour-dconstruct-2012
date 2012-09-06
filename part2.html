@@ -514,7 +514,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <h3 id="pro-tip-1">Pro Tip</h3>
 <p>You can find all of the code for the examples in this section in the <code>presenter-exercises</code> directory inside of <code>500-glossed</code> (markup/baseline CSS only), <code>501-popups</code> (popups that work on desktop only) and <code>502-reponsive-popups</code> (popups sized appropriately for mobile) subdirectories.</p>
 </div>
-<div class="section titleslide slide level1" id="frameworks"><h1 id="frameworks">Frameworks</h1></div><div class="section slide level2" id="what-frameworks-do-for-us">
+<div class="section titleslide slide level1" id="interlude-frameworks"><h1 id="interlude-frameworks">Interlude: Frameworks</h1></div><div class="section slide level2" id="what-frameworks-do-for-us">
 <h1 id="what-frameworks-do-for-us">What frameworks do for us</h1>
 <ul>
 <li>Often a combination of UI framework and development framework</li>
@@ -758,10 +758,13 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </ul>
 </div><div class="section slide level2" id="mediacapture-api">
 <h1 id="mediacapture-api">MediaCapture API</h1>
-<h4 id="beware-actually-two-things">Beware! Actually two things</h4>
+<h4 id="beware-2">Beware!</h4>
+<ul>
+<li>Actually two things
 <ul>
 <li><a href="http://www.w3.org/TR/html-media-capture/">HTMLInputElement</a>: New form <code>&lt;input&gt;</code> type</li>
 <li><a href="http://www.w3.org/TR/mediacapture-streams/">mediaCapture/Streams</a>: Somewhat confusing (mostly in that it is ever-changing/hard to pin down) JavaScript/Programmatic API</li>
+</ul></li>
 </ul>
 <h3 id="mediacapture">MediaCapture</h3>
 <ul>
@@ -831,10 +834,11 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Several more polyfills are <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">listed on Modernizr</a></li>
 <li>You can also use <a href="http://brian.io/lawnchair/">Lawnchair's DOM adapter</a></li>
 </ul>
-<h4 id="beware-2">Beware!</h4>
+<h4 id="beware-3">Beware!</h4>
 <p>Many <code>localStorage</code> polyfills use cookies. The cookie polyfill is limited by one of the very things that <code>localStorage</code> was intended to relieve: maximum cookie size. 4kb is the max size for any cookie. The lowest common denominator is IE6, which may allow as few as 20 cookies per domain. Also, cookies are sent with every request—expensive overhead on high-latency connections.</p>
 </div><div class="section slide level2" id="other-client-and-device-persistencedatafile-options">
 <h1 id="other-client-and-device-persistencedatafile-options">Other client and device persistence/data/file options</h1>
+<h3 id="further-reading-3">Further reading</h3>
 <ul>
 <li><a href="http://dvcs.w3.org/hg/IndexedDB/raw-file/tip/Overview.html">IndexedDB</a></li>
 <li><a href="http://dev.w3.org/2006/webapi/FileAPI/">File API</a></li>
@@ -848,47 +852,41 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 </div>
 </div><div class="section slide level2" id="in-which-i-prototype-a-save-gloss-feature">
 <h1 id="in-which-i-prototype-a-save-gloss-feature">In which I prototype a save-gloss feature</h1>
-<div class="figure">
-<img src="presenter-exercises/502-responsive-popups/images/iphone.png" alt="When a user taps on the Save Button" /><p class="caption">When a user taps on the Save Button</p>
-</div>
-<div class="figure">
-<img src="presenter-exercises/601-prototype/images/nokia-n8.png" alt="The glossed item should be saved" /><p class="caption">The glossed item should be saved</p>
-</div>
-</div><div class="section slide level2" id="hacking-it-together">
-<h1 id="hacking-it-together">Hacking it together</h1>
-<h3 id="beware-3">Beware!</h3>
+<ul>
+<li>Recall that so far, steps 1 and 2 of the save-gloss feature are done:
+<ol style="list-style-type: decimal">
+<li>HTML and CSS baseline markup</li>
+<li>JS and CSS enhancement; prototype of definition pop-ups and interface</li>
+</ol></li>
+<li>Now it's time for step 3</li>
+</ul>
+<h3 id="beware-4">Beware!</h3>
 <p>Here comes some JavaScript!</p>
 <ol style="list-style-type: decimal">
 <li>I'm going to gloss over some of the finer details of the implementation here</li>
 <li>I don't want you to gloss over too hard</li>
 <li>I'll provide links to more details for the curious</li>
 </ol>
+</div><div class="section slide level2" id="step-3-make-it-so">
+<h1 id="step-3-make-it-so">Step 3: make it so</h1>
+<div class="figure">
+<img src="presenter-exercises/502-responsive-popups/images/iphone.png" alt="When a user taps on the Save Button" /><p class="caption">When a user taps on the Save Button</p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/601-prototype/images/nokia-n8.png" alt="The glossed item should be saved" /><p class="caption">The glossed item should be saved</p>
+</div>
 </div><div class="section slide level2" id="structure">
 <h1 id="structure">Structure</h1>
-<ol style="list-style-type: decimal">
-<li>Re-organizing the JavaScript
+<ul>
+<li>Re-factoring the prototyped JavaScript
 <ul>
 <li><code>GlossStorage</code> class to handle interacting with <code>localStorage</code></li>
 <li>jQuery extension that relies on Messi</li>
 </ul></li>
-<li>Adding some CSS to display saved glossary items</li>
+<li>Adding some CSS to display saved glossary items in a list</li>
 <li>Unobtrusive JS: No changes to HTML markup</li>
-</ol>
-</div><div class="section slide level2" id="enhancement-plan">
-<h1 id="enhancement-plan">Enhancement plan</h1>
-<ul>
-<li>Line-number display and popup enhancements stay as they are</li>
-<li>Additional test within <code>GlossStorage</code> to determine <code>localStorage</code> support</li>
-<li>Enhancement to save glossed items and show glossed items based on that test</li>
 </ul>
-<h3 id="the-next-few-slides">The next few slides</h3>
-<ol style="list-style-type: decimal">
-<li>Structure of <code>GlossStorage</code> class</li>
-<li>Detail of <code>localStorage</code> feature test</li>
-<li>Structure of jQuery plugin</li>
-<li>Additional baseline CSS</li>
-<li>Additional wider-screen CSS</li>
-</ol>
+<p>TODO: Drawing</p>
 </div><div class="section slide level2" id="glossstorage">
 <h1 id="glossstorage">GlossStorage</h1>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>($) {
@@ -958,7 +956,7 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
       });
     }();
   }</code></pre>
-<p><code>gloss.js</code></p>
+<p><code>gloss.js</code> detail</p>
 </div><div class="section slide level2" id="css">
 <h1 id="css">CSS</h1>
 <pre class="sourceCode css"><code class="sourceCode css">div<span class="fl">.saved-glosses</span> <span class="kw">{</span>
@@ -988,7 +986,10 @@ div<span class="fl">.saved-glosses</span> h3<span class="dv">:before</span> <spa
 <span class="kw">}</span>
 div<span class="fl">.saved-glosses.open</span> h3<span class="dv">:before</span> <span class="kw">{</span>
   <span class="kw">content:</span> <span class="st">&quot;\25BC&quot;</span><span class="kw">;</span>
-<span class="kw">}</span>
+<span class="kw">}</span></code></pre>
+</div><div class="section slide level2" id="moar-css">
+<h1 id="moar-css">MOAR CSS</h1>
+<pre class="sourceCode css"><code class="sourceCode css">
 div<span class="fl">.saved-glosses</span> dl <span class="kw">{</span>
   <span class="kw">display</span>                <span class="kw">:</span> <span class="dt">none</span><span class="kw">;</span>
 <span class="kw">}</span>
@@ -1008,6 +1009,9 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
   <span class="kw">font-size</span>              <span class="kw">:</span> <span class="dt">.875em</span><span class="kw">;</span>
   <span class="kw">line-height</span>            <span class="kw">:</span> <span class="dt">1.25em</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
+<p><code>styles.css</code></p>
+</div>
+
 </div><div class="section slide level2" id="differentiated-css-in-media-query">
 <h1 id="differentiated-css-in-media-query">Differentiated CSS in media query</h1>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">50em)</span> <span class="dv">{</span>
@@ -1029,6 +1033,23 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
     <span class="kw">border-top:</span> <span class="dt">0px</span><span class="kw">;</span>
   <span class="kw">}</span>
 <span class="dv">}</span></code></pre>
+<p><code>styles.css</code></p>
+</div><div class="section slide level2" id="the-styles-make-it-look-like-this-on-a-narrow-screen">
+<h1 id="the-styles-make-it-look-like-this-on-a-narrow-screen">The styles make it look like this on a narrow screen</h1>
+<div class="figure">
+<img src="presenter-exercises/601-prototype/images/iphone.png" /><p class="caption"></p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/601-prototype/images/iphone2.png" /><p class="caption"></p>
+</div>
+</div><div class="section slide level2" id="and-like-this-on-a-wider-screen">
+<h1 id="and-like-this-on-a-wider-screen">And like this on a wider screen</h1>
+<div class="figure">
+<img src="presenter-exercises/601-prototype/images/chrome.png" /><p class="caption"></p>
+</div>
+<div class="figure">
+<img src="presenter-exercises/601-prototype/images/chrome2.png" /><p class="caption"></p>
+</div>
 <ul>
 <li>You can find the full working example of this first prototyped version in <a href="presenter-exercises/601-prototype">presenter-exercises/601-prototype/</a></li>
 <li>Let's <a href="presenter-exercises/601-prototype/tempest.html">try it out</a></li>
@@ -1039,7 +1060,7 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <img src="presenter-exercises/601-prototype/images/8320.png" alt="Our page still works on a series-4 BlackBerry" /><p class="caption">Our page still works on a series-4 BlackBerry</p>
 </div>
 </div>
-<div class="section titleslide slide level1" id="part-vii-an-interlude-it-has-to-be-faster"><h1 id="part-vii-an-interlude-it-has-to-be-faster">Part VII: An interlude: It has to be faster</h1></div><div class="section slide level2" id="good-but-not-good-enough">
+<div class="section titleslide slide level1" id="part-vii-it-has-to-be-faster"><h1 id="part-vii-it-has-to-be-faster">Part VII: It has to be faster</h1></div><div class="section slide level2" id="good-but-not-good-enough">
 <h1 id="good-but-not-good-enough">Good, but not good enough</h1>
 <ul>
 <li>Remember how I mentioned when we first implemented the Messi popups that they felt poky on older hardware?</li>
@@ -1065,7 +1086,17 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 </ul></li>
 </ul></li>
 </ul>
+</div><div class="section slide level2" id="another-iteration-of-our-saved-glosses-code">
+<h1 id="another-iteration-of-our-saved-glosses-code">Another iteration of our saved-glosses code</h1>
+<ul>
+<li>Re-factored code is in <code>presenter-exercises/602-prototype-improved</code></li>
+</ul>
 <h3 id="video-after-the-refactor"><a href="assets/videos/backflip-better.MOV">Video: After the refactor</a></h3>
+<h3 id="real-world-moment-3">Real world moment</h3>
+<ul>
+<li>Often stuff that looks great in our desktop world has to be wrestled with in the mobile reality to make it, as they say, <em>performant</em>.</li>
+<li>You'll note it still isn't slam-bam responsive on this old hardware. But it's about a 3-4x speed improvement.</li>
+</ul>
 </div><div class="section slide level2" id="also-striking-blackberry-9670">
 <h1 id="also-striking-blackberry-9670">Also striking: BlackBerry 9670</h1>
 <ul>
@@ -1073,14 +1104,15 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li><a href="assets/videos/9670-slow.MOV">Video: Before</a></li>
 <li><a href="assets/videos/9670-better.MOV">Video: After improvement</a></li>
 </ul>
-<h3 id="buttttt...">Buttttt...</h3>
+</div><div class="section slide level2" id="buttttt...">
+<h1 id="buttttt...">Buttttt...</h1>
 <ul>
 <li>The page still <a href="assets/videos/9670-loading.MOV">loads and renders <em>incredibly slowly</em> on the 9670</a>
 <ul>
 <li>This is not about downloading the page assets; it is about the client-side rendering of the bits</li>
 </ul></li>
 </ul>
-<h3 id="beware-4">Beware!</h3>
+<h3 id="beware-5">Beware!</h3>
 <p>Mobile optimization isn't all about page size and bandwidth. Parsing the DOM, renderig complex CSS-styled stuff, executing JS...all of this stuff can really add up on older phones.</p>
 </div><div class="section slide level2" id="some-numbers">
 <h1 id="some-numbers">Some numbers</h1>
@@ -1202,7 +1234,7 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 <li>Reduction of number of external resources</li>
 <li>Minification of JS and CSS; putting JS at the bottom of the page</li>
 </ul>
-<h3 id="further-reading-3">Further reading</h3>
+<h3 id="further-reading-4">Further reading</h3>
 <ul>
 <li><a href="http://developer.yahoo.com/performance/">Yahoo! Exceptional Performance Team</a></li>
 </ul>
@@ -1217,18 +1249,19 @@ div<span class="fl">.saved-glosses</span> dd <span class="kw">{</span>
 </div><div class="section slide level2" id="before...">
 <h1 id="before...">Before...</h1>
 <div class="figure">
-<img src="assets/images/performance-start.png" alt="Before tuning" /><p class="caption">Before tuning</p>
+<img src="assets/images/performance-start.png" alt="Before tuning, ySlow stats" /><p class="caption">Before tuning, ySlow stats</p>
 </div>
 </div><div class="section slide level2" id="after...">
 <h1 id="after...">After...</h1>
 <div class="figure">
 <img src="assets/images/performance-end.png" alt="After tuning" /><p class="caption">After tuning</p>
 </div>
-</div><div class="section slide level2" id="for-your-consideration-4">
-<h1 id="for-your-consideration-4">For your consideration</h1>
+</div><div class="section slide level2" id="exercise-advanced-performance-sleuthing">
+<h1 id="exercise-advanced-performance-sleuthing">Exercise: Advanced performance sleuthing</h1>
 <ul>
 <li>How could the saved-glosses page be made even faster on mobile devices?</li>
 </ul>
+<h3 id="exercise-advanced-sleuthing-for-performance-items"><a href="exercises/701-advanced-performance">Exercise: Advanced sleuthing for performance items</a></h3>
 </div>
 <div class="section titleslide slide level1" id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell"><h1 id="part-viii-making-sure-it-works-a.k.a.-testing-is-hell">Part VIII: Making sure it works, a.k.a. Testing is Hell</h1></div><div class="section slide level2" id="but-what-about-testing-all-of-this-stuff">
 <h1 id="but-what-about-testing-all-of-this-stuff">But what about testing all of this stuff?</h1>

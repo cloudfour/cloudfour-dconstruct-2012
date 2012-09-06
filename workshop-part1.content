@@ -66,7 +66,6 @@
     * Part 0: Hi, there
     * Part 1: Starting from scratch on the mobile web
 * 11 - 11:30 coffee break
-    * Interlude:
 * 11:30-13:00
     * Part 2: Towards an adaptive web
     * Part 3: Balancing a differentiated web
@@ -453,8 +452,6 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 * Coverage from [Luke Wroblewski][lukew] of Jeffrey Zeldman's ["Content First"][lukew-aea-content-first] presentation at [An Event Apart October 2011][aea-oct-12].
 * Stephen Hay's talk [Structured Content First][stephenhay-structured-content] is another perspective.
 
--------------------------------------------------------------------------------
-
 # So what are we building today?
 
 ## Inspired by Shakespeare
@@ -703,7 +700,6 @@ HTML5 support in legacy browsers
 ### For your consideration
 
 * What does the word *device* mean? *Browser*? *Client*? *User agent*? How does our usage of these terms cause confusion?
-* How many of the differences spotted did you anticipate? What surprised you?
 
 
 ## Wait a minute, though
@@ -805,6 +801,10 @@ span.song         { } /* to format content that is a song */
 * Mobile- or content-first design thinking
 * Systematized way of thinking about content and its presentation on the web
 * Very relevant to the mobile evolution...and beyond
+
+### For your consideration
+
+* What does the term "mobile-first" mean to you?
 
 ## Content-first design
 
@@ -1135,6 +1135,7 @@ After ripping out desktop-specific style rules, we have a new baseline.
 
 ## NOW we can enhance for wider screens
 
+* Our new baseline can be found in [presenter-exercises/202-new-baseline](presenter-exercises/202-new-baseline) 
 * Let's use RWD's third tenet to enhance our scene page for bigger displays.
 * **CSS3 Media Queries** are the third leg of the RWD tripod.
 * Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.
@@ -1402,6 +1403,10 @@ Let's try to beat IE 8 into submission, shall we?
 ## Better!
 
 ![](presenter-exercises/301-polyfilled/images/ie8.png)
+
+* Find code examples for these steps in
+    * [presenter-exercises/300-mq-support](presenter-exercises/300-mq-support): IE-specific stylesheet
+    * [presenter-exercises/301-polyfilled](presenter-exercises/300-polyfilled): Polyfilled for IE
 
 ## So, wait, tell me more about Modernizr
 
@@ -1781,7 +1786,7 @@ Objective #1 trumps objectives #2 and #3.
 
 ## Line number enhancement
 
-All answers must be "yes":
+All answers must be "yes" for us to enhance with line numbers:
 
 * Can we use JavaScript to select, traverse and manipulate DOM nodes in the way we'd like in this browser?
 * Does this browser support media queries?
@@ -1936,10 +1941,6 @@ html.generatedcontent span.line-number:after {
 ![Line numbers in Chrome](assets/images/line-numbers.png)
 
 ![No line numbers in narrow widths, even if supported](assets/images/no-line-numbers.png)
-
-## TODO: Wrap Slide
-
--------------------------------------------------------------------------------
 
 # An interlude: separate mobile sites and device detection
 
@@ -2116,11 +2117,11 @@ if ($api_key) {
 
 ##### index.html
 
-## [And](../presenter-examples/08/04-wurfl)
+## And...
 
-![Desktop browser](images/08-wurfl-data.png)
+![Desktop browser](assets/images/wurfl-desktop.png)
 
-![iPhone](images/08-wurfl-data-iphone.png)
+![iPhone](assets/images/wurfl-iphone.png)
 
 ## Why would this help me?
 

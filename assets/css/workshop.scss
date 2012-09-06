@@ -67,6 +67,12 @@ div.slide code, code {
   background-color: #ebe9e1;
   padding: 0 .35em;
   border: 0.05em dashed #b9b5aa; }
+
+div.longcode pre.sourceCode code {
+  line-height: 70%;
+  font-size: .625em;
+}
+
 div.slide code > span.kw, code > span.kw {
   color: #943713;
   font-weight: bold; }

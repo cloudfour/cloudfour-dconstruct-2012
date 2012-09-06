@@ -1,5 +1,6 @@
 # Exercise: Using feature detection for @font-face support
 
+* Work on files in this directory (`exercises/301-features/`)
 * Create and include a Modernizr script:
     1. Go to <http://Modernizr.com> and click into the `Download` section.
     1. Build a Modernizr version that contains the following:
@@ -9,7 +10,7 @@
 * Include the script
     1. Edit `tempest.html` and add a `<script>` tag to include the `Modernizr.js` script you just created.
 * Edit `styles.css`
-    1. Add the CSS below (all of the referenced font files are already in the `fonts` directory for you).
+    1. Add the CSS below (all of the referenced font files are already in the `fonts` directory indicated for you).
     1. **Make sure to** add this CSS *after* the CSS reset rules, but near the top of the baseline CSS.
 * View the results ([tempest.html](tempest.html)) in any browser (mobile or otherwise).
 

@@ -530,7 +530,7 @@ Messi is a good example of the pros and cons of a third-party tool.
 
 You can find all of the code for the examples in this section in the `presenter-exercises` directory inside of `500-glossed` (markup/baseline CSS only), `501-popups` (popups that work on desktop only) and `502-reponsive-popups` (popups sized appropriately for mobile) subdirectories.
 
-# Frameworks
+# Interlude: Frameworks
 
 ## What frameworks do for us
 
@@ -763,10 +763,11 @@ function onGeoError(error) { alert(error.message); }
 
 ## MediaCapture API
 
-#### Beware! Actually two things
+#### Beware!
 
-* [HTMLInputElement](http://www.w3.org/TR/html-media-capture/): New form `<input>` type
-* [mediaCapture/Streams](http://www.w3.org/TR/mediacapture-streams/): Somewhat confusing (mostly in that it is ever-changing/hard to pin down) JavaScript/Programmatic API
+* Actually two things
+    * [HTMLInputElement](http://www.w3.org/TR/html-media-capture/): New form `<input>` type
+    * [mediaCapture/Streams](http://www.w3.org/TR/mediacapture-streams/): Somewhat confusing (mostly in that it is ever-changing/hard to pin down) JavaScript/Programmatic API
 
 ### MediaCapture
 
@@ -834,6 +835,8 @@ Many `localStorage` polyfills use cookies. The cookie polyfill is limited by one
 
 ## Other client and device persistence/data/file options
 
+### Further reading
+
 * [IndexedDB](http://dvcs.w3.org/hg/IndexedDB/raw-file/tip/Overview.html)
 * [File API](http://dev.w3.org/2006/webapi/FileAPI/)
 * [Application Cache/Offline](http://dev.w3.org/html5/spec/offline.html#offline)
@@ -845,11 +848,10 @@ Many `localStorage` polyfills use cookies. The cookie polyfill is limited by one
 
 ## In which I prototype a save-gloss feature
 
-![When a user taps on the Save Button](presenter-exercises/502-responsive-popups/images/iphone.png)
-
-![The glossed item should be saved](presenter-exercises/601-prototype/images/nokia-n8.png)
-
-## Hacking it together
+* Recall that so far, steps 1 and 2 of the save-gloss feature are done:
+    1. HTML and CSS baseline markup
+    2. JS and CSS enhancement; prototype of definition pop-ups and interface
+* Now it's time for step 3
 
 ### Beware!
 
@@ -859,27 +861,23 @@ Here comes some JavaScript!
 1. I don't want you to gloss over too hard
 1. I'll provide links to more details for the curious
 
+## Step 3: make it so
+
+![When a user taps on the Save Button](presenter-exercises/502-responsive-popups/images/iphone.png)
+
+![The glossed item should be saved](presenter-exercises/601-prototype/images/nokia-n8.png)
+
+
 ## Structure
 
-1. Re-organizing the JavaScript
+* Re-factoring the prototyped JavaScript
     * `GlossStorage` class to handle interacting with `localStorage`
     * jQuery extension that relies on Messi
-1. Adding some CSS to display saved glossary items
-1. Unobtrusive JS: No changes to HTML markup
+* Adding some CSS to display saved glossary items in a list
+* Unobtrusive JS: No changes to HTML markup
 
-## Enhancement plan
+TODO: Drawing
 
-* Line-number display and popup enhancements stay as they are
-* Additional test within `GlossStorage` to determine `localStorage` support
-* Enhancement to save glossed items and show glossed items based on that test
-
-### The next few slides
-
-1. Structure of `GlossStorage` class
-2. Detail of `localStorage` feature test
-2. Structure of jQuery plugin
-3. Additional baseline CSS
-4. Additional wider-screen CSS
 
 ## GlossStorage
 
@@ -956,7 +954,7 @@ $.fn.gloss = function() {
   }
 ~~~
 
-`gloss.js`
+`gloss.js` detail
 
 ## CSS
 
@@ -989,6 +987,12 @@ div.saved-glosses h3:before {
 div.saved-glosses.open h3:before {
   content: "\25BC";
 }
+~~~
+
+## MOAR CSS
+
+~~~{.css}
+
 div.saved-glosses dl {
   display                : none;
 }
@@ -1009,6 +1013,10 @@ div.saved-glosses dd {
   line-height            : 1.25em;
 }
 ~~~
+
+`styles.css`
+
+</div>
 
 ## Differentiated CSS in media query
 
@@ -1034,14 +1042,30 @@ div.saved-glosses dd {
 }
 ~~~
 
+`styles.css`
+
+## The styles make it look like this on a narrow screen
+
+![](presenter-exercises/601-prototype/images/iphone.png)
+
+![](presenter-exercises/601-prototype/images/iphone2.png)
+
+
+## And like this on a wider screen
+
+![](presenter-exercises/601-prototype/images/chrome.png)
+
+![](presenter-exercises/601-prototype/images/chrome2.png)
+
 * You can find the full working example of this first prototyped version in [presenter-exercises/601-prototype/](presenter-exercises/601-prototype)
 * Let's [try it out](presenter-exercises/601-prototype/tempest.html)
+
 
 ## Progressive enhancement is holding
 
 ![Our page still works on a series-4 BlackBerry](presenter-exercises/601-prototype/images/8320.png)
 
-# Part VII: An interlude: It has to be faster
+# Part VII: It has to be faster
 
 ## Good, but not good enough
 
@@ -1061,7 +1085,16 @@ div.saved-glosses dd {
         * Styling avoided use of too many processor-intensive CSS effects
         * *Did* retain a couple of gradients and a single `box-shadow`
 
+## Another iteration of our saved-glosses code
+
+* Re-factored code is in `presenter-exercises/602-prototype-improved`
+
 ### [Video: After the refactor](assets/videos/backflip-better.MOV)
+
+### Real world moment
+
+* Often stuff that looks great in our desktop world has to be wrestled with in the mobile reality to make it, as they say, *performant*.
+* You'll note it still isn't slam-bam responsive on this old hardware. But it's about a 3-4x speed improvement.
 
 ## Also striking: BlackBerry 9670
 
@@ -1069,7 +1102,7 @@ div.saved-glosses dd {
 * [Video: Before](assets/videos/9670-slow.MOV)
 * [Video: After improvement](assets/videos/9670-better.MOV)
 
-### Buttttt...
+## Buttttt...
 
 * The page still [loads and renders *incredibly slowly* on the 9670](assets/videos/9670-loading.MOV)
     * This is not about downloading the page assets; it is about the client-side rendering of the bits
@@ -1168,15 +1201,17 @@ Evaluation of Modernizr.mq()                            2.5sec
 
 ## Before...
 
-![Before tuning](assets/images/performance-start.png)
+![Before tuning, ySlow stats](assets/images/performance-start.png)
 
 ## After...
 
 ![After tuning](assets/images/performance-end.png)
 
-## For your consideration
+## Exercise: Advanced performance sleuthing
 
 * How could the saved-glosses page be made even faster on mobile devices?
+
+### [Exercise: Advanced sleuthing for performance items](exercises/701-advanced-performance)
 
 
 
