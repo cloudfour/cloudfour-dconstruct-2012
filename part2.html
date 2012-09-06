@@ -886,7 +886,22 @@ span<span class="fl">.gloss-item</span><span class="dv">:active</span> <span cla
 <li>Adding some CSS to display saved glossary items in a list</li>
 <li>Unobtrusive JS: No changes to HTML markup</li>
 </ul>
-<p>TODO: Drawing</p>
+</div><div class="section slide level2" id="javascript-well-jquery-structure">
+<h1 id="javascript-well-jquery-structure">JavaScript (well, jQuery) Structure</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>($) {
+  <span class="kw">function</span> GlossStorage() {
+    <span class="co">/* An object to handle interactions with localStorage */</span>
+  };
+
+  $.<span class="fu">fn</span>.<span class="fu">gloss</span> = <span class="kw">function</span>() {
+    <span class="co">/* My own jQuery plugin/extension */</span>
+  }
+
+})( jQuery ); <span class="co">// Both within a closure</span>
+
+$(<span class="kw">document</span>).<span class="fu">ready</span>(<span class="kw">function</span>() {
+  $(<span class="ch">&#39;.scene&#39;</span>).<span class="fu">gloss</span>(); <span class="co">// Invoking the jQuery plugin</span>
+});</code></pre>
 </div><div class="section slide level2" id="glossstorage">
 <h1 id="glossstorage">GlossStorage</h1>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">(<span class="kw">function</span>($) {

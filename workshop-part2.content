@@ -876,8 +876,24 @@ Here comes some JavaScript!
 * Adding some CSS to display saved glossary items in a list
 * Unobtrusive JS: No changes to HTML markup
 
-TODO: Drawing
+## JavaScript (well, jQuery) Structure
 
+~~~{.javascript}
+(function($) {
+  function GlossStorage() {
+    /* An object to handle interactions with localStorage */
+  };
+
+  $.fn.gloss = function() {
+    /* My own jQuery plugin/extension */
+  }
+
+})( jQuery ); // Both within a closure
+
+$(document).ready(function() {
+  $('.scene').gloss(); // Invoking the jQuery plugin
+});
+~~~~
 
 ## GlossStorage
 
