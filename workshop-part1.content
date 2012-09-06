@@ -4,8 +4,6 @@
 
 # Part 0: Setting the scene
 
--------------------------------------------------------------------------------
-
 ## This magical web world
 
 ![](assets/images/tempest.jpg)
@@ -185,8 +183,6 @@ Here are some more devices I used for off-and-on testing:
 
 # Part 1. Starting from scratch on the mobile web
 
--------------------------------------------------------------------------------
-
 ## Starting with nothing
 
 To set our stage, our scene, our story today, we are going to start from a fresh slate, as if we are building a web project from scratch.
@@ -304,8 +300,6 @@ XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like
 You probably don't want to use any of these `DOCTYPE`s for your projects. If anything, consider the `DOCTYPE` for [XHTML-Basic](http://www.w3.org/TR/xhtml-basic/), which superceded XHTML-MP 1.2.
 
 
--------------------------------------------------------------------------------
-
 ## XHTML-MP, cont.
 
 * Modularized XHTML
@@ -329,7 +323,6 @@ You probably don't want to use any of these `DOCTYPE`s for your projects. If any
 * [Jason and my book][hfmw] covers some of this in chapter 3.
 * Lynda.com ["History of Mobile Markup Languages" on YouTube][history-markup] is a great little summary. I think it *might* swap XHTML-MP and XHTML-Basic in the timeline, but, really, these things are pretty complex.
 
--------------------------------------------------------------------------------
 
 ## HTML5 is the way forward
 
@@ -354,8 +347,6 @@ Once I had an HTML5 page. I had validated it using the W3C validator. It passed.
 
 * Issues with HTML5 support
 
--------------------------------------------------------------------------------
-
 ## There's more than one way to...
 
 * Targeting older or feature phones?
@@ -365,7 +356,6 @@ Once I had an HTML5 page. I had validated it using the W3C validator. It passed.
 
 HTML5 is acceptable for most things, these days.
 
--------------------------------------------------------------------------------
 
 ## Options in markup and semantics
 
@@ -379,7 +369,6 @@ HTML5 is acceptable for most things, these days.
 
 * [Karen McGrane][mcgrane] is a leader in adaptive content and adaptive mobile content.
 
--------------------------------------------------------------------------------
 
 ## HTML content: one approach
 
@@ -403,7 +392,6 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 * I gave a talk about the kind of adaptive content driving this approach at [Mobilism 2012][mobilism]. See my deck [Cutting Through the Crap: The Essence of Content on the Future Web][cut-crap]
 * [Cloud Four's current site](http://cloudfour.com) is built in this way.
 
--------------------------------------------------------------------------------
 
 ## HTML content, approach #2
 
@@ -428,7 +416,6 @@ HTML as result of translation by "robots." Classes and IDs are attached to conte
 
 * We'll be using this style of markup in today's examples
 
--------------------------------------------------------------------------------
 
 ## All this boils down to CONTENT
 
@@ -472,7 +459,6 @@ There is no styling, no nothing on this page so far. And yet, if you explore it 
 
 ### [Exercise: Exploring the baseline](exercises/101-explore)
 
--------------------------------------------------------------------------------
 
 ## Workflow: getting into the browser
 
@@ -484,7 +470,6 @@ There is no styling, no nothing on this page so far. And yet, if you explore it 
 
 * More to come on process
 
--------------------------------------------------------------------------------
 
 ## Basic support is good
 
@@ -505,7 +490,6 @@ There is no styling, no nothing on this page so far. And yet, if you explore it 
     * Selectors
     * Performance!
 
--------------------------------------------------------------------------------
 
 ## What causes such difference?
 
@@ -523,13 +507,10 @@ Why does this simple HTML page look so different in different mobile browsers?
 
 * These two screenshots are from the same device, different browser
 
--------------------------------------------------------------------------------
 
 ## Viewports!
 
 ![](assets/images/viewports.png)
-
--------------------------------------------------------------------------------
 
 ## Or, why is the zoom all different and funny?
 
@@ -537,7 +518,6 @@ Why does this simple HTML page look so different in different mobile browsers?
 
 * Viewports are like a keyhole or window into the layout of the entire web page.
 
--------------------------------------------------------------------------------
 
 ## Layout viewport versus visible
 
@@ -546,7 +526,6 @@ Why does this simple HTML page look so different in different mobile browsers?
 * **Visible Viewport**: The view of visible content (keyhole)
 * **Layout Viewport**: The width of the entire layout
 
--------------------------------------------------------------------------------
 
 ## Anatomy of a `viewport` tag
 
@@ -576,7 +555,6 @@ Do you have any experience with or opinions about disallowing user zooming on we
 * Oh, turns out there is a [Stack Overflow post of someone else running into the viewport fun on the Galaxy Nexus](http://stackoverflow.com/questions/9374611/why-is-the-viewport-tag-on-the-galaxy-nexus-android-4-not-working)
 * Jeremy Keith has [something to say on the topic](http://adactio.com/journal/4470/)
 
--------------------------------------------------------------------------------
 
 ## Starting from a slightly more level playing field
 
@@ -593,13 +571,11 @@ By resetting our CSS and normalizing our viewport, we bring disparate browsers m
 
 * [Eric Meyer's Reset CSS](http://meyerweb.com/eric/tools/css/reset/) is industry-standard.
 
--------------------------------------------------------------------------------
 
 ## Font baseline
 
 ![](assets/images/baseline.png)
 
--------------------------------------------------------------------------------
 
 ## The variations abound!
 
@@ -639,7 +615,6 @@ After you're done, you can see the end result I got to in [presenter-exercises/1
 
 HTML5 support in legacy browsers
 
--------------------------------------------------------------------------------
 
 ## Baselines
 
@@ -648,7 +623,6 @@ HTML5 support in legacy browsers
 * This Android 1.5 browser does a decent job of handling HTML5 elements and dealing with basic styling.
 * Its fonts aren't that much fun to look at.
 
--------------------------------------------------------------------------------
 
 ## Baselines
 
@@ -660,7 +634,6 @@ HTML5 support in legacy browsers
 
 * CSS pixels versus hardware pixels WTF?
 
--------------------------------------------------------------------------------
 
 ## Baselines
 
@@ -671,7 +644,6 @@ HTML5 support in legacy browsers
 * Same font, same font size, same device, slightly different results in different browsers.
 * I happen to know why after stumbling upon it during research for sections later in this workshop. Any ideas? I'll disclose it later...
 
--------------------------------------------------------------------------------
 
 ## Baselines
 
@@ -681,7 +653,6 @@ HTML5 support in legacy browsers
 
 * Nearly identical.
 
--------------------------------------------------------------------------------
 
 ## Baselines
 
@@ -689,7 +660,6 @@ HTML5 support in legacy browsers
 
 * Nothing significant to report!
 
--------------------------------------------------------------------------------
 
 ## Now we have our baseline
 
@@ -1286,10 +1256,21 @@ span.verse {
 
 ### [Exercise: Responsive layout via media queries](exercises/201-rwd)
 
+## Rethinking the design process
+
+* We can't sell the impossible anymore
+* Pixel-perfect Photoshop mockups are not the way forward
+* We need a new way of communicating design process and visual elements
+* This is a challenging issue
+
+### Further reading
+
+* [Styletil.es](http://styletil.es)
+* [Stephen Hay's presentation on responsive design workflow](http://www.slideshare.net/stephenhay/mobilism2012)
+
 
 # Part III: Balancing a differentiated web
 
--------------------------------------------------------------------------------
 
 ## How are we doing?
 
@@ -1453,8 +1434,6 @@ We'll come back to `Modernizr.load()`
 * [Long list of polyfills on Modernizr](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills)
 
 # Part IV: On the frontiers of the adaptive web
-
--------------------------------------------------------------------------------
 
 ## Most RWD sites are not mobile First
 

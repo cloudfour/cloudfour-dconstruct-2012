@@ -66,6 +66,74 @@ img {
   max-width: 100%;
 }
 
+body {
+  background-color: #f5f4f0;
+  color: #534f44;
+  font-family: "Helvetica Neue", "Helvetica", Arial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Adobe Caslon Pro", "Caslon", Georgia, serif;
+}
+
+h1, h2 {
+  color: #58858b;
+  text-align: center;
+  border-bottom: 0.03em solid #b9b5aa;
+  font-weight: 400;
+}
+
+h3 {
+  color: #58858b;
+  font-style: italic;
+}
+
+blockquote {
+  line-height: 1.5em;
+  margin: .5em 2em;
+  padding: .25em;
+  color: #9e6a92;
+}
+
+strong, b {
+  font-family: "Helvetica Neue Bold", "Helvetica", Arial;
+}
+
+em, i {
+  font-family: "Helvetica Neue Italic", "Helvetica", Arial;
+}
+
+p, li {
+  line-height: 1.35em;
+}
+
+table {
+  margin: 1em;
+}
+
+td {
+  font-family: 'AnonymousProRegular';
+  margin: 0;
+  padding: .5em;
+}
+
+th {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  background-color: #58858b;
+  color: #fff;
+  text-align: center;
+  padding: .5em;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+}
+
 .slide ol {
   counter-reset: orderedlist;
 }
@@ -316,4 +384,26 @@ h3[id^='further-reading'], h34[id^='further-reading'], h5[id^='further-reading']
 
 nav#TOC ul ul {
   display: none;
+}
+
+img {
+  max-width: 35em;
+}
+
+a, a:visited {
+  color: #58858b;
+  text-decoration: none;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #58858b;
+  text-decoration: none;
+}
+h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+  color: #58858b;
+}
+
+h2 {
+  border-top: 1px solid #bc98b4;
+  padding-top: 1em;
 }

@@ -215,3 +215,7 @@ h3[id^='further-reading'], h34[id^='further-reading'], h5[id^='further-reading']
   background-color: $color-text;
   color: $color-background-pale;
 }
+
+nav#TOC ul ul {
+  display: none;
+}

@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Lyza Gardner" />
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Lyza Gardner">
   <title>dConstruct 2012: The pragmatist's guide to the mobile web</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -27,33 +27,389 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" type="text/css" media="screen, projection, print"
-    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
-  <link rel="stylesheet" type="text/css" media="screen, projection, print"
-   href="assets/css/workshop.css" />
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script src="assets/js/workshop.js"></script>
-  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
-    charset="utf-8" type="text/javascript"></script>
+  <link rel="stylesheet" href="assets/css/flat.css">
 </head>
 <body>
-<div class="slide titlepage">
-  <h1 class="title">dConstruct 2012: The pragmatist's guide to the mobile web</h1>
-  <p class="author">
-Lyza Gardner
-  </p>
-  <p class="date">September 6, 2012</p>
-</div>
-<div class="section titleslide slide level1" id="part-0-setting-the-scene"><h1 id="part-0-setting-the-scene">Part 0: Setting the scene</h1></div><div class="section slide level2" id="this-magical-web-world">
-<h1 id="this-magical-web-world">This magical web world</h1>
-<div class="figure">
-<img src="assets/images/tempest.jpg" /><p class="caption"></p>
-</div>
+<header>
+<h1 class="title">dConstruct 2012: The pragmatist's guide to the mobile web</h1>
+<h2 class="author">Lyza Gardner</h2>
+<h3 class="date">September 6, 2012</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#part-0-setting-the-scene">Part 0: Setting the scene</a><ul>
+<li><a href="#this-magical-web-world">This magical web world</a></li>
+<li><a href="#what-kinds-of-things-well-do-today">What kinds of things we'll do today</a></li>
+<li><a href="#based-on-the-survey...">Based on the survey...</a></li>
+<li><a href="#following-along-and-participating">Following along and participating</a></li>
+<li><a href="#using-the-presentation">Using the presentation</a><ul>
+<li><a href="#beware">Beware!</a></li>
+</ul></li>
+<li><a href="#todays-agenda-part-i">Today's agenda, Part I</a></li>
+<li><a href="#todays-agenda-part-ii">Today's agenda, Part II</a></li>
+<li><a href="#meet-the-devices">Meet the devices!</a></li>
+<li><a href="#blackberry-8320">BlackBerry 8320</a></li>
+<li><a href="#blackberry-9670">BlackBerry 9670</a></li>
+<li><a href="#blackberry-9670-cont.">BlackBerry 9670, cont.</a></li>
+<li><a href="#nexus-s">Nexus S</a></li>
+<li><a href="#motorola-backflip">Motorola Backflip</a></li>
+<li><a href="#motorola-backflip-cont.">Motorola Backflip, cont.</a></li>
+<li><a href="#iphone-4">iPhone 4</a></li>
+<li><a href="#nokia-n8">Nokia N8</a></li>
+<li><a href="#kindle-fire">Kindle Fire</a></li>
+<li><a href="#supporting-cast">Supporting cast</a></li>
+</ul></li>
+<li><a href="#part-1.-starting-from-scratch-on-the-mobile-web">Part 1. Starting from scratch on the mobile web</a><ul>
+<li><a href="#starting-with-nothing">Starting with nothing</a><ul>
+<li><a href="#real-world-moment">Real world moment</a></li>
+</ul></li>
+<li><a href="#so-many-options">So many options</a></li>
+<li><a href="#preaching-to-the-choir">Preaching to the choir</a></li>
+<li><a href="#dumb-phones-are-accelerating-too">&quot;Dumb&quot; phones are accelerating, too</a><ul>
+<li><a href="#beware-1">Beware!</a></li>
+</ul></li>
+<li><a href="#soon-more-mobile-phones-than-humans">Soon more mobile phones than humans</a></li>
+<li><a href="#its-complicated">It's complicated</a><ul>
+<li><a href="#further-reading">Further reading</a></li>
+</ul></li>
+<li><a href="#and-phones-are-just-one-symptom">And phones are just one symptom</a><ul>
+<li><a href="#the-zombie-apocalypse-of-devices">The Zombie Apocalypse of Devices</a></li>
+<li><a href="#zombie-apocalypse"><a href="http://designmind.frogdesign.com/blog/the-coming-zombie-apocalypse-small-cheap-devices-will-disrupt-our-old-school-ux-assumptions.htm">Zombie Apocalypse</a>?</a></li>
+</ul></li>
+<li><a href="#new-winners-will-emerge">New winners will emerge</a></li>
+<li><a href="#so-how-did-we-get-here">So how did we get here?</a></li>
+<li><a href="#the-evolution-of-mobile-markup-and-options">The evolution of mobile markup and options</a><ul>
+<li><a href="#good-enough-for-jazz">Good enough for jazz</a></li>
+</ul></li>
+<li><a href="#xhtml-mp">XHTML-MP</a><ul>
+<li><a href="#doctypes">DOCTYPES</a></li>
+<li><a href="#beware-2">Beware!</a></li>
+</ul></li>
+<li><a href="#xhtml-mp-cont.">XHTML-MP, cont.</a><ul>
+<li><a href="#not-supported">Not supported</a></li>
+</ul></li>
+<li><a href="#more-about-wml-xhtml-mp-etc.">More about WML, XHTML-MP, etc.</a><ul>
+<li><a href="#further-reading-1">Further reading</a></li>
+</ul></li>
+<li><a href="#html5-is-the-way-forward">HTML5 is the way forward</a><ul>
+<li><a href="#good-enough-for-jazz-1">Good enough for jazz</a></li>
+</ul></li>
+<li><a href="#informal-html5-might-cause-choking">Informal HTML5 might cause choking</a><ul>
+<li><a href="#example">Example</a><ul>
+<li><a href="#hold-that-thought">Hold that thought</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#theres-more-than-one-way-to...">There's more than one way to...</a><ul>
+<li><a href="#pro-tip">Pro Tip</a></li>
+</ul></li>
+<li><a href="#options-in-markup-and-semantics">Options in markup and semantics</a><ul>
+<li><a href="#adaptive-content">Adaptive Content</a></li>
+<li><a href="#further-reading-2">Further reading</a></li>
+</ul></li>
+<li><a href="#html-content-one-approach">HTML content: one approach</a><ul>
+<li><a href="#further-reading-3">Further reading</a></li>
+</ul></li>
+<li><a href="#html-content-approach-2">HTML content, approach #2</a></li>
+<li><a href="#all-this-boils-down-to-content">All this boils down to CONTENT</a><ul>
+<li><a href="#hold-that-thought-1">Hold that thought</a></li>
+</ul></li>
+<li><a href="#learn-more-about-content-and-the-future">Learn more about content and the future</a><ul>
+<li><a href="#further-reading-4">Further reading</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#so-what-are-we-building-today">So what are we building today?</a><ul>
+<li><a href="#inspired-by-shakespeare">Inspired by Shakespeare</a></li>
+<li><a href="#exercise">Exercise</a><ul>
+<li><a href="#exercise-exploring-the-baseline"><a href="exercises/101-explore">Exercise: Exploring the baseline</a></a></li>
+</ul></li>
+<li><a href="#workflow-getting-into-the-browser">Workflow: getting into the browser</a><ul>
+<li><a href="#hold-that-thought-2">Hold that Thought</a></li>
+</ul></li>
+<li><a href="#basic-support-is-good">Basic support is good</a><ul>
+<li><a href="#further-reading-5">Further reading</a><ul>
+<li><a href="#good-enough-for-jazz-2">Good enough for jazz</a></li>
+<li><a href="#beware-3">Beware!</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#what-causes-such-difference">What causes such difference?</a></li>
+<li><a href="#viewports-are-crazytown">Viewports are crazytown</a></li>
+<li><a href="#viewports">Viewports!</a></li>
+<li><a href="#or-why-is-the-zoom-all-different-and-funny">Or, why is the zoom all different and funny?</a></li>
+<li><a href="#layout-viewport-versus-visible">Layout viewport versus visible</a></li>
+<li><a href="#anatomy-of-a-viewport-tag">Anatomy of a <code>viewport</code> tag</a><ul>
+<li><a href="#for-your-consideration">For your consideration?</a></li>
+</ul></li>
+<li><a href="#viewports-are-fun">Viewports are &quot;fun&quot;</a><ul>
+<li><a href="#real-world-moment-1">Real world moment</a></li>
+<li><a href="#further-reading-6">Further reading</a></li>
+</ul></li>
+<li><a href="#starting-from-a-slightly-more-level-playing-field">Starting from a slightly more level playing field</a><ul>
+<li><a href="#for-your-consideration-1">For your consideration</a><ul>
+<li><a href="#pro-tip-1">Pro Tip</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#font-baseline">Font baseline</a></li>
+<li><a href="#the-variations-abound">The variations abound!</a></li>
+<li><a href="#other-things-to-consider-with-basic-css">Other things to consider with basic CSS</a></li>
+<li><a href="#exercise-a-new-baseline">Exercise: A new baseline</a><ul>
+<li><a href="#exercise-getting-ur-baselines-going"><a href="exercises/102-baseline">Exercise! Getting ur baselines going</a></a></li>
+<li><a href="#further-reading-7">Further reading</a></li>
+</ul></li>
+<li><a href="#baselines">Baselines</a><ul>
+<li><a href="#hold-that-thought-3">Hold that thought</a></li>
+</ul></li>
+<li><a href="#baselines-1">Baselines</a></li>
+<li><a href="#baselines-2">Baselines</a><ul>
+<li><a href="#hold-that-thought-4">Hold that thought!</a></li>
+</ul></li>
+<li><a href="#baselines-3">Baselines</a></li>
+<li><a href="#baselines-4">Baselines</a></li>
+<li><a href="#baselines-5">Baselines</a></li>
+<li><a href="#now-we-have-our-baseline">Now we have our baseline</a><ul>
+<li><a href="#for-your-consideration-2">For your consideration</a></li>
+</ul></li>
+<li><a href="#wait-a-minute-though">Wait a minute, though</a></li>
+<li><a href="#im-all-confused">I'm all confused</a><ul>
+<li><a href="#real-world-moment-2">Real world moment</a></li>
+<li><a href="#further-reading-8">Further Reading</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#part-ii-towards-an-adaptive-web">Part II: Towards an Adaptive Web</a><ul>
+<li><a href="#is-this-the-best-we-can-do">Is this the best we can do?</a><ul>
+<li><a href="#let-me-count-the-ways...">Let me count the ways...</a></li>
+<li><a href="#real-world-moment-3">Real world moment</a></li>
+</ul></li>
+<li><a href="#i-want-to-do-more">I want to do more</a><ul>
+<li><a href="#adding...">Adding...</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#so-i-run-off-and-whip-up-a-bunch-of-css-and-stuff">So I run off and whip up a bunch of CSS and stuff</a><ul>
+<li><a href="#enhancing...">Enhancing...</a><ul>
+<li><a href="#text">Text</a></li>
+</ul></li>
+<li><a href="#what-ickiness">What ickiness</a></li>
+<li><a href="#argh">Argh!</a></li>
+<li><a href="#stop-the-madness">Stop the madness!</a></li>
+<li><a href="#lets-back-up">Let's back up</a><ul>
+<li><a href="#for-your-consideration-3">For your consideration</a></li>
+</ul></li>
+<li><a href="#content-first-design">Content-first design</a><ul>
+<li><a href="#but-how-do-we-make-the-same-html-page-look-good-and-work-well-on-all-those-different-browsers-and-devices">But how do we make the same HTML page look good and work well on all those different browsers and devices?</a></li>
+<li><a href="#for-your-consideration-4">For your consideration</a><ul>
+<li><a href="#hold-that-thought-5">Hold that thought</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#responsive-web-design">Responsive Web Design</a><ul>
+<li><a href="#responsive-web-design-rwd">Responsive Web Design (RWD)</a></li>
+<li><a href="#rwd-tenets">RWD tenets</a></li>
+<li><a href="#fluidity">Fluidity</a><ul>
+<li><a href="#what-can-adaptive-design-via-rwd-do-to-help-us-get-our-web-page-in-order">What can adaptive design via RWD do to help us get our web page in order?</a></li>
+<li><a href="#rule-of-thumb">Rule of thumb</a></li>
+</ul></li>
+<li><a href="#recall-viewports">Recall viewports?</a></li>
+<li><a href="#technical-causes">Technical causes</a></li>
+<li><a href="#fluid-layouts">Fluid layouts</a></li>
+<li><a href="#the-fluid-formula">The fluid formula</a></li>
+<li><a href="#the-fluid-formula-annotated">The fluid formula, annotated</a></li>
+<li><a href="#applying-the-fluid-formula">Applying the fluid formula</a></li>
+<li><a href="#a-more-complicated-example">A more complicated example</a><ul>
+<li><a href="#for-your-consideration-5">For your consideration</a></li>
+</ul></li>
+<li><a href="#in-our-case-a-simple-change">In our case, a simple change</a><ul>
+<li><a href="#real-world-moment-4">Real world moment</a></li>
+</ul></li>
+<li><a href="#so-plug-that-in">So, plug that in:</a></li>
+<li><a href="#so-what-did-that-get-us">So, what did that get us?</a></li>
+<li><a href="#and-whered-the-image-go">And where'd the image go?</a><ul>
+<li><a href="#flexible-images-and-objects">Flexible images and objects</a></li>
+</ul></li>
+<li><a href="#flexible-images-and-objects-1">Flexible images and objects</a><ul>
+<li><a href="#pro-tip-2">Pro Tip</a></li>
+<li><a href="#beware-4">Beware!</a></li>
+</ul></li>
+<li><a href="#and...">And...?</a></li>
+<li><a href="#ok-total-disaster">OK, total disaster</a></li>
+<li><a href="#yet-more-complications">Yet more complications</a><ul>
+<li><a href="#real-world-moment-5">Real world moment</a></li>
+</ul></li>
+<li><a href="#letting-the-content-dictate-our-flow">Letting the content dictate our flow</a></li>
+<li><a href="#what-matters">What matters?</a></li>
+<li><a href="#lets-get-content-first-on-this-thing">Let's get content-first on this thing</a><ul>
+<li><a href="#beware-5">Beware!</a></li>
+</ul></li>
+<li><a href="#we-dont-have-to-start-over">We don't have to start over</a></li>
+<li><a href="#css-treatments-for-different-line-types">CSS treatments for different line types</a></li>
+<li><a href="#what-the-modular-css-does">What the modular CSS does</a></li>
+<li><a href="#a-new-baseline">A new baseline</a></li>
+<li><a href="#looks-decent...">Looks decent...</a></li>
+<li><a href="#looks-decent...-1">Looks decent...</a></li>
+<li><a href="#now-we-can-enhance-for-wider-screens">NOW we can enhance for wider screens</a></li>
+<li><a href="#media-queries-explained-media-types">Media queries explained: Media types</a></li>
+<li><a href="#media-queries-explained-media-features">Media queries explained: Media features</a></li>
+<li><a href="#logical-expressions">Logical expressions</a><ul>
+<li><a href="#also">Also</a></li>
+</ul></li>
+<li><a href="#media-queries">Media Queries</a></li>
+<li><a href="#media-queries-1">Media Queries</a></li>
+<li><a href="#breakpoints-and-media-queries">Breakpoints and media queries</a></li>
+<li><a href="#fluidity-across-units">Fluidity across units</a></li>
+<li><a href="#re-thinking-the-media-query">Re-thinking the media query</a></li>
+<li><a href="#thinking-of-our-layout-in-terms-of-text-and-ems">Thinking of our layout in terms of text and ems</a></li>
+<li><a href="#thats-okay">That's Okay</a></li>
+<li><a href="#so-where-does-that-leave-us">So where does that leave us?</a></li>
+<li><a href="#defining-a-breakpoint-and-media-query">Defining a breakpoint and media query</a><ul>
+<li><a href="#exercise-responsive-layout-via-media-queries"><a href="exercises/201-rwd">Exercise: Responsive layout via media queries</a></a></li>
+</ul></li>
+<li><a href="#rethinking-the-design-process">Rethinking the design process</a><ul>
+<li><a href="#further-reading-9">Further reading</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#part-iii-balancing-a-differentiated-web">Part III: Balancing a differentiated web</a><ul>
+<li><a href="#how-are-we-doing">How are we doing?</a></li>
+<li><a href="#hot-mess-in-ie">Hot mess in IE</a></li>
+<li><a href="#understanding-media-query-support">Understanding media query support</a><ul>
+<li><a href="#tackling-the-lack-of-media-query-support">Tackling the lack of media query support</a></li>
+</ul></li>
+<li><a href="#media-query-support-options">Media query support options</a><ul>
+<li><a href="#ie-conditional-tags">IE conditional tags</a><ul>
+<li><a href="#beware-6">Beware!</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#updating-our-web-page">Updating our web page</a><ul>
+<li><a href="#real-world-moment-6">Real world moment</a></li>
+</ul></li>
+<li><a href="#um.">Um.</a></li>
+<li><a href="#its-a-question-of-features">It's a question of features</a></li>
+<li><a href="#some-tools-at-our-disposal">Some tools at our disposal</a></li>
+<li><a href="#arming-ourselves">Arming ourselves</a></li>
+<li><a href="#better">Better!</a></li>
+<li><a href="#so-wait-tell-me-more-about-modernizr">So, wait, tell me more about Modernizr</a></li>
+<li><a href="#modernizr">Modernizr</a><ul>
+<li><a href="#hold-that-thought-6">Hold that thought!</a></li>
+</ul></li>
+<li><a href="#font-squirrel">Font Squirrel</a></li>
+<li><a href="#exercise-1">Exercise</a></li>
+<li><a href="#moar-polyfills-and-feature-tests">MOAR polyfills and feature tests</a><ul>
+<li><a href="#further-reading-10">Further Reading</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#part-iv-on-the-frontiers-of-the-adaptive-web">Part IV: On the frontiers of the adaptive web</a><ul>
+<li><a href="#most-rwd-sites-are-not-mobile-first">Most RWD sites are not mobile First</a></li>
+<li><a href="#screen-size-bandwidth">Screen size != bandwidth</a><ul>
+<li><a href="#rule-of-thumb-1">Rule of thumb</a></li>
+</ul></li>
+<li><a href="#why-are-these-sites-so-big">Why are these sites so big?</a></li>
+<li><a href="#lets-back-up-1">Let's back up</a><ul>
+<li><a href="#what-are-the-high-level-problems-here">What are the high-level problems here?</a></li>
+</ul></li>
+<li><a href="#css-background-images">CSS Background images</a></li>
+<li><a href="#css-background-images-in-different-browsers">CSS background images in different browsers</a><ul>
+<li><a href="#further-reading-11">Further reading</a></li>
+</ul></li>
+<li><a href="#image-set"><code>image-set</code></a><ul>
+<li><a href="#further-reading-12">Further reading</a></li>
+</ul></li>
+<li><a href="#the-inline-html-img-tag-conundrum">The inline HTML <code>img</code> tag conundrum</a></li>
+<li><a href="#responsive-images-option-1">Responsive images: Option 1</a></li>
+<li><a href="#option-1-problems">Option 1 Problems</a></li>
+<li><a href="#responsive-images-option-2">Responsive images: Option 2</a></li>
+<li><a href="#option-2-problems">Option 2 Problems</a></li>
+<li><a href="#responsive-images-option-3">Responsive images: Option 3</a></li>
+<li><a href="#option-3-problems">Option 3 Problems</a></li>
+<li><a href="#this-just-in">This just in!</a></li>
+<li><a href="#what-we-really-need-to-solve-for-images">What we really need to solve for images</a></li>
+<li><a href="#only-real-solution-is-new-standard">Only real solution is new standard</a></li>
+<li><a href="#the-challenge-is-real...hard">The challenge is real...hard</a><ul>
+<li><a href="#some-other-things-to-consider">Some (other) things to consider</a></li>
+</ul></li>
+<li><a href="#lyzas-crazy-ass-idea-of-the-month">Lyza's crazy-ass idea of the month</a><ul>
+<li><a href="#beware-7">Beware!</a></li>
+</ul></li>
+<li><a href="#other-rwd-challenges">Other RWD Challenges</a><ul>
+<li><a href="#for-your-consideration-6">For your consideration</a></li>
+</ul></li>
+<li><a href="#binary-fallacy">Binary fallacy</a><ul>
+<li><a href="#beware-8">Beware!</a></li>
+</ul></li>
+<li><a href="#rude-awakening-blackberry-style">Rude awakening, BlackBerry style</a></li>
+<li><a href="#it-gets-better">It gets better</a></li>
+<li><a href="#the-coup-de-grace">The coup de grace</a><ul>
+<li><a href="#rule-of-thumb-2">Rule of thumb</a></li>
+</ul></li>
+<li><a href="#lets-back-up-again">Let's back up again</a></li>
+<li><a href="#what-matters-1">What matters?</a></li>
+<li><a href="#but-wait...">But wait...</a><ul>
+<li><a href="#our-options">Our options</a></li>
+<li><a href="#things-to-consider">Things to consider</a></li>
+</ul></li>
+<li><a href="#you-are-the-decider">You are the decider</a><ul>
+<li><a href="#for-your-consideration-7">For your consideration</a></li>
+</ul></li>
+<li><a href="#progressive-enhancement-electric-boogaloo">Progressive enhancement: electric boogaloo</a></li>
+<li><a href="#line-number-enhancement">Line number enhancement</a></li>
+<li><a href="#line-number-enhancement-1">Line number enhancement</a><ul>
+<li><a href="#exercise-2">Exercise</a></li>
+</ul></li>
+<li><a href="#exercise-follow-up">Exercise Follow-up</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="#like-this">Like this</a></li>
+<li><a href="#walking-through-the-script">Walking through the script</a></li>
+<li><a href="#walking-through-more">Walking through more</a></li>
+<li><a href="#fleshing-that-out...">Fleshing that out...</a><ul>
+<li><a href="#real-world-moment-7">Real world moment</a></li>
+</ul></li>
+<li><a href="#and-our-jquery...">And our jQuery...</a></li>
+<li><a href="#the-css">The CSS</a></li>
+<li><a href="#et-voila">Et, voila</a></li>
+</ul></li>
+<li><a href="#an-interlude-separate-mobile-sites-and-device-detection">An interlude: separate mobile sites and device detection</a><ul>
+<li><a href="#weve-been-making-some-assumptions-this-morning...">We've been making some assumptions this morning...</a><ul>
+<li><a href="#real-world-moment-8">Real world moment</a></li>
+</ul></li>
+<li><a href="#detection-databases">Detection Databases</a></li>
+<li><a href="#unique-dna-string">Unique DNA string</a></li>
+<li><a href="#user-agent-sniffing-is-evil-right">User agent sniffing is evil, right?</a></li>
+<li><a href="#many-device-detection-database-options">Many device detection database options</a></li>
+<li><a href="#get-an-id-on-those-zombies">Get an ID on those zombies</a></li>
+<li><a href="#testing-capabilities">Testing capabilities</a><ul>
+<li><a href="#is-this-a-mobile-device">Is this a mobile device?</a></li>
+<li><a href="#does-this-browser-device-combo-support-cookies">Does this browser-device combo support cookies?</a></li>
+</ul></li>
+<li><a href="#mobile-uas-are-like-snowflakes">Mobile UAs are like snowflakes</a></li>
+<li><a href="#herd-them-into-device-classes">Herd them into device classes</a></li>
+<li><a href="#as-few-device-classes-as-possible">As few device classes as possible</a><ul>
+<li><a href="#figure-typical-device-classes">Figure: Typical device classes</a></li>
+</ul></li>
+<li><a href="#tips-for-device-detection">Tips for device detection</a></li>
+<li><a href="#best-practices">Best practices</a><ul>
+<li><a href="#further-reading-13">Further reading</a></li>
+</ul></li>
+<li><a href="#a-brief-example-using-wurfl">A brief example using WURFL</a><ul>
+<li><a href="#beware-9">Beware!</a></li>
+</ul></li>
+<li><a href="#writing-some-code-to-interact-with-the-wurfl-data">Writing some code to interact with the WURFL data</a><ul>
+<li><a href="#zombie-detect.php-examples0804-wurfl">zombie-detect.php (<code>examples/08/04-wurfl</code>)</a></li>
+</ul></li>
+<li><a href="#displaying-the-information-gathered">Displaying the information gathered</a><ul>
+<li><a href="#index.html">index.html</a></li>
+</ul></li>
+<li><a href="#and...-1">And...</a></li>
+<li><a href="#why-would-this-help-me">Why would this help me?</a><ul>
+<li><a href="#further-reading-14">Further reading</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="part-0-setting-the-scene"><a href="#TOC">Part 0: Setting the scene</a></h1>
+<h2 id="this-magical-web-world"><a href="#TOC">This magical web world</a></h2>
+<figure>
+<img src="assets/images/tempest.jpg"><figcaption></figcaption>
+</figure>
 <blockquote>
 <p>&quot;Be not afeard; the isle is full of noises.&quot; —<em>The Tempest</em>, Act III, Scene 2, Wm. Shakespeare</p>
 </blockquote>
-</div><div class="section slide level2" id="what-kinds-of-things-well-do-today">
-<h1 id="what-kinds-of-things-well-do-today">What kinds of things we'll do today</h1>
+<h2 id="what-kinds-of-things-well-do-today"><a href="#TOC">What kinds of things we'll do today</a></h2>
 <ul>
 <li>Narrative adventure through an applied set of exercises</li>
 <li>Exercises involve
@@ -64,8 +420,7 @@ Lyza Gardner
 <li>A bit of Shakespeare</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="based-on-the-survey...">
-<h1 id="based-on-the-survey...">Based on the survey...</h1>
+<h2 id="based-on-the-survey..."><a href="#TOC">Based on the survey...</a></h2>
 <ul>
 <li>Lots of interest
 <ul>
@@ -85,8 +440,7 @@ Lyza Gardner
 <li>Hybrid development</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="following-along-and-participating">
-<h1 id="following-along-and-participating">Following along and participating</h1>
+<h2 id="following-along-and-participating"><a href="#TOC">Following along and participating</a></h2>
 <ul>
 <li>You can look at your own copy of the presentation at the same time I'm giving it
 <ul>
@@ -100,8 +454,7 @@ Lyza Gardner
 </ul></li>
 <li>Team up: Some exercises are more technical, others more conceptual</li>
 </ul>
-</div><div class="section slide level2" id="using-the-presentation">
-<h1 id="using-the-presentation">Using the presentation</h1>
+<h2 id="using-the-presentation"><a href="#TOC">Using the presentation</a></h2>
 <ul>
 <li>After much demand for such, I've decided to make the (Slidy) HTML5 slideshow presentation available to attendees as we go along</li>
 <li>You can navigate with the left and right keys in your browser, or click a slide to proceed</li>
@@ -114,12 +467,11 @@ Lyza Gardner
 <li>'S' Make text smaller</li>
 </ul></li>
 </ul>
-<h3 id="beware">Beware!</h3>
+<h3 id="beware"><a href="#TOC">Beware!</a></h3>
 <ul>
 <li>The HTML5 presentation takes advantage of features in newer browsers. It may not play well on older browsers or IE.</li>
 </ul>
-</div><div class="section slide level2" id="todays-agenda-part-i">
-<h1 id="todays-agenda-part-i">Today's agenda, Part I</h1>
+<h2 id="todays-agenda-part-i"><a href="#TOC">Today's agenda, Part I</a></h2>
 <ul>
 <li>10:00 - 11:00
 <ul>
@@ -138,8 +490,7 @@ Lyza Gardner
 <li>Interlude: Separate mobile sites and device detection</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="todays-agenda-part-ii">
-<h1 id="todays-agenda-part-ii">Today's agenda, Part II</h1>
+<h2 id="todays-agenda-part-ii"><a href="#TOC">Today's agenda, Part II</a></h2>
 <ul>
 <li>14:00 - 15:00
 <ul>
@@ -154,16 +505,14 @@ Lyza Gardner
 <li>Section 8: Testing is hell</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="meet-the-devices">
-<h1 id="meet-the-devices">Meet the devices!</h1>
+<h2 id="meet-the-devices"><a href="#TOC">Meet the devices!</a></h2>
 <ul>
 <li>From Cloud Four's device collection I pulled about 7 or 8 core devices that I used for testing most of the examples in today's content. Let's meet them!</li>
 </ul>
-</div><div class="section slide level2" id="blackberry-8320">
-<h1 id="blackberry-8320">BlackBerry 8320</h1>
-<div class="figure">
-<img src="assets/images/8320.png" alt="BlackBerry 8320" /><p class="caption">BlackBerry 8320</p>
-</div>
+<h2 id="blackberry-8320"><a href="#TOC">BlackBerry 8320</a></h2>
+<figure>
+<img src="assets/images/8320.png" alt="BlackBerry 8320"><figcaption>BlackBerry 8320</figcaption>
+</figure>
 <ul>
 <li>BlackBerry 8320 Curve</li>
 <li>BlackBerry OS v4.5.0.81</li>
@@ -172,11 +521,10 @@ Lyza Gardner
 <li>No touch screen</li>
 <li>Our project manager Megan's old phone</li>
 </ul>
-</div><div class="section slide level2" id="blackberry-9670">
-<h1 id="blackberry-9670">BlackBerry 9670</h1>
-<div class="figure">
-<img src="assets/images/9670.png" alt="BlackBerry 9670" /><p class="caption">BlackBerry 9670</p>
-</div>
+<h2 id="blackberry-9670"><a href="#TOC">BlackBerry 9670</a></h2>
+<figure>
+<img src="assets/images/9670.png" alt="BlackBerry 9670"><figcaption>BlackBerry 9670</figcaption>
+</figure>
 <ul>
 <li>BlackBerry 9670 Style</li>
 <li>BlackBerry OS v6.0.0.123</li>
@@ -184,20 +532,18 @@ Lyza Gardner
 <li>Flip phone; unusual aspect ratio</li>
 <li>Hardware keyboard; no touch; pointer</li>
 </ul>
-</div><div class="section slide level2" id="blackberry-9670-cont.">
-<h1 id="blackberry-9670-cont.">BlackBerry 9670, cont.</h1>
-<div class="figure">
-<img src="assets/images/9670-2.png" alt="BlackBerry 9670, closed" /><p class="caption">BlackBerry 9670, closed</p>
-</div>
+<h2 id="blackberry-9670-cont."><a href="#TOC">BlackBerry 9670, cont.</a></h2>
+<figure>
+<img src="assets/images/9670-2.png" alt="BlackBerry 9670, closed"><figcaption>BlackBerry 9670, closed</figcaption>
+</figure>
 <ul>
 <li>This phone is sort of absurd (flip phone: really?!)</li>
 <li>But its hardware keyboard <em>is</em> rather easy to type on. Shrug.</li>
 </ul>
-</div><div class="section slide level2" id="nexus-s">
-<h1 id="nexus-s">Nexus S</h1>
-<div class="figure">
-<img src="assets/images/nexus.png" alt="Android Nexus S" /><p class="caption">Android Nexus S</p>
-</div>
+<h2 id="nexus-s"><a href="#TOC">Nexus S</a></h2>
+<figure>
+<img src="assets/images/nexus.png" alt="Android Nexus S"><figcaption>Android Nexus S</figcaption>
+</figure>
 <ul>
 <li>Samsung Nexus S</li>
 <li>Android version 4.1.1</li>
@@ -206,11 +552,10 @@ Lyza Gardner
 <li>Touchscreen</li>
 <li>For no good reason, I've never been a big fan of this phone. But there's nothing wrong with it.</li>
 </ul>
-</div><div class="section slide level2" id="motorola-backflip">
-<h1 id="motorola-backflip">Motorola Backflip</h1>
-<div class="figure">
-<img src="assets/images/backflip.png" alt="Motorola Backflip" /><p class="caption">Motorola Backflip</p>
-</div>
+<h2 id="motorola-backflip"><a href="#TOC">Motorola Backflip</a></h2>
+<figure>
+<img src="assets/images/backflip.png" alt="Motorola Backflip"><figcaption>Motorola Backflip</figcaption>
+</figure>
 <ul>
 <li>Motorola Backflip</li>
 <li>Android v1.5 (yes, really)</li>
@@ -218,11 +563,10 @@ Lyza Gardner
 <li>Touchscreen</li>
 <li>Flip-open hardware keyboard</li>
 </ul>
-</div><div class="section slide level2" id="motorola-backflip-cont.">
-<h1 id="motorola-backflip-cont.">Motorola Backflip, cont.</h1>
-<div class="figure">
-<img src="assets/images/backflip2.png" alt="Someone thought it was a good idea to put the keyboard on the back" /><p class="caption">Someone thought it was a good idea to put the keyboard on the <strong>back</strong></p>
-</div>
+<h2 id="motorola-backflip-cont."><a href="#TOC">Motorola Backflip, cont.</a></h2>
+<figure>
+<img src="assets/images/backflip2.png" alt="Someone thought it was a good idea to put the keyboard on the back"><figcaption>Someone thought it was a good idea to put the keyboard on the <strong>back</strong></figcaption>
+</figure>
 <ul>
 <li>This is the phone everyone loves to hate</li>
 <li>&quot;MotoBlur&quot; fork of Android</li>
@@ -230,8 +574,7 @@ Lyza Gardner
 <li>Keyboard is horrible</li>
 <li>Did I mention the whole Android 1.5 part?</li>
 </ul>
-</div><div class="section slide level2" id="iphone-4">
-<h1 id="iphone-4">iPhone 4</h1>
+<h2 id="iphone-4"><a href="#TOC">iPhone 4</a></h2>
 <ul>
 <li>iPhone 4</li>
 <li>iOS 5.1.1</li>
@@ -239,30 +582,27 @@ Lyza Gardner
 <li><strong>Also</strong> Opera Mini</li>
 <li>I don't have a photo of it because it's my phone and I'm embarrassed (the screen has big ol' cracks)</li>
 </ul>
-</div><div class="section slide level2" id="nokia-n8">
-<h1 id="nokia-n8">Nokia N8</h1>
-<div class="figure">
-<img src="assets/images/nokia-n8.jpg" alt="Nokia N8" /><p class="caption">Nokia N8</p>
-</div>
+<h2 id="nokia-n8"><a href="#TOC">Nokia N8</a></h2>
+<figure>
+<img src="assets/images/nokia-n8.jpg" alt="Nokia N8"><figcaption>Nokia N8</figcaption>
+</figure>
 <ul>
 <li>Nokia N8</li>
 <li>Windows Phone OS 7.5</li>
 <li>Native (IE) browser</li>
 <li>Kind of a pretty device</li>
 </ul>
-</div><div class="section slide level2" id="kindle-fire">
-<h1 id="kindle-fire">Kindle Fire</h1>
-<div class="figure">
-<img src="assets/images/fire.png" alt="Kindle Fire" /><p class="caption">Kindle Fire</p>
-</div>
+<h2 id="kindle-fire"><a href="#TOC">Kindle Fire</a></h2>
+<figure>
+<img src="assets/images/fire.png" alt="Kindle Fire"><figcaption>Kindle Fire</figcaption>
+</figure>
 <ul>
 <li>Kindle Fire tablet</li>
 <li>OS v6.3</li>
 <li>Native (Webkit) browser</li>
 <li>This little guy grew on me over the course of testing</li>
 </ul>
-</div><div class="section slide level2" id="supporting-cast">
-<h1 id="supporting-cast">Supporting cast</h1>
+<h2 id="supporting-cast"><a href="#TOC">Supporting cast</a></h2>
 <p>Here are some more devices I used for off-and-on testing:</p>
 <ul>
 <li>iPad (1st-generation) OS 5, Safari</li>
@@ -271,14 +611,12 @@ Lyza Gardner
 <li>Samsung Galaxy S (Android 2.1, native browser)</li>
 <li>BlackBerry PlayBook tablet</li>
 </ul>
-</div>
-<div class="section titleslide slide level1" id="part-1.-starting-from-scratch-on-the-mobile-web"><h1 id="part-1.-starting-from-scratch-on-the-mobile-web">Part 1. Starting from scratch on the mobile web</h1></div><div class="section slide level2" id="starting-with-nothing">
-<h1 id="starting-with-nothing">Starting with nothing</h1>
+<h1 id="part-1.-starting-from-scratch-on-the-mobile-web"><a href="#TOC">Part 1. Starting from scratch on the mobile web</a></h1>
+<h2 id="starting-with-nothing"><a href="#TOC">Starting with nothing</a></h2>
 <p>To set our stage, our scene, our story today, we are going to start from a fresh slate, as if we are building a web project from scratch.</p>
-<h4 id="real-world-moment">Real world moment</h4>
+<h4 id="real-world-moment"><a href="#TOC">Real world moment</a></h4>
 <p>The options for truly starting from scratch, with no legacy or history, are limited. But let's pretend we have that luxury.</p>
-</div><div class="section slide level2" id="so-many-options">
-<h1 id="so-many-options">So many options</h1>
+<h2 id="so-many-options"><a href="#TOC">So many options</a></h2>
 <p>When we start from scratch, we have so many choices to make.</p>
 <ul>
 <li>Web site</li>
@@ -290,74 +628,66 @@ Lyza Gardner
 <li>Adaptation of existing web site</li>
 </ul>
 <p>Mobile web development has a complicated and somewhat mysterious history.</p>
-</div><div class="section slide level2" id="preaching-to-the-choir">
-<h1 id="preaching-to-the-choir">Preaching to the choir</h1>
-<div class="figure">
-<img src="assets/images/mobile-graph.png" /><p class="caption"></p>
-</div>
+<h2 id="preaching-to-the-choir"><a href="#TOC">Preaching to the choir</a></h2>
+<figure>
+<img src="assets/images/mobile-graph.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>Mobile devices are omnipresent</li>
 <li>iPod Touch and iPhone alone <a href="http://www.morganstanley.com/institutional/techresearch/mobile_internet_report122009.html">growing faster than the early days of the Internet</a></li>
 <li>And Android's growth curve was greater than the iPhone's...</li>
 </ul>
-</div><div class="section slide level2" id="dumb-phones-are-accelerating-too">
-<h1 id="dumb-phones-are-accelerating-too">&quot;Dumb&quot; phones are accelerating, too</h1>
-<div class="figure">
-<img src="assets/images/dumbphone-graph.png" /><p class="caption"></p>
-</div>
-<h4 id="beware-1">Beware!</h4>
+<h2 id="dumb-phones-are-accelerating-too"><a href="#TOC">&quot;Dumb&quot; phones are accelerating, too</a></h2>
+<figure>
+<img src="assets/images/dumbphone-graph.png"><figcaption></figcaption>
+</figure>
+<h4 id="beware-1"><a href="#TOC">Beware!</a></h4>
 <p>It's not all smartphones out there!</p>
-</div><div class="section slide level2" id="soon-more-mobile-phones-than-humans">
-<h1 id="soon-more-mobile-phones-than-humans">Soon more mobile phones than humans</h1>
+<h2 id="soon-more-mobile-phones-than-humans"><a href="#TOC">Soon more mobile phones than humans</a></h2>
 <ul>
 <li>Currently 5.9B mobile subscriptions</li>
 <li>7B people</li>
 <li>Soon more mobile phones than people</li>
 <li>Then what will we do? <em>Freak out!</em></li>
 </ul>
-</div><div class="section slide level2" id="its-complicated">
-<h1 id="its-complicated">It's complicated</h1>
-<div class="figure">
-<img src="assets/images/android-fragmentation.jpg" /><p class="caption"></p>
-</div>
+<h2 id="its-complicated"><a href="#TOC">It's complicated</a></h2>
+<figure>
+<img src="assets/images/android-fragmentation.jpg"><figcaption></figcaption>
+</figure>
 <ul>
 <li>New versions released quickly</li>
 </ul>
-<h3 id="further-reading">Further reading</h3>
+<h3 id="further-reading"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li><a href="http://stephanierieger.com/the-trouble-with-android/">There is no Android</a></li>
 <li><a href="http://radar.oreilly.com/2010/05/mobile-operating-systems-and-b.html">Mobile operating systems still growing</a></li>
 </ul>
-</div><div class="section slide level2" id="and-phones-are-just-one-symptom">
-<h1 id="and-phones-are-just-one-symptom">And phones are just one symptom</h1>
-<h3 id="the-zombie-apocalypse-of-devices">The Zombie Apocalypse of Devices</h3>
+<h2 id="and-phones-are-just-one-symptom"><a href="#TOC">And phones are just one symptom</a></h2>
+<h3 id="the-zombie-apocalypse-of-devices"><a href="#TOC">The Zombie Apocalypse of Devices</a></h3>
 <ul>
 <li>Phones are just one wave—an enormous tsunami, to be sure—in a major onslaught</li>
 <li>Tablets, TVs, embedded devices...the future is insane</li>
 <li>We can't just focus on phones, or we'll get left in the dust</li>
 </ul>
-<h3 id="zombie-apocalypse"><a href="http://designmind.frogdesign.com/blog/the-coming-zombie-apocalypse-small-cheap-devices-will-disrupt-our-old-school-ux-assumptions.htm">Zombie Apocalypse</a>?</h3>
+<h3 id="zombie-apocalypse"><a href="#TOC"><a href="http://designmind.frogdesign.com/blog/the-coming-zombie-apocalypse-small-cheap-devices-will-disrupt-our-old-school-ux-assumptions.htm">Zombie Apocalypse</a>?</a></h3>
 <ul>
 <li>Cost of smart chips heading towards zero</li>
 <li>RFID taking off ahead of near field communications (NFC)</li>
 <li>More and more of the inanimate things that surround us will become &quot;alive&quot;</li>
 <li>Challenges our definitions of computers, phones and devices</li>
 </ul>
-</div><div class="section slide level2" id="new-winners-will-emerge">
-<h1 id="new-winners-will-emerge">New winners will emerge</h1>
-<div class="figure">
-<img src="assets/images/new-winners.png" /><p class="caption"></p>
-</div>
+<h2 id="new-winners-will-emerge"><a href="#TOC">New winners will emerge</a></h2>
+<figure>
+<img src="assets/images/new-winners.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>For each major technology cycle, the business winners aren't necessarily the winners of the previous cycle</li>
 </ul>
-</div><div class="section slide level2" id="so-how-did-we-get-here">
-<h1 id="so-how-did-we-get-here">So how did we get here?</h1>
-<div class="figure">
-<img src="assets/images/how-get-here.jpg" alt="A long journey" /><p class="caption">A long journey</p>
-</div>
-</div><div class="section slide level2" id="the-evolution-of-mobile-markup-and-options">
-<h1 id="the-evolution-of-mobile-markup-and-options">The evolution of mobile markup and options</h1>
+<h2 id="so-how-did-we-get-here"><a href="#TOC">So how did we get here?</a></h2>
+<figure>
+<img src="assets/images/how-get-here.jpg" alt="A long journey"><figcaption>A long journey</figcaption>
+</figure>
+<h2 id="the-evolution-of-mobile-markup-and-options"><a href="#TOC">The evolution of mobile markup and options</a></h2>
 <ul>
 <li>WML, XHTML-MP...the long, confusion of mobile-oriented markup
 <ul>
@@ -369,12 +699,11 @@ Lyza Gardner
 <li>XHTML-MP 1.2 and XHTML-Basic</li>
 </ul></li>
 </ul>
-<h3 id="good-enough-for-jazz">Good enough for jazz</h3>
+<h3 id="good-enough-for-jazz"><a href="#TOC">Good enough for jazz</a></h3>
 <p>With the possible exception of XHTML-MP1.2 and XHTML-Basic (which are, basically, the same thing), most of these markup languages and flavors are on the way out. Don't worry too hard about them.</p>
-</div><div class="section slide level2" id="xhtml-mp">
-<h1 id="xhtml-mp">XHTML-MP</h1>
+<h2 id="xhtml-mp"><a href="#TOC">XHTML-MP</a></h2>
 <p>XHTML-MP held sway for a number of years in the 2000's. It provided an HTML-like experience (certainly better than WAP/WML!) tailored to a mobile environment.</p>
-<h3 id="doctypes">DOCTYPES</h3>
+<h3 id="doctypes"><a href="#TOC">DOCTYPES</a></h3>
 <pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot;
 &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot;&gt;
 
@@ -383,75 +712,68 @@ Lyza Gardner
 
 &lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.2//EN&quot;
 &quot;http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd&quot;&gt;</code></pre>
-<h3 id="beware-2">Beware!</h3>
+<h3 id="beware-2"><a href="#TOC">Beware!</a></h3>
 <p>You probably don't want to use any of these <code>DOCTYPE</code>s for your projects. If anything, consider the <code>DOCTYPE</code> for <a href="http://www.w3.org/TR/xhtml-basic/">XHTML-Basic</a>, which superceded XHTML-MP 1.2.</p>
-</div><div class="section slide level2" id="xhtml-mp-cont.">
-<h1 id="xhtml-mp-cont.">XHTML-MP, cont.</h1>
+<h2 id="xhtml-mp-cont."><a href="#TOC">XHTML-MP, cont.</a></h2>
 <ul>
 <li>Modularized XHTML</li>
 <li>Provided a bridge between simplified (WML) mobile markup and more full-featured support</li>
 <li>DOCTYPE triggers (some) mobile browsers to use different layout modes</li>
 <li>Was commonly used</li>
 </ul>
-<h3 id="not-supported">Not supported</h3>
+<h3 id="not-supported"><a href="#TOC">Not supported</a></h3>
 <ul>
 <li><code>&lt;iframe&gt;</code></li>
 <li><code>target</code> attribute in links</li>
 <li>Certain <code>&lt;table&gt;</code> tags (<code>&lt;tbody&gt;</code>, etc.)</li>
 <li>Plugins</li>
 </ul>
-</div><div class="section slide level2" id="more-about-wml-xhtml-mp-etc.">
-<h1 id="more-about-wml-xhtml-mp-etc.">More about WML, XHTML-MP, etc.</h1>
-<h3 id="further-reading-1">Further reading</h3>
+<h2 id="more-about-wml-xhtml-mp-etc."><a href="#TOC">More about WML, XHTML-MP, etc.</a></h2>
+<h3 id="further-reading-1"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li>Gail Rahn-Frederick and Rajesh Lal's <a href="http://www.amazon.com/Beginning-Smartphone-Web-Development-Applications/dp/143022620X"><em>Beginning Smartphone Web Development</em></a> is a few years old now but has an in-depth look at the history, evolution and specifics of mobile markup and DOCTYPEs.</li>
 <li><a href="http://bit.ly/hf-mw">Jason and my book</a> covers some of this in chapter 3.</li>
 <li>Lynda.com <a href="http://www.youtube.com/watch?v=egKQhGLomcQ">&quot;History of Mobile Markup Languages&quot; on YouTube</a> is a great little summary. I think it <em>might</em> swap XHTML-MP and XHTML-Basic in the timeline, but, really, these things are pretty complex.</li>
 </ul>
-</div><div class="section slide level2" id="html5-is-the-way-forward">
-<h1 id="html5-is-the-way-forward">HTML5 is the way forward</h1>
+<h2 id="html5-is-the-way-forward"><a href="#TOC">HTML5 is the way forward</a></h2>
 <ul>
 <li>HTML5 by and large is tolerated by phones, even really old ones.</li>
 <li>No studies I know of using non-MP XHTML-variant doctypes.</li>
 </ul>
-<h4 id="good-enough-for-jazz-1">Good enough for jazz</h4>
+<h4 id="good-enough-for-jazz-1"><a href="#TOC">Good enough for jazz</a></h4>
 <ul>
 <li>HTML5 is usually OK</li>
 </ul>
-</div><div class="section slide level2" id="informal-html5-might-cause-choking">
-<h1 id="informal-html5-might-cause-choking">Informal HTML5 might cause choking</h1>
+<h2 id="informal-html5-might-cause-choking"><a href="#TOC">Informal HTML5 might cause choking</a></h2>
 <ul>
 <li>Mobile browsers are less tolerant of invalid code of any stripe: validate, validate, validate <a href="http://validator.w3c.org">W3C Validator</a></li>
 <li>HTML5's inherent less formal spec can get us into trouble with mobile browsers.</li>
 </ul>
-<h3 id="example">Example</h3>
+<h3 id="example"><a href="#TOC">Example</a></h3>
 <p>Once I had an HTML5 page. I had validated it using the W3C validator. It passed. I kept getting reports that the page showed up as just a blank screen on certain Androids. Turns out I had an opening <code>&lt;body&gt;</code> tag but not a closing one. HTML5 is cool with this. But the Android browser didn't tolerate it.</p>
-<h4 id="hold-that-thought">Hold that thought</h4>
+<h4 id="hold-that-thought"><a href="#TOC">Hold that thought</a></h4>
 <ul>
 <li>Issues with HTML5 support</li>
 </ul>
-</div><div class="section slide level2" id="theres-more-than-one-way-to...">
-<h1 id="theres-more-than-one-way-to...">There's more than one way to...</h1>
+<h2 id="theres-more-than-one-way-to..."><a href="#TOC">There's more than one way to...</a></h2>
 <ul>
 <li>Targeting older or feature phones?</li>
 <li>Which is more important: bulletproof support in your market or the ability to do more powerful stuff?</li>
 </ul>
-<h4 id="pro-tip">Pro Tip</h4>
+<h4 id="pro-tip"><a href="#TOC">Pro Tip</a></h4>
 <p>HTML5 is acceptable for most things, these days.</p>
-</div><div class="section slide level2" id="options-in-markup-and-semantics">
-<h1 id="options-in-markup-and-semantics">Options in markup and semantics</h1>
-<h3 id="adaptive-content">Adaptive Content</h3>
+<h2 id="options-in-markup-and-semantics"><a href="#TOC">Options in markup and semantics</a></h2>
+<h3 id="adaptive-content"><a href="#TOC">Adaptive Content</a></h3>
 <ul>
 <li>Future of content on the Web is complex</li>
 <li>Adaptability is key</li>
 <li>CMSes are the evil</li>
 </ul>
-<h3 id="further-reading-2">Further reading</h3>
+<h3 id="further-reading-2"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li><a href="http://karenmcgrane.com/">Karen McGrane</a> is a leader in adaptive content and adaptive mobile content.</li>
 </ul>
-</div><div class="section slide level2" id="html-content-one-approach">
-<h1 id="html-content-one-approach">HTML content: one approach</h1>
+<h2 id="html-content-one-approach"><a href="#TOC">HTML content: one approach</a></h2>
 <p>HTML as result of translation by &quot;robots.&quot; Classes and IDs are attached to content and are auto-generated. Limited use of classes and IDs.</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;section</span><span class="ot"> class=</span><span class="st">&quot;level2&quot;</span><span class="ot"> id=</span><span class="st">&quot;we-make-the-web-mobile.&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;h2&gt;</span>We make the Web <span class="kw">&lt;em&gt;</span>mobile<span class="kw">&lt;/em&gt;</span>.<span class="kw">&lt;/h2&gt;</span>
@@ -463,13 +785,12 @@ Lyza Gardner
 <span class="kw">&lt;p&gt;</span>Cloud Four designs and builds mobile-optimized websites and hybrid mobile applications using web technology.<span class="kw">&lt;/p&gt;</span>
 <span class="kw">&lt;p&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;services/mobile-development.html&quot;</span><span class="ot"> title=</span><span class="st">&quot;Our Mobile Development Process&quot;</span><span class="kw">&gt;</span>Building the Mobile Web<span class="kw">&lt;/a&gt;&lt;/p&gt;</span>
 <span class="kw">&lt;/section&gt;</span></code></pre>
-<h3 id="further-reading-3">Further reading</h3>
+<h3 id="further-reading-3"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li>I gave a talk about the kind of adaptive content driving this approach at <a href="http://mobilism.nl">Mobilism 2012</a>. See my deck <a href="https://speakerdeck.com/u/lyzadanger/p/cutting-through-the-crap-the-essence-of-content-on-the-future-web">Cutting Through the Crap: The Essence of Content on the Future Web</a></li>
 <li><a href="http://cloudfour.com">Cloud Four's current site</a> is built in this way.</li>
 </ul>
-</div><div class="section slide level2" id="html-content-approach-2">
-<h1 id="html-content-approach-2">HTML content, approach #2</h1>
+<h2 id="html-content-approach-2"><a href="#TOC">HTML content, approach #2</a></h2>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;section</span><span class="ot"> class=</span><span class="st">&quot;scene&quot;</span><span class="kw">&gt;</span>
 
   <span class="kw">&lt;header&gt;</span>
@@ -489,8 +810,7 @@ Lyza Gardner
 <ul>
 <li>We'll be using this style of markup in today's examples</li>
 </ul>
-</div><div class="section slide level2" id="all-this-boils-down-to-content">
-<h1 id="all-this-boils-down-to-content">All this boils down to CONTENT</h1>
+<h2 id="all-this-boils-down-to-content"><a href="#TOC">All this boils down to CONTENT</a></h2>
 <ul>
 <li>Content-first design and process</li>
 <li>Stripping away crap</li>
@@ -500,54 +820,49 @@ Lyza Gardner
 <blockquote>
 <p>&quot;Simplify before you suppress.&quot; —Ethan Marcotte</p>
 </blockquote>
-<h4 id="hold-that-thought-1">Hold that thought</h4>
+<h4 id="hold-that-thought-1"><a href="#TOC">Hold that thought</a></h4>
 <ul>
 <li>Mobile-first design</li>
 </ul>
-</div><div class="section slide level2" id="learn-more-about-content-and-the-future">
-<h1 id="learn-more-about-content-and-the-future">Learn more about content and the future</h1>
-<h3 id="further-reading-4">Further reading</h3>
+<h2 id="learn-more-about-content-and-the-future"><a href="#TOC">Learn more about content and the future</a></h2>
+<h3 id="further-reading-4"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li>A nice post from <a href="http://adactio.com/journal">Jeremy Keith</a> from last year about <a href="http://adactio.com/journal/4523/">content first</a></li>
 <li>Coverage from <a href="http://www.lukew.com/">Luke Wroblewski</a> of Jeffrey Zeldman's <a href="http://www.lukew.com/ff/entry.asp?1430">&quot;Content First&quot;</a> presentation at <a href="http://aneventapart.com/2011/dc/">An Event Apart October 2011</a>.</li>
 <li>Stephen Hay's talk <a href="http://www.slideshare.net/stephenhay/structured-content-first">Structured Content First</a> is another perspective.</li>
 </ul>
-</div>
-<div class="section titleslide slide level1" id="so-what-are-we-building-today"><h1 id="so-what-are-we-building-today">So what are we building today?</h1></div><div class="section slide level2" id="inspired-by-shakespeare">
-<h1 id="inspired-by-shakespeare">Inspired by Shakespeare</h1>
+<h1 id="so-what-are-we-building-today"><a href="#TOC">So what are we building today?</a></h1>
+<h2 id="inspired-by-shakespeare"><a href="#TOC">Inspired by Shakespeare</a></h2>
 <p>I was inspired by my iminent viewing of Shakespeare's <em>The Tempest</em> in Stratford-upon-Avon. I thought it might be nice to have a web-based refernce of the text of the play in a handsome, device-friendly, readable way.</p>
 <p>Sure, there's lots of places I can find Shakespeare's content online, but none of it quite satisfies me aesthetically or on my different devices. So I thought I'd reinvent the wheel a bit.</p>
 <p>Our little project today involves Act III, Scene 2...</p>
-</div><div class="section slide level2" id="exercise">
-<h1 id="exercise">Exercise</h1>
-<div class="figure">
-<img src="exercises/101-explore/images/iphone-opera.png" alt="Our starting point: Opera Mini for iPhone 4" /><p class="caption">Our starting point: Opera Mini for iPhone 4</p>
-</div>
+<h2 id="exercise"><a href="#TOC">Exercise</a></h2>
+<figure>
+<img src="exercises/101-explore/images/iphone-opera.png" alt="Our starting point: Opera Mini for iPhone 4"><figcaption>Our starting point: Opera Mini for iPhone 4</figcaption>
+</figure>
 <p>Like I said, we're starting from scratch today. With super basic HTML5 markup. I've created a basic HTML page with the content of the 2nd scene of Act III from <em>The Tempest</em>.</p>
 <p>There is no styling, no nothing on this page so far. And yet, if you explore it on various devices and browsers, you'll find that it starts out, even in its most basic form, feeling quite different in different places.</p>
-<h3 id="exercise-exploring-the-baseline"><a href="exercises/101-explore">Exercise: Exploring the baseline</a></h3>
-</div><div class="section slide level2" id="workflow-getting-into-the-browser">
-<h1 id="workflow-getting-into-the-browser">Workflow: getting into the browser</h1>
+<h3 id="exercise-exploring-the-baseline"><a href="#TOC"><a href="exercises/101-explore">Exercise: Exploring the baseline</a></a></h3>
+<h2 id="workflow-getting-into-the-browser"><a href="#TOC">Workflow: getting into the browser</a></h2>
 <ul>
 <li>Mobile web development demands the revisiting of design and development processes</li>
 <li>Get into the browser early and often</li>
 <li>You'll hear this a lot today: tight iterations</li>
 </ul>
-<h4 id="hold-that-thought-2">Hold that Thought</h4>
+<h4 id="hold-that-thought-2"><a href="#TOC">Hold that Thought</a></h4>
 <ul>
 <li>More to come on process</li>
 </ul>
-</div><div class="section slide level2" id="basic-support-is-good">
-<h1 id="basic-support-is-good">Basic support is good</h1>
-<h3 id="further-reading-5">Further reading</h3>
+<h2 id="basic-support-is-good"><a href="#TOC">Basic support is good</a></h2>
+<h3 id="further-reading-5"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li>There is a <a href="http://www.w3.org/TR/css-mobile/">CSS-MP</a> to go along with XHTML-MP...But we're going to move beyond that...</li>
 </ul>
-<h4 id="good-enough-for-jazz-2">Good enough for jazz</h4>
+<h4 id="good-enough-for-jazz-2"><a href="#TOC">Good enough for jazz</a></h4>
 <ul>
 <li>Basic support is good but not infallible</li>
 </ul>
-<h4 id="beware-3">Beware!</h4>
+<h4 id="beware-3"><a href="#TOC">Beware!</a></h4>
 <ul>
 <li>As we start thinking about adding some basic CSS, keep in mind these challenging areas in older devices/browsers. They can trip you up:
 <ul>
@@ -558,49 +873,43 @@ Lyza Gardner
 <li>Performance!</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="what-causes-such-difference">
-<h1 id="what-causes-such-difference">What causes such difference?</h1>
+<h2 id="what-causes-such-difference"><a href="#TOC">What causes such difference?</a></h2>
 <p>Why does this simple HTML page look so different in different mobile browsers?</p>
 <ul>
 <li>Different default stylesheets</li>
 <li>Limitations and differences in default font treatments</li>
 <li>Viewports</li>
 </ul>
-</div><div class="section slide level2" id="viewports-are-crazytown">
-<h1 id="viewports-are-crazytown">Viewports are crazytown</h1>
-<div class="figure">
-<img src="exercises/101-explore/images/iphone.png" alt="Safari on iPhone 4" /><p class="caption">Safari on iPhone 4</p>
-</div>
-<div class="figure">
-<img src="exercises/101-explore/images/iphone-opera.png" alt="Opera Mini on iPhone 4" /><p class="caption">Opera Mini on iPhone 4</p>
-</div>
+<h2 id="viewports-are-crazytown"><a href="#TOC">Viewports are crazytown</a></h2>
+<figure>
+<img src="exercises/101-explore/images/iphone.png" alt="Safari on iPhone 4"><figcaption>Safari on iPhone 4</figcaption>
+</figure>
+<figure>
+<img src="exercises/101-explore/images/iphone-opera.png" alt="Opera Mini on iPhone 4"><figcaption>Opera Mini on iPhone 4</figcaption>
+</figure>
 <ul>
 <li>These two screenshots are from the same device, different browser</li>
 </ul>
-</div><div class="section slide level2" id="viewports">
-<h1 id="viewports">Viewports!</h1>
-<div class="figure">
-<img src="assets/images/viewports.png" /><p class="caption"></p>
-</div>
-</div><div class="section slide level2" id="or-why-is-the-zoom-all-different-and-funny">
-<h1 id="or-why-is-the-zoom-all-different-and-funny">Or, why is the zoom all different and funny?</h1>
-<div class="figure">
-<img src="assets/images/different-viewports.png" /><p class="caption"></p>
-</div>
+<h2 id="viewports"><a href="#TOC">Viewports!</a></h2>
+<figure>
+<img src="assets/images/viewports.png"><figcaption></figcaption>
+</figure>
+<h2 id="or-why-is-the-zoom-all-different-and-funny"><a href="#TOC">Or, why is the zoom all different and funny?</a></h2>
+<figure>
+<img src="assets/images/different-viewports.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>Viewports are like a keyhole or window into the layout of the entire web page.</li>
 </ul>
-</div><div class="section slide level2" id="layout-viewport-versus-visible">
-<h1 id="layout-viewport-versus-visible">Layout viewport versus visible</h1>
-<div class="figure">
-<img src="assets/images/layout-visible.png" /><p class="caption"></p>
-</div>
+<h2 id="layout-viewport-versus-visible"><a href="#TOC">Layout viewport versus visible</a></h2>
+<figure>
+<img src="assets/images/layout-visible.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li><strong>Visible Viewport</strong>: The view of visible content (keyhole)</li>
 <li><strong>Layout Viewport</strong>: The width of the entire layout</li>
 </ul>
-</div><div class="section slide level2" id="anatomy-of-a-viewport-tag">
-<h1 id="anatomy-of-a-viewport-tag">Anatomy of a <code>viewport</code> tag</h1>
+<h2 id="anatomy-of-a-viewport-tag"><a href="#TOC">Anatomy of a <code>viewport</code> tag</a></h2>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width,initial-scale=1&quot;</span><span class="kw">&gt;</span></code></pre>
 <ul>
 <li><code>width=device-width</code>: Set the viewport width to the width of the device, in CSS pixels.
@@ -610,51 +919,46 @@ Lyza Gardner
 <li><code>initial-scale=1</code>: Set initial zoom to 1, that is, 100% or normal size.</li>
 <li>There is ongoing angst over disabling user zoom via the <code>maximum-scale=1</code> and/or <code>user-scalable=no</code> attributes. Generally I am against this but acknowledge valid circumstances where it might be necessary.</li>
 </ul>
-<h3 id="for-your-consideration">For your consideration?</h3>
+<h3 id="for-your-consideration"><a href="#TOC">For your consideration?</a></h3>
 <p>Do you have any experience with or opinions about disallowing user zooming on web pages or apps?</p>
-</div><div class="section slide level2" id="viewports-are-fun">
-<h1 id="viewports-are-fun">Viewports are &quot;fun&quot;</h1>
-<h3 id="real-world-moment-1">Real world moment</h3>
+<h2 id="viewports-are-fun"><a href="#TOC">Viewports are &quot;fun&quot;</a></h2>
+<h3 id="real-world-moment-1"><a href="#TOC">Real world moment</a></h3>
 <ul>
 <li>Certain mobile browsers are less...accurate...about viewport tag adherence
 <ul>
 <li>Known culprits include some Samsung Galaxy phones in the US (Android)</li>
 </ul></li>
 </ul>
-<h3 id="further-reading-6">Further reading</h3>
+<h3 id="further-reading-6"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag">Page on Mozilla Developer Network (MDN) about viewport tags</a></li>
 <li>Oh, turns out there is a <a href="http://stackoverflow.com/questions/9374611/why-is-the-viewport-tag-on-the-galaxy-nexus-android-4-not-working">Stack Overflow post of someone else running into the viewport fun on the Galaxy Nexus</a></li>
 <li>Jeremy Keith has <a href="http://adactio.com/journal/4470/">something to say on the topic</a></li>
 </ul>
-</div><div class="section slide level2" id="starting-from-a-slightly-more-level-playing-field">
-<h1 id="starting-from-a-slightly-more-level-playing-field">Starting from a slightly more level playing field</h1>
+<h2 id="starting-from-a-slightly-more-level-playing-field"><a href="#TOC">Starting from a slightly more level playing field</a></h2>
 <ul>
 <li><strong>CSS Reset</strong>: As you saw, the default stylesheets for the different browsers and devices means we're dealing with a lot of diversity. Using a <em>CSS reset</em> is one option if we want to try to normalize some of the starting-point styling.</li>
 <li><strong>Viewport tag</strong>: By normalizing our viewports with a <code>viewport</code> tag (like we just saw), we reduce some of the complexity and diversity we're facing.</li>
 </ul>
-<h3 id="for-your-consideration-1">For your consideration</h3>
+<h3 id="for-your-consideration-1"><a href="#TOC">For your consideration</a></h3>
 <ul>
 <li>How do you feel about CSS resets? Can you think of downsides?</li>
 </ul>
-<h4 id="pro-tip-1">Pro Tip</h4>
+<h4 id="pro-tip-1"><a href="#TOC">Pro Tip</a></h4>
 <p>By resetting our CSS and normalizing our viewport, we bring disparate browsers more into a common frame of reference.</p>
 <ul>
 <li><a href="http://meyerweb.com/eric/tools/css/reset/">Eric Meyer's Reset CSS</a> is industry-standard.</li>
 </ul>
-</div><div class="section slide level2" id="font-baseline">
-<h1 id="font-baseline">Font baseline</h1>
-<div class="figure">
-<img src="assets/images/baseline.png" /><p class="caption"></p>
-</div>
-</div><div class="section slide level2" id="the-variations-abound">
-<h1 id="the-variations-abound">The variations abound!</h1>
-<div class="figure">
-<img src="exercises/101-explore/images/9670.png" alt="BlackBerry 9670" /><p class="caption">BlackBerry 9670</p>
-</div>
+<h2 id="font-baseline"><a href="#TOC">Font baseline</a></h2>
+<figure>
+<img src="assets/images/baseline.png"><figcaption></figcaption>
+</figure>
+<h2 id="the-variations-abound"><a href="#TOC">The variations abound!</a></h2>
+<figure>
+<img src="exercises/101-explore/images/9670.png" alt="BlackBerry 9670"><figcaption>BlackBerry 9670</figcaption>
+</figure>
 <p>It's a bit difficult to tell from this not-so-great photo, but the background color is cream-like. Recall that user or client default stylesheets can be part of the game you're playing. Another place where CSS resets can help.</p>
-</div><div class="section slide level2" id="other-things-to-consider-with-basic-css">
-<h1 id="other-things-to-consider-with-basic-css">Other things to consider with basic CSS</h1>
+<h2 id="other-things-to-consider-with-basic-css"><a href="#TOC">Other things to consider with basic CSS</a></h2>
 <ul>
 <li>Font differences: Though we're armed with a CSS font reset, it's important to understand that fonts on devices are challenging:
 <ul>
@@ -664,143 +968,131 @@ Lyza Gardner
 <li>DOCTYPES: Somewhat confusingly, different DOCTYPEs can cause some browsers to use different CSS layout algorithms. Example: Opera Mini's box model is slightly different in XHTML-MP vs. HTML5.</li>
 <li>HTML <code>title</code>s. Display of a web page's title differs in different mobile browsers and is usually limited in space. Make sure to put the most information first.</li>
 </ul>
-</div><div class="section slide level2" id="exercise-a-new-baseline">
-<h1 id="exercise-a-new-baseline">Exercise: A new baseline</h1>
-<h4 id="exercise-getting-ur-baselines-going"><a href="exercises/102-baseline">Exercise! Getting ur baselines going</a></h4>
+<h2 id="exercise-a-new-baseline"><a href="#TOC">Exercise: A new baseline</a></h2>
+<h4 id="exercise-getting-ur-baselines-going"><a href="#TOC"><a href="exercises/102-baseline">Exercise! Getting ur baselines going</a></a></h4>
 <p>After you're done, you can see the end result I got to in <a href="presenter-exercises/102-baseline/tempest.html">presenter-exercises/102-baseline/tempest.html</a>.</p>
-<h3 id="further-reading-7">Further reading</h3>
+<h3 id="further-reading-7"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li>I talk a bit about the Kindle Touch's font size differences in <a href="http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/">this post on our blog</a>.</li>
 <li>There is a short section on Opera Mini's layouts being affected by different DOCTYPEs in chapter 3 of <a href="http://bit.ly/hf-mw">our book</a></li>
 </ul>
-</div><div class="section slide level2" id="baselines">
-<h1 id="baselines">Baselines</h1>
-<div class="figure">
-<img src="exercises/102-baseline/images/8320.png" alt="BlackBerry 8320" /><p class="caption">BlackBerry 8320</p>
-</div>
+<h2 id="baselines"><a href="#TOC">Baselines</a></h2>
+<figure>
+<img src="exercises/102-baseline/images/8320.png" alt="BlackBerry 8320"><figcaption>BlackBerry 8320</figcaption>
+</figure>
 <ul>
 <li>Note the lack of any margins/padding on the <code>&lt;section&gt;</code> elements. This older (4.5) BlackBerry doesn't understand the new HTML5 semantic elements and isn't applying any styles to them.</li>
 <li>My updated <code>title</code> means that even though some of it is getting cut off, we still see the most relevant pieces first.</li>
 </ul>
-<h3 id="hold-that-thought-3">Hold that thought</h3>
+<h3 id="hold-that-thought-3"><a href="#TOC">Hold that thought</a></h3>
 <p>HTML5 support in legacy browsers</p>
-</div><div class="section slide level2" id="baselines-1">
-<h1 id="baselines-1">Baselines</h1>
-<div class="figure">
-<img src="exercises/102-baseline/images/backflip.png" alt="Motorola BackFlip" /><p class="caption">Motorola BackFlip</p>
-</div>
+<h2 id="baselines-1"><a href="#TOC">Baselines</a></h2>
+<figure>
+<img src="exercises/102-baseline/images/backflip.png" alt="Motorola BackFlip"><figcaption>Motorola BackFlip</figcaption>
+</figure>
 <ul>
 <li>This Android 1.5 browser does a decent job of handling HTML5 elements and dealing with basic styling.</li>
 <li>Its fonts aren't that much fun to look at.</li>
 </ul>
-</div><div class="section slide level2" id="baselines-2">
-<h1 id="baselines-2">Baselines</h1>
-<div class="figure">
-<img src="exercises/102-baseline/images/fire.png" alt="Kindle Fire" /><p class="caption">Kindle Fire</p>
-</div>
+<h2 id="baselines-2"><a href="#TOC">Baselines</a></h2>
+<figure>
+<img src="exercises/102-baseline/images/fire.png" alt="Kindle Fire"><figcaption>Kindle Fire</figcaption>
+</figure>
 <ul>
 <li>We've set our <code>viewport</code> but the Fire simply has more CSS pixels to work with that our smaller devices.</li>
 </ul>
-<h4 id="hold-that-thought-4">Hold that thought!</h4>
+<h4 id="hold-that-thought-4"><a href="#TOC">Hold that thought!</a></h4>
 <ul>
 <li>CSS pixels versus hardware pixels WTF?</li>
 </ul>
-</div><div class="section slide level2" id="baselines-3">
-<h1 id="baselines-3">Baselines</h1>
-<div class="figure">
-<img src="exercises/102-baseline/images/iphone.png" alt="iPhone" /><p class="caption">iPhone</p>
-</div>
-<div class="figure">
-<img src="exercises/102-baseline/images/iphone-opera.png" alt="Opera Mini on iPhone" /><p class="caption">Opera Mini on iPhone</p>
-</div>
+<h2 id="baselines-3"><a href="#TOC">Baselines</a></h2>
+<figure>
+<img src="exercises/102-baseline/images/iphone.png" alt="iPhone"><figcaption>iPhone</figcaption>
+</figure>
+<figure>
+<img src="exercises/102-baseline/images/iphone-opera.png" alt="Opera Mini on iPhone"><figcaption>Opera Mini on iPhone</figcaption>
+</figure>
 <ul>
 <li>Same font, same font size, same device, slightly different results in different browsers.</li>
 <li>I happen to know why after stumbling upon it during research for sections later in this workshop. Any ideas? I'll disclose it later...</li>
 </ul>
-</div><div class="section slide level2" id="baselines-4">
-<h1 id="baselines-4">Baselines</h1>
-<div class="figure">
-<img src="exercises/102-baseline/images/nexus.png" alt="Nexus S" /><p class="caption">Nexus S</p>
-</div>
-<div class="figure">
-<img src="exercises/102-baseline/images/nexus-firefox.png" alt="Nexus S: FireFox" /><p class="caption">Nexus S: FireFox</p>
-</div>
+<h2 id="baselines-4"><a href="#TOC">Baselines</a></h2>
+<figure>
+<img src="exercises/102-baseline/images/nexus.png" alt="Nexus S"><figcaption>Nexus S</figcaption>
+</figure>
+<figure>
+<img src="exercises/102-baseline/images/nexus-firefox.png" alt="Nexus S: FireFox"><figcaption>Nexus S: FireFox</figcaption>
+</figure>
 <ul>
 <li>Nearly identical.</li>
 </ul>
-</div><div class="section slide level2" id="baselines-5">
-<h1 id="baselines-5">Baselines</h1>
-<div class="figure">
-<img src="exercises/102-baseline/images/nokia-n8.png" alt="Nokia N8" /><p class="caption">Nokia N8</p>
-</div>
+<h2 id="baselines-5"><a href="#TOC">Baselines</a></h2>
+<figure>
+<img src="exercises/102-baseline/images/nokia-n8.png" alt="Nokia N8"><figcaption>Nokia N8</figcaption>
+</figure>
 <ul>
 <li>Nothing significant to report!</li>
 </ul>
-</div><div class="section slide level2" id="now-we-have-our-baseline">
-<h1 id="now-we-have-our-baseline">Now we have our baseline</h1>
+<h2 id="now-we-have-our-baseline"><a href="#TOC">Now we have our baseline</a></h2>
 <ul>
 <li>By starting simple, we really understand most of what's going on here</li>
 <li>And yet, there is still so much differentiation!</li>
 <li>And of course, the real web pages of the world are far more complex...</li>
 </ul>
-<h3 id="for-your-consideration-2">For your consideration</h3>
+<h3 id="for-your-consideration-2"><a href="#TOC">For your consideration</a></h3>
 <ul>
 <li>What does the word <em>device</em> mean? <em>Browser</em>? <em>Client</em>? <em>User agent</em>? How does our usage of these terms cause confusion?</li>
 </ul>
-</div><div class="section slide level2" id="wait-a-minute-though">
-<h1 id="wait-a-minute-though">Wait a minute, though</h1>
-<div class="figure">
-<img src="exercises/101-explore/images/iphone.png" alt="Safari on iPhone 4 before viewport tag" /><p class="caption">Safari on iPhone 4 before viewport tag</p>
-</div>
-<div class="figure">
-<img src="exercises/102-baseline/images/iphone.png" alt="with a viewport tag" /><p class="caption">with a viewport tag</p>
-</div>
-</div><div class="section slide level2" id="im-all-confused">
-<h1 id="im-all-confused">I'm all confused</h1>
+<h2 id="wait-a-minute-though"><a href="#TOC">Wait a minute, though</a></h2>
+<figure>
+<img src="exercises/101-explore/images/iphone.png" alt="Safari on iPhone 4 before viewport tag"><figcaption>Safari on iPhone 4 before viewport tag</figcaption>
+</figure>
+<figure>
+<img src="exercises/102-baseline/images/iphone.png" alt="with a viewport tag"><figcaption>with a viewport tag</figcaption>
+</figure>
+<h2 id="im-all-confused"><a href="#TOC">I'm all confused</a></h2>
 <ul>
 <li>Our viewport tag: <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</code></li>
 <li>With a viewport tag, the iPhone shows 320px of content</li>
 <li>But this is an iPhone 4, with Retina display. It's actual horizontal resolution is twice that (640px).</li>
 <li>What gives? And why was it all zoomed out before?</li>
 </ul>
-<h3 id="real-world-moment-2">Real world moment</h3>
+<h3 id="real-world-moment-2"><a href="#TOC">Real world moment</a></h3>
 <p>Viewports are made even more complex by the difference between device/hardware pixels and CSS pixels.</p>
-<h3 id="further-reading-8">Further Reading</h3>
+<h3 id="further-reading-8"><a href="#TOC">Further Reading</a></h3>
 <ul>
 <li><a href="http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html">A pixel is not a pixel is not a pixel (Quirksmode)</a></li>
 </ul>
-</div>
-<div class="section titleslide slide level1" id="part-ii-towards-an-adaptive-web"><h1 id="part-ii-towards-an-adaptive-web">Part II: Towards an Adaptive Web</h1></div><div class="section slide level2" id="is-this-the-best-we-can-do">
-<h1 id="is-this-the-best-we-can-do">Is this the best we can do?</h1>
-<div class="figure">
-<img src="assets/images/desktop-dull.jpg" alt="Baseline after last exercise, in a desktop browser" /><p class="caption">Baseline after last exercise, in a desktop browser</p>
-</div>
-<h3 id="let-me-count-the-ways...">Let me count the ways...</h3>
+<h1 id="part-ii-towards-an-adaptive-web"><a href="#TOC">Part II: Towards an Adaptive Web</a></h1>
+<hr>
+<h2 id="is-this-the-best-we-can-do"><a href="#TOC">Is this the best we can do?</a></h2>
+<figure>
+<img src="assets/images/desktop-dull.jpg" alt="Baseline after last exercise, in a desktop browser"><figcaption>Baseline after last exercise, in a desktop browser</figcaption>
+</figure>
+<h3 id="let-me-count-the-ways..."><a href="#TOC">Let me count the ways...</a></h3>
 <ul>
 <li>Dull and bland</li>
 <li>Lines are too wide</li>
 </ul>
-<h3 id="real-world-moment-3">Real world moment</h3>
+<h3 id="real-world-moment-3"><a href="#TOC">Real world moment</a></h3>
 <p>A single-size, lowest-common-denominator approach to the web can be sad.</p>
-</div><div class="section slide level2" id="i-want-to-do-more">
-<h1 id="i-want-to-do-more">I want to do more</h1>
-<div class="figure">
-<img src="assets/images/desktop-enhance.jpg" /><p class="caption"></p>
-</div>
-<h3 id="adding...">Adding...</h3>
-<ol style="list-style-type: decimal">
+<h2 id="i-want-to-do-more"><a href="#TOC">I want to do more</a></h2>
+<figure>
+<img src="assets/images/desktop-enhance.jpg"><figcaption></figcaption>
+</figure>
+<h3 id="adding..."><a href="#TOC">Adding...</a></h3>
+<ol type="1">
 <li>Nicer text treatment (<code>small-caps</code>) and bigger fonts overall (heading and body)</li>
 <li>&quot;Wrapping&quot; the lines correctly</li>
 <li>Adding an illustration</li>
 </ol>
 <p>I want to maximize this experience. I'm tired of looking at something so boring!</p>
-</div>
-<div class="section titleslide slide level1" id="so-i-run-off-and-whip-up-a-bunch-of-css-and-stuff"><h1 id="so-i-run-off-and-whip-up-a-bunch-of-css-and-stuff">So I run off and whip up a bunch of CSS and stuff</h1></div><div class="section slide level2" id="enhancing...">
-<h1 id="enhancing...">Enhancing...</h1>
-<div class="figure">
-<img src="assets/images/desktop-enhance-2.jpg" /><p class="caption"></p>
-</div>
-<h3 id="text">Text</h3>
+<h1 id="so-i-run-off-and-whip-up-a-bunch-of-css-and-stuff"><a href="#TOC">So I run off and whip up a bunch of CSS and stuff</a></h1>
+<h2 id="enhancing..."><a href="#TOC">Enhancing...</a></h2>
+<figure>
+<img src="assets/images/desktop-enhance-2.jpg"><figcaption></figcaption>
+</figure>
+<h3 id="text"><a href="#TOC">Text</a></h3>
 <p>Emulating more forms of text layout: verse and song elements</p>
 <p>Adding styles for</p>
 <pre class="sourceCode css"><code class="sourceCode css">span<span class="fl">.line</span>         <span class="kw">{</span> <span class="kw">}</span> <span class="co">/* every line in the play */</span>
@@ -812,71 +1104,63 @@ span<span class="fl">.verse-end</span>    <span class="kw">{</span> <span class=
 span<span class="fl">.song</span>         <span class="kw">{</span> <span class="kw">}</span> <span class="co">/* to format content that is a song */</span>
 <span class="fl">.stage-direction</span>  <span class="kw">{</span> <span class="kw">}</span> <span class="co">/* stage directions */</span></code></pre>
 <p><a href="presenter-exercises/200-strawman/tempest.html">Let's take a look</a></p>
-</div><div class="section slide level2" id="what-ickiness">
-<h1 id="what-ickiness">What ickiness</h1>
-<div class="figure">
-<img src="presenter-exercises/200-strawman/images/nokia-n8.png" alt="Nokia N8" /><p class="caption">Nokia N8</p>
-</div>
-<div class="figure">
-<img src="presenter-exercises/200-strawman/images/iphone.png" alt="iPhone 4" /><p class="caption">iPhone 4</p>
-</div>
-</div><div class="section slide level2" id="argh">
-<h1 id="argh">Argh!</h1>
-<div class="figure">
-<img src="presenter-exercises/200-strawman/images/9670.png" alt="BlackBerry 9670" /><p class="caption">BlackBerry 9670</p>
-</div>
-<div class="figure">
-<img src="presenter-exercises/200-strawman/images/8320.png" alt="BlackBerry 8320" /><p class="caption">BlackBerry 8320</p>
-</div>
-</div><div class="section slide level2" id="stop-the-madness">
-<h1 id="stop-the-madness">Stop the madness!</h1>
+<h2 id="what-ickiness"><a href="#TOC">What ickiness</a></h2>
+<figure>
+<img src="presenter-exercises/200-strawman/images/nokia-n8.png" alt="Nokia N8"><figcaption>Nokia N8</figcaption>
+</figure>
+<figure>
+<img src="presenter-exercises/200-strawman/images/iphone.png" alt="iPhone 4"><figcaption>iPhone 4</figcaption>
+</figure>
+<h2 id="argh"><a href="#TOC">Argh!</a></h2>
+<figure>
+<img src="presenter-exercises/200-strawman/images/9670.png" alt="BlackBerry 9670"><figcaption>BlackBerry 9670</figcaption>
+</figure>
+<figure>
+<img src="presenter-exercises/200-strawman/images/8320.png" alt="BlackBerry 8320"><figcaption>BlackBerry 8320</figcaption>
+</figure>
+<h2 id="stop-the-madness"><a href="#TOC">Stop the madness!</a></h2>
 <ul>
 <li>Situations like this emphasize the need for us to recalibrate how we think about creating for the Web</li>
 <li>My attempt to impose some forms of &quot;control&quot; over the layout and styling of the web page created havoc</li>
 </ul>
-</div><div class="section slide level2" id="lets-back-up">
-<h1 id="lets-back-up">Let's back up</h1>
+<h2 id="lets-back-up"><a href="#TOC">Let's back up</a></h2>
 <ul>
 <li>Mobile- or content-first design thinking</li>
 <li>Systematized way of thinking about content and its presentation on the web</li>
 <li>Very relevant to the mobile evolution...and beyond</li>
 </ul>
-<h3 id="for-your-consideration-3">For your consideration</h3>
+<h3 id="for-your-consideration-3"><a href="#TOC">For your consideration</a></h3>
 <ul>
 <li>What does the term &quot;mobile-first&quot; mean to you?</li>
 </ul>
-</div><div class="section slide level2" id="content-first-design">
-<h1 id="content-first-design">Content-first design</h1>
+<h2 id="content-first-design"><a href="#TOC">Content-first design</a></h2>
 <ul>
 <li>Emphasis on progressive enhancement as core tenet</li>
 <li>Really focusing on a <em>baseline experience</em></li>
 <li>Enhancing based on browser features and/or characteristics</li>
 </ul>
-<h4 id="but-how-do-we-make-the-same-html-page-look-good-and-work-well-on-all-those-different-browsers-and-devices">But how do we make the same HTML page look good and work well on all those different browsers and devices?</h4>
+<h4 id="but-how-do-we-make-the-same-html-page-look-good-and-work-well-on-all-those-different-browsers-and-devices"><a href="#TOC">But how do we make the same HTML page look good and work well on all those different browsers and devices?</a></h4>
 <p>We use techniques to make our websites <em>adaptive</em>.</p>
-<h3 id="for-your-consideration-4">For your consideration</h3>
+<h3 id="for-your-consideration-4"><a href="#TOC">For your consideration</a></h3>
 <p>What do you think? Do you prefer <em>mobile-first</em>, <em>content-first</em> or <em>baseline-first</em> to describe this kind of philosophy?</p>
-<h4 id="hold-that-thought-5">Hold that thought</h4>
+<h4 id="hold-that-thought-5"><a href="#TOC">Hold that thought</a></h4>
 <ul>
 <li>Separate mobile sites/content differentiation</li>
 </ul>
-</div>
-<div class="section titleslide slide level1" id="responsive-web-design"><h1 id="responsive-web-design">Responsive Web Design</h1></div><div class="section slide level2" id="responsive-web-design-rwd">
-<h1 id="responsive-web-design-rwd">Responsive Web Design (RWD)</h1>
+<h1 id="responsive-web-design"><a href="#TOC">Responsive Web Design</a></h1>
+<h2 id="responsive-web-design-rwd"><a href="#TOC">Responsive Web Design (RWD)</a></h2>
 <p><strong>Responsive Web Design (RWD)</strong> is a set of techniques for adapting an experience for the user's environment, instead of using a rigid, one-size-fits-all type of structure. <em>Responsive Web Design</em> was coined by Ethan Marcotte.</p>
 <p>RWD is based upon the notion of creating a fluid, proportional layout. RWD layouts <em>scale, flex and adapt</em> to flow comfortably in the user's browser, whatever size or shape it might be at the moment.</p>
-</div><div class="section slide level2" id="rwd-tenets">
-<h1 id="rwd-tenets">RWD tenets</h1>
+<h2 id="rwd-tenets"><a href="#TOC">RWD tenets</a></h2>
 <p>RWD is a combination of three core tactics:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Fluid CSS layouts</li>
 <li>Responsive Images and Objects</li>
 <li>CSS3 Media Queries</li>
 </ol>
 <p>The goal: Insomuch as possible, the same HTML document can be rendered comfortably in as many environments as possible. Instead of imposing an inflexible, single experience, we can create something that adapts to the user.</p>
-</div><div class="section slide level2" id="fluidity">
-<h1 id="fluidity">Fluidity</h1>
-<h4 id="what-can-adaptive-design-via-rwd-do-to-help-us-get-our-web-page-in-order">What can adaptive design via RWD do to help us get our web page in order?</h4>
+<h2 id="fluidity"><a href="#TOC">Fluidity</a></h2>
+<h4 id="what-can-adaptive-design-via-rwd-do-to-help-us-get-our-web-page-in-order"><a href="#TOC">What can adaptive design via RWD do to help us get our web page in order?</a></h4>
 <p>Let's look again at our rather simple set of structural CSS that is getting us in trouble on some of our devices:</p>
 <pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
   <span class="kw">width:</span> <span class="dt">1060px</span><span class="kw">;</span>
@@ -888,19 +1172,17 @@ span<span class="fl">.song</span>         <span class="kw">{</span> <span class=
   <span class="kw">width</span> <span class="kw">:</span> <span class="dt">600px</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p>Recall that I was working in a hurry, so this isn't exactly masterful CSS, folks.</p>
-<h4 id="rule-of-thumb">Rule of thumb</h4>
+<h4 id="rule-of-thumb"><a href="#TOC">Rule of thumb</a></h4>
 <p>Layout elements defined with specific pixel widths tend to be anathema to responsive/adaptive layouts.</p>
-</div><div class="section slide level2" id="recall-viewports">
-<h1 id="recall-viewports">Recall viewports?</h1>
-<div class="figure">
-<img src="assets/images/layout-visible.png" /><p class="caption"></p>
-</div>
+<h2 id="recall-viewports"><a href="#TOC">Recall viewports?</a></h2>
+<figure>
+<img src="assets/images/layout-visible.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>The visible viewport for our page is set to <code>device-width</code></li>
 <li>The layout viewport contains the entire layout of the page, which in our case is defined by the <code>body</code> CSS rule (<code>1060px</code>).</li>
 </ul>
-</div><div class="section slide level2" id="technical-causes">
-<h1 id="technical-causes">Technical causes</h1>
+<h2 id="technical-causes"><a href="#TOC">Technical causes</a></h2>
 <pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
   <span class="kw">width:</span> <span class="dt">1060px</span><span class="kw">;</span>
 <span class="kw">}</span>
@@ -923,8 +1205,7 @@ h1 <span class="kw">{</span>
 </ul></li>
 <li><a href="presenter-exercises/200-strawman/desktop.css">Relevant CSS</a></li>
 </ul>
-</div><div class="section slide level2" id="fluid-layouts">
-<h1 id="fluid-layouts">Fluid layouts</h1>
+<h2 id="fluid-layouts"><a href="#TOC">Fluid layouts</a></h2>
 <ul>
 <li>Fluid layouts
 <ul>
@@ -935,35 +1216,30 @@ h1 <span class="kw">{</span>
 <li>Fluid CSS-based layouts are RWD tenet #1</li>
 <li><em>So how do we make layouts fluid?</em></li>
 </ul>
-</div><div class="section slide level2" id="the-fluid-formula">
-<h1 id="the-fluid-formula">The fluid formula</h1>
-<div class="figure">
-<img src="assets/images/fluid-formula.png" /><p class="caption"></p>
-</div>
-</div><div class="section slide level2" id="the-fluid-formula-annotated">
-<h1 id="the-fluid-formula-annotated">The fluid formula, annotated</h1>
-<div class="figure">
-<img src="assets/images/fluid-formula-explained.png" /><p class="caption"></p>
-</div>
-</div><div class="section slide level2" id="applying-the-fluid-formula">
-<h1 id="applying-the-fluid-formula">Applying the fluid formula</h1>
-<div class="figure">
-<img src="assets/images/fluid-example.png" /><p class="caption"></p>
-</div>
+<h2 id="the-fluid-formula"><a href="#TOC">The fluid formula</a></h2>
+<figure>
+<img src="assets/images/fluid-formula.png"><figcaption></figcaption>
+</figure>
+<h2 id="the-fluid-formula-annotated"><a href="#TOC">The fluid formula, annotated</a></h2>
+<figure>
+<img src="assets/images/fluid-formula-explained.png"><figcaption></figcaption>
+</figure>
+<h2 id="applying-the-fluid-formula"><a href="#TOC">Applying the fluid formula</a></h2>
+<figure>
+<img src="assets/images/fluid-example.png"><figcaption></figcaption>
+</figure>
 <p><code>target / context = result</code></p>
 <p><code>720px / 960px = .75</code></p>
 <p><code>75%</code></p>
-</div><div class="section slide level2" id="a-more-complicated-example">
-<h1 id="a-more-complicated-example">A more complicated example</h1>
-<div class="figure">
-<img src="assets/images/complex-fluid.jpg" /><p class="caption"></p>
-</div>
-<h3 id="for-your-consideration-5">For your consideration</h3>
+<h2 id="a-more-complicated-example"><a href="#TOC">A more complicated example</a></h2>
+<figure>
+<img src="assets/images/complex-fluid.jpg"><figcaption></figcaption>
+</figure>
+<h3 id="for-your-consideration-5"><a href="#TOC">For your consideration</a></h3>
 <ul>
 <li>What would the <code>100px</code> rule convert to, fluidly, as a percentage?</li>
 </ul>
-</div><div class="section slide level2" id="in-our-case-a-simple-change">
-<h1 id="in-our-case-a-simple-change">In our case, a simple change</h1>
+<h2 id="in-our-case-a-simple-change"><a href="#TOC">In our case, a simple change</a></h2>
 <ul>
 <li>We can change our <code>body</code> and <code>.scene</code> rules:
 <ul>
@@ -976,13 +1252,12 @@ h1 <span class="kw">{</span>
 <li><code>.illustrations = 30%</code></li>
 </ul></li>
 </ul>
-<h3 id="real-world-moment-4">Real world moment</h3>
+<h3 id="real-world-moment-4"><a href="#TOC">Real world moment</a></h3>
 <ul>
 <li>My fixed layout wasn't very proportional in the first place, eh?</li>
 <li><em>To round or not to round?</em> I round.</li>
 </ul>
-</div><div class="section slide level2" id="so-plug-that-in">
-<h1 id="so-plug-that-in">So, plug that in:</h1>
+<h2 id="so-plug-that-in"><a href="#TOC">So, plug that in:</a></h2>
 <pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
   <span class="kw">width:</span> <span class="dt">100%</span><span class="kw">;</span>
 <span class="kw">}</span>
@@ -995,20 +1270,18 @@ h1 <span class="kw">{</span>
   <span class="kw">width:</span> <span class="dt">30%</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
 <p><code>styles.css</code></p>
-</div><div class="section slide level2" id="so-what-did-that-get-us">
-<h1 id="so-what-did-that-get-us">So, what did that get us?</h1>
-<div class="figure">
-<img src="presenter-exercises/201-proportional/images/wide.png" alt="Sadly, not much. Much wasted space on wider windows" /><p class="caption">Sadly, not much. Much wasted space on wider windows</p>
-</div>
-</div><div class="section slide level2" id="and-whered-the-image-go">
-<h1 id="and-whered-the-image-go">And where'd the image go?</h1>
-<div class="figure">
-<img src="presenter-exercises/201-proportional/images/narrow.png" alt="The image has...disappeared" /><p class="caption">The image has...disappeared</p>
-</div>
+<h2 id="so-what-did-that-get-us"><a href="#TOC">So, what did that get us?</a></h2>
+<figure>
+<img src="presenter-exercises/201-proportional/images/wide.png" alt="Sadly, not much. Much wasted space on wider windows"><figcaption>Sadly, not much. Much wasted space on wider windows</figcaption>
+</figure>
+<h2 id="and-whered-the-image-go"><a href="#TOC">And where'd the image go?</a></h2>
+<figure>
+<img src="presenter-exercises/201-proportional/images/narrow.png" alt="The image has...disappeared"><figcaption>The image has...disappeared</figcaption>
+</figure>
 <ul>
 <li>Make the window a bit narrower, and the image disappears.</li>
 </ul>
-<h3 id="flexible-images-and-objects">Flexible images and objects</h3>
+<h3 id="flexible-images-and-objects"><a href="#TOC">Flexible images and objects</a></h3>
 <ul>
 <li>We can solve the mystery of that missing image by using the second tenet of Responsive Web Design: <strong>flexible images and objects</strong>.
 <ul>
@@ -1016,34 +1289,30 @@ h1 <span class="kw">{</span>
 <li>That causes it to wrap in our layout. Uh oh.</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="flexible-images-and-objects-1">
-<h1 id="flexible-images-and-objects-1">Flexible images and objects</h1>
+<h2 id="flexible-images-and-objects-1"><a href="#TOC">Flexible images and objects</a></h2>
 <ul>
 <li>We can add a simple rule to our CSS:</li>
 </ul>
 <pre class="sourceCode css"><code class="sourceCode css">img, object <span class="kw">{</span>
   <span class="kw">max-width:</span> <span class="dt">100%</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
-<h4 id="pro-tip-2">Pro Tip</h4>
+<h4 id="pro-tip-2"><a href="#TOC">Pro Tip</a></h4>
 <p>It really is this easy to add flexible images and objects to your web layouts. Do it!</p>
-<h4 id="beware-4">Beware!</h4>
+<h4 id="beware-4"><a href="#TOC">Beware!</a></h4>
 <p>You cannot use <code>width</code> or <code>height</code> attributes on <code>img</code> tags that need to scale flexibly in this manner.</p>
-</div><div class="section slide level2" id="and...">
-<h1 id="and...">And...?</h1>
-<div class="figure">
-<img src="presenter-exercises/201-proportional/images/narrow2.png" /><p class="caption"></p>
-</div>
+<h2 id="and..."><a href="#TOC">And...?</a></h2>
+<figure>
+<img src="presenter-exercises/201-proportional/images/narrow2.png"><figcaption></figcaption>
+</figure>
 <p><a href="presenter-exercises/201-proportional/tempest.html">You can see it for yourself</a></p>
-</div><div class="section slide level2" id="ok-total-disaster">
-<h1 id="ok-total-disaster">OK, total disaster</h1>
-<div class="figure">
-<img src="presenter-exercises/201-proportional/images/nokia-n8.png" alt="Nokia N8" /><p class="caption">Nokia N8</p>
-</div>
-<div class="figure">
-<img src="presenter-exercises/201-proportional/images/nexus.png" alt="Nexus S" /><p class="caption">Nexus S</p>
-</div>
-</div><div class="section slide level2" id="yet-more-complications">
-<h1 id="yet-more-complications">Yet more complications</h1>
+<h2 id="ok-total-disaster"><a href="#TOC">OK, total disaster</a></h2>
+<figure>
+<img src="presenter-exercises/201-proportional/images/nokia-n8.png" alt="Nokia N8"><figcaption>Nokia N8</figcaption>
+</figure>
+<figure>
+<img src="presenter-exercises/201-proportional/images/nexus.png" alt="Nexus S"><figcaption>Nexus S</figcaption>
+</figure>
+<h2 id="yet-more-complications"><a href="#TOC">Yet more complications</a></h2>
 <ul>
 <li>Part of the CSS added for desktop enhancement included:</li>
 </ul>
@@ -1059,20 +1328,18 @@ h1 <span class="kw">{</span>
 <li>This affects the box model layout widths of our fluid elements and causes the wrap you see on narrow screens.</li>
 <li><em>We need to stop, catch our breath, and think about things a bit differently.</em></li>
 </ul>
-<h3 id="real-world-moment-5">Real world moment</h3>
+<h3 id="real-world-moment-5"><a href="#TOC">Real world moment</a></h3>
 <p>Introducing box model issues when trying to sort out other ones is oh-so-typical.</p>
-</div><div class="section slide level2" id="letting-the-content-dictate-our-flow">
-<h1 id="letting-the-content-dictate-our-flow">Letting the content dictate our flow</h1>
-<div class="figure">
-<img src="presenter-exercises/201-proportional/images/narrow2.png" /><p class="caption"></p>
-</div>
+<h2 id="letting-the-content-dictate-our-flow"><a href="#TOC">Letting the content dictate our flow</a></h2>
+<figure>
+<img src="presenter-exercises/201-proportional/images/narrow2.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>Did you notice that even on desktop widths, the wrapping on the text of the lines of the play is wonky?</li>
 <li>We're coming at this backward</li>
 </ul>
-</div><div class="section slide level2" id="what-matters">
-<h1 id="what-matters">What matters?</h1>
-<ol style="list-style-type: decimal">
+<h2 id="what-matters"><a href="#TOC">What matters?</a></h2>
+<ol type="1">
 <li>Making the text of this scene of the play acceptably readable on as many devices as possible</li>
 <li>Presenting the text of the play in a way true to dramatic and historical form</li>
 <li>Providing font and color differentiation to increase readability and contrast</li>
@@ -1081,19 +1348,17 @@ h1 <span class="kw">{</span>
 </ol>
 <p><strong>In that order</strong></p>
 <p>We achieved much of the first goal in our first baseline layout but have since then not kept to the list of priorities...</p>
-</div><div class="section slide level2" id="lets-get-content-first-on-this-thing">
-<h1 id="lets-get-content-first-on-this-thing">Let's get content-first on this thing</h1>
-<ol style="list-style-type: decimal">
+<h2 id="lets-get-content-first-on-this-thing"><a href="#TOC">Let's get content-first on this thing</a></h2>
+<ol type="1">
 <li>Rip out desktop-centric CSS and re-think</li>
 <li>Build our baseline by enhancing our existing baseline</li>
 <li>Take advantage of RWD's third tenet (Media Queries) to apply different layouts to different environments</li>
 </ol>
-<h4 id="beware-5">Beware!</h4>
+<h4 id="beware-5"><a href="#TOC">Beware!</a></h4>
 <ul>
 <li>Proportional layouts on their own can't get us all the way there</li>
 </ul>
-</div><div class="section slide level2" id="we-dont-have-to-start-over">
-<h1 id="we-dont-have-to-start-over">We don't have to start over</h1>
+<h2 id="we-dont-have-to-start-over"><a href="#TOC">We don't have to start over</a></h2>
 <ul>
 <li>Some of the CSS added to enhance the layout and appearance can stay:
 <ul>
@@ -1103,8 +1368,7 @@ h1 <span class="kw">{</span>
 <li>A few modular bits of CSS for different line types (more info coming up)</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="css-treatments-for-different-line-types">
-<h1 id="css-treatments-for-different-line-types">CSS treatments for different line types</h1>
+<h2 id="css-treatments-for-different-line-types"><a href="#TOC">CSS treatments for different line types</a></h2>
 <pre class="sourceCode css"><code class="sourceCode css">span<span class="fl">.verse</span> <span class="kw">{</span>
   <span class="kw">clear</span>           <span class="kw">:</span> <span class="dt">both</span><span class="kw">;</span>
   <span class="kw">display</span>         <span class="kw">:</span> <span class="dt">block</span><span class="kw">;</span>
@@ -1127,8 +1391,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <ul>
 <li>This is pursuant to objective #2 in our list</li>
 </ul>
-</div><div class="section slide level2" id="what-the-modular-css-does">
-<h1 id="what-the-modular-css-does">What the modular CSS does</h1>
+<h2 id="what-the-modular-css-does"><a href="#TOC">What the modular CSS does</a></h2>
 <ul>
 <li><code>span.verse</code>
 <ul>
@@ -1150,38 +1413,33 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>lines retain default inline styling.</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="a-new-baseline">
-<h1 id="a-new-baseline">A new baseline</h1>
-<div class="figure">
-<img src="presenter-exercises/202-new-baseline/images/backflip.png" alt="Motorola Backflip" /><p class="caption">Motorola Backflip</p>
-</div>
+<h2 id="a-new-baseline"><a href="#TOC">A new baseline</a></h2>
+<figure>
+<img src="presenter-exercises/202-new-baseline/images/backflip.png" alt="Motorola Backflip"><figcaption>Motorola Backflip</figcaption>
+</figure>
 <p>After ripping out desktop-specific style rules, we have a new baseline.</p>
-</div><div class="section slide level2" id="looks-decent...">
-<h1 id="looks-decent...">Looks decent...</h1>
-<div class="figure">
-<img src="presenter-exercises/202-new-baseline/images/nokia-n8.jpg" alt="Nokia N8" /><p class="caption">Nokia N8</p>
-</div>
-<div class="figure">
-<img src="presenter-exercises/202-new-baseline/images/iphone.png" alt="iPhone 4" /><p class="caption">iPhone 4</p>
-</div>
-</div><div class="section slide level2" id="looks-decent...-1">
-<h1 id="looks-decent...-1">Looks decent...</h1>
-<div class="figure">
-<img src="presenter-exercises/202-new-baseline/images/iphone-opera.png" alt="Opera Mini on iPhone4" /><p class="caption">Opera Mini on iPhone4</p>
-</div>
-<div class="figure">
-<img src="presenter-exercises/202-new-baseline/images/iphone-opera2.png" alt="Opera Mini on iPhone4: You can see the negative text-indent on the prose.verse lines that wrap here" /><p class="caption">Opera Mini on iPhone4: You can see the negative <code>text-indent</code> on the <code>prose.verse</code> lines that wrap here</p>
-</div>
-</div><div class="section slide level2" id="now-we-can-enhance-for-wider-screens">
-<h1 id="now-we-can-enhance-for-wider-screens">NOW we can enhance for wider screens</h1>
+<h2 id="looks-decent..."><a href="#TOC">Looks decent...</a></h2>
+<figure>
+<img src="presenter-exercises/202-new-baseline/images/nokia-n8.jpg" alt="Nokia N8"><figcaption>Nokia N8</figcaption>
+</figure>
+<figure>
+<img src="presenter-exercises/202-new-baseline/images/iphone.png" alt="iPhone 4"><figcaption>iPhone 4</figcaption>
+</figure>
+<h2 id="looks-decent...-1"><a href="#TOC">Looks decent...</a></h2>
+<figure>
+<img src="presenter-exercises/202-new-baseline/images/iphone-opera.png" alt="Opera Mini on iPhone4"><figcaption>Opera Mini on iPhone4</figcaption>
+</figure>
+<figure>
+<img src="presenter-exercises/202-new-baseline/images/iphone-opera2.png" alt="Opera Mini on iPhone4: You can see the negative text-indent on the prose.verse lines that wrap here"><figcaption>Opera Mini on iPhone4: You can see the negative <code>text-indent</code> on the <code>prose.verse</code> lines that wrap here</figcaption>
+</figure>
+<h2 id="now-we-can-enhance-for-wider-screens"><a href="#TOC">NOW we can enhance for wider screens</a></h2>
 <ul>
 <li>Our new baseline can be found in <a href="presenter-exercises/202-new-baseline">presenter-exercises/202-new-baseline</a></li>
 <li>Let's use RWD's third tenet to enhance our scene page for bigger displays.</li>
 <li><strong>CSS3 Media Queries</strong> are the third leg of the RWD tripod.</li>
 <li>Media queries allow us to apply CSS selectively depending on the current environment of the user's browser.</li>
 </ul>
-</div><div class="section slide level2" id="media-queries-explained-media-types">
-<h1 id="media-queries-explained-media-types">Media queries explained: Media types</h1>
+<h2 id="media-queries-explained-media-types"><a href="#TOC">Media queries explained: Media types</a></h2>
 <ul>
 <li>Media types have been around a while. It's how we make print stylesheets, e.g.</li>
 </ul>
@@ -1194,8 +1452,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>print</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="media-queries-explained-media-features">
-<h1 id="media-queries-explained-media-features">Media queries explained: Media features</h1>
+<h2 id="media-queries-explained-media-features"><a href="#TOC">Media queries explained: Media features</a></h2>
 <ul>
 <li>Media types have <strong>media features</strong>.
 <ul>
@@ -1209,8 +1466,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li><code>width</code> is an integer.</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="logical-expressions">
-<h1 id="logical-expressions">Logical expressions</h1>
+<h2 id="logical-expressions"><a href="#TOC">Logical expressions</a></h2>
 <ul>
 <li><strong>CSS media queries</strong>
 <ul>
@@ -1224,24 +1480,21 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   // rules in here will only be applied if the
   // query expression evaluates as true
 <span class="dv">}</span></code></pre>
-<h3 id="also">Also</h3>
+<h3 id="also"><a href="#TOC">Also</a></h3>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> media=</span><span class="st">&quot;screen and (min-width:600px)&quot;</span><span class="ot"> href=</span><span class="st">&quot;thing.css&quot;</span><span class="kw">&gt;</span></code></pre>
 <ul>
 <li><code>@import</code> syntax is also supported.</li>
 </ul>
-</div><div class="section slide level2" id="media-queries">
-<h1 id="media-queries">Media Queries</h1>
-<div class="figure">
-<img src="assets/images/media-query-syntax.png" /><p class="caption"></p>
-</div>
-</div><div class="section slide level2" id="media-queries-1">
-<h1 id="media-queries-1">Media Queries</h1>
-<div class="figure">
-<img src="assets/images/media-query-example.png" /><p class="caption"></p>
-</div>
+<h2 id="media-queries"><a href="#TOC">Media Queries</a></h2>
+<figure>
+<img src="assets/images/media-query-syntax.png"><figcaption></figcaption>
+</figure>
+<h2 id="media-queries-1"><a href="#TOC">Media Queries</a></h2>
+<figure>
+<img src="assets/images/media-query-example.png"><figcaption></figcaption>
+</figure>
 <p>But before we whip up a media query or two for the scene web page...let's think about what we're doing.</p>
-</div><div class="section slide level2" id="breakpoints-and-media-queries">
-<h1 id="breakpoints-and-media-queries">Breakpoints and media queries</h1>
+<h2 id="breakpoints-and-media-queries"><a href="#TOC">Breakpoints and media queries</a></h2>
 <ul>
 <li>You may have heard the term <strong>breakpoint</strong> before.
 <ul>
@@ -1257,8 +1510,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>But we just talked about how things should be fluid</li>
 <li>...and we're trying to design the flow of this page based on its content</li>
 </ul>
-</div><div class="section slide level2" id="fluidity-across-units">
-<h1 id="fluidity-across-units">Fluidity across units</h1>
+<h2 id="fluidity-across-units"><a href="#TOC">Fluidity across units</a></h2>
 <ul>
 <li>Fluid layout elements
 <ul>
@@ -1277,17 +1529,15 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li><code>em</code>s, while scalable (they change as the base font size changes), are also tied to a physical size that can be approximated</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="re-thinking-the-media-query">
-<h1 id="re-thinking-the-media-query">Re-thinking the media query</h1>
-<div class="figure">
-<img src="assets/images/baseline.png" /><p class="caption"></p>
-</div>
+<h2 id="re-thinking-the-media-query"><a href="#TOC">Re-thinking the media query</a></h2>
+<figure>
+<img src="assets/images/baseline.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>A visible viewport has a width that is a quantifiable number of <code>em</code>s</li>
 <li>This baseline rule of thumb ties an <code>em</code> to an approximate real size</li>
 </ul>
-</div><div class="section slide level2" id="thinking-of-our-layout-in-terms-of-text-and-ems">
-<h1 id="thinking-of-our-layout-in-terms-of-text-and-ems">Thinking of our layout in terms of text and ems</h1>
+<h2 id="thinking-of-our-layout-in-terms-of-text-and-ems"><a href="#TOC">Thinking of our layout in terms of text and ems</a></h2>
 <ul>
 <li>So, we can use <code>em</code>s for media queries
 <ul>
@@ -1300,11 +1550,10 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>That's more CSS pixels than many mobile browsers have to work with</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="thats-okay">
-<h1 id="thats-okay">That's Okay</h1>
-<div class="figure">
-<img src="presenter-exercises/202-new-baseline/images/iphone-opera2.png" /><p class="caption"></p>
-</div>
+<h2 id="thats-okay"><a href="#TOC">That's Okay</a></h2>
+<figure>
+<img src="presenter-exercises/202-new-baseline/images/iphone-opera2.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>We're allowing <code>span.prose</code> lines to wrap naturally.</li>
 <li>Verse lines are what matter for layout. We'd ideally like verse lines to fit on one line, but when they wrap, we want to indent them to make it clear that they are part of the previous line:</li>
@@ -1315,16 +1564,14 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   <span class="kw">text-indent</span>     <span class="kw">:</span> <span class="dt">-1.5em</span><span class="kw">;</span>
   <span class="kw">margin-left</span>     <span class="kw">:</span> <span class="dt">1.5em</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
-</div><div class="section slide level2" id="so-where-does-that-leave-us">
-<h1 id="so-where-does-that-leave-us">So where does that leave us?</h1>
-<div class="figure">
-<img src="presenter-exercises/202-new-baseline/images/desktop.png" alt="Desktop" /><p class="caption">Desktop</p>
-</div>
+<h2 id="so-where-does-that-leave-us"><a href="#TOC">So where does that leave us?</a></h2>
+<figure>
+<img src="presenter-exercises/202-new-baseline/images/desktop.png" alt="Desktop"><figcaption>Desktop</figcaption>
+</figure>
 <ul>
 <li>We're pretty good on narrow screens now, but we have some enhancement to do for wider screens.</li>
 </ul>
-</div><div class="section slide level2" id="defining-a-breakpoint-and-media-query">
-<h1 id="defining-a-breakpoint-and-media-query">Defining a breakpoint and media query</h1>
+<h2 id="defining-a-breakpoint-and-media-query"><a href="#TOC">Defining a breakpoint and media query</a></h2>
 <ul>
 <li>We know we need about <code>28em</code> or <code>448px</code> to display the text of the play</li>
 <li>We need a few hundred more pixels for the image to feel comfortable floating right</li>
@@ -1342,50 +1589,45 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>That media query should apply for screens with widths &gt;= 50em.</li>
 <li>Also, <code>em</code>s should dictate the width of our lines, not a simple percentage.</li>
 </ul>
-<h3 id="exercise-responsive-layout-via-media-queries"><a href="exercises/201-rwd">Exercise: Responsive layout via media queries</a></h3>
-</div><div class="section slide level2" id="rethinking-the-design-process">
-<h1 id="rethinking-the-design-process">Rethinking the design process</h1>
+<h3 id="exercise-responsive-layout-via-media-queries"><a href="#TOC"><a href="exercises/201-rwd">Exercise: Responsive layout via media queries</a></a></h3>
+<h2 id="rethinking-the-design-process"><a href="#TOC">Rethinking the design process</a></h2>
 <ul>
 <li>We can't sell the impossible anymore</li>
 <li>Pixel-perfect Photoshop mockups are not the way forward</li>
 <li>We need a new way of communicating design process and visual elements</li>
 <li>This is a challenging issue</li>
 </ul>
-<h3 id="further-reading-9">Further reading</h3>
+<h3 id="further-reading-9"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li><a href="http://styletil.es">Styletil.es</a></li>
 <li><a href="http://www.slideshare.net/stephenhay/mobilism2012">Stephen Hay's presentation on responsive design workflow</a></li>
 </ul>
-</div>
-<div class="section titleslide slide level1" id="part-iii-balancing-a-differentiated-web"><h1 id="part-iii-balancing-a-differentiated-web">Part III: Balancing a differentiated web</h1></div><div class="section slide level2" id="how-are-we-doing">
-<h1 id="how-are-we-doing">How are we doing?</h1>
+<h1 id="part-iii-balancing-a-differentiated-web"><a href="#TOC">Part III: Balancing a differentiated web</a></h1>
+<h2 id="how-are-we-doing"><a href="#TOC">How are we doing?</a></h2>
 <p>So, we've got what seems like a solid baseline for narrow screens and a single breakpoint to adapt the layout for wider screens.</p>
-<div class="figure">
-<img src="assets/images/desktop-rwd.png" /><p class="caption"></p>
-</div>
-<div class="figure">
-<img src="presenter-exercises/203-media-queries/images/firefox-nexus.png" alt="FireFox on Nexus S (Android 4)" /><p class="caption">FireFox on Nexus S (Android 4)</p>
-</div>
-</div><div class="section slide level2" id="hot-mess-in-ie">
-<h1 id="hot-mess-in-ie">Hot mess in IE</h1>
-<div class="figure">
-<img src="assets/images/ie8-hot-mess.png" alt="But it&#39;s a hot mess in IE8. What gives?" /><p class="caption">But it's a hot mess in IE8. What gives?</p>
-</div>
-</div><div class="section slide level2" id="understanding-media-query-support">
-<h1 id="understanding-media-query-support">Understanding media query support</h1>
-<h3 id="tackling-the-lack-of-media-query-support">Tackling the lack of media query support</h3>
-<div class="figure">
-<img src="assets/images/8320-no-mq.png" alt="BB 8320 doesn&#39;t support MQs, but that&#39;s expected!" /><p class="caption">BB 8320 doesn't support MQs, but that's expected!</p>
-</div>
+<figure>
+<img src="assets/images/desktop-rwd.png"><figcaption></figcaption>
+</figure>
+<figure>
+<img src="presenter-exercises/203-media-queries/images/firefox-nexus.png" alt="FireFox on Nexus S (Android 4)"><figcaption>FireFox on Nexus S (Android 4)</figcaption>
+</figure>
+<h2 id="hot-mess-in-ie"><a href="#TOC">Hot mess in IE</a></h2>
+<figure>
+<img src="assets/images/ie8-hot-mess.png" alt="But it&#39;s a hot mess in IE8. What gives?"><figcaption>But it's a hot mess in IE8. What gives?</figcaption>
+</figure>
+<h2 id="understanding-media-query-support"><a href="#TOC">Understanding media query support</a></h2>
+<h3 id="tackling-the-lack-of-media-query-support"><a href="#TOC">Tackling the lack of media query support</a></h3>
+<figure>
+<img src="assets/images/8320-no-mq.png" alt="BB 8320 doesn&#39;t support MQs, but that&#39;s expected!"><figcaption>BB 8320 doesn't support MQs, but that's expected!</figcaption>
+</figure>
 <blockquote>
 <p>&quot;The absence of support for media queries is in fact the first media query.&quot;—Bryan Rieger</p>
 </blockquote>
-<div class="figure">
-<img src="assets/images/media-query-support.png" /><p class="caption"></p>
-</div>
-</div><div class="section slide level2" id="media-query-support-options">
-<h1 id="media-query-support-options">Media query support options</h1>
-<h3 id="ie-conditional-tags">IE conditional tags</h3>
+<figure>
+<img src="assets/images/media-query-support.png"><figcaption></figcaption>
+</figure>
+<h2 id="media-query-support-options"><a href="#TOC">Media query support options</a></h2>
+<h3 id="ie-conditional-tags"><a href="#TOC">IE conditional tags</a></h3>
 <pre class="sourceCode css"><code class="sourceCode css">&lt;link rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> href=<span class="st">&quot;taps.css&quot;</span> /&gt;
 &lt;link rel=<span class="st">&quot;stylesheet&quot;</span> type=<span class="st">&quot;text/css&quot;</span> href=<span class="st">&quot;layout.css&quot;</span> media=<span class="st">&quot;all and min-width: 481px)&quot;</span>&gt;
 &lt;!--<span class="ch">[if (lt IE 9) &amp; (!IEMobile)]</span>&gt;
@@ -1399,12 +1641,11 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul></li>
 <li>Respond is faster, but only contains a subset of CSS support. Start with it.</li>
 </ul>
-<h4 id="beware-6">Beware!</h4>
+<h4 id="beware-6"><a href="#TOC">Beware!</a></h4>
 <ul>
 <li>Advanced performance note: <a href="http://www.phpied.com/conditional-comments-block-downloads/">IE conditional tags can block downloads, hampering performance</a></li>
 </ul>
-</div><div class="section slide level2" id="updating-our-web-page">
-<h1 id="updating-our-web-page">Updating our web page</h1>
+<h2 id="updating-our-web-page"><a href="#TOC">Updating our web page</a></h2>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span>
   <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width,initial-scale=1&quot;</span><span class="kw">&gt;</span>
@@ -1415,13 +1656,12 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   <span class="kw">&lt;title&gt;</span>The Tempest: Act 3, Sc. 2 | Shakespeare<span class="kw">&lt;/title&gt;</span>
 <span class="kw">&lt;/head&gt;</span></code></pre>
 <p><code>ie.css</code> contains the same CSS as is inside the media query.</p>
-<h3 id="real-world-moment-6">Real world moment</h3>
+<h3 id="real-world-moment-6"><a href="#TOC">Real world moment</a></h3>
 <p>Yep, in our reality, we often still have to make special exceptions for IE browsers.</p>
-</div><div class="section slide level2" id="um.">
-<h1 id="um.">Um.</h1>
-<div class="figure">
-<img src="assets/images/ie8-hot-mess2.png" alt="IE: This ain&#39;t good" /><p class="caption">IE: This ain't good</p>
-</div>
+<h2 id="um."><a href="#TOC">Um.</a></h2>
+<figure>
+<img src="assets/images/ie8-hot-mess2.png" alt="IE: This ain&#39;t good"><figcaption>IE: This ain't good</figcaption>
+</figure>
 <ul>
 <li>Turns out there's another problem here: lack of HTML5 element support.</li>
 <li>This version IE doesn't &quot;speak HTML5&quot;. It doesn't recognize HTML5 elements like <code>&lt;section&gt;</code>, <code>&lt;header&gt;</code>, etc.
@@ -1430,8 +1670,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Those elements do not exist properly in the DOM</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="its-a-question-of-features">
-<h1 id="its-a-question-of-features">It's a question of features</h1>
+<h2 id="its-a-question-of-features"><a href="#TOC">It's a question of features</a></h2>
 <ul>
 <li>A lot of developing for today's web is chasing down support and understanding the nitty-gritty of a lot of details so that we can develop for a <em>differentiated, fractured web</em>.</li>
 <li>We can help to keep some of our sanity by:
@@ -1441,16 +1680,14 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Assessing shortcomings and fomenting a strategy about support priorities and tools to broaden support</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="some-tools-at-our-disposal">
-<h1 id="some-tools-at-our-disposal">Some tools at our disposal</h1>
+<h2 id="some-tools-at-our-disposal"><a href="#TOC">Some tools at our disposal</a></h2>
 <ul>
 <li>Industry-standard techniques (e.g. IE conditional tags)</li>
 <li>Feature-detection code and libraries (e.g. Modernizr)</li>
 <li>Broadly-adopted core support tools and polyfills for broader concerns (e.g. HTML5 shim, Selectivizr)</li>
 <li>Libraries and polyfills for more specific concerns (e.g. video.js, placeholder.js)</li>
 </ul>
-</div><div class="section slide level2" id="arming-ourselves">
-<h1 id="arming-ourselves">Arming ourselves</h1>
+<h2 id="arming-ourselves"><a href="#TOC">Arming ourselves</a></h2>
 <p>Let's try to beat IE 8 into submission, shall we?</p>
 <ul>
 <li>HTML5 Shiv via Modernizr</li>
@@ -1468,11 +1705,10 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <blockquote>
 <p>&quot;Modernizr runs through a little loop in JavaScript to enable the various elements from HTML5 (as well as abbr) for styling in Internet Explorer. Note that this does not mean it suddenly makes IE support the Audio or Video element, it just means that you can use section instead of div and style them in CSS.&quot; —Modernizr.com</p>
 </blockquote>
-</div><div class="section slide level2" id="better">
-<h1 id="better">Better!</h1>
-<div class="figure">
-<img src="presenter-exercises/301-polyfilled/images/ie8.png" /><p class="caption"></p>
-</div>
+<h2 id="better"><a href="#TOC">Better!</a></h2>
+<figure>
+<img src="presenter-exercises/301-polyfilled/images/ie8.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>Find code examples for these steps in
 <ul>
@@ -1480,18 +1716,16 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li><a href="presenter-exercises/300-polyfilled">presenter-exercises/301-polyfilled</a>: Polyfilled for IE</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="so-wait-tell-me-more-about-modernizr">
-<h1 id="so-wait-tell-me-more-about-modernizr">So, wait, tell me more about Modernizr</h1>
-<div class="figure">
-<img src="assets/images/modernizr.jpg" /><p class="caption"></p>
-</div>
+<h2 id="so-wait-tell-me-more-about-modernizr"><a href="#TOC">So, wait, tell me more about Modernizr</a></h2>
+<figure>
+<img src="assets/images/modernizr.jpg"><figcaption></figcaption>
+</figure>
 <ul>
 <li>Feature detection for common HTML5 things</li>
 <li>Enhancing content when we have positive test results</li>
 <li>CSS Classes</li>
 </ul>
-</div><div class="section slide level2" id="modernizr">
-<h1 id="modernizr">Modernizr</h1>
+<h2 id="modernizr"><a href="#TOC">Modernizr</a></h2>
 <ul>
 <li>Many different HTML, CSS and JS feature tests</li>
 <li>Comes default with HTML5 shim/shiv and <code>Modernizr.load()</code></li>
@@ -1505,54 +1739,48 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul></li>
 <li>I usually use the full/dev version for development, and then <a href="http://modernizr.com/download/">build a version</a> that only contains the tests I need</li>
 </ul>
-<h4 id="hold-that-thought-6">Hold that thought!</h4>
+<h4 id="hold-that-thought-6"><a href="#TOC">Hold that thought!</a></h4>
 <p>We'll come back to <code>Modernizr.load()</code></p>
-</div><div class="section slide level2" id="font-squirrel">
-<h1 id="font-squirrel">Font Squirrel</h1>
-<div class="figure">
-<img src="assets/images/font-squirrel.png" /><p class="caption"></p>
-</div>
+<h2 id="font-squirrel"><a href="#TOC">Font Squirrel</a></h2>
+<figure>
+<img src="assets/images/font-squirrel.png"><figcaption></figcaption>
+</figure>
 <ul>
 <li>An example of feature detection and third party tools</li>
 <li>Modernizr (for testing <code>@font-face</code> support)</li>
 <li><a href="http://www.fontsquirrel.com/fontface/generator">Font Squirrel</a> (for reducing the ugh factor of creating web font files and CSS)</li>
 </ul>
-</div><div class="section slide level2" id="exercise-1">
-<h1 id="exercise-1">Exercise</h1>
+<h2 id="exercise-1"><a href="#TOC">Exercise</a></h2>
 <ul>
 <li>You be the enhancer!</li>
 <li><a href="exercises/301-features">Exercise: feature enhancement vis-a-vis @font-face</a></li>
 </ul>
-</div><div class="section slide level2" id="moar-polyfills-and-feature-tests">
-<h1 id="moar-polyfills-and-feature-tests">MOAR polyfills and feature tests</h1>
-<h3 id="further-reading-10">Further Reading</h3>
+<h2 id="moar-polyfills-and-feature-tests"><a href="#TOC">MOAR polyfills and feature tests</a></h2>
+<h3 id="further-reading-10"><a href="#TOC">Further Reading</a></h3>
 <ul>
 <li><a href="http://selectivizr.com/">Selectivizr</a> CSS selectors for IE</li>
 <li><a href="http://code.google.com/p/ie7-js/">IE7 JS</a> &quot;A JavaScript library to make MSIE behave like a standards-compliant browser</li>
 <li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">Long list of polyfills on Modernizr</a></li>
 </ul>
-</div>
-<div class="section titleslide slide level1" id="part-iv-on-the-frontiers-of-the-adaptive-web"><h1 id="part-iv-on-the-frontiers-of-the-adaptive-web">Part IV: On the frontiers of the adaptive web</h1></div><div class="section slide level2" id="most-rwd-sites-are-not-mobile-first">
-<h1 id="most-rwd-sites-are-not-mobile-first">Most RWD sites are not mobile First</h1>
-<div class="figure">
-<img src="assets/images/mobile-rwd.png" /><p class="caption"></p>
-</div>
+<h1 id="part-iv-on-the-frontiers-of-the-adaptive-web"><a href="#TOC">Part IV: On the frontiers of the adaptive web</a></h1>
+<h2 id="most-rwd-sites-are-not-mobile-first"><a href="#TOC">Most RWD sites are not mobile First</a></h2>
+<figure>
+<img src="assets/images/mobile-rwd.png"><figcaption></figcaption>
+</figure>
 <p>Jason reviewed over 100 RWD sites in 2011. Found that:</p>
 <ul>
 <li>38% had a mobile site that was &lt; 10% smaller than the desktop</li>
 <li>4% mobile was the same size</li>
 <li>25% mobile was LARGER than the desktop</li>
 </ul>
-</div><div class="section slide level2" id="screen-size-bandwidth">
-<h1 id="screen-size-bandwidth">Screen size != bandwidth</h1>
+<h2 id="screen-size-bandwidth"><a href="#TOC">Screen size != bandwidth</a></h2>
 <ul>
 <li>Yes, this is true, but so what?</li>
 <li>On average, mobile is still slower than desktop. We shouldn’t be delivering larger sites to mobile users</li>
 </ul>
-<h4 id="rule-of-thumb-1">Rule of thumb</h4>
+<h4 id="rule-of-thumb-1"><a href="#TOC">Rule of thumb</a></h4>
 <p>Common sense tells us that <em>overall</em> mobile users have more likelihood of slower, more expensive connections.</p>
-</div><div class="section slide level2" id="why-are-these-sites-so-big">
-<h1 id="why-are-these-sites-so-big">Why are these sites so big?</h1>
+<h2 id="why-are-these-sites-so-big"><a href="#TOC">Why are these sites so big?</a></h2>
 <ul>
 <li>A huge factor is image file sizes and the download of resources that are not used
 <ul>
@@ -1561,21 +1789,19 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Media queries don’t impact JavaScript so even if you hide, for example, a Google Map, the code still downloads</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="lets-back-up-1">
-<h1 id="lets-back-up-1">Let's back up</h1>
+<h2 id="lets-back-up-1"><a href="#TOC">Let's back up</a></h2>
 <ul>
 <li>Before we get specific about things, let's think about the bigger picture</li>
 <li>Images and other embedded things have long been a source of consternation with respect to different browsers</li>
 </ul>
-<h3 id="what-are-the-high-level-problems-here">What are the high-level problems here?</h3>
+<h3 id="what-are-the-high-level-problems-here"><a href="#TOC">What are the high-level problems here?</a></h3>
 <ul>
 <li>The <code>img</code> tag only provides one <code>src</code> attribute presently</li>
 <li>Contrast this with <code>audio</code> and <code>video</code> HTML5 elements (so, smart folks <em>are</em> thinking about things like this)</li>
 <li>Some of our techniques actually cause multiple (large) images to be downloaded</li>
 </ul>
 <p>These issues apply both to CSS background images and inline images. Let's take a look at some ideas for patching the problem over...</p>
-</div><div class="section slide level2" id="css-background-images">
-<h1 id="css-background-images">CSS Background images</h1>
+<h2 id="css-background-images"><a href="#TOC">CSS Background images</a></h2>
 <ul>
 <li>Get your media queries in order
 <ul>
@@ -1595,18 +1821,16 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <span class="dv">@media</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(min-width:</span> <span class="er">501px)</span> <span class="dv">{</span>
     <span class="fl">#logo</span> <span class="kw">{background-image:</span><span class="dt">url(</span><span class="st">&#39;large.png&#39;</span><span class="dt">)</span><span class="kw">;}</span>
 <span class="dv">}</span></code></pre>
-</div><div class="section slide level2" id="css-background-images-in-different-browsers">
-<h1 id="css-background-images-in-different-browsers">CSS background images in different browsers</h1>
+<h2 id="css-background-images-in-different-browsers"><a href="#TOC">CSS background images in different browsers</a></h2>
 <ul>
 <li>As of iOS 4.2, replacing a <code>background-image</code> in the cascade will result in only one image being downloaded</li>
 <li>But, <code>display:none</code> on the element itself still downloads images</li>
 </ul>
-<h3 id="further-reading-11">Further reading</h3>
+<h3 id="further-reading-11"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li><a href="http://timkadlec.com/2012/04/media-query-asset-downloading-results/">Tim Kadlec’s comprehensive test results for background images</a></li>
 </ul>
-</div><div class="section slide level2" id="image-set">
-<h1 id="image-set"><code>image-set</code></h1>
+<h2 id="image-set"><a href="#TOC"><code>image-set</code></a></h2>
 <ul>
 <li>Supported presently in Chrome, Safari 6</li>
 <li>Yep, everyone's very foamy about retina. So, maybe, here you go?</li>
@@ -1624,20 +1848,18 @@ span<span class="fl">.song</span> <span class="kw">{</span>
     <span class="kw">width:</span><span class="dt">200px</span><span class="kw">;</span>
     <span class="kw">height:</span><span class="dt">75px</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre>
-<h3 id="further-reading-12">Further reading</h3>
+<h3 id="further-reading-12"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li><a href="http://blog.cloudfour.com/safari-6-and-chrome-21-add-image-set-to-support-retina-images/">Jason's blog post on <code>image-set</code> on our blog</a></li>
 </ul>
-</div><div class="section slide level2" id="the-inline-html-img-tag-conundrum">
-<h1 id="the-inline-html-img-tag-conundrum">The inline HTML <code>img</code> tag conundrum</h1>
+<h2 id="the-inline-html-img-tag-conundrum"><a href="#TOC">The inline HTML <code>img</code> tag conundrum</a></h2>
 <ul>
 <li><code>&lt;img&gt;</code> can only have one src attribute</li>
 <li>First load problem: server knows nothing about the client. How do you know what <code>src</code> to use?</li>
 <li>Delivering the right-sized image can mean huge savings (up to 80%) on file size.</li>
 </ul>
 <p>Many people are seeking a solution for responsive images.</p>
-</div><div class="section slide level2" id="responsive-images-option-1">
-<h1 id="responsive-images-option-1">Responsive images: Option 1</h1>
+<h2 id="responsive-images-option-1"><a href="#TOC">Responsive images: Option 1</a></h2>
 <ul>
 <li>JavaScript checks the width of the screen and sets a cookie.</li>
 <li>Image requests contain that cookie giving the server the information it needs.</li>
@@ -1646,8 +1868,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Apache rewrite rules or the like can keep HTML <code>img</code> <code>src</code> pointing at a canonical URL, which is nice.</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="option-1-problems">
-<h1 id="option-1-problems">Option 1 Problems</h1>
+<h2 id="option-1-problems"><a href="#TOC">Option 1 Problems</a></h2>
 <ul>
 <li>Some fragility
 <ul>
@@ -1657,8 +1878,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Slightly complex concept</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="responsive-images-option-2">
-<h1 id="responsive-images-option-2">Responsive images: Option 2</h1>
+<h2 id="responsive-images-option-2"><a href="#TOC">Responsive images: Option 2</a></h2>
 <ul>
 <li>Put small image inside <code>&lt;noscript&gt;</code> tag.</li>
 <li>Put info for other images in <code>data-*</code> on noscript tag.</li>
@@ -1667,26 +1887,22 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;noscript</span><span class="ot"> data-large=</span><span class="st">&quot;Koala.jpg&quot;</span><span class="ot"> data-small=</span><span class="st">&quot;Koala-small.jpg&quot;</span><span class="ot"> data-alt=</span><span class="st">&quot;Koala&quot;</span><span class="kw">&gt;</span>
 <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;Koala.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Koala&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;/noscript&gt;</span></code></pre>
-</div><div class="section slide level2" id="option-2-problems">
-<h1 id="option-2-problems">Option 2 Problems</h1>
+<h2 id="option-2-problems"><a href="#TOC">Option 2 Problems</a></h2>
 <ul>
 <li>Markup has been changed in a way that only makes sense for this solution.</li>
 <li>No longer semantic.</li>
 </ul>
-</div><div class="section slide level2" id="responsive-images-option-3">
-<h1 id="responsive-images-option-3">Responsive images: Option 3</h1>
+<h2 id="responsive-images-option-3"><a href="#TOC">Responsive images: Option 3</a></h2>
 <ul>
 <li>Use or build a service like Sencha.io SRC to deliver the correctly sized image:</li>
 </ul>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;http://src.sencha.io/[ORIGINAL IMAGE URL]&quot;</span> <span class="kw">/&gt;</span></code></pre>
-</div><div class="section slide level2" id="option-3-problems">
-<h1 id="option-3-problems">Option 3 Problems</h1>
+<h2 id="option-3-problems"><a href="#TOC">Option 3 Problems</a></h2>
 <ul>
 <li>All of your images are being routed through a third-party service.</li>
 <li>How does Sencha know what size image to use anyways? It relies on device detection which some developers dislike.</li>
 </ul>
-</div><div class="section slide level2" id="this-just-in">
-<h1 id="this-just-in">This just in!</h1>
+<h2 id="this-just-in"><a href="#TOC">This just in!</a></h2>
 <ul>
 <li><a href="http://www.resrc.it/">http://www.resrc.it/</a> Haven't had a chance to vet it
 <ul>
@@ -1694,16 +1910,14 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Has anyone tried it?</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="what-we-really-need-to-solve-for-images">
-<h1 id="what-we-really-need-to-solve-for-images">What we really need to solve for images</h1>
+<h2 id="what-we-really-need-to-solve-for-images"><a href="#TOC">What we really need to solve for images</a></h2>
 <p>There are two separate issues when it comes to the img tag:</p>
 <ul>
 <li>Ability to authors to provide img art direction based on breakpoints</li>
 <li>Ensuring that the right image size is downloaded based on a combo of bandwidth, screen size, pixel density and user preference.</li>
 </ul>
 <p>The picture element is focused on solving the first issue. There are a lot of different ways to address the second.</p>
-</div><div class="section slide level2" id="only-real-solution-is-new-standard">
-<h1 id="only-real-solution-is-new-standard">Only real solution is new standard</h1>
+<h2 id="only-real-solution-is-new-standard"><a href="#TOC">Only real solution is new standard</a></h2>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;picture</span><span class="ot"> alt=</span><span class="st">&quot;Giraffe&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;source</span><span class="ot"> src=</span><span class="st">&quot;giraffe-sml.jpg&quot;</span><span class="ot"> media=</span><span class="st">&quot;(max-width:480px)&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;source</span><span class="ot"> src=</span><span class="st">&quot;giraffe-lrg.jpg&quot;</span><span class="ot"> media=</span><span class="st">&quot;(min-width:481px)&quot;</span><span class="kw">&gt;</span>
@@ -1715,30 +1929,27 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <span class="ot">     srcset=</span><span class="st">&quot;face-600-200 at 1.jpeg 600w 200h 1x,</span>
 <span class="st">             face-600-200 at 2.jpeg 600w 200h 2x,</span>
 <span class="st">             face-icon.png          200w 200h&quot;</span><span class="kw">&gt;</span></code></pre>
-</div><div class="section slide level2" id="the-challenge-is-real...hard">
-<h1 id="the-challenge-is-real...hard">The challenge is real...hard</h1>
-<h3 id="some-other-things-to-consider">Some (other) things to consider</h3>
-<ol style="list-style-type: decimal">
+<h2 id="the-challenge-is-real...hard"><a href="#TOC">The challenge is real...hard</a></h2>
+<h3 id="some-other-things-to-consider"><a href="#TOC">Some (other) things to consider</a></h3>
+<ol type="1">
 <li>Canonical URL for images: multiple <code>src</code> attributes fragment a single resource into multiple URIs</li>
 <li>HTTP headers: Should the future hold new HTTP headers that user agents can use to help servers serve the right things?</li>
 <li>Semantics: don't box yourself in</li>
 </ol>
-</div><div class="section slide level2" id="lyzas-crazy-ass-idea-of-the-month">
-<h1 id="lyzas-crazy-ass-idea-of-the-month">Lyza's crazy-ass idea of the month</h1>
+<h2 id="lyzas-crazy-ass-idea-of-the-month"><a href="#TOC">Lyza's crazy-ass idea of the month</a></h2>
 <p>I think it would be kind of neat if the CSS Media Query module spec allowed for media query references or classes.</p>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="dv">@media</span> <span class="er">narrow-all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">30em),</span> <span class="dv">all</span> <span class="er">and</span> <span class="er">(max-width:</span> <span class="er">30em)</span> <span class="dv">{</span> <span class="dv">}</span></code></pre>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;picture</span><span class="ot"> alt=</span><span class="st">&quot;My Cool Image&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;source</span><span class="ot"> src=</span><span class="st">&quot;image-small.jpg&quot;</span><span class="ot"> media=</span><span class="st">&quot;narrow&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;image.jpg&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;/picture&gt;</span></code></pre>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><code>src</code> in <code>img</code> tag considered canonical.</li>
 <li>Named/classed media queries keep presentational media query syntax out of the markup (and have other benefits, IMHO!).</li>
 </ol>
-<h4 id="beware-7">Beware!</h4>
+<h4 id="beware-7"><a href="#TOC">Beware!</a></h4>
 <p>This is a product of my imagination and probably represents a syntax that would conflict with older browsers, etc.</p>
-</div><div class="section slide level2" id="other-rwd-challenges">
-<h1 id="other-rwd-challenges">Other RWD Challenges</h1>
+<h2 id="other-rwd-challenges"><a href="#TOC">Other RWD Challenges</a></h2>
 <ul>
 <li>Delivering the right size video</li>
 <li>Breakpoint management and zoom levels</li>
@@ -1747,62 +1958,56 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Third-party widgets (particularly ad networks)</li>
 <li>Integrating with content management systems</li>
 </ul>
-<h3 id="for-your-consideration-6">For your consideration</h3>
+<h3 id="for-your-consideration-6"><a href="#TOC">For your consideration</a></h3>
 <ul>
 <li>Which approaches to embedded media seem most appealing to you? Do you have any ideas for how to solve the image problem?</li>
 </ul>
-</div><div class="section slide level2" id="binary-fallacy">
-<h1 id="binary-fallacy">Binary fallacy</h1>
+<h2 id="binary-fallacy"><a href="#TOC">Binary fallacy</a></h2>
 <p>Most feature testing is thought of in a yep/nope frame of reference. But real life isn't that simple.</p>
 <ul>
 <li>Just because this older Android device supports CSS transitions...can it really handle them in a performant way?</li>
 <li>What does it mean if a particular feature-testing tool reports that the <code>canvas</code> tag is supported?</li>
 <li>And even if <code>@font-face</code> is supported, should we send (potentially large) font files to mobile users?</li>
 </ul>
-<h4 id="beware-8">Beware!</h4>
+<h4 id="beware-8"><a href="#TOC">Beware!</a></h4>
 <p>Don't get lulled into a false sense of clarity or confidence about feature testing.</p>
-</div><div class="section slide level2" id="rude-awakening-blackberry-style">
-<h1 id="rude-awakening-blackberry-style">Rude awakening, BlackBerry style</h1>
-<div class="figure">
-<img src="presenter-exercises/302-fonts/images/9670.png" alt="BlackBerry 9670 OS 6" /><p class="caption">BlackBerry 9670 OS 6</p>
-</div>
+<h2 id="rude-awakening-blackberry-style"><a href="#TOC">Rude awakening, BlackBerry style</a></h2>
+<figure>
+<img src="presenter-exercises/302-fonts/images/9670.png" alt="BlackBerry 9670 OS 6"><figcaption>BlackBerry 9670 OS 6</figcaption>
+</figure>
 <ul>
 <li><code>small-caps</code> sad</li>
 <li>Hmmm...maybe something is odd about the combination of styles on this page...maybe something's wonky...</li>
 </ul>
-</div><div class="section slide level2" id="it-gets-better">
-<h1 id="it-gets-better">It gets better</h1>
-<div class="figure">
-<img src="presenter-exercises/400-woes/images/9670.png" alt="BlackBerry 9670 OS 6" /><p class="caption">BlackBerry 9670 OS 6</p>
-</div>
-<div class="figure">
-<img src="presenter-exercises/400-woes/images/9800.png" alt="BlackBerry 9800 Torch OS 6" /><p class="caption">BlackBerry 9800 Torch OS 6</p>
-</div>
-</div><div class="section slide level2" id="the-coup-de-grace">
-<h1 id="the-coup-de-grace">The coup de grace</h1>
-<div class="figure">
-<img src="presenter-exercises/400-woes/images/9810.png" alt="BlackBerry 9810" /><p class="caption">BlackBerry 9810</p>
-</div>
+<h2 id="it-gets-better"><a href="#TOC">It gets better</a></h2>
+<figure>
+<img src="presenter-exercises/400-woes/images/9670.png" alt="BlackBerry 9670 OS 6"><figcaption>BlackBerry 9670 OS 6</figcaption>
+</figure>
+<figure>
+<img src="presenter-exercises/400-woes/images/9800.png" alt="BlackBerry 9800 Torch OS 6"><figcaption>BlackBerry 9800 Torch OS 6</figcaption>
+</figure>
+<h2 id="the-coup-de-grace"><a href="#TOC">The coup de grace</a></h2>
+<figure>
+<img src="presenter-exercises/400-woes/images/9810.png" alt="BlackBerry 9810"><figcaption>BlackBerry 9810</figcaption>
+</figure>
 <ul>
 <li>Used Font Squirrel to generate fonts and CSS, including the SVG font BB 6 needs</li>
 <li>Used Modernizr to test for @font-face support</li>
 <li>And this is what it looks like on a BB 9810</li>
 </ul>
-<h4 id="rule-of-thumb-2">Rule of thumb</h4>
+<h4 id="rule-of-thumb-2"><a href="#TOC">Rule of thumb</a></h4>
 <ul>
 <li>Font support on mobile is very challenging. Be wary.</li>
 </ul>
-</div><div class="section slide level2" id="lets-back-up-again">
-<h1 id="lets-back-up-again">Let's back up again</h1>
+<h2 id="lets-back-up-again"><a href="#TOC">Let's back up again</a></h2>
 <p>This BlackBerry Torch conundrum highlights some issues:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Feature detection is useful but not foolproof</li>
 <li>Quirks are more the rule than the exception in mobile browsers</li>
 <li>We also need to look at performance and what we're trying to accomplish</li>
 </ol>
-</div><div class="section slide level2" id="what-matters-1">
-<h1 id="what-matters-1">What matters?</h1>
-<ol style="list-style-type: decimal">
+<h2 id="what-matters-1"><a href="#TOC">What matters?</a></h2>
+<ol type="1">
 <li>Making the text of this scene of the play acceptably readable on as many devices as possible</li>
 <li>Presenting the text of the play in a way true to dramatic and historical form</li>
 <li>Providing font and color differentiation to increase readability and contrast</li>
@@ -1810,44 +2015,40 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Showing relevant, related illustrations for this section of the play</li>
 </ol>
 <p>Objective #1 trumps objectives #2 and #3.</p>
-</div><div class="section slide level2" id="but-wait...">
-<h1 id="but-wait...">But wait...</h1>
+<h2 id="but-wait..."><a href="#TOC">But wait...</a></h2>
 <p><em>Aren't we just flirting with the lowest common denominator again?</em></p>
-<h3 id="our-options">Our options</h3>
-<ol style="list-style-type: decimal">
+<h3 id="our-options"><a href="#TOC">Our options</a></h3>
+<ol type="1">
 <li>Leave everything as-is. Screw the buggy BlackBerry Torch.</li>
 <li>Worry a lot about <code>@font-face</code> on mobile devices. Decide to put the <code>@font-face</code> rules inside of the wider-screen media query, but leave the <code>text-transform</code> and <code>small-caps</code> intact for all devices.</li>
 <li>Decide BlackBerry support is incredibly key. Move @font-face <em>and</em> other font rules (<code>small-caps</code> and <code>lowercase</code>) into the wider-screen media query.</li>
 </ol>
-<h3 id="things-to-consider">Things to consider</h3>
-<ol style="list-style-type: decimal">
+<h3 id="things-to-consider"><a href="#TOC">Things to consider</a></h3>
+<ol type="1">
 <li>Whom you are supporting with your site or app.</li>
 <li>Consistency.</li>
 <li>Performance.</li>
 </ol>
-</div><div class="section slide level2" id="you-are-the-decider">
-<h1 id="you-are-the-decider">You are the decider</h1>
+<h2 id="you-are-the-decider"><a href="#TOC">You are the decider</a></h2>
 <ul>
 <li>Put @font-face rules wherever you are comfortable</li>
 <li>Decide on the <code>small-caps</code> and <code>lowercase</code> stuff</li>
 </ul>
-<h3 id="for-your-consideration-7">For your consideration</h3>
+<h3 id="for-your-consideration-7"><a href="#TOC">For your consideration</a></h3>
 <ul>
 <li>What would you do?</li>
 </ul>
-</div><div class="section slide level2" id="progressive-enhancement-electric-boogaloo">
-<h1 id="progressive-enhancement-electric-boogaloo">Progressive enhancement: electric boogaloo</h1>
+<h2 id="progressive-enhancement-electric-boogaloo"><a href="#TOC">Progressive enhancement: electric boogaloo</a></h2>
 <ul>
 <li>Think through what support is required for your enhancement</li>
 <li>Think through the dependencies</li>
 <li>Think through the failure states</li>
 <li>Consider your tools</li>
 </ul>
-</div><div class="section slide level2" id="line-number-enhancement">
-<h1 id="line-number-enhancement">Line number enhancement</h1>
-<div class="figure">
-<img src="assets/images/line-numbers.png" alt="Goal: wider screen with line numbers every 10 lines" /><p class="caption">Goal: wider screen with line numbers every 10 lines</p>
-</div>
+<h2 id="line-number-enhancement"><a href="#TOC">Line number enhancement</a></h2>
+<figure>
+<img src="assets/images/line-numbers.png" alt="Goal: wider screen with line numbers every 10 lines"><figcaption>Goal: wider screen with line numbers every 10 lines</figcaption>
+</figure>
 <ul>
 <li>On wider screens that have the real estate to do so, I'd like to display line numbers every 10 lines. That helps me keep my place when reading longer scenes</li>
 <li>Counting lines by:
@@ -1862,8 +2063,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul></li>
 <li>Need a bit of JS support</li>
 </ul>
-</div><div class="section slide level2" id="line-number-enhancement-1">
-<h1 id="line-number-enhancement-1">Line number enhancement</h1>
+<h2 id="line-number-enhancement-1"><a href="#TOC">Line number enhancement</a></h2>
 <p>All answers must be &quot;yes&quot; for us to enhance with line numbers:</p>
 <ul>
 <li>Can we use JavaScript to select, traverse and manipulate DOM nodes in the way we'd like in this browser?</li>
@@ -1872,19 +2072,17 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Does this browser support generated content?</li>
 <li>Does this browser support CSS counters?</li>
 </ul>
-<h3 id="exercise-2">Exercise</h3>
+<h3 id="exercise-2"><a href="#TOC">Exercise</a></h3>
 <p><a href="exercises/401-enhancement">Exercise: Feature test plan of attack</a></p>
-</div><div class="section slide level2" id="exercise-follow-up">
-<h1 id="exercise-follow-up">Exercise Follow-up</h1>
-<div class="figure">
-<img src="assets/images/generated-support.png" alt="caniuse.com" /><p class="caption">caniuse.com</p>
-</div>
+<h2 id="exercise-follow-up"><a href="#TOC">Exercise Follow-up</a></h2>
+<figure>
+<img src="assets/images/generated-support.png" alt="caniuse.com"><figcaption>caniuse.com</figcaption>
+</figure>
 <ul>
 <li><code>:after</code> generated content relies on css <code>counter</code> support — that is, we don't want to add generated content if it is invalid</li>
 <li>Fortunately the set of browsers that supports <code>:before</code>/<code>:after</code> is effectively the same as those who support CSS <code>counter</code></li>
 </ul>
-</div><div class="section slide level2" id="tools">
-<h1 id="tools">Tools</h1>
+<h2 id="tools"><a href="#TOC">Tools</a></h2>
 <ul>
 <li>Modernizr's integration with <code>yepnope.js</code> via <code>Modernizr.load</code> and the <code>Modernizr.mq()</code> method
 <ul>
@@ -1897,8 +2095,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li>Then, use jQuery selection to select and act on the DOM elements in question</li>
 </ul></li>
 </ul>
-</div><div class="section slide level2" id="like-this">
-<h1 id="like-this">Like this</h1>
+<h2 id="like-this"><a href="#TOC">Like this</a></h2>
 <p>Here's the full JavaScript we'll need:</p>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;script src=<span class="st">&quot;Modernizr.js&quot;</span>&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -1916,8 +2113,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   }
 ]);
 &lt;/script&gt;</code></pre>
-</div><div class="section slide level2" id="walking-through-the-script">
-<h1 id="walking-through-the-script">Walking through the script</h1>
+<h2 id="walking-through-the-script"><a href="#TOC">Walking through the script</a></h2>
 <pre class="sourceCode html"><code class="sourceCode html"> <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;Modernizr.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
 <p>This includes our custom Modernizr build with:</p>
 <ul>
@@ -1926,8 +2122,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 <li><code>yepnope.js</code> conditional JavaScript loading</li>
 <li><code>fontface</code> testing (from before!)</li>
 </ul>
-</div><div class="section slide level2" id="walking-through-more">
-<h1 id="walking-through-more">Walking through more</h1>
+<h2 id="walking-through-more"><a href="#TOC">Walking through more</a></h2>
 <p>Then:</p>
 <pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;script&gt;
 <span class="kw">Modernizr</span>.<span class="fu">load</span>([
@@ -1938,8 +2133,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   }
 ]);
 &lt;/script&gt;</code></pre>
-</div><div class="section slide level2" id="fleshing-that-out...">
-<h1 id="fleshing-that-out...">Fleshing that out...</h1>
+<h2 id="fleshing-that-out..."><a href="#TOC">Fleshing that out...</a></h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">Modernizr</span>.<span class="fu">load</span>([
   {
     <span class="dt">test</span>:       <span class="kw">Modernizr</span>.<span class="fu">mq</span>(<span class="ch">&#39;only all and (min-width:50em)&#39;</span>) &amp;&amp; <span class="kw">Modernizr</span>.<span class="fu">generatedcontent</span>,
@@ -1948,10 +2142,9 @@ span<span class="fl">.song</span> <span class="kw">{</span>
   }
 ]);
 &lt;/script&gt;</code></pre>
-<h3 id="real-world-moment-7">Real world moment</h3>
+<h3 id="real-world-moment-7"><a href="#TOC">Real world moment</a></h3>
 <p>Note that we're repeating our media query verbatim. Not great, but...options are limited these days.</p>
-</div><div class="section slide level2" id="and-our-jquery...">
-<h1 id="and-our-jquery...">And our jQuery...</h1>
+<h2 id="and-our-jquery..."><a href="#TOC">And our jQuery...</a></h2>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">Modernizr</span>.<span class="fu">load</span>([
   {
     <span class="dt">test</span>:       <span class="kw">Modernizr</span>.<span class="fu">mq</span>(<span class="ch">&#39;only all and (min-width:50em)&#39;</span>) &amp;&amp; <span class="kw">Modernizr</span>.<span class="fu">generatedcontent</span>,
@@ -1978,8 +2171,7 @@ span<span class="fl">.song</span> <span class="kw">{</span>
 </ul></li>
 <li>This callback only gets executed if the <code>test</code> passes and after the <code>yep</code> items are loaded and ready</li>
 </ul>
-</div><div class="section slide level2" id="the-css">
-<h1 id="the-css">The CSS</h1>
+<h2 id="the-css"><a href="#TOC">The CSS</a></h2>
 <p>All of this within the media query for the wider screen:</p>
 <pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Set up and increment the line-count counter */</span>
 <span class="fl">.scene</span> <span class="kw">{</span>
@@ -2000,44 +2192,38 @@ html<span class="fl">.generatedcontent</span> span<span class="fl">.line-number<
 <ul>
 <li>NB: The set of browsers that support <code>inline-block</code> display is a superset of those that support <code>generatedcontent</code> (roughly)</li>
 </ul>
-</div><div class="section slide level2" id="et-voila">
-<h1 id="et-voila">Et, voila</h1>
-<div class="figure">
-<img src="assets/images/line-numbers.png" alt="Line numbers in Chrome" /><p class="caption">Line numbers in Chrome</p>
-</div>
-<div class="figure">
-<img src="assets/images/no-line-numbers.png" alt="No line numbers in narrow widths, even if supported" /><p class="caption">No line numbers in narrow widths, even if supported</p>
-</div>
-</div>
-<div class="section titleslide slide level1" id="an-interlude-separate-mobile-sites-and-device-detection"><h1 id="an-interlude-separate-mobile-sites-and-device-detection">An interlude: separate mobile sites and device detection</h1></div><div class="section slide level2" id="weve-been-making-some-assumptions-this-morning...">
-<h1 id="weve-been-making-some-assumptions-this-morning...">We've been making some assumptions this morning...</h1>
+<h2 id="et-voila"><a href="#TOC">Et, voila</a></h2>
+<figure>
+<img src="assets/images/line-numbers.png" alt="Line numbers in Chrome"><figcaption>Line numbers in Chrome</figcaption>
+</figure>
+<figure>
+<img src="assets/images/no-line-numbers.png" alt="No line numbers in narrow widths, even if supported"><figcaption>No line numbers in narrow widths, even if supported</figcaption>
+</figure>
+<h1 id="an-interlude-separate-mobile-sites-and-device-detection"><a href="#TOC">An interlude: separate mobile sites and device detection</a></h1>
+<h2 id="weve-been-making-some-assumptions-this-morning..."><a href="#TOC">We've been making some assumptions this morning...</a></h2>
 <ul>
 <li>Starting from scratch and making a kick-ass responsive web site that works great almost everywhere is a great goal...</li>
 <li>...but sometimes reality kicks in</li>
 <li>Other business requirements sometimes mean that a separate mobile web site is necessary</li>
 </ul>
-<h3 id="real-world-moment-8">Real world moment</h3>
-</div><div class="section slide level2" id="detection-databases">
-<h1 id="detection-databases">Detection Databases</h1>
+<h3 id="real-world-moment-8"><a href="#TOC">Real world moment</a></h3>
+<h2 id="detection-databases"><a href="#TOC">Detection Databases</a></h2>
 <ul>
 <li>Sometimes you may need to know information about your device and browser before you serve content. Maybe you want to redirect mobile devices entirely. Maybe you want to know details about the device's support.</li>
 <li>Mobile device databases contain detailed information about the browser, platform, and hardware features of mobile devices. All a device detection database needs is a user agent string and it can tell you a lot about the device.</li>
 </ul>
-</div><div class="section slide level2" id="unique-dna-string">
-<h1 id="unique-dna-string">Unique DNA string</h1>
+<h2 id="unique-dna-string"><a href="#TOC">Unique DNA string</a></h2>
 <p>Every browser in the world has a user agent string. This string tells us a lot about the browser.</p>
 <pre><code>Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) 
 Chrome/14.0.792.0 Safari/535.1</code></pre>
 <p>That’s the user agent string for Chrome 14 running on Windows Vista. Obvious, right?</p>
-</div><div class="section slide level2" id="user-agent-sniffing-is-evil-right">
-<h1 id="user-agent-sniffing-is-evil-right">User agent sniffing is evil, right?</h1>
+<h2 id="user-agent-sniffing-is-evil-right"><a href="#TOC">User agent sniffing is evil, right?</a></h2>
 <ul>
 <li>You’ve heard the propaganda that says user agent switching is a bad practice. And who can forget the many web sites left behind during the &quot;runs best on IE6&quot; era.</li>
 <li>But you're fighting zombies here! Religion takes a back seat to survival.</li>
 <li>Plus, 25 of Alexa’s Top 30 sites use device detection. The five that don’t? They don’t have mobile sites at all.</li>
 </ul>
-</div><div class="section slide level2" id="many-device-detection-database-options">
-<h1 id="many-device-detection-database-options">Many device detection database options</h1>
+<h2 id="many-device-detection-database-options"><a href="#TOC">Many device detection database options</a></h2>
 <ul>
 <li><a href="http://wurfl.sourceforge.net/">WURFL</a> (Wireless Universal Resource FiLe) by <a href="http://www.scientiamobile.com/">ScientiaMobile</a></li>
 <li><a href="http://deviceatlas.com/">DeviceAtlas</a> by <a href="http://mtld.mobi/">dotMobi</a></li>
@@ -2045,50 +2231,43 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 <li><a href="http://51degrees.mobi/Products/DeviceData.aspx">51degrees</a></li>
 </ul>
 <p>Pay special attention to the licenses.</p>
-</div><div class="section slide level2" id="get-an-id-on-those-zombies">
-<h1 id="get-an-id-on-those-zombies">Get an ID on those zombies</h1>
+<h2 id="get-an-id-on-those-zombies"><a href="#TOC">Get an ID on those zombies</a></h2>
 <p>Let’s do a test run using a device detection database.</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Go to the <a href="http://www.tera-wurfl.com/explore/">ScientiaMobile WURFL Explorer</a> on your mobile phone</li>
 <li>Check out the various attributes. What do you see that would be useful?</li>
 <li>Can you find the screen resolution of your phone?</li>
 <li>Go to the <a href="http://www.tera-wurfl.com/explore/">ScientiaMobile WURFL Explorer</a> on your laptop</li>
 </ol>
-</div><div class="section slide level2" id="testing-capabilities">
-<h1 id="testing-capabilities">Testing capabilities</h1>
+<h2 id="testing-capabilities"><a href="#TOC">Testing capabilities</a></h2>
 <p>Device databases are most useful for testing capabilities. Once you have a user agent string, you can things like:</p>
-<h3 id="is-this-a-mobile-device">Is this a mobile device?</h3>
+<h3 id="is-this-a-mobile-device"><a href="#TOC">Is this a mobile device?</a></h3>
 <pre class="sourceCode php"><code class="sourceCode php">$value = $device-&gt;getCapability(&#39;is_wireless_device&#39;);</code></pre>
 <p>OR</p>
-<h3 id="does-this-browser-device-combo-support-cookies">Does this browser-device combo support cookies?</h3>
+<h3 id="does-this-browser-device-combo-support-cookies"><a href="#TOC">Does this browser-device combo support cookies?</a></h3>
 <pre class="sourceCode php"><code class="sourceCode php">$value = $device-&gt;getCapability(&#39;cookie_support&#39;);</code></pre>
-</div><div class="section slide level2" id="mobile-uas-are-like-snowflakes">
-<h1 id="mobile-uas-are-like-snowflakes">Mobile UAs are like snowflakes</h1>
+<h2 id="mobile-uas-are-like-snowflakes"><a href="#TOC">Mobile UAs are like snowflakes</a></h2>
 <ul>
 <li>Each one is unique, but for the most part, you don’t care. You can’t build a specific tool for each one, even if a specialized weapon would be most effective.</li>
 <li>Instead, you need to group them into categories that are similar enough that you can treat them similarly.</li>
 </ul>
-</div><div class="section slide level2" id="herd-them-into-device-classes">
-<h1 id="herd-them-into-device-classes">Herd them into device classes</h1>
-<div class="figure">
-<img src="assets/images/device-herds.jpg" /><p class="caption"></p>
-</div>
+<h2 id="herd-them-into-device-classes"><a href="#TOC">Herd them into device classes</a></h2>
+<figure>
+<img src="assets/images/device-herds.jpg"><figcaption></figcaption>
+</figure>
 <p>A <em>device class</em> is an abstract collection of common characteristics that define a group of devices and their browsers.</p>
-</div><div class="section slide level2" id="as-few-device-classes-as-possible">
-<h1 id="as-few-device-classes-as-possible">As few device classes as possible</h1>
-<h3 id="figure-typical-device-classes">Figure: Typical device classes</h3>
-<div class="figure">
-<img src="assets/images/device-classes.jpg" /><p class="caption"></p>
-</div>
-</div><div class="section slide level2" id="tips-for-device-detection">
-<h1 id="tips-for-device-detection">Tips for device detection</h1>
+<h2 id="as-few-device-classes-as-possible"><a href="#TOC">As few device classes as possible</a></h2>
+<h3 id="figure-typical-device-classes"><a href="#TOC">Figure: Typical device classes</a></h3>
+<figure>
+<img src="assets/images/device-classes.jpg"><figcaption></figcaption>
+</figure>
+<h2 id="tips-for-device-detection"><a href="#TOC">Tips for device detection</a></h2>
 <ul>
 <li>Responsive web design still makes sense within device classes</li>
 <li>Overlap as much as you can between templates. No need to maintain wholly separate templates.</li>
 <li>Think about what you fallback to if the device isn’t found in the database.</li>
 </ul>
-</div><div class="section slide level2" id="best-practices">
-<h1 id="best-practices">Best practices</h1>
+<h2 id="best-practices"><a href="#TOC">Best practices</a></h2>
 <ul>
 <li>Support every URL regardless of device</li>
 <li>Don’t dumb it down just because the screen is smaller</li>
@@ -2096,13 +2275,12 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 <li>Use JavaScript to verify the detection and correct errors</li>
 <li>Feed the corrections back into your database</li>
 </ul>
-<h3 id="further-reading-13">Further reading</h3>
+<h3 id="further-reading-13"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li><a href="http://www.lukew.com/ff/entry.asp?1392">RESS: Responsive Design + Server Side Components</a></li>
 </ul>
-</div><div class="section slide level2" id="a-brief-example-using-wurfl">
-<h1 id="a-brief-example-using-wurfl">A brief example using WURFL</h1>
-<h3 id="beware-9">Beware!</h3>
+<h2 id="a-brief-example-using-wurfl"><a href="#TOC">A brief example using WURFL</a></h2>
+<h3 id="beware-9"><a href="#TOC">Beware!</a></h3>
 <p>To be able to run the following example, you'll need:</p>
 <ul>
 <li>A server (local or otherwise) that can execute PHP</li>
@@ -2114,8 +2292,7 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 <li>This will give you the <strong>API KEY</strong> you'll need to drop into the first line of the <code>zombie-detect.php</code> script</li>
 <li>You can find all of the elements of this example in <code>exercises/interlude-wurfl</code></li>
 </ul>
-</div><div class="section slide level2" id="writing-some-code-to-interact-with-the-wurfl-data">
-<h1 id="writing-some-code-to-interact-with-the-wurfl-data">Writing some code to interact with the WURFL data</h1>
+<h2 id="writing-some-code-to-interact-with-the-wurfl-data"><a href="#TOC">Writing some code to interact with the WURFL data</a></h2>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
 <span class="co">// Include the WURFL Cloud Client </span>
 <span class="kw">require_once</span> <span class="st">&#39;WurflCloudClient-PHP-1.0.2-Simple/Client/Client.php&#39;</span><span class="ot">;</span>
@@ -2141,9 +2318,8 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 }
 <span class="kw">?&gt;</span></code></pre>
 <p><code>zombie-detect.php</code></p>
-<h5 id="zombie-detect.php-examples0804-wurfl">zombie-detect.php (<code>examples/08/04-wurfl</code>)</h5>
-</div><div class="section slide level2" id="displaying-the-information-gathered">
-<h1 id="displaying-the-information-gathered">Displaying the information gathered</h1>
+<h5 id="zombie-detect.php-examples0804-wurfl"><a href="#TOC">zombie-detect.php (<code>examples/08/04-wurfl</code>)</a></h5>
+<h2 id="displaying-the-information-gathered"><a href="#TOC">Displaying the information gathered</a></h2>
 <pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">require_once</span><span class="ot">(</span><span class="st">&#39;zombie-detect.php&#39;</span><span class="ot">);</span> <span class="kw">?&gt;</span>
 &lt;!doctype html&gt;
 &lt;html&gt;
@@ -2163,27 +2339,24 @@ Chrome/14.0.792.0 Safari/535.1</code></pre>
 
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<h5 id="index.html">index.html</h5>
-</div><div class="section slide level2" id="and...-1">
-<h1 id="and...-1">And...</h1>
-<div class="figure">
-<img src="assets/images/wurfl-desktop.png" alt="Desktop browser" /><p class="caption">Desktop browser</p>
-</div>
-<div class="figure">
-<img src="assets/images/wurfl-iphone.png" alt="iPhone" /><p class="caption">iPhone</p>
-</div>
-</div><div class="section slide level2" id="why-would-this-help-me">
-<h1 id="why-would-this-help-me">Why would this help me?</h1>
+<h5 id="index.html"><a href="#TOC">index.html</a></h5>
+<h2 id="and...-1"><a href="#TOC">And...</a></h2>
+<figure>
+<img src="assets/images/wurfl-desktop.png" alt="Desktop browser"><figcaption>Desktop browser</figcaption>
+</figure>
+<figure>
+<img src="assets/images/wurfl-iphone.png" alt="iPhone"><figcaption>iPhone</figcaption>
+</figure>
+<h2 id="why-would-this-help-me"><a href="#TOC">Why would this help me?</a></h2>
 <ul>
 <li>Sometimes finding out data about the device accessing your service <em>before</em> serving out content is key</li>
 <li>Another tactic for handling optimized images</li>
 <li>For certain features—e.g. whether a device has a cellular radio—there is no other way to know</li>
 <li>Can be useful for server-side detection and then redirection to a mobile-specific site</li>
 </ul>
-<h3 id="further-reading-14">Further reading</h3>
+<h3 id="further-reading-14"><a href="#TOC">Further reading</a></h3>
 <ul>
 <li><a href="http://detectmobilebrowsers.com/">Detect Mobile Browsers script</a>: Lightweight, open-source script for detecting major mobile platforms, available in many different formats and languages.</li>
 </ul>
-</div>
 </body>
 </html>

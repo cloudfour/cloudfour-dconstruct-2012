@@ -19,16 +19,23 @@ my $exercise_path = $basepath . "/exercises";
 ## Settings for this project
 my $pandoc = '/usr/local/bin/pandoc';
 my $header_file = $basepath . '/assets/header.html';
-my $flags  = "-f markdown -t slidy --standalone --css=assets/css/workshop.css --include-in-header=" . $header_file . " --slide-level=2";
+my $slide_flags  = "-f markdown -t slidy --standalone --css=assets/css/workshop.css --include-in-header=" . $header_file . " --slide-level=2";
+my $flat_flags = "-f markdown -t html5 --standalone --table-of-contents --css=assets/css/flat.css";
+
 my $input  = $basepath . "/workshop-part1.content";
 my $output = $basepath . "/part1.html";
+my $flat_output = $basepath . "/part1-flat.html";
 
-system("$pandoc $flags $input > $output");
+system("$pandoc $slide_flags $input > $output");
+system("$pandoc $flat_flags $input > $flat_output");
+
 
 my $input  = $basepath . "/workshop-part2.content";
 my $output = $basepath . "/part2.html";
+my $flat_output = $basepath . "/part2-flat.html";
 
-system("$pandoc $flags $input > $output");
+system("$pandoc $slide_flags $input > $output");
+system("$pandoc $flat_flags $input > $flat_output");
 
 sub build_exercises {
   if ($_ =~ /\.content/) {

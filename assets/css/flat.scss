@@ -1,0 +1,25 @@
+@import 'common';
+@import 'workshop';
+
+img {
+  max-width: 35em;
+}
+
+a, a:visited {
+  color: $color-blue;
+  text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+  a {
+    color: $color-blue;
+    text-decoration: none;
+  }
+  a:visited {
+    color: $color-blue;
+  }
+}
+
+h2 {
+  border-top: 1px solid $color-purple;
+  padding-top: 1em;
+}
